@@ -1,0 +1,8 @@
+#
+# /etc/ports/joe9.httpup port collection of joe9, joe9mail at gmail dot com
+#
+
+ROOT_DIR=/usr/ports/joe9
+URL=https://joe9@github.com/joe9/crux.git
+
+# End of file
