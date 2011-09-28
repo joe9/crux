@@ -1,0 +1,22 @@
+# Description: Examples for the standard Unix macro processor
+# URL:         https://github.com/joe9/m4-examples
+# Maintainer:  Joe9, joe9mail at gmail dot com
+
+name=m4-examples
+source_name=m4
+version=1.4.16
+release=1
+source=(ftp://ftp.gnu.org/gnu/$source_name/$source_name-$version.tar.xz)
+
+build() {
+    cd $source_name-$version
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    install --directory $PKG/usr/share/doc/m4/examples
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/share/info
+    rm -rf $PKG/usr/bin
+    rm -rf $PKG/usr/man
+    cp -p examples/* $PKG/usr/share/doc/m4/examples
+    rm -f $PKG/usr/share/doc/m4/examples/Makefile*
+}
