@@ -3,6 +3,6 @@
 #
 
 ROOT_DIR=/usr/ports/joe9
-URL=https://joe9@github.com/joe9/crux.git
+URL=http://github.com/joe9/crux.git
 
 # End of file
