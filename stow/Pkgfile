@@ -1,0 +1,15 @@
+# Description: Examples for the standard Unix macro processor
+# URL:         https://github.com/joe9/crux.git
+# Maintainer:  Joe9, joe9mail at gmail dot com
+
+name=stow
+version=1.3.3
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+}
