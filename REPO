@@ -1,11 +1,14 @@
+d:texinfo
 d:m4-examples
 d:stow
+f:da9644f1259fcc26f551b6122fbf0b64:texinfo/Pkgfile
+f:fbfda5584e05fb56c9f075ba7ddb79da:texinfo/.footprint
+f:e9f84fe977922ca4495eb3e8386f44a8:texinfo/.md5sum
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
 f:56facdecf9eccdda902c65a0d13beefc:m4-examples/Pkgfile
 f:e1b22f35a8fd9053d27cccd28d74a2bd:m4-examples/.footprint
 f:b63825f0d7808b00f09e1e119534c9bc:m4-examples/.md5sum
-f:3d13b5d3ebcaafdc201e1ee143966ce6:stow/.Pkgfile.swp
-f:5241dafc846b975c701d6728fabeda63:stow/Pkgfile
+f:00751e12bfcc3a8b762272d0ad60d1e3:stow/Pkgfile
 f:f98da1daf4bcb1a73d032e22f8704dd6:stow/.footprint
 f:bbd382bc146618be582aedab403ec3c1:stow/.md5sum

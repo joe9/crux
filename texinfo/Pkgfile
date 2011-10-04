@@ -1,0 +1,16 @@
+# Description: gnu texinfo
+# URL: http://www.gnu.org/s/texinfo/
+# Maintainer: Joe9, joe9mail at crux dot nu
+# Depends on: a few libraries, please check out the README
+
+name=texinfo
+version=4.13
+release=a
+source=(http://ftp.gnu.org/gnu/$name/$name-${version}${release}.tar.gz)
+
+build() {
+   cd $name-$version
+   ./configure --prefix=/usr --mandir=/usr/man
+   make
+   make DESTDIR=$PKG install
+}
