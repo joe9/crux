@@ -1,0 +1,18 @@
+# Description: geda-gaf development release
+# URL: http://geda.seul.org/wiki/geda:download
+# Maintainer: Joe9, joe9mail at crux dot nu
+# Depends on: a few libraries, please check out the README
+
+name=geda-gaf
+major=1.7
+version=1.7.1
+release=1
+source=(http://geda.seul.org/devel/v$major/$version/$name-$version.tar.gz)
+
+build() {
+   cd $name-$version
+   ./configure --prefix=/usr --mandir=/usr/man \
+               --disable-update-xdg-database
+   make
+   make DESTDIR=$PKG install
+}
