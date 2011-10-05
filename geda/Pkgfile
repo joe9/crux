@@ -1,0 +1,22 @@
+# Description: gEDA: GPL Electronic Design Automation
+# URL: http://www.gpleda.org
+# Packager: Ryan Mullen, rmmullen at gmail dot com
+# Maintainer: Ryan Mullen, rmmullen at gmail dot com
+# Depends on: gtk guile shared-mime-info
+
+name=geda
+major=1.7
+version=1.7.1
+release=1
+source=(http://geda.seul.org/devel/v$major/$version/$name-gaf-$version.tar.gz)
+
+build() {
+   cd $name-gaf-$version
+   ./configure --prefix=/usr \
+               --mandir=/usr/man \
+               --disable-nls \
+               --disable-update-xdg-database
+   make
+   make DESTDIR=$PKG install
+   rm -r $PKG/usr/share/doc
+}
