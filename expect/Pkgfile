@@ -1,0 +1,18 @@
+# Description: expect
+# URL: http://expect.sourceforge.net/
+# Maintainer: Tilman Sauerbeck, tilman at crux dot nu
+# Depends on: tcl
+
+name=expect
+version=5.45
+release=1
+source=(http://downloads.sourceforge.net/project/$name/Expect/$version/$name$version.tar.gz)
+
+build() {
+   cd ${name}${version}
+
+#   ./configure --prefix=/usr --mandir=/usr/man --enable-gcc
+   ./configure --prefix=/usr --mandir=/usr/man --enable-gcc
+   make
+   make install INSTALL_ROOT=$PKG DESTDIR=$PKG
+}

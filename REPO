@@ -1,4 +1,5 @@
 d:texinfo
+d:expect
 d:geda
 d:m4-examples
 d:stow
@@ -7,6 +8,9 @@ f:0417892cc2a9dc9b12ffcf5fe6bf44cd:texinfo/Pkgfile
 f:f11f93bd39e14c4a10bf72734b168721:texinfo/.footprint
 f:e9f84fe977922ca4495eb3e8386f44a8:texinfo/.md5sum
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
+f:6d101602fc8ab59ff6328e57a0fde483:expect/Pkgfile
+f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
+f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
 f:6eb9a6a5619a6ada13b781665191c1c5:geda/Pkgfile
 f:5c93ffda7c8601b4116a962101ae2e8a:geda/.footprint
