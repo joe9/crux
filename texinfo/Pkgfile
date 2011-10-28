@@ -1,6 +1,7 @@
 # Description: gnu texinfo
 # URL: http://www.gnu.org/s/texinfo/
-# Maintainer: Joe9, joe9mail at crux dot nu
+# Packager:  Joe9, joe9mail at gmail dot com
+# Maintainer: Ryan Mullen, rmmullen at gmail dot com
 # Depends on: a few libraries, please check out the README
 
 name=texinfo

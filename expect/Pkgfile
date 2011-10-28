@@ -1,6 +1,7 @@
 # Description: expect
 # URL: http://expect.sourceforge.net/
-# Maintainer: Joe M, joe9mail at gmail dot com
+# Packager: Joe M, joe9mail at gmail dot com
+# Maintainer: Ryan Mullen, rmmullen at gmail dot com
 # Depends on: tcl
 
 name=expect
