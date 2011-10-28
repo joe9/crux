@@ -11,7 +11,6 @@ source=(http://downloads.sourceforge.net/project/$name/Expect/$version/$name$ver
 build() {
    cd ${name}${version}
 
-#   ./configure --prefix=/usr --mandir=/usr/man --enable-gcc
    ./configure --prefix=/usr --mandir=/usr/man --enable-gcc
    make
    make install INSTALL_ROOT=$PKG DESTDIR=$PKG
