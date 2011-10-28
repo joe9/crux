@@ -1,6 +1,6 @@
 # Description: expect
 # URL: http://expect.sourceforge.net/
-# Maintainer: Joe M, joe9 at gmail dot com
+# Maintainer: Joe M, joe9mail at gmail dot com
 # Depends on: tcl
 
 name=expect
