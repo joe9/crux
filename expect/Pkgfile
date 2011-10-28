@@ -1,6 +1,6 @@
 # Description: expect
 # URL: http://expect.sourceforge.net/
-# Maintainer: Tilman Sauerbeck, tilman at crux dot nu
+# Maintainer: Joe M, joe9 at gmail dot com
 # Depends on: tcl
 
 name=expect
