@@ -1,7 +1,7 @@
 # Description: gnu stow
-# URL:         :h//github.com/joe9/crux.git
-# Packager:  Joe9, joe9mail at gmail dot com
-# Maintainer: Ryan Mullen, rmmullen at gmail dot com
+# URL:         http://github.com/joe9/crux.git
+# Packager:    Joe9, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
 
 name=stow
 version=1.3.3

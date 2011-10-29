@@ -1,8 +1,8 @@
-drwxr-xr-x	joe/users	usr/
-drwxr-xr-x	joe/users	usr/bin/
--rwxr-xr-x	joe/users	usr/bin/stow
-drwxr-xr-x	joe/users	usr/info/
--rw-r--r--	joe/users	usr/info/stow.info
-drwxr-xr-x	joe/users	usr/man/
-drwxr-xr-x	joe/users	usr/man/man8/
--rw-r--r--	joe/users	usr/man/man8/stow.8.gz
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/stow
+drwxr-xr-x	root/root	usr/info/
+-rw-r--r--	root/root	usr/info/stow.info
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/stow.8.gz
