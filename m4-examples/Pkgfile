@@ -1,7 +1,8 @@
-# Description: Examples for the standard Unix macro processor
-# URL:         https://github.com/joe9/crux.git
-# Packager: Joe M, joe9mail at gmail dot com
-# Maintainer: Ryan Mullen, rmmullen at gmail dot com
+# Description:  Examples for the standard Unix macro processor
+# URL:          https://github.com/joe9/crux.git
+# Packager:     Joe M, joe9mail at gmail dot com
+# Maintainer:   Ryan Mullen, rmmullen at gmail dot com
+# Dependencies: m4
 
 name=m4-examples
 source_name=m4
