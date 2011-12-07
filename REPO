@@ -12,7 +12,7 @@ f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
-f:557839a9c4694d3f64c1f08bf864a686:zsh_history.joe
+f:5e01d1d6fc6a83ab2fd87dc466ac282c:zsh_history.joe
 f:6eb9a6a5619a6ada13b781665191c1c5:geda/Pkgfile
 f:5c93ffda7c8601b4116a962101ae2e8a:geda/.footprint
 f:fe9f3f8eb637f2a8cb52498cd179f47d:geda/.md5sum
@@ -20,9 +20,9 @@ f:7664942ebef3e5f40967694ddb3d360c:m4-examples/Pkgfile
 f:3bea9fcddc6d39aaafbf7ec171aaa820:m4-examples/to-do
 f:e1b22f35a8fd9053d27cccd28d74a2bd:m4-examples/.footprint
 f:b63825f0d7808b00f09e1e119534c9bc:m4-examples/.md5sum
-f:1c81de4ff986e06dd92f0a3832251fb5:stow/Pkgfile
-f:10d3249e29112f8613334ca46f155667:stow/.footprint
-f:bbd382bc146618be582aedab403ec3c1:stow/.md5sum
+f:10b65493ce17677e59932660442db171:stow/Pkgfile
+f:a40f115d1694097ee5a9c7288c53b396:stow/.footprint
+f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
 f:d4c508e9c49edde84df81d7606f21dbb:geda-gaf.stable/Pkgfile
 f:7aad96a21829a04a95abdd8fb4190dbd:geda-gaf.stable/.footprint
 f:560b9e0d2418a8913aa7abe6bc1f77f9:geda-gaf.stable/.md5sum
