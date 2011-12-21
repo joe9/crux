@@ -1,0 +1,19 @@
+# Description: Haskell compiler
+# URL:         http://www.haskell.org/haskellwiki/Glasgow_Haskell_Compiler
+# Packager:    Joe9, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  libgmp libffi ghc
+
+name=ghc
+version=7.2.2
+release=1
+source=(http://www.haskell.org/ghc/dist/stable/dist/$name-$version-src.tar.bz2)
+
+build() {
+        cd $name-$version
+        ./configure --prefix=/usr --mandir=/usr/man
+        make
+        mkdir -p $PKG/usr/{bin,lib}
+        make DESTDIR=$PKG install
+        rm -rf $PKG/usr/share/doc
+}
