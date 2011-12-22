@@ -2744,7 +2744,7 @@ drwxr-xr-x	root/root	usr/lib/ghc-7.2.2/package.conf.d/
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/directory-1.1.0.1-3a711b39116a29d4985b5d152283105e.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/extensible-exceptions-0.1.1.3-49db40dc0a0f188d5adf6368de624e16.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/filepath-1.2.0.1-16b7a7902f5c6a9398c10b6f4692a21f.conf
--rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/ghc-7.2.2-f5689650c83fa429c36f7b98ccf6e02a.conf
+-rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/ghc-7.2.2-cd27022c16c12ae16cdf89a9a3cb0ce2.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/ghc-prim-0.2.0.0-629c629b8b680f27b69c854c601d3e66.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/haskell2010-1.1.0.0-03f9d564fd8a7c387ee7b4e80aa9b69e.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/package.conf.d/haskell98-2.0.0.0-72c312ff5012057ea15371b7df0e15c6.conf
@@ -2988,7 +2988,7 @@ drwxr-xr-x	root/root	usr/lib/ghc-7.2.2/unix-2.5.0.0/include/
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/unix-2.5.0.0/libHSunix-2.5.0.0.a
 -rw-r--r--	root/root	usr/lib/ghc-7.2.2/unix-2.5.0.0/libHSunix-2.5.0.0_p.a
 -rwxr-xr-x	root/root	usr/lib/ghc-7.2.2/unlit
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man1/
+-rw-r--r--	root/root	usr/man/man1/ghc.1.gz
 drwxr-xr-x	root/root	usr/share/
-drwxr-xr-x	root/root	usr/share/man/
-drwxr-xr-x	root/root	usr/share/man/man1/
--rw-r--r--	root/root	usr/share/man/man1/ghc.1.gz
