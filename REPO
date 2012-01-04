@@ -9,7 +9,7 @@ f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
-f:ba03d785cdddaeb79dfee94c6a953e4c:zsh_history.joe
+f:21e49808cf33f41fe36e3db06ba647c2:zsh_history.joe
 f:98d67861c2d03fb7a659319e191660a2:pcb-git/Pkgfile
 f:d73a66afea89a9256db1f1d04a213d3b:pcb-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:pcb-git/.md5sum
@@ -25,5 +25,5 @@ f:35674eba1bc0d1716976a7347062a0bf:stow/.footprint
 f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
 f:61af75f46eaeb132a4882d5cdb7282da:geda-git/Pkgfile
-f:960ceba28da54e1f15846f420bbdf541:geda-git/.footprint
+f:693eb979b07f0a68cbf73f3a59498c07:geda-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:geda-git/.md5sum
