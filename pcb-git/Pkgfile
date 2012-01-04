@@ -1,0 +1,36 @@
+# Description: PCB: Printed Ciruit Board layout tool
+# URL:         http://pcb.gpleda.org
+# Packager:    Joe9, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  gtk tk libgd
+
+name=pcb
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd pcb ; then
+       git pull
+   else
+       git clone git://git.gpleda.org/pcb.git pcb
+   fi
+
+   cd $PKGMK_SOURCE_DIR/pcb
+
+   ./autogen.sh
+   ./configure --prefix=/usr \
+          --mandir=/usr/man \
+          --disable-update-desktop-database \
+          --disable-update-mime-database \
+          --disable-dbus \
+          --disable-gl \
+          --with-exporters="ps gerber bom png" \
+          --disable-doc \
+          --with-printer=""
+   make
+   make DESTDIR=$PKG install
+   rm -r $PKG/usr/share/{doc,applications,icons,mime,mimelnk,locale}
+}

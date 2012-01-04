@@ -1,0 +1,32 @@
+# Description: gEDA: GPL Electronic Design Automation
+# URL:         http://www.gpleda.org
+# Packager:    Joe9, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  gtk guile shared-mime-info texinfo
+
+name=geda-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd gaf ; then
+       git pull
+   else
+       git clone git://git.gpleda.org/gaf.git gaf
+   fi
+
+   cd $PKGMK_SOURCE_DIR/gaf
+
+   cp /usr/share/texmf/tex/texinfo/texinfo.tex ./build-tools/
+   ./autogen.sh
+   ./configure --prefix=/usr \
+          --mandir=/usr/man \
+          --disable-nls \
+          --disable-update-xdg-database
+   make
+   make DESTDIR=$PKG install
+   rm -r $PKG/usr/share/{doc,applications,mime,icons}
+}

@@ -1,0 +1,5 @@
+NOTES
+
+This gEDA package has been configured such that it does not update system MIME
+types, icons, or XDG data. If you are a gEDA user who wishes to have these
+features, please open a bug at crux.nu and assign it to the maintainer.
