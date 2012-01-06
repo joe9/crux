@@ -1,0 +1,66 @@
+From 8d0bfb3bc227bc8cd9fce3425a6089b86731b403 Mon Sep 17 00:00:00 2001
+From: joe9 <joe9mail@gmail.com>
+Date: Fri, 6 Jan 2012 14:43:31 -0500
+Subject: [PATCH] fix automake error
+
+when "src/Makefile.am:31: pkginclude_DATA= gerbv.h",
+
+./autogen.sh
+Checking aclocal version...
+    1.11.2
+Running aclocal...
+... done with aclocal.
+Checking autoheader version...
+    2.68
+Running autoheader...
+... done with autoheader.
+Checking automake version...
+    1.11.2
+Running automake...
+src/Makefile.am:31: `pkgincludedir' is not a legitimate directory for `DATA'
+
+Following the suggestion at
+http://stackoverflow.com/questions/3929780/how-to-install-header-files-in-automake
+   when changed the line to:  pkginclude_HEADERS= gerbv.h,
+      autogen.sh works fine
+
+./autogen.sh
+Checking libtoolize version...
+    2.4.2
+Running libtoolize...
+Checking aclocal version...
+    1.11.2
+Running aclocal...
+... done with aclocal.
+Checking autoheader version...
+    2.68
+Running autoheader...
+... done with autoheader.
+Checking automake version...
+    1.11.2
+Running automake...
+... done with automake.
+Checking autoconf version...
+    2.68
+Running autoconf...
+... done with autoconf.
+---
+ src/Makefile.am |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index eaaf627..31af53f 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -28,7 +28,7 @@ lib_LTLIBRARIES = libgerbv.la
+ 
+ # public header file(s)
+ pkgincludedir=	$(includedir)/${PACKAGE}-${VERSION}
+-pkginclude_DATA= gerbv.h
++pkginclude_HEADERS= gerbv.h
+ 
+ # pkg-config data file
+ pkgconfigdir = $(libdir)/pkgconfig
+-- 
+1.7.7.3
+

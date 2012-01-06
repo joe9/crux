@@ -1,0 +1,31 @@
+# Description: GERBV: Gerber File Viewer
+# URL:         http://gerbv.gpleda.org
+# Packager:    Joe9, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  gtk cairo
+
+name=gerbv
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd gerbv ; then
+       git pull
+   else
+       git clone git://git.gpleda.org/gerbv.git gerbv
+   fi
+
+   cd $PKGMK_SOURCE_DIR/gerbv
+
+   ./autogen.sh
+   ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --disable-update-desktop-database \
+                --enable-unit-mm
+   make
+   make DESTDIR=$PKG install
+   rm -r doc
+}
