@@ -6,7 +6,7 @@
 
 name=gerbv
 version=git
-release=1
+release=2
 source=()
 
 build() {
@@ -27,5 +27,4 @@ build() {
                 --enable-unit-mm
    make
    make DESTDIR=$PKG install
-   rm -r doc
 }
