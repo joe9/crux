@@ -27,7 +27,6 @@ build() {
           --disable-update-mime-database \
           --disable-dbus \
           --disable-gl \
-          --with-exporters="ps gerber bom png" \
           --disable-doc \
           --with-printer=""
    make
