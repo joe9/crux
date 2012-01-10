@@ -4,7 +4,7 @@
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
 # Depends on:  gtk tk libgd
 
-name=pcb
+name=pcb-git
 version=git
 release=1
 source=()
