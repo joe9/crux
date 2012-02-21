@@ -15,7 +15,7 @@ build() {
    if cd gaf ; then
        git pull
    else
-       git clone git://git.geda-project.org/gaf.git gaf
+       git clone git://git.geda-project.org/geda-gaf.git gaf
    fi
 
    cd $PKGMK_SOURCE_DIR/gaf
