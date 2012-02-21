@@ -1,5 +1,5 @@
 # Description: gEDA: GPL Electronic Design Automation
-# URL:         http://www.gpleda.org
+# URL:         http://www.geda-project.org
 # Packager:    Joe9, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
 # Depends on:  gtk guile shared-mime-info texinfo
@@ -15,7 +15,7 @@ build() {
    if cd gaf ; then
        git pull
    else
-       git clone git://git.gpleda.org/gaf.git gaf
+       git clone git://git.geda-project.org/gaf.git gaf
    fi
 
    cd $PKGMK_SOURCE_DIR/gaf

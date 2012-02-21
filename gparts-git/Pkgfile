@@ -1,10 +1,10 @@
-# Description: PCB: Printed Ciruit Board layout tool
-# URL:         http://geda-project.org
+# Description: Component Management System
+# URL:         http://git.geda-project.org
 # Packager:    Joe9, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
 # Depends on:  gtk tk libgd
 
-name=pcb-git
+name=gparts-git
 version=git
 release=1
 source=()
@@ -12,13 +12,13 @@ source=()
 build() {
    cd $PKGMK_SOURCE_DIR
 
-   if cd pcb ; then
+   if cd gparts ; then
        git pull
    else
-       git clone git://git.geda-project.org/pcb.git pcb
+       git clone git://git.geda-project.org/gparts.git gparts
    fi
 
-   cd $PKGMK_SOURCE_DIR/pcb
+   cd $PKGMK_SOURCE_DIR/gparts
 
    ./autogen.sh
    ./configure --prefix=/usr \

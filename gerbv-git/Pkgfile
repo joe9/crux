@@ -1,5 +1,5 @@
 # Description: GERBV: Gerber File Viewer
-# URL:         http://gerbv.gpleda.org
+# URL:         http://geda-project.org
 # Packager:    Joe9, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
 # Depends on:  gtk cairo
@@ -15,7 +15,7 @@ build() {
    if cd gerbv ; then
        git pull
    else
-       git clone git://git.gpleda.org/gerbv.git gerbv
+       git clone git://git.geda-project.org/gerbv.git gerbv
    fi
 
    cd $PKGMK_SOURCE_DIR/gerbv

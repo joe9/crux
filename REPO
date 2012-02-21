@@ -1,3 +1,4 @@
+d:gparts-git
 d:expect
 d:pcb-git
 d:ghc
@@ -5,13 +6,16 @@ d:m4-examples
 d:stow
 d:gerbv-git
 d:geda-git
+f:3277be1ac59323a1e853f1c266c61818:gparts-git/Pkgfile
+f:d73a66afea89a9256db1f1d04a213d3b:gparts-git/.footprint
+f:d41d8cd98f00b204e9800998ecf8427e:gparts-git/.md5sum
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
-f:33859b8dcfebdb248e4be00624723ce7:zsh_history.joe
-f:bafdae0612ca0fa289281194ad73dc80:pcb-git/Pkgfile
+f:948f2bfe06f0f77c5c20e5cc5f456a40:zsh_history.joe
+f:e7a6098257db6c55a33f35f88307efd0:pcb-git/Pkgfile
 f:d73a66afea89a9256db1f1d04a213d3b:pcb-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:pcb-git/.md5sum
 f:253d383422c394ef88df7d9c3dd47ab7:ghc/Pkgfile
@@ -26,10 +30,10 @@ f:35674eba1bc0d1716976a7347062a0bf:stow/.footprint
 f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
 f:8327a969ad1d56d86b8eb58efae9b8d4:gerbv-git/0001-fix-automake-error.patch
 f:1e07fea45cf547a7be936fdccfceeae7:gerbv-git/README
-f:15ae842cf0a7857961a23c8159626ed9:gerbv-git/Pkgfile
+f:05a4d94688c0a99cac8290f6ef781549:gerbv-git/Pkgfile
 f:4a1d60083f1e07cc91a9de753b8d3104:gerbv-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:gerbv-git/.md5sum
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
-f:61af75f46eaeb132a4882d5cdb7282da:geda-git/Pkgfile
+f:594516a07d65bfbe568d927107e9cc7f:geda-git/Pkgfile
 f:693eb979b07f0a68cbf73f3a59498c07:geda-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:geda-git/.md5sum
