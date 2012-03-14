@@ -1,0 +1,107 @@
+# Description: Highly configurable text editor
+# URL:         http://www.vim.org/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  ncurses acl ruby lua
+
+name=vim_and_gvim
+version=7.3.470
+release=1
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.3.tar.bz2
+        http://crux.nu/files/distfiles/vim-7.3.001-050.xz
+        http://crux.nu/files/distfiles/vim-7.3.051-102.xz
+        http://crux.nu/files/distfiles/vim-7.3.103-154.xz
+        http://crux.nu/files/distfiles/vim-7.3.155-198.xz
+        http://crux.nu/files/distfiles/vim-7.3.199-260.xz
+        http://crux.nu/files/distfiles/vim-7.3.261-303.xz
+        http://crux.nu/files/distfiles/vim-7.3.304-353.xz
+        http://crux.nu/files/distfiles/vim-7.3.354-401.xz
+        http://crux.nu/files/distfiles/vim-7.3.402-470.xz)
+
+build () {
+    cd vim73/src
+
+    unxz -c $SRC/vim-7.3.*.xz | patch -p0 -d $SRC/vim73
+
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --with-vim-name=vim \
+                --with-features=huge \
+                --with-x \
+                --disable-gui \
+                --enable-multibyte \
+               --enable-luainterp \
+               --enable-perlinterp \
+               --enable-pythoninterp \
+               --enable-python3interp=dynamic \
+               --enable-tclinterp \
+               --enable-rubyinterp \
+               --enable-cscope \
+               --enable-gpm \
+               --enable-xim \
+               --enable-fontset \
+               --enable-xsmp_interact \
+               --disable-darwin \
+               --disable-largefile \
+               --disable-acl \
+               --disable-sysmouse \
+                --disable-nls
+
+    make VIMRTDIR=
+    make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
+
+    mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
+    rm -r $PKG/usr/{man/man?/vimtutor*,share/vim/{tutor,macros}}
+    rm $PKG/usr/share/vim/*/README.txt
+    ln -sf vim $PKG/usr/bin/evim
+    ln -sf /bin/vi $PKG/usr/bin/vi
+    ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/view.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rview.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
+
+    ./configure --prefix=/ \
+                --datarootdir=/usr/share \
+                --with-vim-name=vi \
+                --without-x \
+                --disable-gui \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls \
+                --with-features=tiny
+
+    make VIMRTDIR=
+    make VIMRTDIR= DESTDIR=$PKG installvimbin
+
+    ./configure --prefix=/usr \
+                --with-vim-name=gvim \
+                --with-x \
+                --with-features=huge \
+                --enable-gui=gtk2 \
+                --enable-multibyte \
+               --enable-luainterp \
+               --enable-perlinterp \
+               --enable-pythoninterp \
+               --enable-python3interp=dynamic \
+               --enable-tclinterp \
+               --enable-rubyinterp \
+               --enable-cscope \
+               --enable-gpm \
+               --enable-xim \
+               --enable-fontset \
+               --enable-xsmp_interact \
+               --disable-darwin \
+               --disable-largefile \
+               --disable-acl \
+               --disable-sysmouse \
+                --disable-nls
+
+    make VIMRTDIR=
+    make VIMRTDIR=
+    make VIMRTDIR= DESTDIR=$PKG installvimbin
+
+    install -d $PKG/usr/share/{applications,pixmaps}
+    #install -m 644 $SRC/gvim.desktop $PKG/usr/share/applications
+    install -m 644 ../runtime/vim*.png $PKG/usr/share/pixmaps
+}

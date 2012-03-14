@@ -4,13 +4,14 @@ d:ghc
 d:m4-examples
 d:stow
 d:gerbv-git
+d:vim-mercurial
 d:geda-git
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
-f:7832281f77867f04a5ab567fba3820cd:zsh_history.joe
+f:e042b708235d8fab2707bf391f0da1eb:zsh_history.joe
 f:e7a6098257db6c55a33f35f88307efd0:pcb-git/Pkgfile
 f:d73a66afea89a9256db1f1d04a213d3b:pcb-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:pcb-git/.md5sum
@@ -29,6 +30,11 @@ f:1e07fea45cf547a7be936fdccfceeae7:gerbv-git/README
 f:05a4d94688c0a99cac8290f6ef781549:gerbv-git/Pkgfile
 f:4a1d60083f1e07cc91a9de753b8d3104:gerbv-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:gerbv-git/.md5sum
+f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
+f:d7b4ef98be7dba11bc97ad77e94b6e8d:vim-mercurial/Pkgfile
+f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
+f:6bac8f3fbd5357f9234413ef4ee0dd64:vim-mercurial/.footprint
+f:44d4a4d42531ce73af571cbf939705af:vim-mercurial/.md5sum
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
 f:3605647507684ebf800c0cb8d7494f26:geda-git/Pkgfile
 f:693eb979b07f0a68cbf73f3a59498c07:geda-git/.footprint

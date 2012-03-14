@@ -1,0 +1,535 @@
+--- if_lua.c.orig	2012-01-09 09:30:03.302542639 -0500
++++ if_lua.c	2012-01-11 13:42:19.658354683 -0500
+@@ -1,4 +1,4 @@
+-/* vi:set ts=8 sts=4 sw=4:
++/* vi:set ts=8 sts=4 sw=4 noet:
+  *
+  * VIM - Vi IMproved	by Bram Moolenaar
+  *
+@@ -30,6 +30,17 @@
+ static const char LUAVIM_WINDOW[] = "window";
+ static const char LUAVIM_FREE[] = "luaV_free";
+ 
++/* most functions are closures with a cache table as first upvalue;
++ * get/setudata manage references to vim userdata in cache table through
++ * object pointers (light userdata) */
++#define luaV_getudata(L, v) \
++    lua_pushlightuserdata((L), (void *) (v)); \
++    lua_rawget((L), lua_upvalueindex(1))
++#define luaV_setudata(L, v) \
++    lua_pushlightuserdata((L), (void *) (v)); \
++    lua_pushvalue((L), -2); \
++    lua_rawset((L), lua_upvalueindex(1))
++/* get field from registry: used by metatables and luaV_free */
+ #define luaV_getfield(L, s) \
+     lua_pushlightuserdata((L), (void *)(s)); \
+     lua_rawget((L), LUA_REGISTRYINDEX)
+@@ -38,6 +49,12 @@
+ #define luaV_msg(L) luaV_msgfunc((L), (msgfunc_T) msg)
+ #define luaV_emsg(L) luaV_msgfunc((L), (msgfunc_T) emsg)
+ 
++#if LUA_VERSION_NUM <= 501
++#define luaV_openlib(L, l, n) luaL_openlib(L, NULL, l, n)
++#define luaL_typeerror luaL_typerror
++#else
++#define luaV_openlib luaL_setfuncs
++#endif
+ 
+ #ifdef DYNAMIC_LUA
+ 
+@@ -54,32 +71,54 @@
+ #endif
+ 
+ /* lauxlib */
++#if LUA_VERSION_NUM <= 501
+ #define luaL_register dll_luaL_register
++#define luaL_prepbuffer dll_luaL_prepbuffer
++#define luaL_openlib dll_luaL_openlib
+ #define luaL_typerror dll_luaL_typerror
++#define luaL_loadfile dll_luaL_loadfile
++#define luaL_loadbuffer dll_luaL_loadbuffer
++#else
++#define luaL_prepbuffsize dll_luaL_prepbuffsize
++#define luaL_setfuncs dll_luaL_setfuncs
++#define luaL_loadfilex dll_luaL_loadfilex
++#define luaL_loadbufferx dll_luaL_loadbufferx
++#define luaL_argerror dll_luaL_argerror
++#endif
+ #define luaL_checklstring dll_luaL_checklstring
+ #define luaL_checkinteger dll_luaL_checkinteger
+ #define luaL_optinteger dll_luaL_optinteger
+ #define luaL_checktype dll_luaL_checktype
+ #define luaL_error dll_luaL_error
+-#define luaL_loadfile dll_luaL_loadfile
+-#define luaL_loadbuffer dll_luaL_loadbuffer
+ #define luaL_newstate dll_luaL_newstate
+ #define luaL_buffinit dll_luaL_buffinit
+-#define luaL_prepbuffer dll_luaL_prepbuffer
+ #define luaL_addlstring dll_luaL_addlstring
+ #define luaL_pushresult dll_luaL_pushresult
+ /* lua */
++#if LUA_VERSION_NUM <= 501
++#define lua_tonumber dll_lua_tonumber
++#define lua_tointeger dll_lua_tointeger
++#define lua_call dll_lua_call
++#define lua_pcall dll_lua_pcall
++#else
++#define lua_tonumberx dll_lua_tonumberx
++#define lua_tointegerx dll_lua_tointegerx
++#define lua_callk dll_lua_callk
++#define lua_pcallk dll_lua_pcallk
++#define lua_getglobal dll_lua_getglobal
++#define lua_setglobal dll_lua_setglobal
++#define lua_typename dll_lua_typename
++#endif
+ #define lua_close dll_lua_close
+ #define lua_gettop dll_lua_gettop
+ #define lua_settop dll_lua_settop
+ #define lua_pushvalue dll_lua_pushvalue
+ #define lua_replace dll_lua_replace
++#define lua_remove dll_lua_remove
+ #define lua_isnumber dll_lua_isnumber
+ #define lua_isstring dll_lua_isstring
+ #define lua_type dll_lua_type
+ #define lua_rawequal dll_lua_rawequal
+-#define lua_tonumber dll_lua_tonumber
+-#define lua_tointeger dll_lua_tointeger
+ #define lua_toboolean dll_lua_toboolean
+ #define lua_tolstring dll_lua_tolstring
+ #define lua_touserdata dll_lua_touserdata
+@@ -94,16 +133,14 @@
+ #define lua_pushlightuserdata dll_lua_pushlightuserdata
+ #define lua_getfield dll_lua_getfield
+ #define lua_rawget dll_lua_rawget
++#define lua_rawgeti dll_lua_rawgeti
+ #define lua_createtable dll_lua_createtable
+ #define lua_newuserdata dll_lua_newuserdata
+ #define lua_getmetatable dll_lua_getmetatable
+ #define lua_setfield dll_lua_setfield
+ #define lua_rawset dll_lua_rawset
+ #define lua_rawseti dll_lua_rawseti
+-#define lua_remove dll_lua_remove
+ #define lua_setmetatable dll_lua_setmetatable
+-#define lua_call dll_lua_call
+-#define lua_pcall dll_lua_pcall
+ /* libs */
+ #define luaopen_base dll_luaopen_base
+ #define luaopen_table dll_luaopen_table
+@@ -116,32 +153,56 @@
+ #define luaL_openlibs dll_luaL_openlibs
+ 
+ /* lauxlib */
++#if LUA_VERSION_NUM <= 501
+ void (*dll_luaL_register) (lua_State *L, const char *libname, const luaL_Reg *l);
++char *(*dll_luaL_prepbuffer) (luaL_Buffer *B);
++void (*dll_luaL_openlib) (lua_State *L, const char *libname, const luaL_Reg *l, int nup);
+ int (*dll_luaL_typerror) (lua_State *L, int narg, const char *tname);
++int (*dll_luaL_loadfile) (lua_State *L, const char *filename);
++int (*dll_luaL_loadbuffer) (lua_State *L, const char *buff, size_t sz, const char *name);
++#else
++char *(*dll_luaL_prepbuffsize) (luaL_Buffer *B, size_t sz);
++void (*dll_luaL_setfuncs) (lua_State *L, const luaL_Reg *l, int nup);
++int (*dll_luaL_loadfilex) (lua_State *L, const char *filename, const char *mode);
++int (*dll_luaL_loadbufferx) (lua_State *L, const char *buff, size_t sz, const char *name, const char *mode);
++int (*dll_luaL_argerror) (lua_State *L, int numarg, const char *extramsg);
++#endif
+ const char *(*dll_luaL_checklstring) (lua_State *L, int numArg, size_t *l);
+ lua_Integer (*dll_luaL_checkinteger) (lua_State *L, int numArg);
+ lua_Integer (*dll_luaL_optinteger) (lua_State *L, int nArg, lua_Integer def);
+ void (*dll_luaL_checktype) (lua_State *L, int narg, int t);
+ int (*dll_luaL_error) (lua_State *L, const char *fmt, ...);
+-int (*dll_luaL_loadfile) (lua_State *L, const char *filename);
+-int (*dll_luaL_loadbuffer) (lua_State *L, const char *buff, size_t sz, const char *name);
+ lua_State *(*dll_luaL_newstate) (void);
+ void (*dll_luaL_buffinit) (lua_State *L, luaL_Buffer *B);
+-char *(*dll_luaL_prepbuffer) (luaL_Buffer *B);
+ void (*dll_luaL_addlstring) (luaL_Buffer *B, const char *s, size_t l);
+ void (*dll_luaL_pushresult) (luaL_Buffer *B);
+ /* lua */
++#if LUA_VERSION_NUM <= 501
++lua_Number (*dll_lua_tonumber) (lua_State *L, int idx);
++lua_Integer (*dll_lua_tointeger) (lua_State *L, int idx);
++void (*dll_lua_call) (lua_State *L, int nargs, int nresults);
++int (*dll_lua_pcall) (lua_State *L, int nargs, int nresults, int errfunc);
++#else
++lua_Number (*dll_lua_tonumberx) (lua_State *L, int idx, int *isnum);
++lua_Integer (*dll_lua_tointegerx) (lua_State *L, int idx, int *isnum);
++void (*dll_lua_callk) (lua_State *L, int nargs, int nresults, int ctx,
++        lua_CFunction k);
++int (*dll_lua_pcallk) (lua_State *L, int nargs, int nresults, int errfunc,
++        int ctx, lua_CFunction k);
++void (*dll_lua_getglobal) (lua_State *L, const char *var);
++void (*dll_lua_setglobal) (lua_State *L, const char *var);
++const char *(*dll_lua_typename) (lua_State *L, int tp);
++#endif
+ void       (*dll_lua_close) (lua_State *L);
+ int (*dll_lua_gettop) (lua_State *L);
+ void (*dll_lua_settop) (lua_State *L, int idx);
+ void (*dll_lua_pushvalue) (lua_State *L, int idx);
+ void (*dll_lua_replace) (lua_State *L, int idx);
++void (*dll_lua_remove) (lua_State *L, int idx);
+ int (*dll_lua_isnumber) (lua_State *L, int idx);
+ int (*dll_lua_isstring) (lua_State *L, int idx);
+ int (*dll_lua_type) (lua_State *L, int idx);
+ int (*dll_lua_rawequal) (lua_State *L, int idx1, int idx2);
+-lua_Number (*dll_lua_tonumber) (lua_State *L, int idx);
+-lua_Integer (*dll_lua_tointeger) (lua_State *L, int idx);
+ int (*dll_lua_toboolean) (lua_State *L, int idx);
+ const char *(*dll_lua_tolstring) (lua_State *L, int idx, size_t *len);
+ void *(*dll_lua_touserdata) (lua_State *L, int idx);
+@@ -156,16 +217,14 @@
+ void (*dll_lua_pushlightuserdata) (lua_State *L, void *p);
+ void (*dll_lua_getfield) (lua_State *L, int idx, const char *k);
+ void (*dll_lua_rawget) (lua_State *L, int idx);
++void (*dll_lua_rawgeti) (lua_State *L, int idx, int n);
+ void (*dll_lua_createtable) (lua_State *L, int narr, int nrec);
+ void *(*dll_lua_newuserdata) (lua_State *L, size_t sz);
+ int (*dll_lua_getmetatable) (lua_State *L, int objindex);
+ void (*dll_lua_setfield) (lua_State *L, int idx, const char *k);
+ void (*dll_lua_rawset) (lua_State *L, int idx);
+ void (*dll_lua_rawseti) (lua_State *L, int idx, int n);
+-void (*dll_lua_remove) (lua_State *L, int idx);
+ int (*dll_lua_setmetatable) (lua_State *L, int objindex);
+-void (*dll_lua_call) (lua_State *L, int nargs, int nresults);
+-int (*dll_lua_pcall) (lua_State *L, int nargs, int nresults, int errfunc);
+ /* libs */
+ int (*dll_luaopen_base) (lua_State *L);
+ int (*dll_luaopen_table) (lua_State *L);
+@@ -185,32 +244,54 @@
+ 
+ static const luaV_Reg luaV_dll[] = {
+     /* lauxlib */
++#if LUA_VERSION_NUM <= 501
+     {"luaL_register", (luaV_function) &dll_luaL_register},
++    {"luaL_prepbuffer", (luaV_function) &dll_luaL_prepbuffer},
++    {"luaL_openlib", (luaV_function) &dll_luaL_openlib},
+     {"luaL_typerror", (luaV_function) &dll_luaL_typerror},
++    {"luaL_loadfile", (luaV_function) &dll_luaL_loadfile},
++    {"luaL_loadbuffer", (luaV_function) &dll_luaL_loadbuffer},
++#else
++    {"luaL_prepbuffsize", (luaV_function) &dll_luaL_prepbuffsize},
++    {"luaL_setfuncs", (luaV_function) &dll_luaL_setfuncs},
++    {"luaL_loadfilex", (luaV_function) &dll_luaL_loadfilex},
++    {"luaL_loadbufferx", (luaV_function) &dll_luaL_loadbufferx},
++    {"luaL_argerror", (luaV_function) &dll_luaL_argerror},
++#endif
+     {"luaL_checklstring", (luaV_function) &dll_luaL_checklstring},
+     {"luaL_checkinteger", (luaV_function) &dll_luaL_checkinteger},
+     {"luaL_optinteger", (luaV_function) &dll_luaL_optinteger},
+     {"luaL_checktype", (luaV_function) &dll_luaL_checktype},
+     {"luaL_error", (luaV_function) &dll_luaL_error},
+-    {"luaL_loadfile", (luaV_function) &dll_luaL_loadfile},
+-    {"luaL_loadbuffer", (luaV_function) &dll_luaL_loadbuffer},
+     {"luaL_newstate", (luaV_function) &dll_luaL_newstate},
+     {"luaL_buffinit", (luaV_function) &dll_luaL_buffinit},
+-    {"luaL_prepbuffer", (luaV_function) &dll_luaL_prepbuffer},
+     {"luaL_addlstring", (luaV_function) &dll_luaL_addlstring},
+     {"luaL_pushresult", (luaV_function) &dll_luaL_pushresult},
+     /* lua */
++#if LUA_VERSION_NUM <= 501
++    {"lua_tonumber", (luaV_function) &dll_lua_tonumber},
++    {"lua_tointeger", (luaV_function) &dll_lua_tointeger},
++    {"lua_call", (luaV_function) &dll_lua_call},
++    {"lua_pcall", (luaV_function) &dll_lua_pcall},
++#else
++    {"lua_tonumberx", (luaV_function) &dll_lua_tonumberx},
++    {"lua_tointegerx", (luaV_function) &dll_lua_tointegerx},
++    {"lua_callk", (luaV_function) &dll_lua_callk},
++    {"lua_pcallk", (luaV_function) &dll_lua_pcallk},
++    {"lua_getglobal", (luaV_function) &dll_lua_getglobal},
++    {"lua_setglobal", (luaV_function) &dll_lua_setglobal},
++    {"lua_typename", (luaV_function) &dll_lua_typename},
++#endif
+     {"lua_close", (luaV_function) &dll_lua_close},
+     {"lua_gettop", (luaV_function) &dll_lua_gettop},
+     {"lua_settop", (luaV_function) &dll_lua_settop},
+     {"lua_pushvalue", (luaV_function) &dll_lua_pushvalue},
+     {"lua_replace", (luaV_function) &dll_lua_replace},
++    {"lua_remove", (luaV_function) &dll_lua_remove},
+     {"lua_isnumber", (luaV_function) &dll_lua_isnumber},
+     {"lua_isstring", (luaV_function) &dll_lua_isstring},
+     {"lua_type", (luaV_function) &dll_lua_type},
+     {"lua_rawequal", (luaV_function) &dll_lua_rawequal},
+-    {"lua_tonumber", (luaV_function) &dll_lua_tonumber},
+-    {"lua_tointeger", (luaV_function) &dll_lua_tointeger},
+     {"lua_toboolean", (luaV_function) &dll_lua_toboolean},
+     {"lua_tolstring", (luaV_function) &dll_lua_tolstring},
+     {"lua_touserdata", (luaV_function) &dll_lua_touserdata},
+@@ -225,16 +306,14 @@
+     {"lua_pushlightuserdata", (luaV_function) &dll_lua_pushlightuserdata},
+     {"lua_getfield", (luaV_function) &dll_lua_getfield},
+     {"lua_rawget", (luaV_function) &dll_lua_rawget},
++    {"lua_rawgeti", (luaV_function) &dll_lua_rawgeti},
+     {"lua_createtable", (luaV_function) &dll_lua_createtable},
+     {"lua_newuserdata", (luaV_function) &dll_lua_newuserdata},
+     {"lua_getmetatable", (luaV_function) &dll_lua_getmetatable},
+     {"lua_setfield", (luaV_function) &dll_lua_setfield},
+     {"lua_rawset", (luaV_function) &dll_lua_rawset},
+     {"lua_rawseti", (luaV_function) &dll_lua_rawseti},
+-    {"lua_remove", (luaV_function) &dll_lua_remove},
+     {"lua_setmetatable", (luaV_function) &dll_lua_setmetatable},
+-    {"lua_call", (luaV_function) &dll_lua_call},
+-    {"lua_pcall", (luaV_function) &dll_lua_pcall},
+     /* libs */
+     {"luaopen_base", (luaV_function) &dll_luaopen_base},
+     {"luaopen_table", (luaV_function) &dll_luaopen_table},
+@@ -294,6 +373,16 @@
+ 
+ #endif /* DYNAMIC_LUA */
+ 
++#if LUA_VERSION_NUM > 501
++    static int
++luaL_typeerror (lua_State *L, int narg, const char *tname)
++{
++    const char *msg = lua_pushfstring(L, "%s expected, got %s",
++            tname, luaL_typename(L, narg));
++    return luaL_argerror(L, narg, msg);
++}
++#endif
++
+ 
+ /* =======   Internal   ======= */
+ 
+@@ -330,7 +419,7 @@
+ luaV_checkudata(lua_State *L, int ud, const char *tname)
+ {
+     void *p = luaV_toudata(L, ud, tname);
+-    if (p == NULL) luaL_typerror(L, ud, tname);
++    if (p == NULL) luaL_typeerror(L, ud, tname);
+     return p;
+ }
+ 
+@@ -357,22 +446,22 @@
+ 	    if (l != NULL)
+ 	    {
+ 		/* check cache */
+-		lua_pushlightuserdata(L, (void *) l);
+-		lua_rawget(L, LUA_ENVIRONINDEX);
++		luaV_getudata(L, l);
+ 		if (lua_isnil(L, -1)) /* not interned? */
+ 		{
+ 		    listitem_T *li;
+ 		    int n = 0;
+ 		    lua_pop(L, 1); /* nil */
+ 		    lua_newtable(L);
+-		    lua_pushlightuserdata(L, (void *) l);
+-		    lua_pushvalue(L, -2);
+-		    lua_rawset(L, LUA_ENVIRONINDEX);
++		    luaV_setudata(L, l); /* cache l */
+ 		    for (li = l->lv_first; li != NULL; li = li->li_next)
+ 		    {
+ 			luaV_pushtypval(L, &li->li_tv);
+ 			lua_rawseti(L, -2, ++n);
+ 		    }
++		    lua_pushnil(L);
++		    luaV_setudata(L, l); /* uncache l */
++		    lua_pop(L, 1);
+ 		}
+ 	    }
+ 	    else lua_pushnil(L);
+@@ -384,8 +473,7 @@
+ 	    if (d != NULL)
+ 	    {
+ 		/* check cache */
+-		lua_pushlightuserdata(L, (void *) d);
+-		lua_rawget(L, LUA_ENVIRONINDEX);
++		luaV_getudata(L, d);
+ 		if (lua_isnil(L, -1)) /* not interned? */
+ 		{
+ 		    hashtab_T *ht = &d->dv_hashtab;
+@@ -393,9 +481,7 @@
+ 		    int n = ht->ht_used; /* remaining items */
+ 		    lua_pop(L, 1); /* nil */
+ 		    lua_newtable(L);
+-		    lua_pushlightuserdata(L, (void *) d);
+-		    lua_pushvalue(L, -2);
+-		    lua_rawset(L, LUA_ENVIRONINDEX);
++		    luaV_setudata(L, d); /* cache d */
+ 		    for (hi = ht->ht_array; n > 0; hi++)
+ 		    {
+ 			if (!HASHITEM_EMPTY(hi))
+@@ -406,6 +492,9 @@
+ 			    n--;
+ 			}
+ 		    }
++		    lua_pushnil(L);
++		    luaV_setudata(L, d); /* uncache d */
++		    lua_pop(L, 1);
+ 		}
+ 	    }
+ 	    else lua_pushnil(L);
+@@ -489,14 +578,7 @@
+ {
+     luaV_Buffer *b = (luaV_Buffer *) lua_newuserdata(L, sizeof(luaV_Buffer));
+     *b = buf;
+-    lua_pushlightuserdata(L, (void *) buf);
+-    lua_pushvalue(L, -2);
+-    lua_rawset(L, LUA_ENVIRONINDEX); /* env[buf] = udata */
+-    /* to avoid GC, store as key in env */
+-    lua_pushvalue(L, -1);
+-    lua_pushboolean(L, 1);
+-    lua_rawset(L, LUA_ENVIRONINDEX); /* env[udata] = true */
+-    /* set metatable */
++    luaV_setudata(L, buf); /* cache[buf] = udata */
+     luaV_getfield(L, LUAVIM_BUFFER);
+     lua_setmetatable(L, -2);
+     return b;
+@@ -509,8 +591,7 @@
+     if (buf == NULL)
+ 	lua_pushnil(L);
+     else {
+-	lua_pushlightuserdata(L, (void *) buf);
+-	lua_rawget(L, LUA_ENVIRONINDEX);
++	luaV_getudata(L, buf);
+ 	if (lua_isnil(L, -1)) /* not interned? */
+ 	{
+ 	    lua_pop(L, 1);
+@@ -702,8 +783,7 @@
+ luaV_buffer_isvalid(lua_State *L)
+ {
+     luaV_Buffer *b = luaV_checkudata(L, 1, LUAVIM_BUFFER);
+-    lua_pushlightuserdata(L, (void *) (*b));
+-    lua_rawget(L, LUA_ENVIRONINDEX);
++    luaV_getudata(L, *b);
+     lua_pushboolean(L, !lua_isnil(L, -1));
+     return 1;
+ }
+@@ -729,14 +809,7 @@
+ {
+     luaV_Window *w = (luaV_Window *) lua_newuserdata(L, sizeof(luaV_Window));
+     *w = win;
+-    lua_pushlightuserdata(L, (void *) win);
+-    lua_pushvalue(L, -2);
+-    lua_rawset(L, LUA_ENVIRONINDEX); /* env[win] = udata */
+-    /* to avoid GC, store as key in env */
+-    lua_pushvalue(L, -1);
+-    lua_pushboolean(L, 1);
+-    lua_rawset(L, LUA_ENVIRONINDEX); /* env[udata] = true */
+-    /* set metatable */
++    luaV_setudata(L, win); /* cache[win] = udata */
+     luaV_getfield(L, LUAVIM_WINDOW);
+     lua_setmetatable(L, -2);
+     return w;
+@@ -749,8 +822,7 @@
+     if (win == NULL)
+ 	lua_pushnil(L);
+     else {
+-	lua_pushlightuserdata(L, (void *) win);
+-	lua_rawget(L, LUA_ENVIRONINDEX);
++	luaV_getudata(L, win);
+ 	if (lua_isnil(L, -1)) /* not interned? */
+ 	{
+ 	    lua_pop(L, 1);
+@@ -880,8 +952,7 @@
+ luaV_window_isvalid(lua_State *L)
+ {
+     luaV_Window *w = luaV_checkudata(L, 1, LUAVIM_WINDOW);
+-    lua_pushlightuserdata(L, (void *) (*w));
+-    lua_rawget(L, LUA_ENVIRONINDEX);
++    luaV_getudata(L, *w);
+     lua_pushboolean(L, !lua_isnil(L, -1));
+     return 1;
+ }
+@@ -1071,15 +1142,8 @@
+     static int
+ luaV_free(lua_State *L)
+ {
+-    lua_pushvalue(L, 1); /* lightudata */
+-    lua_rawget(L, LUA_ENVIRONINDEX);
+-    if (!lua_isnil(L, -1))
+-    {
+-	lua_pushnil(L);
+-	lua_rawset(L, LUA_ENVIRONINDEX); /* env[udata] = nil */
+-	lua_pushnil(L);
+-	lua_rawset(L, LUA_ENVIRONINDEX); /* env[lightudata] = nil */
+-    }
++    lua_pushnil(L);
++    luaV_setudata(L, lua_touserdata(L, 1));
+     return 0;
+ }
+ 
+@@ -1099,13 +1163,8 @@
+     static int
+ luaopen_vim(lua_State *L)
+ {
+-    /* set environment */
++    /* set cache table */
+     lua_newtable(L);
+-    lua_newtable(L);
+-    lua_pushliteral(L, "v");
+-    lua_setfield(L, -2, "__mode");
+-    lua_setmetatable(L, -2);
+-    lua_replace(L, LUA_ENVIRONINDEX);
+     /* print */
+     lua_pushcfunction(L, luaV_print);
+     lua_setglobal(L, "print");
+@@ -1116,14 +1175,20 @@
+     lua_pop(L, 1);
+     /* free */
+     lua_pushlightuserdata(L, (void *) LUAVIM_FREE);
+-    lua_pushcfunction(L, luaV_free);
++    lua_pushvalue(L, 1); /* cache table */
++    lua_pushcclosure(L, luaV_free, 1);
+     lua_rawset(L, LUA_REGISTRYINDEX);
+     /* register */
+     luaV_newmetatable(L, LUAVIM_BUFFER);
+-    luaL_register(L, NULL, luaV_Buffer_mt);
++    lua_pushvalue(L, 1); /* cache table */
++    luaV_openlib(L, luaV_Buffer_mt, 1);
+     luaV_newmetatable(L, LUAVIM_WINDOW);
+-    luaL_register(L, NULL, luaV_Window_mt);
+-    luaL_register(L, LUAVIM_NAME, luaV_module);
++    lua_pushvalue(L, 1); /* cache table */
++    luaV_openlib(L, luaV_Window_mt, 1);
++    lua_newtable(L); /* vim table */
++    lua_pushvalue(L, 1); /* cache table */
++    luaV_openlib(L, luaV_module, 1);
++    lua_setglobal(L, LUAVIM_NAME);
+     return 0;
+ }
+ 
+@@ -1154,7 +1219,7 @@
+ static lua_State *L = NULL;
+ 
+     static int
+-lua_is_open(void)
++lua_isopen(void)
+ {
+     return L != NULL;
+ }
+@@ -1162,7 +1227,7 @@
+     static int
+ lua_init(void)
+ {
+-    if (L == NULL)
++    if (!lua_isopen())
+     {
+ #ifdef DYNAMIC_LUA
+ 	if (!lua_enabled(TRUE))
+@@ -1179,7 +1244,7 @@
+     void
+ lua_end(void)
+ {
+-    if (L != NULL)
++    if (lua_isopen())
+     {
+ 	lua_close(L);
+ 	L = NULL;
+@@ -1277,7 +1342,7 @@
+     void
+ lua_buffer_free(buf_T *buf)
+ {
+-    if (!lua_is_open()) return;
++    if (!lua_isopen()) return;
+     luaV_getfield(L, LUAVIM_FREE);
+     lua_pushlightuserdata(L, (void *) buf);
+     lua_call(L, 1, 0);
+@@ -1287,7 +1352,7 @@
+     void
+ lua_window_free(win_T *win)
+ {
+-    if (!lua_is_open()) return;
++    if (!lua_isopen()) return;
+     luaV_getfield(L, LUAVIM_FREE);
+     lua_pushlightuserdata(L, (void *) win);
+     lua_call(L, 1, 0);
