@@ -1,0 +1,26 @@
+# Description: A Multiboot boot loader
+# URL: http://www.gnu.org/software/grub/
+# Maintainer: Joe M, joe9mail at gmail dot com
+# Depends on:
+
+name=grub2
+version=1.98
+release=4
+# used by jaeger
+#source=(ftp://alpha.gnu.org/gnu/grub/grub-1.99~rc1.tar.gz)
+source=(ftp://alpha.gnu.org/gnu/grub/grub-1.98.tar.gz)
+
+# below source gives this error
+#/usr/sbin/grub-probe: error: cannot stat `/dev/root'
+#source=(ftp://ftp.gnu.org/gnu/grub/grub-1.99.tar.gz)
+
+build() {
+   cd grub-$version
+   ./configure --prefix=/usr \
+               --sysconfdir=/etc \
+               --mandir=/usr/man \
+               --sbindir=/sbin
+   make
+   make DESTDIR=$PKG install
+   rm -rf $PKG/usr/share
+}

@@ -1,6 +1,7 @@
 d:expect
 d:pcb-git
 d:ghc
+d:grub2
 d:m4-examples
 d:stow
 d:gerbv-git
@@ -11,13 +12,17 @@ f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
-f:e042b708235d8fab2707bf391f0da1eb:zsh_history.joe
+f:2bec0212c89053e61eef809e8be75dc8:zsh_history.joe
 f:e7a6098257db6c55a33f35f88307efd0:pcb-git/Pkgfile
 f:d73a66afea89a9256db1f1d04a213d3b:pcb-git/.footprint
 f:d41d8cd98f00b204e9800998ecf8427e:pcb-git/.md5sum
 f:253d383422c394ef88df7d9c3dd47ab7:ghc/Pkgfile
 f:f59e783dffbc044d7b70c3c00bd6ac9e:ghc/.footprint
 f:216e459684dfcc5f8ef2791230b0f90c:ghc/.md5sum
+f:929d6a0b397d131a6340c129643eea5a:grub2/zsh_history.joe
+f:70281ed382aec61a54cdc225a4c3e53f:grub2/Pkgfile
+f:8421313d54c2332bfea862362fd917df:grub2/.footprint
+f:b3aad8530853a90eac55f4156cf599f6:grub2/.md5sum
 f:7664942ebef3e5f40967694ddb3d360c:m4-examples/Pkgfile
 f:3bea9fcddc6d39aaafbf7ec171aaa820:m4-examples/to-do
 f:e1b22f35a8fd9053d27cccd28d74a2bd:m4-examples/.footprint
