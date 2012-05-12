@@ -1,0 +1,13 @@
+# Description:	megawidget
+# URL:	http://tcllib.sourceforge.net
+# Depends on:	tcl tcllib
+
+name=bwidget
+version=1.9.5
+release=1
+source=(http://downloads.sourceforge.net/project/tcllib/BWidget/$version/$name-$version.tar.gz)
+
+build () {
+    mkdir -p $PKG/usr/lib/tcl8.5
+    mv $name-$version $PKG/usr/lib/tcl8.5/
+}
