@@ -138,7 +138,6 @@ drwxr-xr-x	root/root	usr/share/pcb/newlib/not_vetted_ingo/
 -rw-r--r--	root/root	usr/share/pcb/newlib/not_vetted_ingo/smt1210.ele
 -rw-r--r--	root/root	usr/share/pcb/newlib/not_vetted_ingo/smt1913.ele
 -rw-r--r--	root/root	usr/share/pcb/newlib/not_vetted_ingo/smt2416.ele
-drwxr-xr-x	root/root	usr/share/pcb/newlib/sockets/
 drwxr-xr-x	root/root	usr/share/pcb/newlib/tests/
 -rw-r--r--	root/root	usr/share/pcb/newlib/tests/14DIP_oval_pad
 -rw-r--r--	root/root	usr/share/pcb/newlib/tests/Generic_TSOP48_Flash

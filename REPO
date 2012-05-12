@@ -10,14 +10,13 @@ d:pcb-git
 d:bwidget
 d:gerbv-git
 d:expect
-d:python-stdlib-extensions.to-remove
 d:geda-git
 d:autojump-git
 d:ghc
 d:vim-mercurial
 d:boost-jam
 d:syslinux-git
-f:dc2c608270fad2f3967d5ad92a545cb9:zsh_history.joe
+f:86f6d9c5cf17a5c170523cf141c77488:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -60,9 +59,6 @@ f:d41d8cd98f00b204e9800998ecf8427e:gerbv-git/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
-f:921b3e49fb82362e671dbb5888f4f48d:python-stdlib-extensions.to-remove/.footprint
-f:6be74377a61168bba5d49e9203857d6d:python-stdlib-extensions.to-remove/Pkgfile
-f:227edbd7054b3efde74330e2fa18d1fd:python-stdlib-extensions.to-remove/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
 f:693eb979b07f0a68cbf73f3a59498c07:geda-git/.footprint
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
