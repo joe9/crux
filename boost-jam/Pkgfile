@@ -1,0 +1,16 @@
+# Description: An alternative to make based on Jam.
+# URL: http://www.boost.org/
+# Maintainer: Daryl Fonseca-Holt, wyatt at prairieturtle dot ca
+# Packager: Danny Rawlins, monster dot romster at gmail dot com
+
+name=boost-jam
+version=3.1.18
+release=1
+source=(http://downloads.sourceforge.net/project/boost/$name/$version/$name-$version.tgz)
+
+build() {
+	cd $name-$version
+	local bindir='bin.linuxx86'
+	./build.sh gcc
+	install -m 0755 -D $bindir/bjam $PKG/usr/bin/bjam
+}
