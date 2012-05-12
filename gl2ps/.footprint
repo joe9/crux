@@ -1,0 +1,8 @@
+drwxr-xr-x	joe/users	usr/
+drwxr-xr-x	joe/users	usr/include/
+-rw-r--r--	joe/users	usr/include/gl2ps.h
+drwxr-xr-x	joe/users	usr/lib/
+-rw-r--r--	joe/users	usr/lib/libgl2ps.a
+lrwxrwxrwx	joe/users	usr/lib/libgl2ps.so -> libgl2ps.so.1
+lrwxrwxrwx	joe/users	usr/lib/libgl2ps.so.1 -> libgl2ps.so.1.3.6
+-rwxr-xr-x	joe/users	usr/lib/libgl2ps.so.1.3.6
