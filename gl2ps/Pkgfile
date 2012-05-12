@@ -12,7 +12,7 @@ source=(http://geuz.org/$name/src/$name-$version.tgz)
 build() {
    cd ${name}-${version}-source
 
-   cmake . -DCMAKE_INSTALL_PREFIX=$PKG/usr -DMANSUBDIR=man
+   cmake . -DCMAKE_INSTALL_PREFIX=$PKG/usr
    make install
    rm -rf $PKG/usr/share
 }
