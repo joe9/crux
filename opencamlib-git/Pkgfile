@@ -21,7 +21,11 @@ build() {
    fi
 
    cd build
+<<<<<<< Updated upstream
    cmake ../src
+=======
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ../src
+>>>>>>> Stashed changes
    make -j4
    make DESTDIR=$PKG install
 }
