@@ -1,0 +1,27 @@
+# Description: OpenCAMLib (ocl): a c++ library for creating toolpaths for cnc-machines
+# URL:         https://github.com/aewallin/opencamlib
+# Packager: Joe M, joe9mail at gmail dot com
+# Maintainer: Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  guile
+
+name=opencamlib-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd opencamlib ; then
+       git pull
+   else
+      git clone git://github.com/aewallin/opencamlib.git opencamlib
+      cd opencamlib
+      mkdir build
+   fi
+
+   cd build
+   cmake ../src
+   make -j4
+   make DESTDIR=$PKG install
+}
