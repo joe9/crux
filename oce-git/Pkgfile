@@ -22,6 +22,7 @@ build() {
 
    cd build
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+         -DOCE_INSTALL_PREFIX:PATH=/usr/ \
          -DOCE_WITH_FREEIMAGE=ON \
          -DOCE_WITH_GL2PS=ON \
          ..
