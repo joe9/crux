@@ -21,7 +21,7 @@ d:vim-mercurial
 d:boost-jam
 d:syslinux-git
 d:oce-git
-f:cc1ea49c57ab10a0acb5f3135b1e5c8a:zsh_history.joe
+f:18a720dfb64eccd0a02a307294cf63d6:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -61,7 +61,8 @@ f:0131b3a56c85f19dd5a364c4ee591b34:libactp-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:libactp-git/.md5sum
 f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint
 f:c0ead088128dd1e91b9097ab19c0afd7:libarea-git/Pkgfile
-f:d76dec854962cb5ea939754e6a1f7694:heekscad-git/.footprint
+f:d41d8cd98f00b204e9800998ecf8427e:libarea-git/.md5sum
+f:eb21c7b7ff636b521d3b6c4908b4078e:heekscad-git/.footprint
 f:26ba609301024c2ea947c35aca1a09a6:heekscad-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:heekscad-git/.md5sum
 f:48c63c9d807e71650f3d8ba10bbbb792:bwidget/.footprint
