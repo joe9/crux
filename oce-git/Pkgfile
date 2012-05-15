@@ -1,0 +1,30 @@
+# Description: *o*pencascade *c*ommunity *e*dition
+# URL:         https://github.com/tpaviot/oce#readme
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  gl2ps freeimage opencamlib-git
+
+name=oce-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd oce ; then
+       git pull
+   else
+      git clone git://github.com/tpaviot/oce.git oce
+      cd oce
+      mkdir build
+   fi
+
+   cd build
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+         -DOCE_WITH_FREEIMAGE=ON \
+         -DOCE_WITH_GL2PS=ON \
+         ..
+   make
+   make DESTDIR=$PKG install
+}
