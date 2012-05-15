@@ -1,0 +1,25 @@
+# Description: *o*pencascade *c*ommunity *e*dition
+# URL:         https://github.com/Heeks/libarea.git
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:
+
+name=libarea-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd libarea ; then
+       git pull
+   else
+      git clone git://github.com/Heeks/libarea.git libarea
+      cd libarea
+   fi
+
+   make clean
+   make
+   make DESTDIR=$PKG install
+}
