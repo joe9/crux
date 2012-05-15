@@ -1,0 +1,32 @@
+# Description: open source, 3D CAD application with extensive CAM features
+# URL:         http://heeks.net/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  cmake git wxgtk gtkglext python boost-jam oce-git
+# Depends on:  opencamlib-git libactp-git libarea-git
+
+name=heekscad-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd heekscad ; then
+       git pull
+   else
+      git clone --recursive git://github.com/Heeks/heekscad.git heekscad
+      cd heekscad
+   fi
+
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
+   make
+   make DESTDIR=$PKG install
+
+   cd heekscnc
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
+   make
+   make DESTDIR=$PKG install
+
+}
