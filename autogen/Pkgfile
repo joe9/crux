@@ -1,0 +1,19 @@
+# Description: autogen
+# URL:         http://www.gnu.org/software/autogen
+# Packager: Joe M, joe9mail at gmail dot com
+# Maintainer: Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  guile
+
+name=autogen
+version=5.11.1
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+
+build() {
+   cd ${name}-${version}
+
+   ./configure --prefix=/usr --mandir=$PKG/usr/man
+   make
+   make prefix=$PKG/usr install
+   rm -r $PKG/usr/share/info 
+}
