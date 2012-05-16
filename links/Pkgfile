@@ -1,0 +1,20 @@
+# Description: A lightwigth Browser (with directfb support)
+# URL: http://links.twibright.com/
+# Maintainer: Tadeusz Sosnierz, tadzikes gmail com
+# Packager: Falcony, falcony at users dot sourceforge dot net
+# Depends on: openssl
+
+name=links
+version=2.6
+release=1
+source=(http://links.twibright.com/download/links-$version.tar.bz2)
+
+build () {
+	cd links-$version
+	./configure --prefix=/usr \
+		    --with-ssl \
+		    --enable-graphics \
+		    --enable-javascript \
+	make
+	make prefix=$PKG/usr install
+}

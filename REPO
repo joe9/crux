@@ -2,6 +2,7 @@ d:syslinux
 d:opencamlib-git
 d:m4-examples
 d:grub2-1.98
+d:links
 d:stow
 d:grub2
 d:grub-bzr
@@ -14,14 +15,16 @@ d:heekscad-git
 d:bwidget
 d:gerbv-git
 d:expect
+d:gdk-pixbuf
 d:geda-git
 d:autojump-git
 d:ghc
 d:vim-mercurial
+d:libpng
 d:boost-jam
 d:syslinux-git
 d:oce-git
-f:18a720dfb64eccd0a02a307294cf63d6:zsh_history.joe
+f:69385f09c09794d978bb0b28d68f8819:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -37,6 +40,9 @@ f:dcb059962c055cb4b0a64d2dfaa0c383:grub2-1.98/zsh_history.joe
 f:8421313d54c2332bfea862362fd917df:grub2-1.98/.footprint
 f:70281ed382aec61a54cdc225a4c3e53f:grub2-1.98/Pkgfile
 f:b3aad8530853a90eac55f4156cf599f6:grub2-1.98/.md5sum
+f:cbb31de29e703105ba388a5ac94552bf:links/.footprint
+f:b6d6dea97c911d3d63b391e7ee2db8df:links/Pkgfile
+f:7bad4e897a44be3e905ce038e71fb4d7:links/.md5sum
 f:35674eba1bc0d1716976a7347062a0bf:stow/.footprint
 f:df360bd56f46c6eed96919909a93888c:stow/Pkgfile
 f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
@@ -63,7 +69,7 @@ f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint
 f:c0ead088128dd1e91b9097ab19c0afd7:libarea-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:libarea-git/.md5sum
 f:eb21c7b7ff636b521d3b6c4908b4078e:heekscad-git/.footprint
-f:26ba609301024c2ea947c35aca1a09a6:heekscad-git/Pkgfile
+f:75c7d550a54ba20f6c3121f4cfd04c18:heekscad-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:heekscad-git/.md5sum
 f:48c63c9d807e71650f3d8ba10bbbb792:bwidget/.footprint
 f:329d745cde2d4d712e93635c2bfd3c31:bwidget/Pkgfile
@@ -76,6 +82,11 @@ f:d41d8cd98f00b204e9800998ecf8427e:gerbv-git/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
+f:bcc34f5ff909016ed94dfaaaa2ee4c53:gdk-pixbuf/.footprint
+f:c690ccf5de546457c5f9fd7c7ae88402:gdk-pixbuf/gdk-pixbuf.loaders
+f:b0e44d55845ebd804c7e7a8be08043eb:gdk-pixbuf/gdk-pixbuf-register.sh
+f:bd3bcbc04f756aca1d85cbc9ea198e0c:gdk-pixbuf/Pkgfile
+f:44d665b36f9fe7d5e1864b1b56dc53a1:gdk-pixbuf/.md5sum
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
 f:693eb979b07f0a68cbf73f3a59498c07:geda-git/.footprint
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
@@ -93,6 +104,9 @@ f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
 f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
 f:d7b4ef98be7dba11bc97ad77e94b6e8d:vim-mercurial/Pkgfile
 f:44d4a4d42531ce73af571cbf939705af:vim-mercurial/.md5sum
+f:0553f38c3edbd078ec3277d44fbac70a:libpng/.footprint
+f:8585a3f08dc11c5d178b28a5de0bbd2f:libpng/Pkgfile
+f:0fd87ced7e3e74c6bf0dcbef235b7d55:libpng/.md5sum
 f:975c5f2109aeb02e1f8668c23a6140cb:boost-jam/.footprint
 f:8cfd59ba4a53dc4a0de8c865972bcb58:boost-jam/boost-jam-3.1.17-cflags.patch
 f:30e319a97f0e951c73cc8b7ddaec09fc:boost-jam/boost-jam-3.1.17-misc.patch

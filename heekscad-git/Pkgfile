@@ -20,11 +20,13 @@ build() {
       cd heekscad
    fi
 
+   make clean
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
    make
    make DESTDIR=$PKG install
 
    cd heekscnc
+   make clean
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
    make
    make DESTDIR=$PKG install
