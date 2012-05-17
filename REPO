@@ -18,14 +18,13 @@ d:expect
 d:gdk-pixbuf
 d:geda-git
 d:autojump-git
-d:ghc
 d:imlib2
 d:vim-mercurial
 d:libpng
 d:boost-jam
 d:syslinux-git
 d:oce-git
-f:c0c2d96a693dacd803cf0cd97dde5b8c:zsh_history.joe
+f:ca09d3adeb121033585f77d3921b0d72:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -97,9 +96,6 @@ f:0b00388213480167330a25d0411d649a:autojump-git/zsh_history.joe
 f:fb5e5281de48818f18bd91ffa8ebd477:autojump-git/.footprint
 f:433e3a3e80e6eea04632d47d22493b6a:autojump-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:autojump-git/.md5sum
-f:f59e783dffbc044d7b70c3c00bd6ac9e:ghc/.footprint
-f:253d383422c394ef88df7d9c3dd47ab7:ghc/Pkgfile
-f:216e459684dfcc5f8ef2791230b0f90c:ghc/.md5sum
 f:0a23537824dcde0d746ea3154caac6b0:imlib2/.footprint
 f:4dce3e67a4c99e8ca2e9d832cd2e4218:imlib2/Pkgfile
 f:6baf2d19812fd40d416df2feed4af34f:imlib2/.md5sum
