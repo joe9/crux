@@ -21,10 +21,9 @@ d:autojump-git
 d:imlib2
 d:vim-mercurial
 d:libpng
-d:boost-jam
 d:syslinux-git
 d:oce-git
-f:ca09d3adeb121033585f77d3921b0d72:zsh_history.joe
+f:9b977e5f89aa4206689e24fd7f090d03:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -107,11 +106,6 @@ f:44d4a4d42531ce73af571cbf939705af:vim-mercurial/.md5sum
 f:0553f38c3edbd078ec3277d44fbac70a:libpng/.footprint
 f:8585a3f08dc11c5d178b28a5de0bbd2f:libpng/Pkgfile
 f:0fd87ced7e3e74c6bf0dcbef235b7d55:libpng/.md5sum
-f:975c5f2109aeb02e1f8668c23a6140cb:boost-jam/.footprint
-f:8cfd59ba4a53dc4a0de8c865972bcb58:boost-jam/boost-jam-3.1.17-cflags.patch
-f:30e319a97f0e951c73cc8b7ddaec09fc:boost-jam/boost-jam-3.1.17-misc.patch
-f:63f4ba56b94f501a2cdb6c8f17de9fb9:boost-jam/Pkgfile
-f:62b73586ecfb8d6790107a71275d7d82:boost-jam/.md5sum
 f:4a1d60083f1e07cc91a9de753b8d3104:syslinux-git/.footprint
 f:aa811eee39abfae97f02363ba0b2262b:syslinux-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:syslinux-git/.md5sum
