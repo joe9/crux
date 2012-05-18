@@ -2620,14 +2620,6 @@ lrwxrwxrwx	root/root	usr/lib/libCGAL_Qt4.so -> libCGAL_Qt4.so.9
 lrwxrwxrwx	root/root	usr/lib/libCGAL_Qt4.so.9 -> libCGAL_Qt4.so.9.0.0
 -rwxr-xr-x	root/root	usr/lib/libCGAL_Qt4.so.9.0.0
 drwxr-xr-x	root/root	usr/share/
-drwxr-xr-x	root/root	usr/share/doc/
-drwxr-xr-x	root/root	usr/share/doc/CGAL-4.0/
--rw-r--r--	root/root	usr/share/doc/CGAL-4.0/AUTHORS
--rw-r--r--	root/root	usr/share/doc/CGAL-4.0/CHANGES
--rw-r--r--	root/root	usr/share/doc/CGAL-4.0/LICENSE
--rw-r--r--	root/root	usr/share/doc/CGAL-4.0/LICENSE.FREE_USE
--rw-r--r--	root/root	usr/share/doc/CGAL-4.0/LICENSE.GPL
--rw-r--r--	root/root	usr/share/doc/CGAL-4.0/LICENSE.LGPL
 drwxr-xr-x	root/root	usr/share/man/
 drwxr-xr-x	root/root	usr/share/man/man1/
 -rw-r--r--	root/root	usr/share/man/man1/cgal_create_cmake_script.1.gz

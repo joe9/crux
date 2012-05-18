@@ -1,12 +1,15 @@
 # Description: Computational Geometry Algorithms Library
 # URL:         http://www.cgal.org/
 # Maintainer:  Joe M, joe9mail at gmail dot com
-# Depends on:  boost gmp mpfr qt zlib rs eigen libqglviewer coin
+# Depends on:  boost gmp mpfr qt4 zlib rs eigen libqglviewer coin
 
 name=cgal
+#  4.0 version needs eigen
 version=4.0
+# version=3.9
 release=1
 source=(https://gforge.inria.fr/frs/download.php/30385/$name-$version.tar.xz)
+# source=(https://gforge.inria.fr/frs/download.php/29125/$name-$version.tar.gz)
 
 build () {
    cd CGAL-$version

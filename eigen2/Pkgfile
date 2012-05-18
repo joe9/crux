@@ -1,17 +1,15 @@
 # Description: C++ template library for linear algebra
 # URL:         http://eigen.tuxfamily.org/index.php?title=Main_Page
 # Maintainer:  Joe M, joe9mail at gmail dot com
-# Depends on:  fftw
+# Depends on:
 
-name=eigen
-# version=3.0.5
-version=3.1.0-alpha2
+name=eigen2
+version=2.0.17
 release=1
-#source=(http://bitbucket.org/$name/$name/get/$version.tar.bz2)
-source=(http://bitbucket.org/$name/$name/get/$version.tar.bz2)
+source=(http://bitbucket.org/eigen/eigen/get/$version.tar.bz2)
 
 build () {
-   cd $name-$name-304c88ca3aff
+   cd eigen-eigen-b23437e61a07
 
    mkdir build
    cd    build
