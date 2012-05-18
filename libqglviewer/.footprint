@@ -1,0 +1,22 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/QGLViewer/
+-rw-r--r--	root/root	usr/include/QGLViewer/camera.h
+-rw-r--r--	root/root	usr/include/QGLViewer/config.h
+-rw-r--r--	root/root	usr/include/QGLViewer/constraint.h
+-rw-r--r--	root/root	usr/include/QGLViewer/domUtils.h
+-rw-r--r--	root/root	usr/include/QGLViewer/frame.h
+-rw-r--r--	root/root	usr/include/QGLViewer/keyFrameInterpolator.h
+-rw-r--r--	root/root	usr/include/QGLViewer/manipulatedCameraFrame.h
+-rw-r--r--	root/root	usr/include/QGLViewer/manipulatedFrame.h
+-rw-r--r--	root/root	usr/include/QGLViewer/mouseGrabber.h
+-rw-r--r--	root/root	usr/include/QGLViewer/qglviewer.h
+-rw-r--r--	root/root	usr/include/QGLViewer/qglviewer_fr.qm
+-rw-r--r--	root/root	usr/include/QGLViewer/quaternion.h
+-rw-r--r--	root/root	usr/include/QGLViewer/vec.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libQGLViewer.prl
+lrwxrwxrwx	root/root	usr/lib/libQGLViewer.so -> libQGLViewer.so.2.3.16
+lrwxrwxrwx	root/root	usr/lib/libQGLViewer.so.2 -> libQGLViewer.so.2.3.16
+lrwxrwxrwx	root/root	usr/lib/libQGLViewer.so.2.3 -> libQGLViewer.so.2.3.16
+-rwxr-xr-x	root/root	usr/lib/libQGLViewer.so.2.3.16

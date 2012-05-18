@@ -1,0 +1,17 @@
+# Description: implementation of Open Inventor
+# URL:         http://www.coin3d.org/
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:
+
+name=coin
+version=3.1.3
+release=1
+source=(http://ftp.coin3d.org/$name/src/all/Coin-$version.tar.gz)
+
+build () {
+   cd Coin-$version
+
+   ./configure --prefix=/usr
+   make
+   make DESTDIR=$PKG install
+}
