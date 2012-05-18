@@ -1,0 +1,16 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/rs_ascii
+-rwxr-xr-x	root/root	usr/bin/rs_ascii_mt
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/rs3_basic.h
+-rw-r--r--	root/root	usr/include/rs3_config.h
+-rw-r--r--	root/root	usr/include/rs3_fncts.h
+-rw-r--r--	root/root	usr/include/rs3_gc.h
+-rw-r--r--	root/root	usr/include/rs_exports.h
+-rw-r--r--	root/root	usr/include/rsversion.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/librs3.a
+-rw-r--r--	root/root	usr/lib/librs3_mt.a
+-rw-r--r--	root/root	usr/lib/librsexport.a
+-rw-r--r--	root/root	usr/lib/librsexport_rs.a

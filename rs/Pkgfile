@@ -1,0 +1,23 @@
+# Description: RS (Real Solutions) is devoted to the study of the real roots of polynomial systems with a finite number of complex roots (including univariate polynomials).
+# URL:         http://vegas.loria.fr/rs/
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  mpfi
+
+name=rs
+version=3.1.0
+release=1
+source=(http://vegas.loria.fr/$name/$version/lib${name}_${version}-i686_Linux.tar.xz)
+
+build () {
+   cd lib${name}_${version}
+
+   mkdir -p $PKG/usr/{bin,lib,include}
+
+   cp -rf include/*        $PKG/usr/include/
+   cp -rf i686_Linux/bin/* $PKG/usr/bin/
+   cp -rf i686_Linux/lib/* $PKG/usr/lib/
+   rm $PKG/usr/include/mpfi.h
+   rm $PKG/usr/include/mpfi_io.h
+   rm $PKG/usr/lib/libmpfi.a
+
+}

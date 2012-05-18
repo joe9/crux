@@ -1,0 +1,10 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/mpfi.h
+-rw-r--r--	root/root	usr/include/mpfi_io.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libmpfi.a
+-rwxr-xr-x	root/root	usr/lib/libmpfi.la
+lrwxrwxrwx	root/root	usr/lib/libmpfi.so -> libmpfi.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/libmpfi.so.0 -> libmpfi.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libmpfi.so.0.0.0
