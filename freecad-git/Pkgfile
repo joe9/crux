@@ -1,0 +1,31 @@
+# Description: General purpose feature-based, parametric 3D modeler
+# URL:         http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Main_Page
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  cmake eigen ode boost oce-git pyqt4 gcc-fortran swig
+# Depends on:  libf2c gts
+# Depends on:  pyopengl gl2ps xorg-libxmu tcl tk ftgl
+# Depends on:  xerces-c coin soqt python qt4 pivy-mercurial
+
+name=freecad-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd freecad ; then
+       git pull
+       # rm -rf build
+   else
+      git clone git://free-cad.git.sourceforge.net/gitroot/free-cad/free-cad freecad
+      cd freecad
+      mkdir build
+   fi
+
+   cd build
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
+   make
+   make DESTDIR=$PKG install
+}

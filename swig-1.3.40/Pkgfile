@@ -1,0 +1,18 @@
+# Description: A tool to create language bindings
+# URL:         http://www.swig.org/
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  zlib libpcre
+
+name=swig-1.3.40
+version=1.3.40
+release=1
+source=(http://downloads.sourceforge.net/project/swig/swig/$name/$name.tar.gz)
+# source=(swig-1.3.40.tar.gz)
+
+build () {
+    cd $name
+    # ./configure --prefix=/usr --mandir=/usr/man/swig-1.3.40 --bindir=/usr/bin/swig-1.3.40
+    ./configure --prefix=/usr --mandir=/usr/man --program-suffix=-1.3.40
+    make
+    make DESTDIR=$PKG install
+}

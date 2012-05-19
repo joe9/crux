@@ -11,7 +11,9 @@ source=(http://ftp.coin3d.org/$name/src/all/Coin-$version.tar.gz)
 build () {
    cd Coin-$version
 
-   ./configure --prefix=/usr
+   mkdir coin-build
+   cd coin-build
+   ../configure --prefix=/usr
    make
    make DESTDIR=$PKG install
 }

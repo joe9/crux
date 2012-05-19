@@ -1,0 +1,17 @@
+# Description: GNU Triangulated Surface Library
+# URL:         http://gts.sourceforge.net/
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  glib
+
+name=gts
+version=0.7.6
+release=1
+source=(http://downloads.sourceforge.net/project/$name/$name/$version/$name-$version.tar.gz)
+
+build () {
+   cd $name-$version
+
+   ./configure --prefix=/usr
+   make
+   make DESTDIR=$PKG INSTALL_ROOT=$PKG install
+}
