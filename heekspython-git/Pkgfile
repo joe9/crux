@@ -2,7 +2,7 @@
 # URL:         http://heeks.net/
 # Packager:    Joe M, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
-# Depends on:  heekscad-git
+# Depends on:  wxpython heekscad-git
 
 name=heekspython-git
 version=git
