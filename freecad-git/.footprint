@@ -374,10 +374,6 @@ drwxr-xr-x	root/root	usr/data/examples/
 -rw-r--r--	root/root	usr/data/examples/Schenkel.stp
 -rw-r--r--	root/root	usr/data/freecad-doc.png
 -rw-r--r--	root/root	usr/data/freecad.xpm
-drwxr-xr-x	root/root	usr/doc/
--rw-r--r--	root/root	usr/doc/Start_Page.html
--rw-r--r--	root/root	usr/doc/freecad.qch
--rw-r--r--	root/root	usr/doc/freecad.qhc
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/DriverDAT_R_SMDS_Mesh.h
 -rw-r--r--	root/root	usr/include/DriverDAT_R_SMESHDS_Document.h

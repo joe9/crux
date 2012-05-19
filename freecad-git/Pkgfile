@@ -28,4 +28,5 @@ build() {
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
    make
    make DESTDIR=$PKG install
+   rm -rf $PKG/usr/doc
 }
