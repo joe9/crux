@@ -1,0 +1,35 @@
+From 9dd7da39e90f5fb32a3e7700a492d06ab757c5f0 Mon Sep 17 00:00:00 2001
+From: joe9 <joe9mail@gmail.com>
+Date: Sat, 19 May 2012 17:42:56 -0400
+Subject: [PATCH] added $DESTDIR consistently to install and uninstall targets
+
+---
+ src/Makefile |   10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/Makefile b/src/Makefile
+index acfb9c4..032e3fc 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -74,13 +74,13 @@ install:$(SHARED_LIBRARY)
+ 	strip $^
+ 	chmod 644 $^
+ 	install $^ $(DESTDIR)$(PYTHONDIR)
+-	test -z "$(HEEKSPYTHONDIR)/heeksscripts" || $(mkdir_p) "$(HEEKSPYTHONDIR)/heeksscripts"
+-	cp ../autoexec.py "$(PYTHONDIR)"
++	test -z "$(DESTDIR)$(HEEKSPYTHONDIR)/heeksscripts" || $(mkdir_p) "$(DESTDIR)$(HEEKSPYTHONDIR)/heeksscripts"
++	cp ../autoexec.py "$(DESTDIR)$(PYTHONDIR)"
+ 	test -z "$(DESTDIR)$(HEEKSPYTHONDIR)/bitmaps" || $(mkdir_p) "$(DESTDIR)$(HEEKSPYTHONDIR)/bitmaps"
+ 	cp ../bitmaps/*.png $(DESTDIR)$(HEEKSPYTHONDIR)/bitmaps/
+ 	cp ../examples/*.py $(DESTDIR)$(HEEKSPYTHONDIR)/heeksscripts/	
+ 
+ uninstall:
+-	-rm -rf $(DESTDIR)$(HEEKSPYTHONDIR)
+-	-rm  $(PYTHONDIR)/autoexec.py
+-	-rm  $(DESTDIR)$(PYTHONDIR)/HeeksPython.so
++	-rm -rf "$(DESTDIR)$(HEEKSPYTHONDIR)"
++	-rm  "$(DESTDIR)$(PYTHONDIR)/autoexec.py"
++	-rm  "$(DESTDIR)$(PYTHONDIR)/HeeksPython.so"
+-- 
+1.7.10
+

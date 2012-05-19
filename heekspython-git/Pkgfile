@@ -1,0 +1,31 @@
+# Description: python scripting to heekscad
+# URL:         http://heeks.net/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  heekscad-git
+
+name=heekspython-git
+version=git
+release=1
+source=(0001-added-DESTDIR-consistently-to-install-and-uninstall-.patch)
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd heekspython ; then
+       git pull
+   else
+      git clone git://github.com/Heeks/heekspython.git heekspython
+      cd heekspython
+   fi
+
+   cp src/Makefile src/Makefile.orig
+   patch -p1 -i $SRC/0001-added-DESTDIR-consistently-to-install-and-uninstall-.patch
+   cd src
+   sed -i -e 's,PREFIX=/usr/local,PREFIX=/usr,g' Makefile
+   make clean
+   HEEKSCADPATH=$PKGMK_SOURCE_DIR/heekscad make
+   mkdir -p $PKG/usr/lib/python2.7/site-packages
+   HEEKSCADPATH=$PKGMK_SOURCE_DIR/heekscad make DESTDIR=$PKG install
+   mv Makefile.orig Makefile
+}
