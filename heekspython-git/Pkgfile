@@ -19,6 +19,9 @@ build() {
       cd heekspython
    fi
 
+   cp autoexec.py autoexec.py.orig
+   sed -i -e 's,/usr/local/share,/usr/share,g' autoexec.py
+
    cp src/Makefile src/Makefile.orig
    patch -p1 -i $SRC/0001-added-DESTDIR-consistently-to-install-and-uninstall-.patch
    cd src
@@ -27,5 +30,7 @@ build() {
    HEEKSCADPATH=$PKGMK_SOURCE_DIR/heekscad make
    mkdir -p $PKG/usr/lib/python2.7/site-packages
    HEEKSCADPATH=$PKGMK_SOURCE_DIR/heekscad make DESTDIR=$PKG install
+
    mv Makefile.orig Makefile
+   mv ../autoexec.py.orig ../autoexec.py
 }
