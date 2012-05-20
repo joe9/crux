@@ -3,8 +3,8 @@
 # Packager:    Joe M, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
 # Depends on:  cmake eigen ode boost oce-git pyqt4 gcc-fortran swig \
-               libf2c gts xerces-c coin pivy-mercurial \
-               pyopengl gl2ps xorg-libxmu tcl tk ftgl
+#               libf2c gts xerces-c coin pivy-mercurial \
+#               pyopengl gl2ps xorg-libxmu tcl tk ftgl
 
 name=freecad-git
 version=git
