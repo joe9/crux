@@ -1,7 +1,7 @@
 # Description: Coin binding for python
 # URL:         http://pivy.coin3d.org/
 # Maintainer:  Joe M, joe9mail at gmail dot com
-# Depends on:  mercurial qt4 soqt swig-1.3.40
+# Depends on:  mercurial qt4 soqt soxt swig-1.3.40
 
 name=pivy-mercurial
 version=mercurial
