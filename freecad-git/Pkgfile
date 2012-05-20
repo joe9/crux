@@ -2,10 +2,10 @@
 # URL:         http://sourceforge.net/apps/mediawiki/free-cad/index.php?title=Main_Page
 # Packager:    Joe M, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
-# Depends on:  cmake eigen ode boost oce-git pyqt4 gcc-fortran swig
-# Depends on:  libf2c gts
-# Depends on:  pyopengl gl2ps xorg-libxmu tcl tk ftgl
-# Depends on:  xerces-c coin soqt python qt4 pivy-mercurial
+# Depends on:  cmake eigen ode boost oce-git pyqt4 gcc-fortran swig \
+               libf2c gts \
+               pyopengl gl2ps xorg-libxmu tcl tk ftgl \
+               xerces-c coin soqt python qt4 pivy-mercurial
 
 name=freecad-git
 version=git

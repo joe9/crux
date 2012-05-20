@@ -2,8 +2,8 @@
 # URL:         http://heeks.net/
 # Packager:    Joe M, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
-# Depends on:  cmake git wxgtk gtkglext python boost-jam oce-git
-# Depends on:  opencamlib-git libactp-git libarea-git
+# Depends on:  cmake git wxgtk gtkglext python boost-jam oce-git \
+               opencamlib-git libactp-git libarea-git
 
 name=heekscad-git
 version=git

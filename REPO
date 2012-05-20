@@ -42,7 +42,7 @@ d:oce-git
 f:8294e893f5c9b8a5dc479f9f62683961:soxt/.footprint
 f:48e44f2fb801241589e7868af0a51d09:soxt/Pkgfile
 f:8320a45537795fa5b9e64b4c16dfce43:soxt/.md5sum
-f:93af20f4b0e20da50c1fbc7d26d813a9:zsh_history.joe
+f:c3218aaade81437c1b6c300059d7405b:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -84,7 +84,7 @@ f:1c870e0b662490b42ee6803e015342e6:heekspython-git/0001-added-DESTDIR-consistent
 f:16b44061c83838aa4c1d3c4e92f14234:heekspython-git/Pkgfile
 f:06f82eb0bfcf28a252798ff30b405980:heekspython-git/.md5sum
 f:f76b5b9101fb92d28cbf7ccfbdcbab9f:freecad-git/.footprint
-f:0ee0f8648818d5d0393cbfd8357c46a3:freecad-git/Pkgfile
+f:61e8ef9f8adcfefdebf7ecf8bdc4c087:freecad-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:freecad-git/.md5sum
 f:342388211966f0abaaa82fa1f8e94074:pivy-mercurial/.footprint
 f:edaf8ebd9ec0ff2c5c06c975993929fe:pivy-mercurial/Pkgfile
@@ -130,7 +130,7 @@ f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint
 f:c0ead088128dd1e91b9097ab19c0afd7:libarea-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:libarea-git/.md5sum
 f:eb21c7b7ff636b521d3b6c4908b4078e:heekscad-git/.footprint
-f:75c7d550a54ba20f6c3121f4cfd04c18:heekscad-git/Pkgfile
+f:437c6d17d0e063be561e9bb62661f875:heekscad-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:heekscad-git/.md5sum
 f:48c63c9d807e71650f3d8ba10bbbb792:bwidget/.footprint
 f:329d745cde2d4d712e93635c2bfd3c31:bwidget/Pkgfile
