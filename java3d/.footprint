@@ -1,0 +1,12 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/
+drwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/jre/
+drwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/jre/lib/
+drwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/jre/lib/ext/
+-rw-r--r--	root/root	usr/lib/jdk1.7.0_04/jre/lib/ext/j3dcore.jar
+-rw-r--r--	root/root	usr/lib/jdk1.7.0_04/jre/lib/ext/j3dutils.jar
+-rw-r--r--	root/root	usr/lib/jdk1.7.0_04/jre/lib/ext/vecmath.jar
+drwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/jre/lib/i386/
+-rwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/jre/lib/i386/libj3dcore-ogl-cg.so
+-rwxr-xr-x	root/root	usr/lib/jdk1.7.0_04/jre/lib/i386/libj3dcore-ogl.so

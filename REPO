@@ -34,6 +34,7 @@ d:swig-1.3.40
 d:gdk-pixbuf
 d:geda-git
 d:autojump-git
+d:java3d
 d:vim-mercurial
 d:gts
 d:openjdk
@@ -43,7 +44,7 @@ d:oce-git
 f:8294e893f5c9b8a5dc479f9f62683961:soxt/.footprint
 f:48e44f2fb801241589e7868af0a51d09:soxt/Pkgfile
 f:8320a45537795fa5b9e64b4c16dfce43:soxt/.md5sum
-f:8130d3d0851217b9bafec99213e63353:zsh_history.joe
+f:063fc53d1d2264cf0ac75c2da44ee16d:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -162,6 +163,10 @@ f:0b00388213480167330a25d0411d649a:autojump-git/zsh_history.joe
 f:fb5e5281de48818f18bd91ffa8ebd477:autojump-git/.footprint
 f:433e3a3e80e6eea04632d47d22493b6a:autojump-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:autojump-git/.md5sum
+f:8af20de1b4ac015e957c3adfbf6b16e9:java3d/.footprint
+f:5f28c1f1b3431f5206289a522234a39a:java3d/README
+f:e3763a2b02261cb0b2d8086417849d8a:java3d/Pkgfile
+f:fea3427c9f101c58dffc567a67483c31:java3d/.md5sum
 f:6bac8f3fbd5357f9234413ef4ee0dd64:vim-mercurial/.footprint
 f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
 f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
@@ -170,10 +175,9 @@ f:44d4a4d42531ce73af571cbf939705af:vim-mercurial/.md5sum
 f:51e76762a09c581b4482de3b7eb67687:gts/.footprint
 f:a2748d67001abdcc4b73c73390584068:gts/Pkgfile
 f:ae192da7a770fabd2246fd3c4fa0d7b3:gts/.md5sum
-f:d2b85e791a396fcd7dea4246bb262ac3:openjdk/.footprint
-f:5f42c870e7d889816929907a2d27b6a9:openjdk/README
-f:81c89256c5879d89180f745359c08145:openjdk/Pkgfile
-f:51bde14daba98e1e30588147c837d3d8:openjdk/.md5sum
+f:3cc273a04861e913468b3b08e07f1975:openjdk/Pkgfile
+f:31fbda4911f10899471dedd01703bc3a:openjdk/.sha256sum
+f:9e105e27976382b30cf2c5c13acdafcb:openjdk/.md5sum
 f:0553f38c3edbd078ec3277d44fbac70a:libpng/.footprint
 f:8585a3f08dc11c5d178b28a5de0bbd2f:libpng/Pkgfile
 f:0fd87ced7e3e74c6bf0dcbef235b7d55:libpng/.md5sum

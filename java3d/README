@@ -1,0 +1,11 @@
+README for Java 3D
+
+REQUIREMENTS
+
+   Download the Java SE Development Kit (JDK) from
+   - http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-java-client-419417.html#java3d-1.5.1-oth-JPR
+
+   and put the file
+   - java3d-1_5_1-linux-i586.bin
+
+   into the directory defined by PKGMK_SOURCE_DIR. See pkgmk.conf(5).
