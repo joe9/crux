@@ -1,4 +1,4 @@
-# Description: command-line program that calculates machine toolpaths from given PCB layouts
+# Description: Gerber to gcode file converter
 # URL:         http://sourceforge.net/apps/mediawiki/pcb2gcode/index.php?title=Main_Page#Downloading
 # Packager:    Joe M, joe9mail at gmail dot com
 # Maintainer:  Ryan Mullen, rmmullen at gmail dot com
