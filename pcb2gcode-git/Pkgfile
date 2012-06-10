@@ -1,0 +1,30 @@
+# Description: command-line program that calculates machine toolpaths from given PCB layouts
+# URL:         http://sourceforge.net/apps/mediawiki/pcb2gcode/index.php?title=Main_Page#Downloading
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  automake autoconf libtool boost gtkmm gerbv-git
+
+name=pcb2gcode-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd pcb2gcode ; then
+       git pull
+   else
+      git clone git://pcb2gcode.git.sourceforge.net/gitroot/pcb2gcode/pcb2gcode
+      cd pcb2gcode
+   fi
+
+   # ./git-build.sh
+   libtoolize
+   aclocal
+   automake --add-missing
+   autoreconf
+   ./configure --prefix=/usr --mandir=$PKG/usr/man
+   make
+   make prefix=$PKG/usr install
+}
