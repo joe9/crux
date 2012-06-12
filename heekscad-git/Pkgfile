@@ -20,7 +20,10 @@ build() {
       cd heekscad
    fi
 
-   make clean
+   BUG: does not build due to
+   http://sourceforge.net/apps/mantisbt/free-cad/bug_view_advanced_page.php?bug_id=749
+   sent an email to HeeksCAD-users google group
+
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
    make
    make DESTDIR=$PKG install
@@ -30,5 +33,4 @@ build() {
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
    make
    make DESTDIR=$PKG install
-
 }

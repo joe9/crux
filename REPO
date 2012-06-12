@@ -48,7 +48,7 @@ f:d41d8cd98f00b204e9800998ecf8427e:pcb2gcode-git/.md5sum
 f:8294e893f5c9b8a5dc479f9f62683961:soxt/.footprint
 f:48e44f2fb801241589e7868af0a51d09:soxt/Pkgfile
 f:8320a45537795fa5b9e64b4c16dfce43:soxt/.md5sum
-f:dc5383dd20ff9ecb73293c1f17fd3686:zsh_history.joe
+f:0af0cc516a1c7ede70596b0c3b3ff3d6:zsh_history.joe
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:3360e91e30f20139fe7499dba97a4d18:syslinux/Pkgfile
@@ -89,8 +89,8 @@ f:93d04a1759c8fc7c78b137b1806dad0d:heekspython-git/.footprint
 f:1c870e0b662490b42ee6803e015342e6:heekspython-git/0001-added-DESTDIR-consistently-to-install-and-uninstall-.patch
 f:16b44061c83838aa4c1d3c4e92f14234:heekspython-git/Pkgfile
 f:06f82eb0bfcf28a252798ff30b405980:heekspython-git/.md5sum
-f:f76b5b9101fb92d28cbf7ccfbdcbab9f:freecad-git/.footprint
-f:7f5e9886afb5035dcaa1e07365bcbaed:freecad-git/Pkgfile
+f:a4c4415639ee8fc888ed5eeeb19b7f75:freecad-git/.footprint
+f:7561d267cd65d45ec72be3943dba859b:freecad-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:freecad-git/.md5sum
 f:342388211966f0abaaa82fa1f8e94074:pivy-mercurial/.footprint
 f:edaf8ebd9ec0ff2c5c06c975993929fe:pivy-mercurial/Pkgfile
@@ -136,7 +136,7 @@ f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint
 f:c0ead088128dd1e91b9097ab19c0afd7:libarea-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:libarea-git/.md5sum
 f:eb21c7b7ff636b521d3b6c4908b4078e:heekscad-git/.footprint
-f:5a7c52443e3110e4d2a91de76fc87e54:heekscad-git/Pkgfile
+f:bf6241a507f131063399bc03316a97df:heekscad-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:heekscad-git/.md5sum
 f:48c63c9d807e71650f3d8ba10bbbb792:bwidget/.footprint
 f:329d745cde2d4d712e93635c2bfd3c31:bwidget/Pkgfile
@@ -188,6 +188,6 @@ f:0fd87ced7e3e74c6bf0dcbef235b7d55:libpng/.md5sum
 f:4a1d60083f1e07cc91a9de753b8d3104:syslinux-git/.footprint
 f:aa811eee39abfae97f02363ba0b2262b:syslinux-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:syslinux-git/.md5sum
-f:880ca470abaaace96af8ccac14d0be47:oce-git/.footprint
+f:0e9ddbc0f7a9a30b622ae03504c29cfd:oce-git/.footprint
 f:1690dc5d8bbde1b4898964eb421dff45:oce-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:oce-git/.md5sum
