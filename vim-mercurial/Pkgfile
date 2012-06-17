@@ -25,10 +25,10 @@ build () {
 
    cd $PKGMK_SOURCE_DIR/vim
 
-   patch --forward \
-         --directory=$PKGMK_SOURCE_DIR/vim/src/ \
-         --input=$SRC/if_lua_5.2_table.diff \
-         --verbose
+   # patch --forward \
+   #       --directory=$PKGMK_SOURCE_DIR/vim/src/ \
+   #       --input=$SRC/if_lua_5.2_table.diff \
+   #       --verbose
 
    #make clean distclean
 

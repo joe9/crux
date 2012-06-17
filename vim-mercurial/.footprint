@@ -455,6 +455,7 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/xsd.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/xslt.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/yaml.vim
+-rw-r--r--	root/root	usr/share/vim/ftplugin/zimbu.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/zsh.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugof.vim
 -rw-r--r--	root/root	usr/share/vim/gvimrc_example.vim
@@ -558,6 +559,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/xsd.vim
 -rw-r--r--	root/root	usr/share/vim/indent/xslt.vim
 -rw-r--r--	root/root	usr/share/vim/indent/yacc.vim
+-rw-r--r--	root/root	usr/share/vim/indent/zimbu.vim
 -rw-r--r--	root/root	usr/share/vim/indent/zsh.vim
 -rw-r--r--	root/root	usr/share/vim/indoff.vim
 -rw-r--r--	root/root	usr/share/vim/menu.vim
@@ -1165,5 +1167,6 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/yacc.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/yaml.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/z8a.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/zimbu.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/zsh.vim
 -rw-r--r--	root/root	usr/share/vim/vimrc
