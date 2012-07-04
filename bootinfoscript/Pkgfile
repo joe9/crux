@@ -1,0 +1,18 @@
+# Description: searches all hard drives for booting information
+# URL:         http://sourceforge.net/projects/bootinfoscript/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  bash
+
+# got the below details from
+#  http://aur.archlinux.org/packages/bo/bootinfoscript/PKGBUILD
+name=bootinfoscript
+version=0.61
+release=1
+# source=(http://prdownloads.sourceforge.net/bootinfoscript/boot_info_script061.zip)
+source=(http://downloads.sourceforge.net/project/bootinfoscript/bootinfoscript/0.61/bootinfoscript-061.tar.gz)
+
+build () {
+   mkdir --parents $PKG/usr/bin/
+   install -D -m644 bootinfoscript $PKG/usr/bin/bootinfoscript
+   chmod +x $PKG/usr/bin/bootinfoscript
+}
