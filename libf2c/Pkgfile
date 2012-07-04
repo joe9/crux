@@ -9,8 +9,8 @@ release=1
 source=(http://www.netlib.org/f2c/$name.zip)
 
 build () {
-
    cp makefile.u makefile
+   sed -e 's/CFLAGS = -O/CFLAGS = -O -fPIC/g' makefile.u > makefile
    make hadd
    make
    make libf2c.so
