@@ -12,9 +12,6 @@ source=(http://www.kernel.org/pub/linux/utils/boot/$name/$name-$version.tar.bz2)
 build() {
   cd $name-$version
 
-  # compilation will fail with LDFLAGS
-  unset LDFLAGS
-
   # fix to install extlinux in /usr/bin
   # sed -i Makefile -e 's|SBINDIR|BINDIR|g'
 

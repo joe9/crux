@@ -4,13 +4,13 @@
 # Depends on: libpthread-stubs
 
 name=libdrm
-version=2.4.33
+version=2.4.37
 release=1
 source=(http://dri.freedesktop.org/libdrm/libdrm-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr --enable-udev --enable-nouveau-experimental-api
+    ./configure --prefix=/usr --enable-udev
     make
     make DESTDIR=$PKG install
 }

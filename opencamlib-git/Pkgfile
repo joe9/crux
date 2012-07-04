@@ -10,6 +10,9 @@ release=1
 source=()
 
 build() {
+   # unset CFLAGS
+   # unset CXXFLAGS
+   # unset LDFLAGS
    cd $PKGMK_SOURCE_DIR
 
    if cd opencamlib ; then
