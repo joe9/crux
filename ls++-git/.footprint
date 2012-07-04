@@ -1,0 +1,9 @@
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/ls++.conf
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-r-xr-xr-x	root/root	usr/bin/ls++
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man1/
+-r--r--r--	root/root	usr/man/man1/ls++.1.gz
+-r--r--r--	root/root	usr/man/man1/ls++.conf.1.gz

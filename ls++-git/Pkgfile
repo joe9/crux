@@ -1,0 +1,36 @@
+# Description: Colorized LS on steroids
+# URL: https://github.com/trapd00r/ls--/
+# Maintainer: Jose V Beneyto, sepen at crux dot nu
+# Packager: Jose V Beneyto, sepen at crux dot nu
+# Depends on: mtools perl p5-term-extendedcolor
+
+name=ls++-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd ls-- ; then
+       git pull
+   else
+       git clone -b cleanup git://github.com/trapd00r/ls--.git ls--
+   fi
+
+
+  cp -r "${PKGMK_SOURCE_DIR}/ls--" "${SRC}/ls--"
+  cd "${SRC}/ls--"
+
+   echo "no" | perl Makefile.PL
+   make OPTIMIZE="$CFLAGS"
+   make test
+
+   make DESTDIR=$PKG install
+   find ${PKG} -name .packlist -o \
+      -name perllocal.pod -o \
+      -name '*.bs' | xargs rm
+   find $PKG -depth -empty -exec rm -rf {} \;
+   # config file
+   install -Dm0644 'ls++.conf' "${PKG}/etc/ls++.conf"
+}
