@@ -1,0 +1,16 @@
+# Description: Command-line utility providing interface to Xclipboard
+# URL: http://sourceforge.net/projects/xclip
+# Maintainer: Tadeusz Sosnierz, tadzikes gmail com
+# Depends on: xorg-libxmu
+
+name=xclip
+version=0.12
+release=1
+source=(http://downloads.sourceforge.net/sourceforge/xclip/xclip-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --mandir=/usr/man
+	make
+	make DESTDIR="$PKG" install
+}
