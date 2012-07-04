@@ -1,0 +1,53 @@
+--- src/rxvtfont.C.orig	2011-07-20 22:19:29.878012201 -0300
++++ src/rxvtfont.C	2011-07-20 22:19:33.634671723 -0300
+@@ -1237,11 +1237,22 @@
+ 
+       FT_Face face = XftLockFace (f);
+ 
++/*
++ * use ascent, descent and height from XftFont *f instead of FT_Face face.
++ * this somehow reproduces the behaviour of the line height as seen on xterm.
++
+       ascent  = (face->size->metrics.ascender + 63) >> 6;
+       descent = (-face->size->metrics.descender + 63) >> 6;
+       height  = max (ascent + descent, (face->size->metrics.height + 63) >> 6);
+       width   = 0;
+ 
++ */
++
++      ascent  = f->ascent;
++      descent = f->descent;
++      height  = max (ascent + descent, f->height);
++      width   = 0;
++
+       bool scalable = face->face_flags & FT_FACE_FLAG_SCALABLE;
+ 
+       XftUnlockFace (f);
+@@ -1265,6 +1276,11 @@
+           XGlyphInfo g;
+           XftTextExtents16 (disp, f, &ch, 1, &g);
+ 
++/*
++ * don't use g.width/g.height as width/height of a character!
++ * instead use g.xOff/g.yOff.
++ * see e.g.: http://keithp.com/~keithp/render/Xft.tutorial
++
+           g.width -= g.x;
+ 
+           int wcw = WCWIDTH (ch);
+@@ -1273,6 +1289,15 @@
+           if (width    < g.width       ) width    = g.width;
+           if (height   < g.height      ) height   = g.height;
+           if (glheight < g.height - g.y) glheight = g.height - g.y;
++
++ */
++
++          int wcw = WCWIDTH (ch);
++          if (wcw > 1) g.xOff = g.xOff / wcw;
++
++          if (width    < g.xOff      ) width    = g.xOff;
++          if (height   < g.yOff      ) height   = g.yOff;
++          if (glheight < g.yOff - g.y) glheight = g.yOff - g.y;
+         }
+ 
+       if (!width)
