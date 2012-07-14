@@ -14,6 +14,7 @@ d:p5-term-extendedcolor
 d:coin
 d:binutils.gold
 d:pcb-git
+d:ghc
 d:libarea-git
 d:oce-git
 d:soxt
@@ -67,7 +68,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:81bbf74c30938c00e0c4f8288adda231:zsh_history.joe
+f:e606a2e710d6a33c4f4d253be2997b3d:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -105,6 +106,11 @@ f:8e16bd0d68ca2215ebc2b649ee6070cd:binutils.gold/.footprint
 f:e7a6098257db6c55a33f35f88307efd0:pcb-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:pcb-git/.md5sum
 f:c84568b109a5afcb2a441a31ce38d6b5:pcb-git/.footprint
+f:4adb7ee62069bf43f672f740f2143a82:ghc/build.mk
+f:0d744453ac14dd1480bbfc4d17414699:ghc/Pkgfile
+f:285fade376dc9f63aaf813f2ef693f68:ghc/README
+f:1f5c04c92ec23dcc1e688148ed7d9d19:ghc/.md5sum
+f:ea4e5b1d8908986a17aa21fb1b3b8e1d:ghc/.footprint
 f:c0ead088128dd1e91b9097ab19c0afd7:libarea-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:libarea-git/.md5sum
 f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint

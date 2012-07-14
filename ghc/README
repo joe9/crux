@@ -1,0 +1,24 @@
+NOTE
+====
+
+In order to build this, you need a bootstrapped version of ghc.
+You can find one as a binary, i686 crux package located at
+
+ARCH=`uname -m`
+CRUXVER=`crux | awk '{print $3}'`
+PKGVER=`prt-get search -v ghc | awk '{print $NF}'`
+rsync://rsync.wzff.de/crux-bin/$ARCH/$CRUXVER/haskell/ghc#$PKGVER.pkg.tar.xz
+ftp://ftp.wzff.de/pub/crux/packages/$ARCH/$CRUXVER/haskell/ghc#$PKGVER.pkg.tar.xz
+
+(please consider reading the crux-bin homepage first:
+<http://repo.barfooze.de/crux-bin/>)
+
+While you're going to install this package anyway, why bother bootstrapping
+ghc?
+
+
+use romster's package if ghc does not build
+
+10:08 < Romster> http://hvlinux.net/crux/packages/x86_64/ghc%237.4.1-1.pkg.tar.gz
+10:08 < Romster> pkgadd that
+10:08 < Romster> it's built in a chroot with x86_64
