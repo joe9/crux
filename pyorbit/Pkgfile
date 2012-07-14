@@ -1,0 +1,16 @@
+# Description: ORBit2 bindings for python
+# URL: http://www.daa.com.au/~james/pygtk
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Depends on: python, orbit2
+
+name=pyorbit
+version=2.24.0
+release=1
+source=(http://download.gnome.org/bindings/2.32/2.32.1/sources/python/$name-$version.tar.bz2)
+
+build() {
+   cd $name-$version
+   ./configure --prefix=/usr
+   make
+   make DESTDIR=$PKG install
+}
