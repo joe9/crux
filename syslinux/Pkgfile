@@ -15,6 +15,9 @@ build() {
   # fix to install extlinux in /usr/bin
   # sed -i Makefile -e 's|SBINDIR|BINDIR|g'
 
+   # -ftracer  is causing a "file format not recognized" on main
+  unset CFLAGS
+  unset CXXFLAGS
   make clean
   make OPTFLAGS="$CFLAGS" installer
   make OPTFLAGS="$CFLAGS" INSTALLROOT=$PKG install
