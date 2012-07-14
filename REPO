@@ -67,7 +67,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:85c543c583321e9f19ac194345ea5f70:zsh_history.joe
+f:81bbf74c30938c00e0c4f8288adda231:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -196,7 +196,6 @@ f:cbb31de29e703105ba388a5ac94552bf:links/.footprint
 f:ba51eef877fcc5773fd21f37dcfc8c1b:swig-1.3.40/Pkgfile
 f:00b0a0cc3f7327f4cb6aa6159c347b79:swig-1.3.40/.md5sum
 f:e2759e3d1268f6acb60acc2b14c1025b:swig-1.3.40/.footprint
-f:2df766c9e03e02811b1ab4bba1c7b9cc:swig-1.3.40/swig-1.3.40.tar.gz
 f:3605647507684ebf800c0cb8d7494f26:geda-git/Pkgfile
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
 f:d41d8cd98f00b204e9800998ecf8427e:geda-git/.md5sum
