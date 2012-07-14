@@ -35,6 +35,7 @@ d:libactp-git
 d:grub2
 d:grub-bzr
 d:openscad
+d:gobject-introspection
 d:grub2-1.98
 d:mpfi
 d:gts
@@ -44,6 +45,7 @@ d:geda-git
 d:xclip
 d:pivy-mercurial
 d:libpng
+d:pyorbit
 d:pcb2gcode-git
 d:soqt
 d:opencsg
@@ -65,7 +67,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:27696d5339eb3e21f514f3ad6bd59aad:zsh_history.joe
+f:85c543c583321e9f19ac194345ea5f70:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -175,6 +177,9 @@ f:84a4ff9a858643e987c6389bbff1dbda:grub-bzr/.footprint
 f:a0c7383c120e424d6cedd3f1a4ea3a0b:openscad/Pkgfile
 f:d31999acf77f92b6f2e68a06fde285cf:openscad/.md5sum
 f:0e48efb1b064c3194054dd5670b674f5:openscad/.footprint
+f:51fb77e4cbbe136e97235e4289d9a4f1:gobject-introspection/Pkgfile
+f:92a0807a5e30c3b68ea539009da74b43:gobject-introspection/.md5sum
+f:e70e173e49c9ee9237f6021b54439a17:gobject-introspection/.footprint
 f:dcb059962c055cb4b0a64d2dfaa0c383:grub2-1.98/zsh_history.joe
 f:70281ed382aec61a54cdc225a4c3e53f:grub2-1.98/Pkgfile
 f:b3aad8530853a90eac55f4156cf599f6:grub2-1.98/.md5sum
@@ -207,6 +212,9 @@ f:342388211966f0abaaa82fa1f8e94074:pivy-mercurial/.footprint
 f:8585a3f08dc11c5d178b28a5de0bbd2f:libpng/Pkgfile
 f:0fd87ced7e3e74c6bf0dcbef235b7d55:libpng/.md5sum
 f:0553f38c3edbd078ec3277d44fbac70a:libpng/.footprint
+f:f148b435dd2e74ebab66f794b058dcff:pyorbit/Pkgfile
+f:50d0a07b0b34864a97173bb4f10ae5a5:pyorbit/.md5sum
+f:a15ccfde3dfa9814128d5b64d1ca8e1a:pyorbit/.footprint
 f:daec76134e49748998af9c20e12346ef:pcb2gcode-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:pcb2gcode-git/.md5sum
 f:7f8ed39aac3e2eaeb367db9c096c1931:pcb2gcode-git/.footprint
@@ -216,7 +224,7 @@ f:41b8cb654adca1b8e1226b93b7b40510:soqt/.footprint
 f:1e015e9bab4ed594469278cb4d68e3d3:opencsg/Pkgfile
 f:7034f5a4adaed96b11df48d29753a91b:opencsg/.md5sum
 f:80dd96de2cef779e8a1c866d99e84a93:opencsg/.footprint
-f:24a6eb0365b2e06d716c7c8ced9cc475:syslinux/Pkgfile
+f:fb41b4fa75781e2323b0cd228d6ab2cd:syslinux/Pkgfile
 f:ef7a3728229eea112916590e97cb1859:syslinux/.md5sum
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:7a73782859051749cd1309dadfba454e:vim-mercurial/Pkgfile
