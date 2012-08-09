@@ -1,0 +1,293 @@
+From 4abf1aa84ec08e5ee15b4ee1291eac66c5963b00 Mon Sep 17 00:00:00 2001
+From: root <root@main>
+Date: Thu, 9 Aug 2012 15:57:38 -0400
+Subject: [PATCH] changed PI to M_PI to correct the compile errors about PI
+
+BUG: does not build due to
+http://sourceforge.net/apps/mantisbt/free-cad/bug_view_advanced_page.php?bug_id=749
+---
+ src/CxfFont.cpp             |  2 +-
+ src/CxfFont.h               |  8 ++++----
+ src/HAngularDimension.cpp   | 22 +++++++++++-----------
+ src/HArc.cpp                |  4 ++--
+ src/HDimension.cpp          |  2 +-
+ src/HEllipse.cpp            |  2 +-
+ src/OrientationModifier.cpp |  4 ++--
+ src/Polygon.cpp             | 12 ++++++------
+ src/RS274X.cpp              | 20 ++++++++++----------
+ 9 files changed, 38 insertions(+), 38 deletions(-)
+
+diff --git a/src/CxfFont.cpp b/src/CxfFont.cpp
+index d9cd954..7982253 100755
+--- a/src/CxfFont.cpp
++++ b/src/CxfFont.cpp
+@@ -116,7 +116,7 @@ std::list<gp_Pnt> VectorFont::Glyph::Arc::Interpolate(const gp_Pnt & location, c
+ 
+ 	if (start_angle > end_angle)
+ 	{
+-		end_angle += (2 * PI);
++		end_angle += (2 * M_PI);
+ 	}
+ 
+ 	double increment = (end_angle - start_angle) / number_of_points;
+diff --git a/src/CxfFont.h b/src/CxfFont.h
+index b81f8f4..f499a34 100755
+--- a/src/CxfFont.h
++++ b/src/CxfFont.h
+@@ -125,11 +125,11 @@ protected:
+ 		public:
+ 			Arc( const double xcentre, const double ycentre, const double radius, const double start_angle, const double end_angle ) :
+ 			  m_xcentre(xcentre), m_ycentre(ycentre), m_radius(radius),
+-				m_start_angle((start_angle / 360.0) * (2 * PI)),
+-				m_end_angle((end_angle / 360.0) * (2 * PI))
++				m_start_angle((start_angle / 360.0) * (2 * M_PI)),
++				m_end_angle((end_angle / 360.0) * (2 * M_PI))
+ 			  {
+-				if (m_start_angle < 0) m_start_angle += (2 * PI);
+-				if (m_end_angle < 0) m_end_angle += (2 * PI);
++				if (m_start_angle < 0) m_start_angle += (2 * M_PI);
++				if (m_end_angle < 0) m_end_angle += (2 * M_PI);
+ 
+ 				std::list<gp_Pnt> points = Interpolate(gp_Pnt(0.0, 0.0, 0.0), 20 );
+ 				for (std::list<gp_Pnt>::const_iterator l_itPoint = points.begin();
+diff --git a/src/HAngularDimension.cpp b/src/HAngularDimension.cpp
+index 9eeb92f..eb00662 100644
+--- a/src/HAngularDimension.cpp
++++ b/src/HAngularDimension.cpp
+@@ -151,21 +151,21 @@ void HAngularDimension::glCommands(bool select, bool marked, bool no_color)
+ 
+ 
+ 		//Figure out if which way the lines should be pointing
+-		while(a1 - ca > PI)
+-			a1 -= PI;
+-		while(a1 - ca < -PI)
+-			a1 += PI;
+-		while(a2 - ca > PI)
+-			a2 -= PI;
+-		while(a2 - ca < -PI)
+-			a2 += PI;
++		while(a1 - ca > M_PI)
++			a1 -= M_PI;
++		while(a1 - ca < -M_PI)
++			a1 += M_PI;
++		while(a2 - ca > M_PI)
++			a2 -= M_PI;
++		while(a2 - ca < -M_PI)
++			a2 += M_PI;
+ 
+ 
+ 		//Need to find DA and compensate for the 2*Pi period of atan2
+ 		double da = a2 - a1;
+-		while(da > PI)
++		while(da > M_PI)
+ 			da -= 2*Pi;
+-		while(da < -PI)
++		while(da < -M_PI)
+ 			da += 2*Pi;
+ 
+ 		// double ma = a1 + da/2;
+@@ -195,7 +195,7 @@ void HAngularDimension::glCommands(bool select, bool marked, bool no_color)
+ 		}
+ 		else
+ 		{
+-			double offset = da > 0? PI/20 : -PI/20;
++			double offset = da > 0? M_PI/20 : -M_PI/20;
+ 			if((ca < a1) ^ (da < 0))
+ 			{
+ 				DrawArc(pnt,r,ca,a1);
+diff --git a/src/HArc.cpp b/src/HArc.cpp
+index dd908aa..15adefe 100644
+--- a/src/HArc.cpp
++++ b/src/HArc.cpp
+@@ -797,12 +797,12 @@ double HArc::IncludedAngle()const
+ 	int dir = (this->m_axis.Direction().Z() > 0) ? 1:-1;
+ 	if(inc_ang > 1. - 1.0e-10) return 0;
+ 	if(inc_ang < -1. + 1.0e-10)
+-		inc_ang = PI;  
++		inc_ang = M_PI;  
+ 	else {									// dot product,   v1 . v2  =  cos ang
+ 		if(inc_ang > 1.0) inc_ang = 1.0;
+ 		inc_ang = acos(inc_ang);									// 0 to pi radians
+ 
+-		if(dir * (vs ^ ve).Z() < 0) inc_ang = 2 * PI - inc_ang ;		// cp
++		if(dir * (vs ^ ve).Z() < 0) inc_ang = 2 * M_PI - inc_ang ;		// cp
+ 	}
+ 	return dir * inc_ang;
+ }
+diff --git a/src/HDimension.cpp b/src/HDimension.cpp
+index bf7e1b6..86df8eb 100644
+--- a/src/HDimension.cpp
++++ b/src/HDimension.cpp
+@@ -207,7 +207,7 @@ void HDimension::RenderText(const wxString &text, const gp_Pnt& p, const gp_Dir&
+ 			model_view, projection, viewport,
+ 			&x, &y, &z);
+ 
+-		wxGetApp().render_screen_text_at(text, scale*8,x,y,atan2(xdir.Y(),xdir.X()) * 180 / PI);
++		wxGetApp().render_screen_text_at(text, scale*8,x,y,atan2(xdir.Y(),xdir.X()) * 180 / M_PI);
+ 	}
+ 	else
+ 	{
+diff --git a/src/HEllipse.cpp b/src/HEllipse.cpp
+index caec3a6..e51424d 100644
+--- a/src/HEllipse.cpp
++++ b/src/HEllipse.cpp
+@@ -543,7 +543,7 @@ void HEllipse::LoadFromDoubles()
+ 		double t = m_majr;
+ 		m_majr = m_minr;
+ 		m_minr = t;
+-		SetRotation(m_rot+PI/2);
++		SetRotation(m_rot+M_PI/2);
+ 	}
+ 	else
+ 		SetRotation(m_rot);
+diff --git a/src/OrientationModifier.cpp b/src/OrientationModifier.cpp
+index 6bcb69c..591a319 100644
+--- a/src/OrientationModifier.cpp
++++ b/src/OrientationModifier.cpp
+@@ -478,14 +478,14 @@ gp_Pnt & COrientationModifier::Transform(gp_Trsf existing_transformation, const
+ 				{
+ 				    for (int i=0; i<m_params.m_number_of_rotations; i++)
+ 				    {
+-				        angle += (PI / 2.0);
++				        angle += (M_PI / 2.0);
+ 				    }
+ 				}
+ 				else
+ 				{
+ 				    for (int i=m_params.m_number_of_rotations; i<0; i++)
+ 				    {
+-				        angle -= (PI / 2.0);
++				        angle -= (M_PI / 2.0);
+ 				    }
+ 				}
+ 
+diff --git a/src/Polygon.cpp b/src/Polygon.cpp
+index 16bdfcd..1c391a0 100644
+--- a/src/Polygon.cpp
++++ b/src/Polygon.cpp
+@@ -38,8 +38,8 @@ double VecAngle(gp_Vec v1, gp_Vec v2)
+ 	double v1a = atan2(v1.Y(), v1.X());
+ 	double v2a = atan2(v2.Y(), v2.X());
+ 	double angle = v2a - v1a;
+-	if(angle <= -PI) angle += PI*2;
+-	else if(angle > PI) angle -= PI*2;
++	if(angle <= -M_PI) angle += M_PI*2;
++	else if(angle > M_PI) angle -= M_PI*2;
+ 	return angle;
+ }
+ 
+@@ -1520,8 +1520,8 @@ bool UnionPolygons_old(std::list<CPolygon> & polygons_list,
+ 				double v1a = atan2(v1.Y(), v1.X());
+ 				double v2a = atan2(v2.Y(), v2.X());
+ 				double angle = v2a - v1a;
+-				if(angle <= -PI) angle += PI*2;
+-				else if(angle > PI) angle -= PI*2;
++				if(angle <= -M_PI) angle += M_PI*2;
++				else if(angle > M_PI) angle -= M_PI*2;
+ 				if(UPODEBUG)std::cout<<"\t angle="<<angle<<std::endl;
+ 				
+ 				//if the end of the intersecting line is equal to the
+@@ -1548,8 +1548,8 @@ bool UnionPolygons_old(std::list<CPolygon> & polygons_list,
+ 						gp_Vec v3(a2, a3);
+ 						double v3a = atan2(v3.Y(), v3.X());
+ 						double angle = v3a - v2a;
+-						if(angle <= -PI) angle += PI*2;
+-						else if(angle > PI) angle -= PI*2;
++						if(angle <= -M_PI) angle += M_PI*2;
++						else if(angle > M_PI) angle -= M_PI*2;
+ 						if(UPODEBUG)std::cout<<"\t angle="<<angle<<std::endl;
+ 						if(angle < 0.0000000001){
+ 							if(UPODEBUG)std::cout<<"\t line not useful: turns to right or doesn't turn"<<std::endl;
+diff --git a/src/RS274X.cpp b/src/RS274X.cpp
+index f7dfba7..309cb72 100644
+--- a/src/RS274X.cpp
++++ b/src/RS274X.cpp
+@@ -1429,7 +1429,7 @@ void RS274X::DrawCentrelines()
+ 				double mirror[16];
+ 				gp_Ax1 mirror_axis = gp_Ax1(gp_Pnt(0,0,0), gp_Dir(1,0,0));
+ 				gp_Trsf rotation;
+-				rotation.SetRotation( mirror_axis, PI );
++				rotation.SetRotation( mirror_axis, M_PI );
+ 				extract(rotation, mirror);
+ 				object->ModifyByMatrix(mirror);
+ 			}
+@@ -1450,7 +1450,7 @@ void RS274X::DrawCentrelines()
+ 					double mirror[16];
+ 					gp_Ax1 mirror_axis = gp_Ax1(gp_Pnt(0,0,0), gp_Dir(1,0,0));
+ 					gp_Trsf rotation;
+-					rotation.SetRotation( mirror_axis, PI );
++					rotation.SetRotation( mirror_axis, M_PI );
+ 					extract(rotation, mirror);
+ 					object->ModifyByMatrix(mirror);
+ 				}
+@@ -1580,7 +1580,7 @@ int RS274X::FormNetworks()
+ 				double mirror[16];
+ 				gp_Ax1 mirror_axis = gp_Ax1(gp_Pnt(0,0,0), gp_Dir(1,0,0));
+ 				gp_Trsf rotation;
+-				rotation.SetRotation( mirror_axis, PI );
++				rotation.SetRotation( mirror_axis, M_PI );
+ 				extract(rotation, mirror);
+ 				sketch->ModifyByMatrix(mirror);
+ 			}
+@@ -1607,7 +1607,7 @@ int RS274X::FormNetworks()
+ 			double mirror[16];
+ 			gp_Ax1 mirror_axis = gp_Ax1(gp_Pnt(0,0,0), gp_Dir(1,0,0));
+ 			gp_Trsf rotation;
+-			rotation.SetRotation( mirror_axis, PI );
++			rotation.SetRotation( mirror_axis, M_PI );
+ 			extract(rotation, mirror);
+ 			sketch->ModifyByMatrix(mirror);
+ 		}
+@@ -1961,7 +1961,7 @@ gp_Lin RS274X::Trace::Line() const
+     gp_Vec reference( 0, 0, 1 );    // Looking from the top down.
+ 
+     double angle = vector1.AngleWithRef( vector2, reference );
+-    while (angle < minimum_angle) angle += (2 * PI);
++    while (angle < minimum_angle) angle += (2 * M_PI);
+     return(angle);
+ }
+ 
+@@ -2006,21 +2006,21 @@ double RS274X::Trace::Length() const
+ 			if ((abs(m_i_term) < m_tolerance) && (abs(m_j_term) < m_tolerance) && (Radius() > m_tolerance))
+ 			{
+ 				// It's a full circle.
+-				return(2.0 * PI * Radius());
++				return(2.0 * M_PI * Radius());
+ 			} // End if - then
+ 			else
+ 			{
+ 				if ((Start().Distance(End()) < 0.000001) && (Radius() < 0.00001)) return(0.0);
+ 
+ 				double arc_angle = EndAngle() - StartAngle();
+-				double arc_length = (arc_angle / (2.0 * PI)) * (2.0 * PI * Radius());
++				double arc_length = (arc_angle / (2.0 * M_PI)) * (2.0 * M_PI * Radius());
+ 				return(abs(arc_length));
+ 			} // End if - else
+ 			break;
+ 
+ 		case eFlash:
+ 		default:
+-			return( 2.0 * PI * Radius() );
++			return( 2.0 * M_PI * Radius() );
+ 	} // End switch
+ } // End Length() method
+ 
+@@ -2210,13 +2210,13 @@ TopoDS_Face RS274X::Trace::Face() const
+ 				gp_Pnt p1 = Start().Translated(vx*radius*cos(StartAngle())+vy*radius*sin(StartAngle()));
+ 
+ 				radius = (m_aperture.OutsideDiameter()/2.0);
+-				gp_Pnt p2 = Start().Translated(vx*radius*cos(StartAngle() + PI)+vy*radius*sin(StartAngle() + PI));
++				gp_Pnt p2 = Start().Translated(vx*radius*cos(StartAngle() + M_PI)+vy*radius*sin(StartAngle() + M_PI));
+ 
+ 				radius = (m_aperture.OutsideDiameter()/2.0);
+ 				gp_Pnt p3 = End().Translated(vx*radius*cos(EndAngle())+vy*radius*sin(EndAngle()));
+ 
+ 				radius = (m_aperture.OutsideDiameter()/2.0);
+-				gp_Pnt p4 = End().Translated(vx*radius*cos(EndAngle() + PI)+vy*radius*sin(EndAngle() + PI));
++				gp_Pnt p4 = End().Translated(vx*radius*cos(EndAngle() + M_PI)+vy*radius*sin(EndAngle() + M_PI));
+ 
+ 				gp_Dir dir1, dir2;
+ 
+-- 
+1.7.11.2
+

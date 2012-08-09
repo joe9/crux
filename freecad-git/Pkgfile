@@ -25,8 +25,8 @@ build() {
 
    cd build
 
-   BUG: does not build due to
-   http://sourceforge.net/apps/mantisbt/free-cad/bug_view_advanced_page.php?bug_id=749
+   # BUG: does not build due to
+   # http://sourceforge.net/apps/mantisbt/free-cad/bug_view_advanced_page.php?bug_id=749
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
    make

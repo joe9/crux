@@ -1,0 +1,330 @@
+From 30da22e2862175ae3471c06ee387619df32861a7 Mon Sep 17 00:00:00 2001
+From: root <root@main>
+Date: Thu, 9 Aug 2012 16:36:30 -0400
+Subject: [PATCH] changed PI to M_PI to correct compile errors
+
+---
+ src/CTool.cpp       | 14 +++++++-------
+ src/Chamfer.cpp     |  8 ++++----
+ src/CounterBore.cpp |  2 +-
+ src/DepthOp.cpp     |  2 +-
+ src/Inlay.cpp       | 32 ++++++++++++++++----------------
+ src/Inlay.h         |  2 +-
+ src/NCCode.cpp      |  4 ++--
+ src/Profile.cpp     |  2 +-
+ src/SpeedOp.cpp     |  2 +-
+ 9 files changed, 34 insertions(+), 34 deletions(-)
+
+diff --git a/src/CTool.cpp b/src/CTool.cpp
+index 507cab3..5f968bb 100644
+--- a/src/CTool.cpp
++++ b/src/CTool.cpp
+@@ -336,7 +336,7 @@ void CTool::SetDiameter( const double diameter )
+             // and the cutting angle.
+ 
+             double opposite = (m_params.m_diameter / 2.0) - m_params.m_flat_radius;
+-            double angle = m_params.m_cutting_edge_angle / 360.0 * 2 * PI;
++            double angle = m_params.m_cutting_edge_angle / 360.0 * 2 * M_PI;
+ 
+             m_params.m_cutting_edge_height = opposite / tan(angle);
+ 	    }
+@@ -485,7 +485,7 @@ static void on_set_gradient(double value, HeeksObj* object)
+ 
+ static double degrees_to_radians( const double degrees )
+ {
+-	return( (degrees / 360) * 2 * PI );
++	return( (degrees / 360) * 2 * M_PI );
+ } // End degrees_to_radians() routine
+ 
+ 
+@@ -649,7 +649,7 @@ static void on_set_flat_radius(double value, HeeksObj* object)
+ 		// and the cutting angle.
+ 
+ 		double opposite = ((CTool*)object)->m_params.m_diameter - ((CTool*)object)->m_params.m_flat_radius;
+-		double angle = ((CTool*)object)->m_params.m_cutting_edge_angle / 360.0 * 2 * PI;
++		double angle = ((CTool*)object)->m_params.m_cutting_edge_angle / 360.0 * 2 * M_PI;
+ 
+ 		((CTool*)object)->m_params.m_cutting_edge_height = opposite / tan(angle);
+ 	}
+@@ -673,7 +673,7 @@ static void on_set_cutting_edge_angle(double value, HeeksObj* object)
+ 		// and the cutting angle.
+ 
+ 		double opposite = ((CTool*)object)->m_params.m_diameter - ((CTool*)object)->m_params.m_flat_radius;
+-		double angle = ((CTool*)object)->m_params.m_cutting_edge_angle / 360.0 * 2 * PI;
++		double angle = ((CTool*)object)->m_params.m_cutting_edge_angle / 360.0 * 2 * M_PI;
+ 
+ 		((CTool*)object)->m_params.m_cutting_edge_height = opposite / tan(angle);
+ 	}
+@@ -1811,7 +1811,7 @@ TopoDS_Shape CTool::GetShape() const
+ 			BRepPrimAPI_MakeCylinder shaft( shaft_position_and_orientation, (diameter / 2) * ((m_params.m_type == CToolParams::eEngravingTool) ? 1.0 : 0.5), shaft_length );
+ 
+ 			// And a cone for the tip.
+-			// double cutting_edge_angle_in_radians = ((m_params.m_cutting_edge_angle / 2) / 360) * (2 * PI);
++			// double cutting_edge_angle_in_radians = ((m_params.m_cutting_edge_angle / 2) / 360) * (2 * M_PI);
+ 			gp_Ax2 tip_position_and_orientation( shaft_start_location, gp_Dir(0,0,-1) );
+ 
+ 			BRepPrimAPI_MakeCone tool_tip( tip_position_and_orientation,
+@@ -2026,7 +2026,7 @@ Python CTool::OCLDefinition(CAttachOp* attach_op) const
+ 
+ 		case CToolParams::eChamfer:
+ 		case CToolParams::eEngravingTool:
+-			python << _T("ocl.CylConeCutter(float(") << m_params.m_flat_radius * 2 + attach_op->m_material_allowance << _T("), float(") << m_params.m_diameter + attach_op->m_material_allowance * 2 << _T("), float(") << m_params.m_cutting_edge_angle * PI/360 << _T("))\n");
++			python << _T("ocl.CylConeCutter(float(") << m_params.m_flat_radius * 2 + attach_op->m_material_allowance << _T("), float(") << m_params.m_diameter + attach_op->m_material_allowance * 2 << _T("), float(") << m_params.m_cutting_edge_angle * M_PI/360 << _T("))\n");
+ 			break;
+ 
+ 		default:
+@@ -2162,7 +2162,7 @@ double CTool::CuttingRadius( const bool express_in_drawing_units /* = false */,
+ 			    }
+ 			    else
+ 			    {
+-			        radius = m_params.m_flat_radius + (depth * tan((m_params.m_cutting_edge_angle / 360.0 * 2 * PI)));
++			        radius = m_params.m_flat_radius + (depth * tan((m_params.m_cutting_edge_angle / 360.0 * 2 * M_PI)));
+ 			        if (radius > (m_params.m_diameter / 2.0))
+ 			        {
+ 			            // The angle and depth would have us cutting larger than our largest diameter.
+diff --git a/src/Chamfer.cpp b/src/Chamfer.cpp
+index a2747c7..94fb10c 100644
+--- a/src/Chamfer.cpp
++++ b/src/Chamfer.cpp
+@@ -548,7 +548,7 @@ std::list<double> CChamfer::GetProfileChamferingDepths(HeeksObj *child) const
+ 			// how deep we can go before the chamfering bit just touches the edges of the
+ 			// profile.
+ 
+-			double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * PI;
++			double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * M_PI;
+ 			double radius = pProfileTool->m_params.m_diameter / 2.0;
+ 			double depth = radius / tan(theta);
+ 			depths.push_back( pDepthOp->m_depth_op_params.m_start_depth - depth );
+@@ -673,7 +673,7 @@ Python CChamfer::AppendTextForProfileChildren(
+ 
+ 						// Now move the tool slightly less than this offset so that the chamfering width is
+ 						// produced.
+-						double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * PI;
++						double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * M_PI;
+ 						radius -= this->m_params.m_chamfer_width * sin(theta);
+ 
+ 						switch (child->GetType())
+@@ -807,7 +807,7 @@ Python CChamfer::AppendTextToProgram(CMachineState *pMachineState)
+ 	}
+ 
+ 	// How deep do we have to plunge in order to cut this width of chamfer?
+-	double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * PI;	// in radians.
++	double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * M_PI;	// in radians.
+ 
+ 
+ 
+@@ -924,4 +924,4 @@ bool CChamfer::operator== ( const CChamfer & rhs ) const
+ 	return(CDepthOp::operator==(rhs));
+ }
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/src/CounterBore.cpp b/src/CounterBore.cpp
+index 24de395..72b56b5 100755
+--- a/src/CounterBore.cpp
++++ b/src/CounterBore.cpp
+@@ -176,7 +176,7 @@ Python CCounterBore::GenerateGCodeForOneLocation( const CNCPoint & location, con
+ 			// Use the gradient of the cutting tool to determine how many circles need to
+ 			// be made before we have stepped down appropriately.
+ 
+-			double circumference = 2.0 * PI * radius_of_spiral;
++			double circumference = 2.0 * M_PI * radius_of_spiral;
+ 			double gradient = fabs(pTool->m_params.m_gradient);
+ 
+ 			// If the gradient would have us cutting too deep in one circumference, reduce the
+diff --git a/src/DepthOp.cpp b/src/DepthOp.cpp
+index 2b9e38d..1f7aded 100644
+--- a/src/DepthOp.cpp
++++ b/src/DepthOp.cpp
+@@ -54,7 +54,7 @@ void CDepthOp::ReloadPointers()
+ 
+ static double degrees_to_radians( const double degrees )
+ {
+-	return( (degrees / 360.0) * (2 * PI) );
++	return( (degrees / 360.0) * (2 * M_PI) );
+ } // End degrees_to_radians() routine
+ 
+ /**
+diff --git a/src/Inlay.cpp b/src/Inlay.cpp
+index fb45902..5866311 100755
+--- a/src/Inlay.cpp
++++ b/src/Inlay.cpp
+@@ -487,28 +487,28 @@ double CInlay::CornerAngle( const std::set<CNCVector> _vectors ) const
+ 		double angle1 = vectors[0].AngleWithRef( gp_Vec(1,0,0), reference );
+ 		double angle2 = vectors[1].AngleWithRef( gp_Vec(1,0,0), reference );
+ 
+-		while (angle1 < 0) angle1 += (2.0 * PI);
+-		while (angle2 < 0) angle2 += (2.0 * PI);
++		while (angle1 < 0) angle1 += (2.0 * M_PI);
++		while (angle2 < 0) angle2 += (2.0 * M_PI);
+ 
+ 		double mid_angle;
+ 		if (angle1 < angle2)
+ 		{
+ 			mid_angle = ((angle2 - angle1) / 2.0) + angle1;
+-			if ((angle2 - angle1) > PI) mid_angle += PI;
++			if ((angle2 - angle1) > M_PI) mid_angle += M_PI;
+ 		}
+ 		else
+ 		{
+ 			mid_angle = ((angle1 - angle2) / 2.0) + angle2;
+-			if ((angle1 - angle2) > PI) mid_angle += PI;
++			if ((angle1 - angle2) > M_PI) mid_angle += M_PI;
+ 		}
+ 
+ 		// At this point mid_angle points back towards the centre of the shape half way
+ 		// between the two edges at this point.  We actually want to look back towards
+-		// a larger shape so add PI to this mid_angle to point back out away from the
++		// a larger shape so add M_PI to this mid_angle to point back out away from the
+ 		// middle.
+ 
+-		mid_angle += PI;
+-		while (mid_angle > (2.0 * PI)) mid_angle -= (2.0 * PI);
++		mid_angle += M_PI;
++		while (mid_angle > (2.0 * M_PI)) mid_angle -= (2.0 * M_PI);
+ 
+ 		return(mid_angle);
+ 	} // End if - then
+@@ -532,7 +532,7 @@ CInlay::Corners_t CInlay::FindSimilarCorners( const CNCPoint coordinate, CInlay:
+ 	{
+ 		std::set<CNCVector> vs;
+ 		vs.insert( gp_Vec(1,0,0) ); vs.insert( gp_Vec(0,1,0) );
+-		double angle = CornerAngle( vs ) / (2.0 * PI) * 360.0;
++		double angle = CornerAngle( vs ) / (2.0 * M_PI) * 360.0;
+ 		if (fabs(angle - (45.0 + 180.0)) > tolerance)
+ 		{
+ 			bool badthings = true;
+@@ -542,7 +542,7 @@ CInlay::Corners_t CInlay::FindSimilarCorners( const CNCPoint coordinate, CInlay:
+ 	{
+ 		std::set<CNCVector> vs;
+ 		vs.insert( gp_Vec(-1,0,0) ); vs.insert( gp_Vec(0,1,0) );
+-		double angle = CornerAngle( vs ) / (2.0 * PI) * 360.0;
++		double angle = CornerAngle( vs ) / (2.0 * M_PI) * 360.0;
+ 		if (fabs(angle - (135.0 + 180.0)) > tolerance)
+ 		{
+ 			bool badthings = true;
+@@ -552,7 +552,7 @@ CInlay::Corners_t CInlay::FindSimilarCorners( const CNCPoint coordinate, CInlay:
+ 	{
+ 		std::set<CNCVector> vs;
+ 		vs.insert( gp_Vec(1,0,0) ); vs.insert( gp_Vec(0,-1,0) );
+-		double angle = CornerAngle( vs ) / (2.0 * PI) * 360.0;
++		double angle = CornerAngle( vs ) / (2.0 * M_PI) * 360.0;
+ 		if (fabs(angle - 135.0) > tolerance)
+ 		{
+ 			bool badthings = true;
+@@ -562,7 +562,7 @@ CInlay::Corners_t CInlay::FindSimilarCorners( const CNCPoint coordinate, CInlay:
+ 	{
+ 		std::set<CNCVector> vs;
+ 		vs.insert( gp_Vec(-1,0,0) ); vs.insert( gp_Vec(0,-1,0) );
+-		double angle = CornerAngle( vs ) / (2.0 * PI) * 360.0;
++		double angle = CornerAngle( vs ) / (2.0 * M_PI) * 360.0;
+ 		if (fabs(angle - 45.0) > tolerance)
+ 		{
+ 			bool badthings = true;
+@@ -599,7 +599,7 @@ CInlay::Corners_t CInlay::FindSimilarCorners( const CNCPoint coordinate, CInlay:
+ 		// Rotate that line down (around the Y axis) so that it aligns with the cutting edge
+ 		// of the chamfering bit.
+ 		gp_Trsf rotate_to_match_tool;
+-		rotate_to_match_tool.SetRotation( gp_Ax1(gp_Pnt(0,0,0), gp_Dir(0,-1,0)), (-90.0 - pChamferingBit->m_params.m_cutting_edge_angle) / 360.0 * 2.0 * PI );
++		rotate_to_match_tool.SetRotation( gp_Ax1(gp_Pnt(0,0,0), gp_Dir(0,-1,0)), (-90.0 - pChamferingBit->m_params.m_cutting_edge_angle) / 360.0 * 2.0 * M_PI );
+ 		endpoint.Transform(rotate_to_match_tool);
+ 
+ 		// Now rotate the line around so that it aligns with the bisecting angle between
+@@ -680,7 +680,7 @@ bool CInlay::CornerNeedsSharpenning(Corners_t::iterator itCorner) const
+ 		return(false);
+ 	}
+ 
+-    double min_cornering_angle_in_radians = (m_params.m_min_cornering_angle / 360.0) * (2.0 * PI);
++    double min_cornering_angle_in_radians = (m_params.m_min_cornering_angle / 360.0) * (2.0 * M_PI);
+     double angle = vectors[0].AngleWithRef(vectors[1], reference);
+ 
+     return fabs(angle) < min_cornering_angle_in_radians;
+@@ -942,7 +942,7 @@ CInlay::Valleys_t CInlay::DefineValleys(CMachineState *pMachineState)
+                     // we need to move sideways by half the chamfering bit's diameter until we hit the
+                     // outer edge.
+ 
+-                    double angle = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * PI;
++                    double angle = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * M_PI;
+                     double max_offset = (m_depth_op_params.m_start_depth - m_depth_op_params.m_final_depth) * tan(angle);
+ 
+                     // If this is too far for this sketch's geometry, figure out what the maximum offset is.
+@@ -1338,7 +1338,7 @@ Python CInlay::FormMountainPockets( CInlay::Valleys_t valleys, CMachineState *pM
+             gp_Trsf rotation;
+             TopoDS_Wire tool_path_wire(itPath->Wire());
+ 
+-            rotation.SetRotation( mirror_axis, PI );
++            rotation.SetRotation( mirror_axis, M_PI );
+             BRepBuilderAPI_Transform rotate(rotation);
+             rotate.Perform(tool_path_wire, false);
+             tool_path_wire = TopoDS::Wire(rotate.Shape());
+@@ -1630,7 +1630,7 @@ Python CInlay::FormMountainWalls( CInlay::Valleys_t valleys, CMachineState *pMac
+             gp_Trsf rotation;
+             TopoDS_Wire top_level_wire(itPath->Wire());
+ 
+-            rotation.SetRotation( mirror_axis, PI );
++            rotation.SetRotation( mirror_axis, M_PI );
+             BRepBuilderAPI_Transform rotate(rotation);
+             rotate.Perform(top_level_wire, false);
+             top_level_wire = TopoDS::Wire(rotate.Shape());
+diff --git a/src/Inlay.h b/src/Inlay.h
+index a480eea..98267d7 100755
+--- a/src/Inlay.h
++++ b/src/Inlay.h
+@@ -243,7 +243,7 @@ public:
+ 		if (CTool::Find(tool_number))
+ 		{
+ 		    CTool *pChamferingBit = CTool::Find(tool_number);
+-		    double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * PI;
++		    double theta = pChamferingBit->m_params.m_cutting_edge_angle / 360.0 * 2.0 * M_PI;
+ 		    double radius = pChamferingBit->m_params.m_diameter / 2.0;
+ 		    m_depth_op_params.m_step_down = radius / tan(theta);
+ 		}
+diff --git a/src/NCCode.cpp b/src/NCCode.cpp
+index e1012e8..d165c1a 100644
+--- a/src/NCCode.cpp
++++ b/src/NCCode.cpp
+@@ -156,7 +156,7 @@ bool PathArc::IsIncluded(gp_Pnt pnt,const PathObject* prev_po)
+ 		return true;
+ 
+ 	double the_angle = atan2(pnt.Y(),pnt.X());
+-	double the_angle2 = the_angle + 2*PI;
++	double the_angle2 = the_angle + 2*M_PI;
+ 	return (the_angle >= start_angle && the_angle <= end_angle) || (the_angle2 >= start_angle && the_angle2 <= end_angle);
+ }
+ 
+@@ -275,7 +275,7 @@ std::list<gp_Pnt> PathArc::Interpolate( const PathObject *prev_po, const unsigne
+ 	if (start_angle == end_angle)
+ 	{
+ 		// It's a full circle.
+-		angle_step = (2 * PI) / number_of_points;
++		angle_step = (2 * M_PI) / number_of_points;
+ 		if (m_dir == -1)
+ 		{
+ 			angle_step = -angle_step; // fix preview of full cw arcs
+diff --git a/src/Profile.cpp b/src/Profile.cpp
+index 9f9d112..8829d76 100755
+--- a/src/Profile.cpp
++++ b/src/Profile.cpp
+@@ -756,7 +756,7 @@ Python CProfile::AppendTextForOneSketch(HeeksObj* object, CMachineState *pMachin
+ 		{
+ 			if(!tags_cleared)python << _T("kurve_funcs.clear_tags()\n");
+ 			tags_cleared = true;
+-			python << _T("kurve_funcs.add_tag(area.Point(") << tag->m_pos[0] / theApp.m_program->m_units << _T(", ") << tag->m_pos[1] / theApp.m_program->m_units << _T("), ") << tag->m_width / theApp.m_program->m_units << _T(", ") << tag->m_angle * PI/180 << _T(", ") << tag->m_height / theApp.m_program->m_units << _T(")\n");
++			python << _T("kurve_funcs.add_tag(area.Point(") << tag->m_pos[0] / theApp.m_program->m_units << _T(", ") << tag->m_pos[1] / theApp.m_program->m_units << _T("), ") << tag->m_width / theApp.m_program->m_units << _T(", ") << tag->m_angle * M_PI/180 << _T(", ") << tag->m_height / theApp.m_program->m_units << _T(")\n");
+ 		}
+         //extend_at_start, extend_at_end
+         python << _T("extend_at_start= ") << m_profile_params.m_extend_at_start / theApp.m_program->m_units << _T("\n");
+diff --git a/src/SpeedOp.cpp b/src/SpeedOp.cpp
+index 022d92f..658b196 100644
+--- a/src/SpeedOp.cpp
++++ b/src/SpeedOp.cpp
+@@ -137,7 +137,7 @@ void CSpeedOpParams::ResetSpeeds(const int tool_number)
+ 			{
+                 if (pTool->m_params.m_diameter > 0)
+                 {
+-                    m_spindle_speed = (surface_speed * 1000.0) / (PI * pTool->m_params.m_diameter);
++                    m_spindle_speed = (surface_speed * 1000.0) / (M_PI * pTool->m_params.m_diameter);
+                     m_spindle_speed = floor(m_spindle_speed);	// Round down to integer
+                 } // End if - then
+ 			} // End if - then
