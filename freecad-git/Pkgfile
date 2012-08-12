@@ -14,22 +14,41 @@ source=()
 build() {
    cd $PKGMK_SOURCE_DIR
 
+   # export CFLAGS="-ggdb -g"
+   # export CXXFLAGS="${CFLAGS}"
+   # export LDFLAGS=" -g "
+
    if cd freecad ; then
        git pull
-       # rm -rf build
    else
       git clone git://free-cad.git.sourceforge.net/gitroot/free-cad/free-cad freecad
       cd freecad
       mkdir build
    fi
 
+   # doing this as this line during exportStep causes a segmentation fault
+   # Denis was able to replicate it and will fix it.
+   cp src/Mod/Part/App/TopoShape.cpp src/Mod/Part/App/TopoShape.cpp.orig
+   sed -i \
+      -e 's,aWriter.WS()->MapReader()->SetProgress(pi);,// aWriter.WS()->MapReader()->SetProgress(pi);,g' \
+      src/Mod/Part/App/TopoShape.cpp
    cd build
 
    # BUG: does not build due to
    # http://sourceforge.net/apps/mantisbt/free-cad/bug_view_advanced_page.php?bug_id=749
 
-   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ ..
+   # CMakeCache.txt:// CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel
+   # Debug build just builds the package, does not install it.
+
+   # NOTE install this with -ns (no stripping), the pkgmk strips
+   #  files automatically
+   #  prt-get depinst -ns freecad-git
+
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+         ../
    make
    make DESTDIR=$PKG install
    rm -rf $PKG/usr/doc
+   mv ../src/Mod/Part/App/TopoShape.cpp.orig ../src/Mod/Part/App/TopoShape.cpp
 }

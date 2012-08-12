@@ -14712,7 +14712,7 @@ lrwxrwxrwx	root/root	usr/lib/libTKernel.so -> libTKernel.so.3
 lrwxrwxrwx	root/root	usr/lib/libTKernel.so.3 -> libTKernel.so.3.0.0
 -rwxr-xr-x	root/root	usr/lib/libTKernel.so.3.0.0
 drwxr-xr-x	root/root	usr/lib/oce-0.10-dev/
--rw-r--r--	root/root	usr/lib/oce-0.10-dev/OCE-libraries-release.cmake
+-rw-r--r--	root/root	usr/lib/oce-0.10-dev/OCE-libraries-relwithdebinfo.cmake
 -rw-r--r--	root/root	usr/lib/oce-0.10-dev/OCE-libraries.cmake
 -rw-r--r--	root/root	usr/lib/oce-0.10-dev/OCEConfig.cmake
 -rw-r--r--	root/root	usr/lib/oce-0.10-dev/OCEConfigVersion.cmake
