@@ -16,11 +16,16 @@ build() {
        git pull
    else
       git clone git://github.com/Heeks/libarea.git libarea
+      # svn checkout http://libarea.googlecode.com/svn/trunk/ libarea
       cd libarea
    fi
 
+   cp PythonStuff.cpp PythonStuff.cpp.original
+   sed -i -e's/<CBox>("Box")/<CBox>("Box2D")/g' \
+          -e's/CBox/CBox2D/g' PythonStuff.cpp
    make clean
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
    make
    make DESTDIR=$PKG install
+   mv PythonStuff.cpp.original PythonStuff.cpp
 }
