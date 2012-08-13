@@ -74,7 +74,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:9d143c2b9eae03c20b1c5768946f375f:zsh_history.joe
+f:7d8ae509df56741ffc214758b343bd27:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -155,7 +155,7 @@ f:5fafd5baabd127f7fe65b71baac15c27:libf2c/.footprint
 f:aa811eee39abfae97f02363ba0b2262b:syslinux-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:syslinux-git/.md5sum
 f:4a1d60083f1e07cc91a9de753b8d3104:syslinux-git/.footprint
-f:895080f5cf957cc7c376209456cd5f31:heekscad-svn/Pkgfile
+f:8b370e75c28e954c6f5de4631170654a:heekscad-svn/Pkgfile
 f:b68b3dc2cfb36cf66136c39dd6e2c641:heekscad-svn/.md5sum
 f:c6c6d5defdd785615494cde82d016bad:heekscad-svn/.footprint
 f:290b8ffe9b23cebdd3d81df90c458133:heekscad-svn/CMakeLists.txt

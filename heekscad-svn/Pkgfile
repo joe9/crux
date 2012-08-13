@@ -17,14 +17,11 @@ build() {
       svn update
       cd libarea
       svn update
-      cd ../heekscnc/
-      svn update
       cd ..
    else
       svn checkout http://heekscad.googlecode.com/svn/trunk/ heekscad-svn
       cd heekscad-svn
       svn checkout http://libarea.googlecode.com/svn/trunk/ libarea
-      svn checkout http://heekscnc.googlecode.com/svn/trunk/ heekscnc
    fi
 
    cp --archive $PKGMK_SOURCE_DIR/heekscad-git/sketchsolve \
