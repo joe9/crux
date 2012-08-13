@@ -1,0 +1,56 @@
+# Description: open source, 3D CAD application with extensive CAM features
+# URL:         http://heeks.net/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  cmake git wxgtk gtkglext python boost-jam oce-git \
+#              opencamlib-git libactp-git libarea-git heekscad-git
+
+name=heekscad-svn
+version=svn
+release=1
+source=(CMakeLists.txt)
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd heekscad-svn ; then
+      svn update
+      cd libarea
+      svn update
+      cd ../heekscnc/
+      svn update
+      cd ..
+   else
+      svn checkout http://heekscad.googlecode.com/svn/trunk/ heekscad-svn
+      cd heekscad-svn
+      svn checkout http://libarea.googlecode.com/svn/trunk/ libarea
+      svn checkout http://heekscnc.googlecode.com/svn/trunk/ heekscnc
+   fi
+
+   cp --archive $PKGMK_SOURCE_DIR/heekscad-git/sketchsolve \
+                  $PKGMK_SOURCE_DIR/heekscad-svn/sketchsolve/
+
+   cp libarea/PythonStuff.cpp libarea/PythonStuff.cpp.original
+   sed -i -e's/<CBox>("Box")/<CBox>("Box2D")/g' \
+          -e's/CBox/CBox2D/g' libarea/PythonStuff.cpp
+
+   cp $SRC/CMakeLists.txt ./src/
+   find $PKGMK_SOURCE_DIR/heekscad-svn/ -iname "*.cpp" -o -iname "*.h" | \
+      xargs sed -i -e's,"Area.h","../libarea/Area.h",g' \
+                   -e's,"Arc.h","../libarea/Arc.h",g' \
+                   -e's,"AreaOrderer.h","../libarea/AreaOrderer.h",g' \
+                   -e's,"Box2D.h","../libarea/Box2D.h",g' \
+                   -e's,"Circle.h","../libarea/Circle.h",g' \
+                   -e's,"clipper.hpp","../libarea/clipper.hpp",g' \
+                   -e's,"Curve.h","../libarea/Curve.h",g' \
+                   -e's,"kurve/geometry.h","../libarea/kurve/geometry.h",g' \
+                   -e's,"Point.h","../libarea/Point.h",g'
+
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+         .
+   make
+   make DESTDIR=$PKG install
+
+   mv libarea/PythonStuff.cpp.original libarea/PythonStuff.cpp
+}
