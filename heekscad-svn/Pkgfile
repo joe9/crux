@@ -29,9 +29,6 @@ build() {
       svn checkout http://heekscnc.googlecode.com/svn/trunk/ heekscnc-svn
    fi
 
-   # cp --archive $PKGMK_SOURCE_DIR/heekscad-git/sketchsolve \
-   #                $PKGMK_SOURCE_DIR/heekscad-svn/sketchsolve/
-
    cp --force $SRC/heekscad.CMakeLists.txt     ./CMakeLists.txt
    cp --force $SRC/heekscad.src.CMakeLists.txt ./src/CMakeLists.txt
 
