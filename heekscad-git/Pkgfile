@@ -14,11 +14,11 @@ source=(0001-changed-PI-to-M_PI-to-correct-the-compile-errors-abo.patch
 build() {
    cd $PKGMK_SOURCE_DIR
 
-   if cd heekscad ; then
+   if cd heekscad-git ; then
        git pull
    else
-      git clone --recursive git://github.com/Heeks/heekscad.git heekscad
-      cd heekscad
+      git clone --recursive git://github.com/Heeks/heekscad.git heekscad-git
+      cd heekscad-git
    fi
 
    patch --merge -p1 -i $SRC/0001-changed-PI-to-M_PI-to-correct-the-compile-errors-abo.patch
@@ -29,13 +29,17 @@ build() {
    # http://sourceforge.net/apps/mantisbt/free-cad/bug_view_advanced_page.php?bug_id=749
    # sent an email to HeeksCAD-users google group
 
-   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+         .
    make
    make DESTDIR=$PKG install
 
    cd heekscnc
    # make clean
-   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
+         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+         .
    make
    make DESTDIR=$PKG install
 }
