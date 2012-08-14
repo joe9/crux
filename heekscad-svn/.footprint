@@ -112,8 +112,6 @@ lrwxrwxrwx	root/root	usr/lib/libheekscnc.so -> libheekscnc.so.0.18.0
 -rwxr-xr-x	root/root	usr/lib/libheekscnc.so.0.18.0
 lrwxrwxrwx	root/root	usr/lib/libheeksintf.so -> libheeksintf.so.0.18.0
 -rwxr-xr-x	root/root	usr/lib/libheeksintf.so.0.18.0
-lrwxrwxrwx	root/root	usr/lib/libsketchsolve.so -> libsketchsolve.so.0.18.0
--rwxr-xr-x	root/root	usr/lib/libsketchsolve.so.0.18.0
 lrwxrwxrwx	root/root	usr/lib/libtinyxml.so -> libtinyxml.so.0.18.0
 -rwxr-xr-x	root/root	usr/lib/libtinyxml.so.0.18.0
 drwxr-xr-x	root/root	usr/share/

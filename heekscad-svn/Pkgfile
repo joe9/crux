@@ -8,7 +8,9 @@
 name=heekscad-svn
 version=svn
 release=1
-source=(CMakeLists.txt heekscnc.CMakeLists.txt )
+source=(heekscad.src.CMakeLists.txt \
+         heekscnc.CMakeLists.txt \
+         heekscad.CMakeLists.txt)
 
 build() {
    cd $PKGMK_SOURCE_DIR
@@ -27,10 +29,12 @@ build() {
       svn checkout http://heekscnc.googlecode.com/svn/trunk/ heekscnc-svn
    fi
 
-   cp --archive $PKGMK_SOURCE_DIR/heekscad-git/sketchsolve \
-                  $PKGMK_SOURCE_DIR/heekscad-svn/sketchsolve/
+   # cp --archive $PKGMK_SOURCE_DIR/heekscad-git/sketchsolve \
+   #                $PKGMK_SOURCE_DIR/heekscad-svn/sketchsolve/
 
-   cp $SRC/CMakeLists.txt ./src/
+   cp --force $SRC/heekscad.CMakeLists.txt     ./CMakeLists.txt
+   cp --force $SRC/heekscad.src.CMakeLists.txt ./src/CMakeLists.txt
+
    find $PKGMK_SOURCE_DIR/heekscad-svn/ -iname "*.cpp" -o -iname "*.h" | \
       grep -v "heekscnc-svn" | \
       xargs -d '\n' \
@@ -43,21 +47,6 @@ build() {
                       -e's,"Curve.h","../libarea/Curve.h",g' \
                       -e's,"kurve/geometry.h","../libarea/kurve/geometry.h",g' \
                       -e's,"Point.h","../libarea/Point.h",g'
-   #  below uses prune instead of grep as above,
-   #     but could not get it to work
-   # find $PKGMK_SOURCE_DIR/heekscad-svn/ \
-   #       -path $PKGMK_SOURCE_DIR/heekscad-svn/heekscnc-svn  -prune \
-   #       -o -iname "*.cpp" -o -iname "*.h" -print0 | \
-   #    xargs -0 \
-   #       sed -i -e 's,"Area.h","../libarea/Area.h",g'                \
-   #              -e 's,"Arc.h","../libarea/Arc.h",g'                  \
-   #              -e 's,"AreaOrderer.h","../libarea/AreaOrderer.h",g'  \
-   #              -e 's,"Box2D.h","../libarea/Box2D.h",g'              \
-   #              -e 's,"Circle.h","../libarea/Circle.h",g'            \
-   #              -e 's,"clipper.hpp","../libarea/clipper.hpp",g'      \
-   #              -e 's,"Curve.h","../libarea/Curve.h",g'              \
-   #              -e 's,"kurve/geometry.h","../libarea/kurve/geometry.h",g' \
-   #              -e 's,"Point.h","../libarea/Point.h",g'
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
