@@ -32,6 +32,9 @@ build() {
    sed -i \
       -e 's,aWriter.WS()->MapReader()->SetProgress(pi);,// aWriter.WS()->MapReader()->SetProgress(pi);,g' \
       src/Mod/Part/App/TopoShape.cpp
+   # sed -i \
+   #    -e 's,aWriter.WS()->MapReader()->SetProgress(pi);,aWriter.WS()->MapWriter()->SetProgress(pi);,g' \
+   #    src/Mod/Part/App/TopoShape.cpp
    cd build
 
    # BUG: does not build due to
