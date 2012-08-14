@@ -9,7 +9,7 @@
 name=freecad-git
 version=git
 release=1
-source=()
+source=(0001-fix-segmentation-fault-on-exportStep.patch)
 
 build() {
    cd $PKGMK_SOURCE_DIR
@@ -27,14 +27,8 @@ build() {
    fi
 
    # doing this as this line during exportStep causes a segmentation fault
-   # Denis was able to replicate it and will fix it.
-   cp src/Mod/Part/App/TopoShape.cpp src/Mod/Part/App/TopoShape.cpp.orig
-   sed -i \
-      -e 's,aWriter.WS()->MapReader()->SetProgress(pi);,// aWriter.WS()->MapReader()->SetProgress(pi);,g' \
-      src/Mod/Part/App/TopoShape.cpp
-   # sed -i \
-   #    -e 's,aWriter.WS()->MapReader()->SetProgress(pi);,aWriter.WS()->MapWriter()->SetProgress(pi);,g' \
-   #    src/Mod/Part/App/TopoShape.cpp
+   patch --merge -p1 -i $SRC/0001-fix-segmentation-fault-on-exportStep.patch
+
    cd build
 
    # BUG: does not build due to
@@ -53,5 +47,4 @@ build() {
    make
    make DESTDIR=$PKG install
    rm -rf $PKG/usr/doc
-   mv ../src/Mod/Part/App/TopoShape.cpp.orig ../src/Mod/Part/App/TopoShape.cpp
 }

@@ -89,6 +89,7 @@ build() {
    sed -i \
       -e 's/block->FormatText(textCtrl);/block->FormatText(textCtrl, block == m_highlighted_block, false);/g' \
       src/NCCode.cpp
+   # sed -i -e '/#ifdef WIN32/d' -e '/#endif/d ' src/Simulate.cpp
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \

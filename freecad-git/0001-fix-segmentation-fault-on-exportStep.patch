@@ -1,0 +1,108 @@
+From 73dbcccd4f96a0b7626c0ba11e869bba6d7c5188 Mon Sep 17 00:00:00 2001
+From: root <root@main>
+Date: Tue, 14 Aug 2012 09:05:38 -0400
+Subject: [PATCH] fix segmentation fault on exportStep
+
+This is the bactrace from gdb:
+
+Reading in symbols for
+/var/pkgmk/distfiles/oce/src/Standard/Handle_Standard_Transient.cxx...done.
+
+Program received signal SIGSEGV, Segmentation fault.
+Reading in symbols for
+/var/pkgmk/distfiles/freecad/src/Mod/Part/App/TopoShape.cpp...done.
+Handle_Standard_Transient::Assign (this=0xfefdfefdfefd0090,
+    anItem=Reading in symbols for
+/var/pkgmk/distfiles/oce/src/Standard/Standard_Transient.cxx...done.
+0x3976510) at /var/pkgmk/distfiles/oce/src/Standard/Handle_Standard_Transient.cxx:34
+34        if (!entity) entity = UndefinedHandleAddress;
+backtrace
+Reading in symbols for
+/var/pkgmk/distfiles/freecad/src/Mod/Part/App/TopoShapePyImp.cpp...done.
+Reading in symbols for
+/var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp...done.
+Reading in symbols for
+/var/pkgmk/distfiles/freecad/src/Gui/Application.cpp...done.
+Reading in symbols for /var/pkgmk/distfiles/freecad/src/Main/MainGui.cpp...done.
+anItem=0x3976510)
+    at /var/pkgmk/distfiles/oce/src/Standard/Handle_Standard_Transient.cxx:34
+    filename=0x5df8fcc "fixture_outline_and_holes.step")
+    at /var/pkgmk/distfiles/freecad/src/Mod/Part/App/TopoShape.cpp:699
+(this=0x38cdcc0, args=<optimized out>)
+    at /var/pkgmk/distfiles/freecad/src/Mod/Part/App/TopoShapePyImp.cpp:286
+(self=<optimized out>, args=<optimized out>)
+    at /var/pkgmk/distfiles/freecad/build/src/Mod/Part/App/TopoShapePy.cpp:644
+/usr/lib/libpython2.7.so.1.0
+(this=<optimized out>, code=0x271fc30)
+    at /var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp:276
+(this=0x949760, source=<optimized out>)
+    at /var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp:255
+(this=0x949760, line=<optimized out>)
+    at /var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp:300
+(this=0x9932d0, line=...)
+    at /var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp:698
+(this=0x9932d0, source=...)
+    at /var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp:1030
+(this=0x9932d0, source=0x97d360)
+    at /var/pkgmk/distfiles/freecad/src/Gui/PythonConsole.cpp:902
+const&, QWidget*) ()
+   from /usr/share/qt4/lib/libQtGui.so.4
+const&, QWidget*) ()
+   from /usr/share/qt4/lib/libQtGui.so.4
+QPlainTextEdit::mouseReleaseEvent(QMouseEvent*) () from
+/usr/share/qt4/lib/libQtGui.so.4
+/usr/share/qt4/lib/libQtGui.so.4
+/usr/share/qt4/lib/libQtGui.so.4
+QCoreApplicationPrivate::sendThroughObjectEventFilters(QObject*,
+QEvent*) ()
+   from /usr/share/qt4/lib/libQtCore.so.4
+QEvent*) ()
+   from /usr/share/qt4/lib/libQtGui.so.4
+from /usr/share/qt4/lib/libQtGui.so.4
+(this=0x7fffffffb400, receiver=0x8c1ef0, event=0x7fffffffa660)
+    at /var/pkgmk/distfiles/freecad/src/Gui/Application.cpp:1482
+   from /usr/share/qt4/lib/libQtCore.so.4
+QApplicationPrivate::sendMouseEvent(QWidget*, QMouseEvent*, QWidget*,
+QWidget*, QWidget**, QPointer<QWidget>&, bool) () from
+/usr/share/qt4/lib/libQtGui.so.4
+from /usr/share/qt4/lib/libQtGui.so.4
+/usr/lib/libglib-2.0.so.0
+/usr/lib/libglib-2.0.so.0
+QEventDispatcherGlib::processEvents(QFlags<QEventLoop::ProcessEventsFlag>)
+()
+   from /usr/share/qt4/lib/libQtCore.so.4
+QEventLoop::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) ()
+   from /usr/share/qt4/lib/libQtCore.so.4
+QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) ()
+   from /usr/share/qt4/lib/libQtCore.so.4
+/usr/share/qt4/lib/libQtCore.so.4
+    at /var/pkgmk/distfiles/freecad/src/Gui/Application.cpp:1725
+    at /var/pkgmk/distfiles/freecad/src/Main/MainGui.cpp:299
+---
+ src/Mod/Part/App/TopoShape.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/Mod/Part/App/TopoShape.cpp b/src/Mod/Part/App/TopoShape.cpp
+index d8a5a13..1a43504 100644
+--- a/src/Mod/Part/App/TopoShape.cpp
++++ b/src/Mod/Part/App/TopoShape.cpp
+@@ -145,6 +145,7 @@
+ # include <ShapeFix_Shape.hxx>
+ # include <XSControl_WorkSession.hxx>
+ # include <Transfer_TransientProcess.hxx>
++# include <Transfer_FinderProcess.hxx>
+ # include <APIHeaderSection_MakeHeader.hxx>
+ 
+ #include <Base/Builder3D.h>
+@@ -696,7 +697,7 @@ void TopoShape::exportStep(const char *filename) const
+         STEPControl_Writer aWriter;
+ 
+         Handle_Message_ProgressIndicator pi = new ProgressIndicator(100);
+-        aWriter.WS()->MapReader()->SetProgress(pi);
++        aWriter.WS()->MapWriter()->SetProgress(pi);
+         pi->NewScope(100, "Writing STEP file...");
+         pi->Show();
+ 
+-- 
+1.7.11.2
+
