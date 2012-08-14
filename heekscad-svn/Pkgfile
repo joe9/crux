@@ -8,9 +8,7 @@
 name=heekscad-svn
 version=svn
 release=1
-source=(heekscad.src.CMakeLists.txt \
-         heekscnc.src.CMakeLists.txt \
-         heekscad.CMakeLists.txt)
+source=()
 
 build() {
    cd $PKGMK_SOURCE_DIR
@@ -28,9 +26,6 @@ build() {
       svn checkout http://libarea.googlecode.com/svn/trunk/ libarea
       svn checkout http://heekscnc.googlecode.com/svn/trunk/ heekscnc-svn
    fi
-
-   cp --force $SRC/heekscad.CMakeLists.txt     ./CMakeLists.txt
-   cp --force $SRC/heekscad.src.CMakeLists.txt ./src/CMakeLists.txt
 
    find $PKGMK_SOURCE_DIR/heekscad-svn/ -iname "*.cpp" -o -iname "*.h" | \
       grep -v "heekscnc-svn" | \
@@ -53,7 +48,6 @@ build() {
 
 
    cd heekscnc-svn
-   cp $SRC/heekscnc.src.CMakeLists.txt src/CMakeLists.txt
    find $PKGMK_SOURCE_DIR/heekscad-svn/heekscnc-svn \
          -iname "*.cpp" -o -iname "*.h" | \
       xargs -d '\n' \
@@ -67,15 +61,9 @@ build() {
                 -e's,"kurve/geometry.h","../../libarea/kurve/geometry.h",g' \
                 -e's,"Point.h","../../libarea/Point.h",g'
 
-   cp src/NCCode.cpp src/NCCode.cpp.original
-   sed -i \
-      -e 's/block->FormatText(textCtrl);/block->FormatText(textCtrl, block == m_highlighted_block, false);/g' \
-      src/NCCode.cpp
-
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
          .
    make
    make DESTDIR=$PKG install
-   mv src/NCCode.cpp.original src/NCCode.cpp
 }
