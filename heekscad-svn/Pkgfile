@@ -9,7 +9,7 @@ name=heekscad-svn
 version=svn
 release=1
 source=(heekscad.src.CMakeLists.txt \
-         heekscnc.CMakeLists.txt \
+         heekscnc.src.CMakeLists.txt \
          heekscad.CMakeLists.txt)
 
 build() {
@@ -56,7 +56,7 @@ build() {
 
 
    cd heekscnc-svn
-   cp $SRC/heekscnc.CMakeLists.txt src/CMakeLists.txt
+   cp $SRC/heekscnc.src.CMakeLists.txt src/CMakeLists.txt
    find $PKGMK_SOURCE_DIR/heekscad-svn/heekscnc-svn \
          -iname "*.cpp" -o -iname "*.h" | \
       xargs -d '\n' \
