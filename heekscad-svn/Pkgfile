@@ -30,10 +30,6 @@ build() {
    cp --archive $PKGMK_SOURCE_DIR/heekscad-git/sketchsolve \
                   $PKGMK_SOURCE_DIR/heekscad-svn/sketchsolve/
 
-   cp libarea/PythonStuff.cpp libarea/PythonStuff.cpp.original
-   sed -i -e 's/<CBox>("Box")/<CBox>("Box2D")/g' \
-          -e 's/CBox/CBox2D/g' libarea/PythonStuff.cpp
-
    cp $SRC/CMakeLists.txt ./src/
    find $PKGMK_SOURCE_DIR/heekscad-svn/ -iname "*.cpp" -o -iname "*.h" | \
       grep -v "heekscnc-svn" | \
@@ -89,7 +85,6 @@ build() {
    sed -i \
       -e 's/block->FormatText(textCtrl);/block->FormatText(textCtrl, block == m_highlighted_block, false);/g' \
       src/NCCode.cpp
-   # sed -i -e '/#ifdef WIN32/d' -e '/#endif/d ' src/Simulate.cpp
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -97,6 +92,4 @@ build() {
    make
    make DESTDIR=$PKG install
    mv src/NCCode.cpp.original src/NCCode.cpp
-
-   mv ../libarea/PythonStuff.cpp.original ../libarea/PythonStuff.cpp
 }
