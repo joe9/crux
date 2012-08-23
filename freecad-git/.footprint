@@ -114,6 +114,7 @@ drwxr-xr-x	root/root	usr/Mod/Machining_Distortion/
 -rw-r--r--	root/root	usr/Mod/Machining_Distortion/Init.py
 -rw-r--r--	root/root	usr/Mod/Machining_Distortion/InitGui.py
 -rw-r--r--	root/root	usr/Mod/Machining_Distortion/MachiningDistortionCommands.py
+-rw-r--r--	root/root	usr/Mod/Machining_Distortion/Parameter.py
 -rw-r--r--	root/root	usr/Mod/Machining_Distortion/User_Interface_Mach_Dist.py
 -rw-r--r--	root/root	usr/Mod/Machining_Distortion/calculix_postprocess.py
 -rw-r--r--	root/root	usr/Mod/Machining_Distortion/mach_dist_gui.py

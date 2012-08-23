@@ -86,14 +86,6 @@ diff --git a/src/Mod/Part/App/TopoShape.cpp b/src/Mod/Part/App/TopoShape.cpp
 index d8a5a13..1a43504 100644
 --- a/src/Mod/Part/App/TopoShape.cpp
 +++ b/src/Mod/Part/App/TopoShape.cpp
-@@ -145,6 +145,7 @@
- # include <ShapeFix_Shape.hxx>
- # include <XSControl_WorkSession.hxx>
- # include <Transfer_TransientProcess.hxx>
-+# include <Transfer_FinderProcess.hxx>
- # include <APIHeaderSection_MakeHeader.hxx>
- 
- #include <Base/Builder3D.h>
 @@ -696,7 +697,7 @@ void TopoShape::exportStep(const char *filename) const
          STEPControl_Writer aWriter;
  
