@@ -821,6 +821,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/help.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hercules.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hex.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/hgcommit.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hitest.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hog.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/hostconf.vim
