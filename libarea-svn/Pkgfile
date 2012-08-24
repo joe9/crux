@@ -1,0 +1,28 @@
+# Description: *o*pencascade *c*ommunity *e*dition
+# URL:         https://github.com/Heeks/libarea.git
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  svn
+
+name=libarea-svn
+version=svn
+release=1
+source=(CMakeLists.txt)
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd libarea-svn ; then
+      svn update
+      make clean
+   else
+      svn checkout http://libarea.googlecode.com/svn/trunk/  libarea-svn
+      # svn checkout http://libarea.googlecode.com/svn/trunk/ libarea
+      cd libarea-svn
+   fi
+
+   cp --force $SRC/CMakeLists.txt ./
+   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr/ .
+   make
+   make DESTDIR=$PKG install
+}
