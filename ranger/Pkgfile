@@ -1,0 +1,15 @@
+# Description: file manager with VI key bindings
+# URL: http://ranger.nongnu.org/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Ryan Mullen, rmmullen at gmail dot com
+# Depends on:  python ncurses less sudo
+
+name=ranger
+version=1.5.5
+release=1
+source=(http://nongnu.org/$name/$name-stable.tar.gz)
+
+build () {
+   cd $name-$version
+   python setup.py -q install --root="$PKG" --optimize=1
+}

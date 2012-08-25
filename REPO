@@ -6,6 +6,7 @@ d:eigen
 d:expect
 d:autogen
 d:freecad-git
+d:pycam
 d:m4-examples
 d:eigen2
 d:openjdk
@@ -16,6 +17,7 @@ d:binutils.gold
 d:pcb-git
 d:libarea-svn
 d:ghc
+d:pycam-git
 d:libarea-git
 d:oce-git
 d:soxt
@@ -45,6 +47,7 @@ d:mpfi
 d:gts
 d:links
 d:swig-1.3.40
+d:ranger
 d:oce
 d:geda-git
 d:xclip
@@ -54,7 +57,9 @@ d:pyorbit
 d:pcb2gcode-git
 d:soqt
 d:opencsg
+d:pygtkglext-git
 d:syslinux
+d:python-gtkglext
 d:vim-mercurial
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
 f:39d554309df2cf527f74e1b97126d4c7:libdrm/Pkgfile
@@ -74,7 +79,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:4a8c87f35f11baac164f11f123501e18:zsh_history.joe
+f:75bf8cae75f796a4dddc3b186a96dd9c:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -88,6 +93,9 @@ f:0a7b071e298e17025294221ba8cd6e8a:freecad-git/0001-fix-segmentation-fault-on-ex
 f:1511c9b32bba08a4011313db2ad007e7:freecad-git/.md5sum
 f:999d95de1680ab469789de0d1734b85c:freecad-git/.footprint
 f:a89245058732b01796d0ce1e2279fb00:freecad-git/.nostrip
+f:3fa86384a3d65b88c70e60a8b522cd6a:pycam/Pkgfile
+f:63dd5d0f21e6a43afb32e26ecffdb813:pycam/.md5sum
+f:06a29228c5f87ac35d2a146258f98fb1:pycam/.footprint
 f:7664942ebef3e5f40967694ddb3d360c:m4-examples/Pkgfile
 f:b63825f0d7808b00f09e1e119534c9bc:m4-examples/.md5sum
 f:e1b22f35a8fd9053d27cccd28d74a2bd:m4-examples/.footprint
@@ -125,6 +133,9 @@ f:0d744453ac14dd1480bbfc4d17414699:ghc/Pkgfile
 f:285fade376dc9f63aaf813f2ef693f68:ghc/README
 f:1f5c04c92ec23dcc1e688148ed7d9d19:ghc/.md5sum
 f:ea4e5b1d8908986a17aa21fb1b3b8e1d:ghc/.footprint
+f:397e66169455542f9b697d282408fb96:pycam-git/Pkgfile
+f:d41d8cd98f00b204e9800998ecf8427e:pycam-git/.md5sum
+f:d41d8cd98f00b204e9800998ecf8427e:pycam-git/.footprint
 f:140c836b09ff7132920541ccc99c6e9e:libarea-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:libarea-git/.md5sum
 f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint
@@ -228,6 +239,9 @@ f:cbb31de29e703105ba388a5ac94552bf:links/.footprint
 f:ba51eef877fcc5773fd21f37dcfc8c1b:swig-1.3.40/Pkgfile
 f:00b0a0cc3f7327f4cb6aa6159c347b79:swig-1.3.40/.md5sum
 f:e2759e3d1268f6acb60acc2b14c1025b:swig-1.3.40/.footprint
+f:5b866902c6f86154d4f65dd02c4ad678:ranger/Pkgfile
+f:91294865f0371e4efacfa1f220a1ccc2:ranger/.md5sum
+f:4b5a3e0268b27f3bc49c2ec480961c6c:ranger/.footprint
 f:a7e77f0cc1963769a2b62d37c33f1bf0:oce/Pkgfile
 f:60c63e0a95b19b2de1019fe33832db57:oce/.md5sum
 f:bb1fc367877fdcb3acd88d16615a9613:oce/.footprint
@@ -259,9 +273,15 @@ f:41b8cb654adca1b8e1226b93b7b40510:soqt/.footprint
 f:1e015e9bab4ed594469278cb4d68e3d3:opencsg/Pkgfile
 f:7034f5a4adaed96b11df48d29753a91b:opencsg/.md5sum
 f:80dd96de2cef779e8a1c866d99e84a93:opencsg/.footprint
+f:8a4693f3d5327acd239def5690b63627:pygtkglext-git/Pkgfile
+f:d41d8cd98f00b204e9800998ecf8427e:pygtkglext-git/.md5sum
+f:06a29228c5f87ac35d2a146258f98fb1:pygtkglext-git/.footprint
 f:fb41b4fa75781e2323b0cd228d6ab2cd:syslinux/Pkgfile
 f:ef7a3728229eea112916590e97cb1859:syslinux/.md5sum
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
+f:aa79f850f594850f122ac1fe9629e782:python-gtkglext/Pkgfile
+f:fbe44c30207a4cd8b31fd15e348e1c4e:python-gtkglext/.md5sum
+f:06a29228c5f87ac35d2a146258f98fb1:python-gtkglext/.footprint
 f:7a73782859051749cd1309dadfba454e:vim-mercurial/Pkgfile
 f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
 f:44d4a4d42531ce73af571cbf939705af:vim-mercurial/.md5sum
