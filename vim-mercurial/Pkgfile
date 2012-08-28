@@ -6,7 +6,7 @@
 name=vim-mercurial
 version=mercurial
 release=1
-# got the patch from 
+# got the patch from
 #  http://comments.gmane.org/gmane.editors.vim.devel/33019
 # it will be replaced with a better version lateron
 source=(if_lua_5.2_table.diff)
@@ -15,12 +15,12 @@ build () {
    cd $PKGMK_SOURCE_DIR
 
    if cd vim ; then
-       /usr/bin/hg pull
-       /usr/bin/hg update
-       /usr/bin/hg update default
-       /usr/bin/hg update -C
+      /usr/bin/hg pull
+      /usr/bin/hg update
+      /usr/bin/hg update default
+      /usr/bin/hg update -C
    else
-       /usr/bin/hg clone https://vim.googlecode.com/hg/ vim
+      /usr/bin/hg clone https://vim.googlecode.com/hg/ vim
    fi
 
    cd $PKGMK_SOURCE_DIR/vim
@@ -31,6 +31,13 @@ build () {
    #       --verbose
 
    #make clean distclean
+
+   sed -i \
+    -e 's,/\* #define FEAT_XTERM_SAVE \*/,#define FEAT_XTERM_SAVE,g'\
+      src/feature.h
+   echo "CFLAGS: $CFLAGS"
+   echo "CXXFLAGS: $CXXFLAGS"
+   echo "LDFLAGS: $LDFLAGS"
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
@@ -57,7 +64,10 @@ build () {
                 --disable-nls
 
     make VIMRTDIR=
-    cd src && make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks && cd ..
+    cd src && \
+      make VIMRTDIR= DESTDIR=$PKG \
+            installvimbin installruntime installlinks \
+      && cd ..
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
     rm -r $PKG/usr/{man/man?/vimtutor*,share/vim/{tutor,macros}}
