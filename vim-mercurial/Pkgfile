@@ -9,7 +9,7 @@ release=1
 # got the patch from
 #  http://comments.gmane.org/gmane.editors.vim.devel/33019
 # it will be replaced with a better version lateron
-source=(if_lua_5.2_table.diff)
+source=()
 
 build () {
    cd $PKGMK_SOURCE_DIR
@@ -39,29 +39,30 @@ build () {
    echo "CXXFLAGS: $CXXFLAGS"
    echo "LDFLAGS: $LDFLAGS"
 
-    ./configure --prefix=/usr \
-                --mandir=/usr/man \
-                --with-vim-name=vim \
-                --with-features=huge \
-                --with-x \
-                --disable-gui \
-                --enable-multibyte \
-               --enable-luainterp \
-               --enable-perlinterp \
-               --enable-pythoninterp \
-               --enable-python3interp=dynamic \
-               --enable-tclinterp \
-               --enable-rubyinterp \
-               --enable-cscope \
-               --enable-gpm \
-               --enable-xim \
-               --enable-fontset \
-               --enable-xsmp_interact \
-               --disable-darwin \
-               --disable-largefile \
-               --disable-acl \
-               --disable-sysmouse \
-                --disable-nls
+    ./configure --prefix=/usr                   \
+                --mandir=/usr/man               \
+                --with-vim-name=vim             \
+                --with-features=huge            \
+                --with-x=yes                    \
+                --disable-gui                   \
+                --enable-multibyte              \
+                --enable-luainterp              \
+                --enable-perlinterp             \
+                --enable-pythoninterp           \
+                --enable-python3interp=dynamic  \
+                --enable-tclinterp              \
+                --enable-rubyinterp             \
+                --enable-cscope                 \
+                --disable-acl                   \
+                --disable-sysmouse              \
+                --disable-nls                   \
+                --disable-darwin                \
+                --disable-largefile             \
+                --disable-gpm                   \
+                --enable-xim                    \
+                --enable-fontset                \
+                --enable-xsmp_interact
+
 
     make VIMRTDIR=
     cd src && \
@@ -121,6 +122,6 @@ build () {
     cd src && make VIMRTDIR= DESTDIR=$PKG installvimbin && cd ..
 
     install -d $PKG/usr/share/{applications,pixmaps}
-    #install -m 644 $SRC/gvim.desktop $PKG/usr/share/applications
-    #install -m 644 ../runtime/vim*.png $PKG/usr/share/pixmaps
+    # install -m 644 $SRC/gvim.desktop $PKG/usr/share/applications
+    # install -m 644 ../runtime/vim*.png $PKG/usr/share/pixmaps
 }
