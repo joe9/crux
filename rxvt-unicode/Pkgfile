@@ -7,20 +7,37 @@ name=rxvt-unicode
 #version=9.12
 version=9.15
 release=1
-source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.bz2)
+source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.bz2
+         clear.patch
+         )
 
 build() {
-	cd $name-$version
+   cd $name-$version
 
-	./configure --prefix=/usr --mandir=/usr/man \
-	            --enable-utmp --enable-wtmp \
-	            --enable-mousewheel \
-	            --enable-smart-resize \
-	            --enable-xft --enable-font-styles \
-		    --enable-everything --enable-256-color
+   # could not see any difference by applying the below patch
+   #  hence, commenting it out
+   # patch -p1 -i $SRC/clear.patch
 
-	make
+   ./configure --prefix=/usr                       \
+               --mandir=/usr/man                   \
+               --with-terminfo=/usr/share/terminfo \
+               --enable-utmp                       \
+               --enable-wtmp                       \
+               --enable-mousewheel                 \
+               --enable-xft                        \
+               --enable-font-styles                \
+               --enable-everything                 \
+               --enable-256-color                  \
+               --enable-pixbuf                     \
+               --enable-xim                        \
+               --enable-keepscrolling              \
+               --enable-selectionscrolling         \
+               --enable-smart-resize               \
+               --enable-lastlog                    \
+               --enable-frills
 
-	mkdir -p $PKG/usr/share/terminfo
-	make TERMINFO=$PKG/usr/share/terminfo DESTDIR=$PKG install
+   make
+
+   mkdir -p $PKG/usr/share/terminfo
+   make TERMINFO=$PKG/usr/share/terminfo DESTDIR=$PKG install
 }

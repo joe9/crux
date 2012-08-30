@@ -79,7 +79,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:5c4ab93777002fcb375b0a31fb7bfdbe:zsh_history.joe
+f:35daec3a981cd5ac17488de164295eae:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -155,11 +155,12 @@ f:85ba1fe793fae38a0563af4f06845199:libqglviewer/.footprint
 f:329d745cde2d4d712e93635c2bfd3c31:bwidget/Pkgfile
 f:4985d1aaad98c43eb445b591e6ced5b5:bwidget/.md5sum
 f:48c63c9d807e71650f3d8ba10bbbb792:bwidget/.footprint
-f:f836cf809b5255be9e5a4ecf303c2f56:rxvt-unicode/Pkgfile
+f:8aa9b5893f2339f8a7b5e19f99a56b75:rxvt-unicode/Pkgfile
 f:206641074a39cefb844fbb6f0c9e7d24:rxvt-unicode/font-fix.patch.txt
 f:788b7a273c80271f10e02fd3150e0c6e:rxvt-unicode/font-fix.patch.README
-f:c4cd73c4499100324b6fcfcca08632f3:rxvt-unicode/.md5sum
+f:6030015d16394e7a5ebe33723ca888cc:rxvt-unicode/.md5sum
 f:34504fb17a0c717fe567b06feac03836:rxvt-unicode/.footprint
+f:061b851e89e53a71d1afad6947c51ca7:rxvt-unicode/clear.patch
 f:1c870e0b662490b42ee6803e015342e6:heekspython-git/0001-added-DESTDIR-consistently-to-install-and-uninstall-.patch
 f:16b44061c83838aa4c1d3c4e92f14234:heekspython-git/Pkgfile
 f:06f82eb0bfcf28a252798ff30b405980:heekspython-git/.md5sum
@@ -282,8 +283,8 @@ f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
 f:aa79f850f594850f122ac1fe9629e782:python-gtkglext/Pkgfile
 f:fbe44c30207a4cd8b31fd15e348e1c4e:python-gtkglext/.md5sum
 f:06a29228c5f87ac35d2a146258f98fb1:python-gtkglext/.footprint
-f:555447df8ddb852dfdebf86814626bdd:vim-mercurial/Pkgfile
+f:c2a6a5a9448542d67c3942cb1570fefc:vim-mercurial/Pkgfile
 f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
-f:44d4a4d42531ce73af571cbf939705af:vim-mercurial/.md5sum
+f:d41d8cd98f00b204e9800998ecf8427e:vim-mercurial/.md5sum
 f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
-f:68c2d7531a36602316c6e766a8dfcc0a:vim-mercurial/.footprint
+f:29172d56908233669d1c29dcbe365033:vim-mercurial/.footprint
