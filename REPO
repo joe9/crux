@@ -22,6 +22,7 @@ d:libarea-git
 d:oce-git
 d:soxt
 d:cgal
+d:openssh
 d:libqglviewer
 d:bwidget
 d:rxvt-unicode
@@ -79,7 +80,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:dc9c9f5f4f7f7e6bc1aef82dbe3d9cce:zsh_history.joe
+f:ad488e14b591e40eca076147f61c40fb:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -149,6 +150,10 @@ f:8294e893f5c9b8a5dc479f9f62683961:soxt/.footprint
 f:dd8c65e97c773051bb08993050e292d0:cgal/Pkgfile
 f:57d5265e64625bbaf3d2e9d9ec2c7847:cgal/.md5sum
 f:2df4e38c389ed9d2db8d8836e5b35971:cgal/.footprint
+f:2b85c0203cd12c5cc200fc921ce8a6ac:openssh/Pkgfile
+f:cf37c138eecd257b14b13ee56d7542f0:openssh/.md5sum
+f:ce4ef44c7d80f6451170e6fe5c07d3f4:openssh/sshd
+f:04af06d9ec16b71610abab896d962f9e:openssh/.footprint
 f:93c5156ed6db8a20e9dd01ac247ea5de:libqglviewer/Pkgfile
 f:d1d121dea133a9cf83021fc2511d736e:libqglviewer/.md5sum
 f:85ba1fe793fae38a0563af4f06845199:libqglviewer/.footprint
