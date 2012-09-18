@@ -1,0 +1,26 @@
+# Description: Free Real-time Data Plotter
+# URL:         http://frtplot.port70.net/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  libsdl
+
+name=frtplot-svn
+version=svn
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd frtplot ; then
+      svn update
+   else
+      svn checkout svn://repo.hu/frtplot/trunk frtplot
+      cd frtplot
+   fi
+
+   cd src
+   make
+   make install_root=$PKG install
+
+}
