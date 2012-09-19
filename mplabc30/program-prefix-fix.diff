@@ -1,0 +1,29 @@
+By Matt Jervis, 09/01/2010
+
+For some reason the program prefix (ie the bit that comes before the tool name)
+had been hardcoded to pic30-.  This patch returns it to what it should be
+(e.g. so if compiling coff it will use the prefix pic30-coff-, etc.)
+
+
+--- tmp/gcc-4.0.2/gcc-4.0.2/gcc/config.gcc	2010-01-09 16:28:03.502791964 +1300
++++ gcc-4.0.2/gcc-4.0.2/gcc/config.gcc	2009-11-20 11:28:16.013263116 +1300
+@@ -1562,8 +1562,7 @@ pdp11-*-*)
+ 	;;
+ pic30-*-coff)
+         host_can_use_collect2=no
+-        host_xm_defines="PROGRAM_PREFIX=\\\"pic30-\\\" ${host_xm_defines}"
+-        host_xm_defines="OMF=\\\"coff\\\" ${host_xm_defines}"
++        host_xm_defines="PROGRAM_PREFIX=\\\"${program_prefix}\\\" ${host_xm_defines}"
+         extra_modes=pic30/pic30-modes.h
+         LANGUAGES="c"
+         LIBGCCMK=
+@@ -1572,8 +1571,7 @@ pic30-*-elf)
+         host_can_use_collect2=no
+         elf=yes
+         tm_defines="OBJECT_FORMAT_ELF $tm_defines"
+-        host_xm_defines="PROGRAM_PREFIX=\\\"pic30-\\\" ${host_xm_defines}"
+-        host_xm_defines="OMF=\\\"elf\\\" ${host_xm_defines}"
++        host_xm_defines="PROGRAM_PREFIX=\\\"${program_prefix}\\\" ${host_xm_defines}"
+         extra_modes=pic30/pic30-modes.h
+         LANGUAGES="c"
+         LIBGCCMK=

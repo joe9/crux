@@ -1,0 +1,47 @@
+# Description: MPLAB ASM30 Assembler
+# URL:         http://www.microchip.com
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  wget, sed, dos2unix
+
+name=mplabalc30
+version=3_31
+release=1
+# downloaded the below diff files from
+#  http://david.lutolf.net/dt/pic_microchip/dist/pic30-binutils-3.11b.tar.bz2
+source=(file:///${name}v${version}.tar.gz
+         search-path-fix.diff
+         binutils-makefile_in.diff
+         allow-empty-device-info-file.diff
+         )
+
+build(){
+   cd $SRC
+
+   find . -type f -exec dos2unix {} \;
+
+   patch --merge -p0 -i $SRC/allow-empty-device-info-file.diff
+   patch --merge -p0 -i $SRC/binutils-makefile_in.diff
+   # patch --merge -p0 -i $SRC/search-path-fix.diff
+
+   cd acme/
+   find . -name *.y -type f -exec touch '{}' ';'
+   find . -name *.l -type f -exec touch '{}' ';'
+   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux" \
+      ./configure --prefix=/usr/ --target=pic30-coff
+   make
+   make DESTDIR=$PKG/ install
+
+   make distclean
+   find . -name *.y -type f -exec touch '{}' ';'
+   find . -name *.l -type f -exec touch '{}' ';'
+   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux" \
+      ./configure --prefix=/usr/ --target=pic30-elf
+   make
+   make DESTDIR=$PKG/ install
+
+   # mkdir -p ${PKG}/usr/libexec/gcc/pic30-coff/4.0.3/
+   # ln -sf /usr/bin/pic30-coff-as ${PKG}/usr/libexec/gcc/pic30-coff/4.0.3/as
+   # cp ${PKG}/usr/bin/pic30-coff-as ${PKG}/usr/libexec/gcc/pic30-coff/4.0.3/as
+   # ln -sf /usr/bin/pic30-coff-ld ${PKG}/usr/libexec/gcc/pic30-coff/4.0.3/ld
+   # cp ${PKG}/usr/bin/pic30-coff-ld ${PKG}/usr/libexec/gcc/pic30-coff/4.0.3/ld
+}

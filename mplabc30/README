@@ -1,0 +1,11 @@
+README for mplabalc30
+
+REQUIREMENTS
+
+   Download the MPLAB ASM30 Assembler from
+   - http://ww1.microchip.com/downloads/en/DeviceDoc/mplabc30v3_31.tar.gz
+
+   and put the file
+   - mplabc30v3_31.tar.gz
+
+   into the directory defined by PKGMK_SOURCE_DIR. See pkgmk.conf(5).
