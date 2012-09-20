@@ -84,7 +84,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:3a1e65f6fa903599b7697922f591988e:zsh_history.joe
+f:3a7ecae7fd762f1097f460e96839716e:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -223,12 +223,14 @@ f:a09c0040b7292cb43ee31333107b31b7:mplabalc30/morediffs.patch
 f:bb1b66307133ffa7fdf06fa603bd4e6d:mplabalc30/mplabalc30v3_31.tar.gz
 f:8073a17de2a7fac9db7495fa89fc3984:mplabalc30/c30_resource-paths.patch
 f:3da710c23aec9d4340d22838862c54ed:mplabalc30/cpu-pic30.c.patch
-f:829b66991ca0429f2c70d3967def9c31:mplabalc30/Pkgfile
+f:826f7fe072bdd94b2904e5b6d8adba9a:mplabalc30/Pkgfile
 f:e49d0239631536789825d04020118f98:mplabalc30/relocation-fix.patch
+f:8cb64857dbced72cfe7681cfd7d37c8c:mplabalc30/default-path.patch
 f:7be47521b93945c568eff4ec315d96b8:mplabalc30/README
 f:424878c52065aec039e5b6ecd02af2c7:mplabalc30/.md5sum
 f:73cdba337f4557a46039f5011098786d:mplabalc30/binutils-makefile_in.diff
 f:6e16c11602f50d14f9858a93c2a421f8:mplabalc30/allow-empty-device-info-file.diff
+f:4f124f250193eb15ce007eb018200b44:mplabalc30/mplabalc30.PKGBUILD
 f:49ba18ba72abed9d469d1ad1d54636d0:mplabalc30/sbrk.patch
 f:454cca700a952a4d7d2cdb6b7dd988bf:mplabalc30/.footprint
 f:d722025a56d5f33e4cc9e2f9523be623:mplabalc30/search-path-fix.diff
