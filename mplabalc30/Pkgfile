@@ -11,6 +11,7 @@ release=1
 # synced the build with the arch pkgbuild at
 #  https://aur.archlinux.org/packages.php?ID=39084
 #  https://aur.archlinux.org/packages.php?ID=39085
+# arch pkgbuild file saved as mplabalc30.PKGBUILD
 source=(file:///${name}v${version}.tar.gz
          search-path-fix.diff
          binutils-makefile_in.diff
@@ -48,6 +49,8 @@ build(){
    patch --merge -p0 -i $SRC/c30_resource-paths.patch
    patch --merge -p0 -i $SRC/resource.patch
    patch --merge -p0 -i $SRC/cpu-pic30.c.patch
+   # unused patch file from the arch build
+   #  default-path.patch
 
    pic30path="/usr/share/pic30"
 
