@@ -1,0 +1,38 @@
+README for mplabalc30
+
+REQUIREMENTS
+
+   Download the MPLAB X IDE from
+   - http://ww1.microchip.com/downloads/en/DeviceDoc/MPLABX-v1_30-linux-installer.run
+
+   Download the MPLAB XC32 from
+   - http://ww1.microchip.com/downloads/en/DeviceDoc/xc32-v1.00-linux.zip
+
+   Download the MPLAB XC16 from
+   - http://ww1.microchip.com/downloads/en/DeviceDoc/xc16-v1_00-linux-installer.run
+
+   Above installers require JAVA 1.6:
+      Install JAVA 1.6 to some location
+         export jdkhome to that location before running the
+         above installers
+      export jdkhome=/tmp/jre1.6.0_35/
+
+   The above installers create a v1.00 directory in the installed
+      directory. Do the below from the parent directory of v1.00
+      directory.
+
+      mkdir pic30-v1.00
+      cd pic30-v1.00
+      mkdir -p bin/device_files
+      cp -r ../v1.00/bin/device_files bin/
+      cp ../v1.00/bin/c30_device.info bin/
+      cp -r ../v1.00/support ./
+      find . -type f -exec dos2unix {} \;
+      cd ..
+      tar cvf pic30-v1.00.tar pic30-v1.00
+      gzip pic30-v1.00.tar
+
+   and put the file
+   - pic30-v1.00.tar.gz
+
+   into the directory defined by PKGMK_SOURCE_DIR. See pkgmk.conf(5).
