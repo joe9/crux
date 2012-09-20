@@ -1,32 +1,60 @@
 # Description: MPLAB ASM30 Assembler
 # URL:         http://www.microchip.com
 # Maintainer:  Joe M, joe9mail at gmail dot com
-# Depends on:  wget, sed, dos2unix
+# Depends on:  wget, sed, dos2unix, pic30
 
 name=mplabalc30
 version=3_31
 release=1
 # downloaded the below diff files from
 #  http://david.lutolf.net/dt/pic_microchip/dist/pic30-binutils-3.11b.tar.bz2
+# synced the build with the arch pkgbuild at
+#  https://aur.archlinux.org/packages.php?ID=39084
+#  https://aur.archlinux.org/packages.php?ID=39085
 source=(file:///${name}v${version}.tar.gz
          search-path-fix.diff
          binutils-makefile_in.diff
          allow-empty-device-info-file.diff
+         sbrk.patch
+         relocation-fix.patch
+         morediffs.patch
+         c30_resource-paths.patch
+         resource.patch
+         cpu-pic30.c.patch
          )
 
 build(){
    cd $SRC
 
-   find . -type f -exec dos2unix {} \;
+   # There is a problem with finding the resource file
+   # Here we add some alternatives locations. 
+   # Only those places will be searched before giving up
+   echo "char *pic30_resource_files[] = {"      >acme/c30_device_info_path.h
+   echo "\"/usr/share/pic30/c30_device.info\"," >>acme/c30_device_info_path.h
+   echo "\"/usr/share/pic30/bin/c30_device.info\"," >>acme/c30_device_info_path.h
+   echo "0};"                                   >>acme/c30_device_info_path.h
+   echo "#define MCHP_VERSION v$version for Crux Linux" >acme/mchp_version.h
 
-   patch --merge -p0 -i $SRC/allow-empty-device-info-file.diff
+   find . -type f -exec dos2unix --force {} \;
+
+   # patch --merge -p0 -i $SRC/allow-empty-device-info-file.diff
    patch --merge -p0 -i $SRC/binutils-makefile_in.diff
+
+   # the below files from arch build
+   patch --merge -p0 -i $SRC/sbrk.patch
+   patch --merge -p0 -i $SRC/relocation-fix.patch
+   patch --merge -p0 -i $SRC/morediffs.patch
    # patch --merge -p0 -i $SRC/search-path-fix.diff
+   patch --merge -p0 -i $SRC/c30_resource-paths.patch
+   patch --merge -p0 -i $SRC/resource.patch
+   patch --merge -p0 -i $SRC/cpu-pic30.c.patch
+
+   pic30path="/usr/share/pic30"
 
    cd acme/
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux" \
+   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
       ./configure --prefix=/usr/ --target=pic30-coff
    make
    make DESTDIR=$PKG/ install
@@ -34,7 +62,7 @@ build(){
    make distclean
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux" \
+   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
       ./configure --prefix=/usr/ --target=pic30-elf
    make
    make DESTDIR=$PKG/ install
