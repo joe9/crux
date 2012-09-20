@@ -4,9 +4,11 @@
 # Depends on:  wget, sed, dos2unix
 
 name=pic30
-version=1.00
+version=1.10
 release=1
 # synced the build with the arch pkgbuild at
+#  https://aur.archlinux.org/packages.php?ID=59174
+#  https://aur.archlinux.org/packages.php?ID=57912
 #  https://aur.archlinux.org/packages.php?ID=39084
 #  https://aur.archlinux.org/packages.php?ID=39085
 source=(file:///${name}-v${version}.tar.gz)
