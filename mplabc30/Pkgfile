@@ -8,15 +8,23 @@ version=3_31
 release=1
 # downloaded the below diff files from
 #  http://david.lutolf.net/dt/pic_microchip/dist/pic30-gcc-3.11b.tar.bz2
+# synced the build with the arch pkgbuild at
+#  https://aur.archlinux.org/packages.php?ID=39085
 source=(file:///${name}v${version}.tar.gz
          libiberty-testsuite.diff
          pic30-standard-prefix.diff
          search-path-fix.diff
          make-relative-prefix.diff
-         resource-path.diff
+         delete_location_of_c30_device_info.resource-path.diff
          t-pic30.diff
          remove-omf.diff
          program-prefix-fix.diff
+         resource.patch
+         bugfix.patch
+         configure.patch
+         gcc.c.patch
+         resource.c.patch
+         default-include-path.patch
          )
 
 build(){
@@ -42,8 +50,16 @@ build(){
    patch --merge -p0 -i $SRC/pic30-standard-prefix.diff
    # patch --merge -p0 -i $SRC/search-path-fix.diff
    patch --merge -p0 -i $SRC/make-relative-prefix.diff
-   patch --merge -p0 -i $SRC/resource-path.diff
+   patch --merge -p0 -i $SRC/delete_location_of_c30_device_info.resource-path.diff
    patch --merge -p0 -i $SRC/t-pic30.diff
+
+   # the below files from arch build
+   # patch --merge -p0 -i $SRC/resource.patch
+   patch --merge -p0 -i $SRC/bugfix.patch
+   patch --merge -p0 -i $SRC/configure.patch
+   patch --merge -p0 -i $SRC/gcc.c.patch
+   patch --merge -p0 -i $SRC/resource.c.patch
+   patch --merge -p0 -i $SRC/default-include-path.patch
 
    sed -i \
       -e 's,pic30_license_valid = 0;,pic30_license_valid = 1;,g' \
