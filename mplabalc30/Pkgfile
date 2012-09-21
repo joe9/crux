@@ -28,13 +28,19 @@ build(){
    cd $SRC
 
    # There is a problem with finding the resource file
-   # Here we add some alternatives locations. 
+   # Here we add some alternatives locations.
    # Only those places will be searched before giving up
    echo "char *pic30_resource_files[] = {"      >acme/c30_device_info_path.h
    echo "\"/usr/share/pic30/c30_device.info\"," >>acme/c30_device_info_path.h
    echo "\"/usr/share/pic30/bin/c30_device.info\"," >>acme/c30_device_info_path.h
    echo "0};"                                   >>acme/c30_device_info_path.h
    echo "#define MCHP_VERSION v$version for Crux Linux" >acme/mchp_version.h
+
+   pic30path="/usr/share/pic30"
+   # Default smartio_rules, the value can be 0, 1 or 2
+   # The value has to be supported by the C library
+   #  and be the same as in pic30_binutils
+   c30_smartio_rules=2
 
    find . -type f -exec dos2unix --force {} \;
 
@@ -52,12 +58,10 @@ build(){
    # unused patch file from the arch build
    #  default-path.patch
 
-   pic30path="/usr/share/pic30"
-
    cd acme/
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
       ./configure --prefix=/usr/ --target=pic30-coff
    make
    make DESTDIR=$PKG/ install
@@ -65,7 +69,7 @@ build(){
    make distclean
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
       ./configure --prefix=/usr/ --target=pic30-elf
    make
    make DESTDIR=$PKG/ install

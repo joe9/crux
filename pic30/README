@@ -1,5 +1,7 @@
 README for pic30
 
+NOTE: C30 is obsolete. Install microchip mplabxc16 instead of this port.
+
 Followed the arch pkgbuild instructions at
    https://aur.archlinux.org/packages/mi/microchip-mplabxc16-bin/PKGBUILD
    saved as microchip-mplabxc16-bin.PKGBUILD

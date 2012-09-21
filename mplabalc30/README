@@ -1,5 +1,7 @@
 README for mplabalc30
 
+NOTE: C30 is obsolete. Install microchip mplabxc16 instead of this port.
+
 REQUIREMENTS
 
    Download the MPLAB ASM30 Assembler from

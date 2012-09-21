@@ -25,10 +25,30 @@ source=(file:///${name}v${version}.tar.gz
          gcc.c.patch
          resource.c.patch
          default-include-path.patch
+         docs.patch
+         version.patch
+         c30_flag_definitions.h.patch
+         pic30.c.patch
+         disable-fixinc.patch
          )
 
 build(){
    cd $SRC
+
+   # There is a problem with finding the resource file
+   # Here we add some alternatives locations.
+   # Only those places will be searched before giving up
+   echo "char *pic30_resource_files[] = {"      >gcc-4.0.2/gcc-4.0.2/c30_device_info_path.h
+   echo "\"/usr/share/pic30/c30_device.info\"," >>gcc-4.0.2/gcc-4.0.2/c30_device_info_path.h
+   echo "\"/usr/share/pic30/bin/c30_device.info\"," >>gcc-4.0.2/gcc-4.0.2/c30_device_info_path.h
+   echo "0};"                                   >>gcc-4.0.2/gcc-4.0.2/c30_device_info_path.h
+   echo "#define MCHP_VERSION v$version for Crux Linux" >gcc-4.0.2/gcc-4.0.2/gcc/mchp_version.h
+
+   pic30path="/usr/share/pic30"
+   # Default smartio_rules, the value can be 0, 1 or 2
+   # The value has to be supported by the C library
+   #  and be the same as in pic30_binutils
+   c30_smartio_rules=2
 
    # find . -type f -exec dos2unix {} \;
    find . -type f -exec dos2unix --force {} \;
@@ -50,35 +70,47 @@ build(){
    patch --merge -p0 -i $SRC/pic30-standard-prefix.diff
    # patch --merge -p0 -i $SRC/search-path-fix.diff
    patch --merge -p0 -i $SRC/make-relative-prefix.diff
-   patch --merge -p0 -i $SRC/delete_location_of_c30_device_info.resource-path.diff
+   # patch --merge -p0 -i $SRC/delete_location_of_c30_device_info.resource-path.diff
    patch --merge -p0 -i $SRC/t-pic30.diff
 
    # the below files from arch build
-   # patch --merge -p0 -i $SRC/resource.patch
+   patch --merge -p0 -i $SRC/resource.patch
    patch --merge -p0 -i $SRC/bugfix.patch
    patch --merge -p0 -i $SRC/configure.patch
    patch --merge -p0 -i $SRC/gcc.c.patch
    patch --merge -p0 -i $SRC/resource.c.patch
    patch --merge -p0 -i $SRC/default-include-path.patch
+   patch --merge -p0 -i $SRC/docs.patch
+   # patch --merge -p0 -i $SRC/version.patch
+   patch --merge -p0 -i $SRC/c30_flag_definitions.h.patch
+   patch --merge -p0 -i $SRC/pic30.c.patch
+   # patch --merge -p0 -i $SRC/disable-fixinc.patch
 
    sed -i \
       -e 's,pic30_license_valid = 0;,pic30_license_valid = 1;,g' \
       -e '/if (pid == -1) pfatal_pexecute (err_msg, exec);/,+5d' \
+      -e 's/PIC30_BUILTIN_WRITEPWMSFR,/PIC30_BUILTIN_WRITEPWMSFR/g' \
                gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.h
 
-   sed -i \
-      -e '/pic30_conversion_status conv_flags;/ d' \
-      -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
-      -e '/free(exec);/ i pic30_license_valid = 1;' \
-               gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   # sed -i \
+   #    -e '/pic30_conversion_status conv_flags;/ d' \
+   #    -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
+   #    -e '/free(exec);/ i pic30_license_valid = 1;' \
+   #             gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   sed -i -e '/free(exec);/ i pic30_license_valid = 1;' \
+          gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+
 
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
    mkdir gcc-build-coff
    cd gcc-build-coff
-   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux" \
+   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" "  \
       ../gcc-4.0.2/gcc-4.0.2/configure \
-         --prefix=/usr/ --target=pic30-coff --enable-languages=c
+         --prefix=/usr/ --target=pic30-coff --enable-languages=c \
+         --enable-target-optspace --without-headers \
+         --with-as=/usr/bin/pic30-coff-as --with-ld=/usr/bin/pic30-coff-ld \
+         --enable-debug --disable-fixincludes
    make
    make DESTDIR=$PKG/ install
 
@@ -86,9 +118,12 @@ build(){
    find .. -name *.l -type f -exec touch '{}' ';'
    mkdir ../gcc-build-elf
    cd ../gcc-build-elf
-   CFLAGS="${CFLAGS} -DMCHP_VERSION=v3.31-crux" \
+   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" " \
       ../gcc-4.0.2/gcc-4.0.2/configure \
-         --prefix=/usr/ --target=pic30-elf --enable-languages=c
+         --prefix=/usr/ --target=pic30-elf --enable-languages=c \
+         --enable-target-optspace --without-headers \
+         --with-as=/usr/bin/pic30-elf-as --with-ld=/usr/bin/pic30-elf-ld \
+         --enable-debug --disable-fixincludes
    touch ../gcc-4.0.2/gcc-4.0.2/gcc/c-parse.y
    make
    make DESTDIR=$PKG/ install
@@ -99,4 +134,9 @@ build(){
    # rm $PKG/usr/man/man7/gpl.7.gz
    rm -rf $PKG/usr/man/man7
    # cp $PKG/usr/libexec/gcc/pic30-coff/4.0.3/pic30-coff-cc1 $PKG/usr/bin/pic30-coff-cc1
+   rm -fr $PKG/usr/{pic30-coff,pic30-elf}
+   rm -fr $PKG/usr/lib/gcc/pic30-{elf,coff}/4.0.3/install-tools
+   rm -fr $PKG/usr/libexec/gcc/pic30-{elf,coff}/4.0.3/install-tools
+   # Remove info-files that are in gcc
+   rm -rf $PKG/usr/info
 }
