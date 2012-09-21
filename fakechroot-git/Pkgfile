@@ -1,0 +1,32 @@
+# Description: gives a fake chroot environment
+# URL:         https://github.com/fakechroot/fakechroot
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  autogen
+
+name=fakechroot-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   # export CFLAGS="-ggdb -g"
+   # export CXXFLAGS="${CFLAGS}"
+   # export LDFLAGS=" -g "
+
+   if cd fakechroot ; then
+       git pull
+   else
+      git clone git://github.com/fakechroot/fakechroot.git fakechroot
+      cd fakechroot
+   fi
+
+   ./autogen.sh
+   ./configure --prefix=/usr --libdir=/usr/lib/libfakeroot --sysconfdir=/etc
+   make
+   make DESTDIR=$PKG install
+
+   install -dm755 $PKG/etc/ld.so.conf.d/
+   echo '/usr/lib/libfakeroot/fakechroot/' > $PKG/etc/ld.so.conf.d/fakechroot.conf
+}
