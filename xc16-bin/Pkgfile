@@ -1,0 +1,93 @@
+# Description: MPLAB C Compiler for PIC24 and dsPIC DSCs
+# URL:         http://www.microchip.com
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  wget, sed, dos2unix, fakechroot-git
+
+name=xc16-bin
+version=1.10
+release=1
+# got this idea from
+#  https://aur.archlinux.org/packages.php?ID=59174
+# synced the build with the arch pkgbuild at
+#  https://aur.archlinux.org/packages.php?ID=39085
+source=(http://ww1.microchip.com/downloads/en/DeviceDoc/xc16-v${version}-linux.tar
+        http://ftp.morpheus.net/pub/linux/crux/crux-2.7.1/iso/crux-2.7.1.iso)
+
+build(){
+   cd $SRC
+
+   # get the installer ready
+   tar xvf xc16-v${version}-linux.tar
+
+   instdir=/opt/microchip/xc16/v${version}
+   installer=xc16-v${version}-linux.run
+
+   mkdir -p $PKG/$instdir
+   chmod 0755 $SRC/$installer
+   cp $SRC/$installer $PKG/
+
+   echo -e "i\n\n\n\n\n\n\n\n\n\n\n\n\n\ny\n\n\n\ny\n\n$PKG$instdir\ny\ni\ni\ni\ni" > $PKG/inst_input
+   mkdir -p $PKG/{home,bin}
+
+   echo "#!/bin/bash -xv"            >$PKG/bin/todo.sh
+   echo ""                          >>$PKG/bin/todo.sh
+   echo "export LC_ALL=en_US.UTF-8" >>$PKG/bin/todo.sh
+   echo "export LANG=\"C\""         >>$PKG/bin/todo.sh
+   # echo ". /etc/profile"      >$PKG/bin/todo.sh
+   echo "uname -a"                  >>$PKG/bin/todo.sh
+   echo "HOME=/home /$installer --mode text < /inst_input &> /dev/null" >>$PKG/bin/todo.sh
+   echo "# HOME=/home /$installer --mode text < /inst_input" >>$PKG/bin/todo.sh
+   echo "exit"                      >>$PKG/bin/todo.sh
+   echo "exit"                      >>$PKG/bin/todo.sh
+   chmod 0755 $PKG/bin/todo.sh
+
+   # HOME=$PKG/home $SRC/$installer --mode text < inst_input &> /dev/null
+   # HOME=$PKG/home $SRC/$installer --mode text < inst_input
+   # rm inst_input
+   # rm -r $PKG/home
+
+   # Prepare chroot to install the .bin file
+   #  Got the below instructions from http://crux.nu/Wiki/ChrootTesting
+      # Step 1: prepare target chroot
+      CHROOT=$PKG
+      mkdir -p $CHROOT/var/lib/pkg
+      touch $CHROOT/var/lib/pkg/db
+      mkdir -p $CHROOT/var/ports/{distfiles,packages}
+      mkdir -p $CHROOT/usr/ports/work
+
+      # Step 2: install core packages
+      id
+      whoami
+      # LD_PRELOAD="" mount -o loop $SRC/crux-2.7.1.iso /tmp/mnt
+      # for p in core/* ; do pkgadd -r $CHROOT $p; done
+      # tar xvf /tmp/mnt/crux/core/pkgutils* usr/bin/pkgadd -O > /tmp/pkgadd
+      # chmod 755 /tmp/pkgadd
+      # ls -altr /tmp/pkgadd
+      # cd /tmp/mnt/crux
+      for p in /tmp/mnt/crux/core/* ; do tar xf $p -C $CHROOT; done
+
+      # Step 5: Cleanup
+      cd $SRC
+      # sudo umount mnt
+
+      # Step 3: copy DNS settings
+      cp /etc/resolv.conf $CHROOT/etc
+
+      # Step 4: Activate your chroot
+      # sudo mount -t proc proc $CHROOT/proc
+      mkdir -p $CHROOT/{proc,dev,sys,tmp}
+      # sudo mount --bind /dev $CHROOT/dev
+      # sudo mount --bind /sys $CHROOT/sys
+      # sudo mount --bind /var/cache/ccache $CHROOT/var/cache/ccache
+      # sudo mount -t tmpfs -o size=8G,uid=$(id -u pkgmk),gid=$(id -g pkgmk),defaults tmpfs $CHROOT/usr/ports/work
+      # sudo chroot $CHROOT /bin/bash
+      fakechroot chroot $CHROOT /bin/todo.sh
+      # fakechroot chroot $CHROOT /bin/bash
+
+   # rm inst_input
+   # rm -r $PKG/home
+   # rm -r $PKG$instdir/{Uninstall*,bin/{roam.lic,xclm},etc,rollbackBackupDirectory} || true
+
+   # mkdir -p $PKG/usr/share/licenses/$name
+   # ln -s $instdir/MPLAB_XC16_Compiler_License.txt $PKG/usr/share/licenses/$name/LICENSE
+}

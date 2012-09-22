@@ -1,0 +1,14 @@
+README for mplabalc30
+
+NOTE: 1. C30 is obsolete. Install microchip mplabxc16 instead of this port
+      2. Installer does not run on 64 bit platforms
+
+REQUIREMENTS
+
+   The Crux cd needs to be mounted at /tmp/mnt for the install to work
+   - http://ww1.microchip.com/downloads/en/DeviceDoc/mplabc30v3_31.tar.gz
+
+   and put the file
+   - mplabc30v3_31.tar.gz
+
+   into the directory defined by PKGMK_SOURCE_DIR. See pkgmk.conf(5).
