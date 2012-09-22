@@ -1,0 +1,11 @@
+*** ./v1.10.src/XC16_v1_10_branch/gcc/gcc/version.h.original	2012-09-21 22:42:13.421918193 -0400
+--- ./v1.10.src/XC16_v1_10_branch/gcc/gcc/version.h	2012-09-21 22:42:34.915919637 -0400
+***************
+*** 1,5 ****
+--- 1,6 ----
+  #ifndef GCC_VERSION_H
+  #define GCC_VERSION_H
++ #include "mchp_version.h"
+  #ifdef _BUILD_C30_
+  extern char *version_string;
+  #else

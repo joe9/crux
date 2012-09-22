@@ -1,0 +1,19 @@
+*** v1.10.src/XC16_v1_10_branch/gcc/gcc/config/pic30/pic30.h.original	2012-09-21 21:50:36.510710285 -0400
+--- v1.10.src/XC16_v1_10_branch/gcc/gcc/config/pic30/pic30.h	2012-09-21 21:52:00.065715888 -0400
+***************
+*** 141,147 ****
+  
+  #define CC1_SPEC  " \
+    %(mchp_cci_cc1_spec) \
+!   -mresource=%I-../../c30_device.info -omf=" OMF
+  
+  #define LINK_SPEC   "%{mcpu=*:-p%*} -omf=" OMF
+  
+--- 141,147 ----
+  
+  #define CC1_SPEC  " \
+    %(mchp_cci_cc1_spec) \
+!   -mresource=/usr/share/pic30/bin/c30_device.info -omf=" OMF
+  
+  #define LINK_SPEC   "%{mcpu=*:-p%*} -omf=" OMF
+  

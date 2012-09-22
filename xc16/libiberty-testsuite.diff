@@ -1,0 +1,28 @@
+By John Steele Scott, 22/2/2005
+
+Microchip delete all the testsuite subdirectories from their source archive,
+so we have to take care not to run the tests.
+
+--- ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/Makefile.in.orig	2008-12-12 10:38:43.000000000 +0800
++++ ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/Makefile.in	2008-12-12 10:39:33.000000000 +0800
+@@ -102,7 +102,7 @@
+ 	"tooldir=$(tooldir)"
+ 
+ # Subdirectories to recurse into. We need to override this during cleaning
+-SUBDIRS = testsuite
++SUBDIRS = 
+ 
+ # FIXME: add @BUILD_INFO@ once we're sure it works for everyone.
+ all: stamp-picdir $(TARGETLIB) needed-list required-list all-subdir
+
+--- ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/configure.orig	2008-12-12 10:40:08.000000000 +0800
++++ ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/configure	2008-12-12 10:41:22.000000000 +0800
+@@ -7184,7 +7184,7 @@
+ LIBOBJS="$L"
+ 
+ # We need multilib support, but only if configuring for the target.
+-ac_config_files="$ac_config_files Makefile testsuite/Makefile"
++ac_config_files="$ac_config_files Makefile"
+ 
+           ac_config_commands="$ac_config_commands default"
+ 

@@ -1,0 +1,60 @@
+*** ./v1.10.src/XC16_v1_10_branch/gcc/gcc/config/pic30/pic30.c.orig	2012-08-01 11:15:25.000000000 -0400
+--- ./v1.10.src/XC16_v1_10_branch/gcc/gcc/config/pic30/pic30.c	2012-09-21 23:00:20.532991176 -0400
+***************
+*** 80,85 ****
+--- 80,86 ----
+  #elif defined(LICENSE_MANAGER)
+  #include "../../../../../pic30-lm/include/pic30-lm.h"
+  #endif
++ #include "../../../c30_device_info_path.h"
+  #include "df.h"
+  #include "config/mchp-cci/cci.c"  // ack
+  
+***************
+*** 970,975 ****
+--- 971,977 ----
+    int mismatch=0;
+    char *match;
+    char *device_buf;
++   int i;
+  
+    mask = 0;
+    if (strcmp(id, "GENERIC-16BIT") == 0) {
+***************
+*** 993,998 ****
+--- 995,1008 ----
+      *matched_id = (char *)"GENERIC-16DSP-EP";
+      return MASK_ARCH_EP_GENERIC;
+    }
++   for (i = 0; pic30_resource_files[i]; i++) {
++     if (access(pic30_resource_files[i], R_OK) == 0) {
++       pic30_resource_file = pic30_resource_files[i];
++        break;
++     }
++   }
++   if (pic30_resource_file == 0)
++       pic30_resource_file = pic30_resource_files[0];
+    if (pic30_resource_file == 0) {
+      warning(0,"Provide a resource file");
+      return 0;
+***************
+*** 15419,15425 ****
+      if (*c) c++;
+      penpenultimate[1+len++] = 0;
+      if (len) {
+!       add_path(xstrdup(my_prefix), SYSTEM, 0, 0);
+      }
+    }
+    free(my_prefix);
+--- 15429,15439 ----
+      if (*c) c++;
+      penpenultimate[1+len++] = 0;
+      if (len) {
+!       if (penpenultimate[1] == '/')
+!          add_path(xstrdup(penpenultimate+1), SYSTEM, 0, 0);
+!       else
+!          add_path(xstrdup(my_prefix), SYSTEM, 0, 0);
+!      }
+      }
+    }
+    free(my_prefix);

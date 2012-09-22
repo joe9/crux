@@ -1,0 +1,146 @@
+# Description: MPLAB XC16 Assembler
+# URL:         http://www.microchip.com
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  wget, sed, dos2unix, pic30
+
+name=xc16
+version=1.10
+release=1
+# downloaded the below diff files from
+#  http://david.lutolf.net/dt/pic_microchip/dist/pic30-binutils-3.11b.tar.bz2
+# synced the build with the arch pkgbuild at
+#  https://aur.archlinux.org/packages.php?ID=39084
+#  https://aur.archlinux.org/packages.php?ID=39085
+# arch pkgbuild file saved as mplabalc30.PKGBUILD
+source=(http://ww1.microchip.com/downloads/en/DeviceDoc/XC16_v${version}.src.zip
+         c30_resource-paths.patch
+         resource.c.patch
+         libiberty-testsuite.diff
+         mresource.patch
+         t-pic30.diff
+         make-relative-prefix.diff
+         pic30-standard-prefix.diff
+         bugfix.patch
+         gcc.c.patch
+         default-include-path.patch
+         version.patch
+         cpp.texi.patch
+         pic30.c.patch
+         )
+
+build(){
+   cd $SRC
+   tar xvzf v1.10.src.tgz
+
+   # There is a problem with finding the resource file
+   # Here we add some alternatives locations.
+   # Only those places will be searched before giving up
+   echo "char *pic30_resource_files[] = {"      >./XC16_v1_10_branch/binutils/c30_device_info_path.h
+   echo "\"/usr/share/pic30/c30_device.info\"," >>./XC16_v1_10_branch/binutils/c30_device_info_path.h
+   echo "\"/usr/share/pic30/bin/c30_device.info\"," >>./XC16_v1_10_branch/binutils/c30_device_info_path.h
+   echo "0};"                                   >>./XC16_v1_10_branch/binutils/c30_device_info_path.h
+   echo "#define MCHP_VERSION v$version for Crux Linux" >./XC16_v1_10_branch/binutils/mchp_version.h
+
+   pic30path="/usr/share/pic30"
+   # Default smartio_rules, the value can be 0, 1 or 2
+   # The value has to be supported by the C library
+   #  and be the same as in pic30_binutils
+   c30_smartio_rules=2
+
+
+   patch --merge -p0 -i $SRC/c30_resource-paths.patch
+   patch --merge -p0 -i $SRC/resource.c.patch
+   patch --merge -p0 -i $SRC/libiberty-testsuite.diff
+   patch --merge -p0 -i $SRC/mresource.patch
+   patch --merge -p0 -i $SRC/t-pic30.diff
+   patch --merge -p0 -i $SRC/make-relative-prefix.diff
+   patch --merge -p0 -i $SRC/pic30-standard-prefix.diff
+   patch --merge -p0 -i $SRC/bugfix.patch
+   patch --merge -p0 -i $SRC/gcc.c.patch
+   patch --merge -p0 -i $SRC/default-include-path.patch
+   patch --merge -p0 -i $SRC/version.patch
+   patch --merge -p0 -i $SRC/cpp.texi.patch
+   patch --merge -p0 -i $SRC/pic30.c.patch
+
+   cd ./XC16_v1_10_branch/binutils/
+   find . -name *.y -type f -exec touch '{}' ';'
+   find . -name *.l -type f -exec touch '{}' ';'
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
+      ./configure --prefix=/usr/ --target=pic30-coff
+   make
+   make DESTDIR=$PKG/ install
+
+   make distclean
+   find . -name *.y -type f -exec touch '{}' ';'
+   find . -name *.l -type f -exec touch '{}' ';'
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
+      ./configure --prefix=/usr/ --target=pic30-elf
+   make
+   make DESTDIR=$PKG/ install
+
+   # patch --merge -p0 -i $SRC/remove-omf.diff
+   # the above .diff file is not working.
+   # The omf flag seemed to be introducing issues when
+   #  gcc called its subcommands (e.g. cc1) so I removed it.
+   # find . -type f -exec sed -i -e 's/-omf=%(omf)//g' {} \;
+   sed -i -e 's/-omf=%(omf)//g' ./v1.10.src/XC16_v1_10_branch/gcc/gcc/gcc.c
+
+   # patch --merge -p0 -i $SRC/program-prefix-fix.diff
+   # the above .diff file is removing the OMF definition
+   sed -i -e '/host_xm_defines/s/pic30-/${program_prefix}/g' \
+         ./v1.10.src/XC16_v1_10_branch/gcc/gcc/config.gcc
+
+   sed -i \
+      -e 's,pic30_license_valid = 0;,pic30_license_valid = 1;,g' \
+      -e '/if (pid == -1) pfatal_pexecute (err_msg, exec);/,+5d' \
+      -e 's/PIC30_BUILTIN_WRITEPWMSFR,/PIC30_BUILTIN_WRITEPWMSFR/g' \
+               ./v1.10.src/XC16_v1_10_branch/gcc/gcc/config/pic30/pic30.h
+
+   # sed -i \
+   #    -e '/pic30_conversion_status conv_flags;/ d' \
+   #    -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
+   #    -e '/free(exec);/ i pic30_license_valid = 1;' \
+   #             gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   sed -i -e '/free(exec);/ i pic30_license_valid = 1;' \
+         ./v1.10.src/XC16_v1_10_branch/gcc/gcc/config/pic30/pic30.c
+
+
+   find . -name *.y -type f -exec touch '{}' ';'
+   find . -name *.l -type f -exec touch '{}' ';'
+   mkdir gcc-build-coff
+   cd gcc-build-coff
+   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" "  \
+      ../gcc-4.0.2/gcc-4.0.2/configure \
+         --prefix=/usr/ --target=pic30-coff --enable-languages=c \
+         --enable-target-optspace --without-headers \
+         --with-as=/usr/bin/pic30-coff-as --with-ld=/usr/bin/pic30-coff-ld \
+         --enable-debug --disable-fixincludes
+   make
+   make DESTDIR=$PKG/ install
+
+   find .. -name *.y -type f -exec touch '{}' ';'
+   find .. -name *.l -type f -exec touch '{}' ';'
+   mkdir ../gcc-build-elf
+   cd ../gcc-build-elf
+   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" " \
+      ../gcc-4.0.2/gcc-4.0.2/configure \
+         --prefix=/usr/ --target=pic30-elf --enable-languages=c \
+         --enable-target-optspace --without-headers \
+         --with-as=/usr/bin/pic30-elf-as --with-ld=/usr/bin/pic30-elf-ld \
+         --enable-debug --disable-fixincludes
+   touch ../gcc-4.0.2/gcc-4.0.2/gcc/c-parse.y
+   make
+   make DESTDIR=$PKG/ install
+
+   rm $PKG/usr/lib/libiberty.a
+   # rm $PKG/usr/man/man7/fsf-funding.7.gz
+   # rm $PKG/usr/man/man7/gfdl.7.gz
+   # rm $PKG/usr/man/man7/gpl.7.gz
+   rm -rf $PKG/usr/man/man7
+   # cp $PKG/usr/libexec/gcc/pic30-coff/4.0.3/pic30-coff-cc1 $PKG/usr/bin/pic30-coff-cc1
+   rm -fr $PKG/usr/{pic30-coff,pic30-elf}
+   rm -fr $PKG/usr/lib/gcc/pic30-{elf,coff}/4.0.3/install-tools
+   rm -fr $PKG/usr/libexec/gcc/pic30-{elf,coff}/4.0.3/install-tools
+   # Remove info-files that are in gcc
+   rm -rf $PKG/usr/info
+}

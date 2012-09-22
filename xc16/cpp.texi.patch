@@ -1,0 +1,79 @@
+Documentation patches for the man file.
+These patches are a little bit old, and might need to be 
+updated for the latest version of pic30-gcc
+
+--- ./v1.10.src/XC16_v1_10_branch/gcc/gcc/doc/cpp.texi.original	2009-02-01 09:14:19.000000000 +0100
++++ ./v1.10.src/XC16_v1_10_branch/gcc/gcc/doc/cpp.texi	2009-02-01 09:23:56.000000000 +0100
+@@ -850,13 +850,13 @@
+ requested with @code{@w{#include <@var{file}>}} in:
+ 
+ @smallexample
+-/usr/local/include
++/usr/share/pic30/include
+ @var{libdir}/gcc/@var{target}/@var{version}/include
+ /usr/@var{target}/include
+-/usr/include
++/usr/share/pic30/include
+ @end smallexample
+ 
+-For C++ programs, it will also look in @file{/usr/include/g++-v3},
++For C++ programs, it will also look in @file{/usr/share/pic30/include/g++-v3},
+ first.  In the above, @var{target} is the canonical name of the system
+ GCC was configured to compile code for; often but not always the same as
+ the canonical name of the system it runs on.  @var{version} is the
+@@ -885,9 +885,9 @@
+ first in the directory containing the current file, then in the
+ directories as specified by @option{-iquote} options, then in the same
+ places it would have looked for a header requested with angle
+-brackets.  For example, if @file{/usr/include/sys/stat.h} contains
++brackets.  For example, if @file{/usr/share/pic30/include/sys/stat.h} contains
+ @code{@w{#include "types.h"}}, GCC looks for @file{types.h} first in
+-@file{/usr/include/sys}, then in its usual search path.
++@file{/usr/share/pic30/include/sys}, then in its usual search path.
+ 
+ @samp{#line} (@pxref{Line Control}) does not change GCC's idea of the
+ directory containing the current file.
+@@ -1065,7 +1065,7 @@
+ 
+ You could include the old header with an absolute pathname:
+ @smallexample
+-#include "/usr/include/old-header.h"
++#include "/usr/share/pic30/include/old-header.h"
+ @end smallexample
+ @noindent
+ This works, but is not clean; should the system headers ever move, you
+@@ -1078,12 +1078,12 @@
+ searching the list of header file directories @emph{ph{after} the directory
+ in which the current file was found.
+ 
+-Suppose you specify @option{-I /usr/local/include}, and the list of
+-directories to search also includes @file{/usr/include}; and suppose
++Suppose you specify @option{-I /usr/share/pic30/include}, and the list of
++directories to search also includes @file{/usr/share/pic30/include}; and suppose
+ both directories contain @file{signal.h}.  Ordinary @code{@w{#include
+-<signal.h>}} finds the file under @file{/usr/local/include}.  If that
++<signal.h>}} finds the file under @file{/usr/share/pic30/include}.  If that
+ file contains @code{@w{#include_next <signal.h>}}, it starts searching
+-after that directory, and finds the file in @file{/usr/include}.
++after that directory, and finds the file in @file{/usr/share/pic30/include}.
+ 
+ @samp{#include_next} does not distinguish between @code{<@var{file}>}
+ and @code{"@var{file}"} inclusion, nor does it check that the file you
+@@ -1789,7 +1789,7 @@
+ a C string constant.  This is the path by which the preprocessor opened
+ the file, not the short name specified in @samp{#include} or as the
+ input file name argument.  For example,
+-@code{"/usr/local/include/myheader.h"} is a possible expansion of this
++@code{"/usr/share/pic30/include/myheader.h"} is a possible expansion of this
+ macro.
+ 
+ @item __LINE__
+@@ -3306,7 +3306,7 @@
+ 
+ @smallexample
+ #pragma GCC dependency "parse.y"
+-#pragma GCC dependency "/usr/include/time.h" rerun fixincludes
++#pragma GCC dependency "/usr/share/pic30/include/time.h" rerun fixincludes
+ @end smallexample
+ 
+ @item #pragma GCC poison

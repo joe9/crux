@@ -1,0 +1,78 @@
+*** v1.10.src/c30_resource/src/generator/resource.c.orig	2012-09-21 21:19:09.117583579 -0400
+--- v1.10.src/c30_resource/src/generator/resource.c	2012-09-21 21:20:19.444588292 -0400
+***************
+*** 88,142 ****
+      strcat(match, ".info");
+      status = stat(device_buf, &fileinfo);
+    
+!     if (status == -1) {
+!       /* device_buf cannot be statted */
+!       /* this could be because of the reoganization of the install directory 
+!        * some of the binaries are in the same directory as the resource file,
+!        * some are one directory below it... try moving one up and looking again
+!        */
+!       char *c;
+!       char *ultimate = (char *)name,
+!            *penultimate = (char *)name;
+!       char *temp;
+!   
+!       for (c = (char *)name; *c; c++) {
+!         if ((*c == '/') || (*c == '\\')) {
+!           penultimate = ultimate;
+!           ultimate = c;
+!           while (c[1] == *c) c++;  /* ignore duplicate slashes */
+!         }
+!       }
+!       temp = (char *)xcalloc(strlen(ultimate)+1,1);
+!       strcpy(temp, ultimate);
+!       strcpy(penultimate,ultimate);
+!       //status = stat(name,&fileinfo);
+!     } else {
+!       name = device_buf;
+!     }
+    }
+-   status = stat(name,&fileinfo);
+-   if ((status == -1) && 
+-       ((device_buf == 0) || (stat(device_buf,&fileinfo) == -1))) {
+-     /* device_buf cannot be statted */
+-     /* try the default device file */
+-     char *c;
+-     char *ultimate = (char *)name,
+-          *penultimate = (char *)name;
+-     char *temp;
+- 
+-     for (c = (char *)name; *c; c++) {
+-       if ((*c == '/') || (*c == '\\')) {
+-         penultimate = ultimate;
+-         ultimate = c;
+-         while (c[1] == *c) c++;  /* ignore duplicate slashes */
+-       }
+-     }
+-     temp = (char *)xcalloc(strlen(ultimate)+1,1);
+-     strcpy(temp, ultimate);
+-     strcpy(penultimate,temp);
+-     stat(name,&fileinfo);
+-   } 
+- 
+    /* under WINDOZE, the "b" is required because text files are subject to
+       translation and ftell and fseek might not agree */
+    input_file = fopen(name,"rb");
+--- 88,95 ----
+      strcat(match, ".info");
+      status = stat(device_buf, &fileinfo);
+    
+!     name = device_buf;
+    }
+    /* under WINDOZE, the "b" is required because text files are subject to
+       translation and ftell and fseek might not agree */
+    input_file = fopen(name,"rb");
+***************
+*** 144,149 ****
+--- 97,103 ----
+      rib = 0;
+      res_error(ec_cannot_open_file);
+    }
++   (void)stat(name,&fileinfo);
+    resource_start_read = 0;
+    buffer = (unsigned char *)xcalloc(1, buffer_size);
+    rib = (struct resource_introduction_block *)xcalloc(1, 

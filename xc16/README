@@ -1,0 +1,13 @@
+README for mplabalc30
+
+NOTE: C30 is obsolete. Install microchip mplabxc16 instead of this port.
+
+REQUIREMENTS
+
+   Download the MPLAB ASM30 Assembler from
+   - http://ww1.microchip.com/downloads/en/DeviceDoc/mplabalc30v3_31.tar.gz
+
+   and put the file
+   - mplabalc30v3_31.tar.gz
+
+   into the directory defined by PKGMK_SOURCE_DIR. See pkgmk.conf(5).
