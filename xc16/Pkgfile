@@ -29,23 +29,28 @@ source=(http://ww1.microchip.com/downloads/en/DeviceDoc/XC16_v${version}.src.zip
          )
 
 build(){
+
+   TODO: DOES not work, stick with c30
+
    cd $SRC
    tar xvzf v1.10.src.tgz
 
-   # There is a problem with finding the resource file
-   # Here we add some alternatives locations.
-   # Only those places will be searched before giving up
-   echo "char *pic30_resource_files[] = {"      >./XC16_v1_10_branch/binutils/c30_device_info_path.h
-   echo "\"/usr/share/pic30/c30_device.info\"," >>./XC16_v1_10_branch/binutils/c30_device_info_path.h
-   echo "\"/usr/share/pic30/bin/c30_device.info\"," >>./XC16_v1_10_branch/binutils/c30_device_info_path.h
-   echo "0};"                                   >>./XC16_v1_10_branch/binutils/c30_device_info_path.h
-   echo "#define MCHP_VERSION v$version for Crux Linux" >./XC16_v1_10_branch/binutils/mchp_version.h
-
+   c30_device_info_path=v${version}.src/XC16_v1_10_branch/binutils/c30_device_info_path.h
+   mchp_version_h=v${version}.src/XC16_v1_10_branch/binutils/mchp_version.h
    pic30path="/usr/share/pic30"
    # Default smartio_rules, the value can be 0, 1 or 2
    # The value has to be supported by the C library
    #  and be the same as in pic30_binutils
    c30_smartio_rules=2
+
+   # There is a problem with finding the resource file
+   # Here we add some alternatives locations.
+   # Only those places will be searched before giving up
+   echo "char *pic30_resource_files[] = {"      >$c30_device_info_path
+   echo "\"/usr/share/pic30/c30_device.info\"," >>$c30_device_info_path
+   echo "\"/usr/share/pic30/bin/c30_device.info\"," >>$c30_device_info_path
+   echo "0};"                                   >>$c30_device_info_path
+   echo "#define MCHP_VERSION v$version for Crux Linux" >$mchp_version_h
 
 
    patch --merge -p0 -i $SRC/c30_resource-paths.patch
@@ -62,22 +67,15 @@ build(){
    patch --merge -p0 -i $SRC/cpp.texi.patch
    patch --merge -p0 -i $SRC/pic30.c.patch
 
-   cd ./XC16_v1_10_branch/binutils/
+   cd v${version}.src/XC16_v1_10_branch/binutils/
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
-      ./configure --prefix=/usr/ --target=pic30-coff
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" " \
+      ./configure --prefix=/usr/ --target=pic32mx
    make
    make DESTDIR=$PKG/ install
 
-   make distclean
-   find . -name *.y -type f -exec touch '{}' ';'
-   find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
-      ./configure --prefix=/usr/ --target=pic30-elf
-   make
-   make DESTDIR=$PKG/ install
-
+   cd $SRC
    # patch --merge -p0 -i $SRC/remove-omf.diff
    # the above .diff file is not working.
    # The omf flag seemed to be introducing issues when
@@ -107,28 +105,11 @@ build(){
 
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   mkdir gcc-build-coff
-   cd gcc-build-coff
+   mkdir gcc-build-elf
+   cd gcc-build-elf
    CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" "  \
-      ../gcc-4.0.2/gcc-4.0.2/configure \
-         --prefix=/usr/ --target=pic30-coff --enable-languages=c \
-         --enable-target-optspace --without-headers \
-         --with-as=/usr/bin/pic30-coff-as --with-ld=/usr/bin/pic30-coff-ld \
-         --enable-debug --disable-fixincludes
-   make
-   make DESTDIR=$PKG/ install
-
-   find .. -name *.y -type f -exec touch '{}' ';'
-   find .. -name *.l -type f -exec touch '{}' ';'
-   mkdir ../gcc-build-elf
-   cd ../gcc-build-elf
-   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" " \
-      ../gcc-4.0.2/gcc-4.0.2/configure \
-         --prefix=/usr/ --target=pic30-elf --enable-languages=c \
-         --enable-target-optspace --without-headers \
-         --with-as=/usr/bin/pic30-elf-as --with-ld=/usr/bin/pic30-elf-ld \
-         --enable-debug --disable-fixincludes
-   touch ../gcc-4.0.2/gcc-4.0.2/gcc/c-parse.y
+      $SRC/v1.10.src/XC16_v1_10_branch/gcc/gcc/configure \
+         --prefix=/usr/ --target=pic32mx --enable-languages=c
    make
    make DESTDIR=$PKG/ install
 

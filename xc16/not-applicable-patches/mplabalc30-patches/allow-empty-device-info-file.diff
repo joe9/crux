@@ -1,0 +1,31 @@
+This patch makes the version string sane for the cases where the c30_device.info
+is missing.
+
+--- acme/bfd/cpu-pic30.c.orig	2008-12-11 13:52:04.000000000 +0800
++++ acme/bfd/cpu-pic30.c	2008-12-11 15:09:22.000000000 +0800
+@@ -279,7 +279,7 @@
+       if ((*Microchip) && ((*Microchip == '_') || (*Microchip == '.'))) {
+          Microchip++;
+          minor = strtol(Microchip, &Microchip, 0);
+-         for (; *Microchip && *Microchip != ' '; Microchip++);
++         for (; *Microchip && *Microchip != '-'; Microchip++);
+       }
+       pic30_tool_version = major *100 + minor;
+       version_part1 = new_version;
+@@ -308,7 +308,15 @@
+   }
+   rib = read_rib(pic30_resource_file);
+   if (rib == 0) {
+-    fprintf(stderr,"Could not open resource file: %s\n", pic30_resource_file);
++    // Don't complain about c30_resource.info file..Annoying
++    //fprintf(stderr,"Could not open resource file: %s\n", pic30_resource_file);
++
++    // Add this so tool version is sane, instead of "Microchip (null)"
++    if (!pic30_resource_version) {
++      pic30_resource_version = xmalloc(strlen(version_part1) + 
++                                       strlen(version_part2) + 40);
++      sprintf(pic30_resource_version,"%s %s", version_part1, version_part2);
++    }
+     err_return = 1;
+     return;
+   }

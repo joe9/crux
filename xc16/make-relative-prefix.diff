@@ -1,21 +1,21 @@
-*** ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/make-relative-prefix.c.orig	2012-09-21 22:01:52.803755687 -0400
---- ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/make-relative-prefix.c	2012-09-21 22:02:33.419758422 -0400
+*** ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/make-relative-prefix.c.original	2012-09-21 23:53:54.248206926 -0400
+--- ./v1.10.src/XC16_v1_10_branch/gcc/libiberty/make-relative-prefix.c	2012-09-21 23:54:26.604209097 -0400
 ***************
 *** 323,329 ****
   	    break;
   	}
   
 !       if (prog_num <= 0 || i == bin_num)
-           goto bailout;
+  	goto bailout;
       }
   
 --- 323,331 ----
   	    break;
   	}
   
-!       // kunilkuda-131208: Force function to specify relative directories
-!       // even if we're installed in standard location
-!       if (prog_num <= 0)
-           goto bailout;
+!          // kunilkuda-131208: Force function to specify relative directories
+!          // even if we're installed in standard location
+!          if (prog_num <= 0)
+  	goto bailout;
       }
   
