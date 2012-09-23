@@ -91,7 +91,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:7ac3d3d99c42052b7a96d27085d91a59:zsh_history.joe
+f:7dff8b4b9918380480bf6a93168f5e42:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -187,7 +187,7 @@ f:315541f4ee00410a5fb347cbab2320e4:xc16/gcc.c.patch
 f:6cfce57ed02f7a62e2e4cde9f078f5ee:xc16/libiberty-testsuite.diff
 f:8812e558313f639811e59c630213eeb9:xc16/bugfix.patch
 f:74b98dbe0739461bbf338a39ee95444f:xc16/make-relative-prefix.diff
-f:7e03568d700f668cb9d7acf024bf047a:xc16/README
+f:59a85362578d3aeb36bcffe5b56c1594:xc16/README
 f:09c4d33b1b5aaac0faff31d9b611b646:xc16/.md5sum
 f:5945961c83096af86d433a61e007e3e6:xc16/version.patch
 f:c1da743910690990b36a1e2f12eaa2e8:xc16/pic30.c.patch
@@ -203,7 +203,7 @@ f:c84568b109a5afcb2a441a31ce38d6b5:pcb-git/.footprint
 f:73905eab0fc4f841525c524fe353780b:xc16-data/post-install
 f:6a3ecef61cfdf4e5a17d482120c12734:xc16-data/Pkgfile
 f:3e0b337067afe3837f01f23f8f16d9c1:xc16-data/pre-install
-f:5d2b8710b44776b846cf0d377997a99a:xc16-data/README
+f:3801764f66b870ed47d6ff97a1c8f7f5:xc16-data/README
 f:014cbbdc37ca419dfb216ba25a1f7322:xc16-data/.md5sum
 f:72ec1845ff8f992d0e998a310a458d50:xc16-data/.footprint
 f:6a72e87a1379d71f85ccd218195a62bc:xc16-data/strace_activation.txt
@@ -315,7 +315,7 @@ f:386299af4abb57ff494ff31d75917d37:libactp-git/.footprint
 f:73905eab0fc4f841525c524fe353780b:xc16-bin/post-install
 f:cd99c4237588ad7499732df0eb86f754:xc16-bin/Pkgfile
 f:3e0b337067afe3837f01f23f8f16d9c1:xc16-bin/pre-install
-f:5d2b8710b44776b846cf0d377997a99a:xc16-bin/README
+f:ee04076edcdd05adeda862a49911fb4a:xc16-bin/README
 f:014cbbdc37ca419dfb216ba25a1f7322:xc16-bin/.md5sum
 f:2bc9b9cc219502405da2182c0c81bb01:xc16-bin/.footprint
 f:6a72e87a1379d71f85ccd218195a62bc:xc16-bin/strace_activation.txt
