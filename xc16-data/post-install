@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# sudo rm /opt/microchip
+
+if [ -d "/opt/microchip.temporarily_renamed_for_xc16_install" ]; then
+   # Control will enter here if $DIRECTORY exists.
+   sudo mv /opt/microchip.temporarily_renamed_for_xc16_install /opt/microchip
+fi
+sudo chown root:root /opt
+
