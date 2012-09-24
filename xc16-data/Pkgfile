@@ -43,6 +43,11 @@ unpack_source() {
 build(){
    cd $SRC
 
+   if [[ "$(uname -m)" -eq "x86_64" ]] ; then
+      echo "This port does not work on x86_64 machines"
+      exit 1;
+   fi
+
    instdir=/opt/microchip/xc16/v${version}
    installer=xc16-v${version}-linux.run
 
