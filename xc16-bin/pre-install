@@ -1,11 +1,15 @@
 #!/bin/sh -xv
 
-if [ -d "/opt/microchip" ]; then
-   # Control will enter here if $DIRECTORY exists.
-   sudo mv /opt/microchip /opt/microchip.temporarily_renamed_for_xc16_install
-fi
+# this port does not work on x86_64 machines
 
-# sudo ln -sf /var/pkgmk/work/xc16-bin/pkg/opt/microchip /opt/microchip
-# sudo chown pkgmk:pkgmk /opt/microchip
-# sudo chmod 755 /opt/microchip
-sudo chown pkgmk:pkgmk /opt
+if [[ "$(uname -m)" -ne "x86_64" ]] ; then
+   if [ -d "/opt/microchip" ]; then
+      # Control will enter here if $DIRECTORY exists.
+      sudo mv /opt/microchip /opt/microchip.temporarily_renamed_for_xc16_install
+   fi
+
+   # sudo ln -sf /var/pkgmk/work/xc16-bin/pkg/opt/microchip /opt/microchip
+   # sudo chown pkgmk:pkgmk /opt/microchip
+   # sudo chmod 755 /opt/microchip
+   sudo chown pkgmk:pkgmk /opt
+fi
