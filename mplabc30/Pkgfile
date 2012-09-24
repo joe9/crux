@@ -32,8 +32,8 @@ source=( http://ww1.microchip.com/downloads/en/DeviceDoc/${name}v${version}.tar.
          c30_flag_definitions.h.patch
          pic30.c.patch
          disable-fixinc.patch
-         pic30-protos.h.diff
-         pic30.c.diff
+         pic30-protos.h.patch
+         pic30.c.1.patch
          )
 
 build(){
@@ -92,8 +92,8 @@ build(){
    # patch --merge -p0 -i $SRC/disable-fixinc.patch
 
    # got the below from c30-linux patches
-   # patch --merge -p0 -i $SRC/pic30.c.diff
-   # patch --merge -p0 -i $SRC/pic30-protos.h.diff
+   patch --merge -p0 -i $SRC/pic30.c.1.patch
+   patch --merge -p0 -i $SRC/pic30-protos.h.patch
 
    sed -i \
       -e 's,pic30_license_valid = 0;,pic30_license_valid = 1;,g' \
