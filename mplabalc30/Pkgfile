@@ -1,10 +1,11 @@
 # Description: MPLAB ASM30 Assembler
 # URL:         http://www.microchip.com
 # Maintainer:  Joe M, joe9mail at gmail dot com
-# Depends on:  wget, sed, dos2unix, pic30
+# Depends on:  wget, sed, dos2unix, xc16-data
 
 name=mplabalc30
 version=3_31
+# version=3_30b
 release=1
 # downloaded the below diff files from
 #  http://david.lutolf.net/dt/pic_microchip/dist/pic30-binutils-3.11b.tar.bz2
@@ -12,7 +13,7 @@ release=1
 #  https://aur.archlinux.org/packages.php?ID=39084
 #  https://aur.archlinux.org/packages.php?ID=39085
 # arch pkgbuild file saved as mplabalc30.PKGBUILD
-source=(file:///${name}v${version}.tar.gz
+source=( http://ww1.microchip.com/downloads/en/DeviceDoc/${name}v${version}.tar.gz
          search-path-fix.diff
          binutils-makefile_in.diff
          allow-empty-device-info-file.diff
@@ -61,7 +62,7 @@ build(){
    cd acme/
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v${version}-crux -DPIC30MAGIC -DPIC30 -DPIC30PATH=\"$pic30path\" " \
       ./configure --prefix=/usr/ --target=pic30-coff
    make
    make DESTDIR=$PKG/ install
@@ -69,7 +70,7 @@ build(){
    make distclean
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
-   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
+   CFLAGS="${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v${version}-crux -DPIC30MAGIC -DPIC30 -DPIC30ELF -DPIC30PATH=\"$pic30path\" " \
       ./configure --prefix=/usr/ --target=pic30-elf
    make
    make DESTDIR=$PKG/ install

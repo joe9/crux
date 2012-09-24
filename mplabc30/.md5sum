@@ -9,7 +9,9 @@ d56bff082498d568db06a2eb8c99bc80  gcc.c.patch
 26ed6c4355ab5d7050dcab2973f3d067  libiberty-testsuite.diff
 8067fc121eafbcb69191b3243ccebc02  make-relative-prefix.diff
 edf7f16644e5164baef5dd3b106c3156  mplabc30v3_31.tar.gz
+bd085d7accd32e5b171392b34a19338a  pic30-protos.h.diff
 0d1b3b874595c529a229c59c2dccfbf1  pic30-standard-prefix.diff
+86f150b077c00eeb2558388f0f381c6f  pic30.c.diff
 0ead3160a872a0281ecb63815711608e  pic30.c.patch
 ee1cac1e96b29f94ebb163e4452a74a9  program-prefix-fix.diff
 b313ba44ba51e9d3871661ee8b8ab5e0  remove-omf.diff

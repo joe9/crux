@@ -5,12 +5,14 @@
 
 name=mplabc30
 version=3_31
+# version=3_30b
 release=1
 # downloaded the below diff files from
 #  http://david.lutolf.net/dt/pic_microchip/dist/pic30-gcc-3.11b.tar.bz2
 # synced the build with the arch pkgbuild at
 #  https://aur.archlinux.org/packages.php?ID=39085
-source=(file:///${name}v${version}.tar.gz
+#  http://ww1.microchip.com/downloads/en/DeviceDoc/mplabc30v3_30b.tar.gz
+source=( http://ww1.microchip.com/downloads/en/DeviceDoc/${name}v${version}.tar.gz
          libiberty-testsuite.diff
          pic30-standard-prefix.diff
          search-path-fix.diff
@@ -30,6 +32,8 @@ source=(file:///${name}v${version}.tar.gz
          c30_flag_definitions.h.patch
          pic30.c.patch
          disable-fixinc.patch
+         pic30-protos.h.diff
+         pic30.c.diff
          )
 
 build(){
@@ -78,7 +82,8 @@ build(){
    patch --merge -p0 -i $SRC/bugfix.patch
    patch --merge -p0 -i $SRC/configure.patch
    patch --merge -p0 -i $SRC/gcc.c.patch
-   patch --merge -p0 -i $SRC/resource.c.patch
+   # the below works only on 3.31 and not on 3.30b
+   # patch --merge -p0 -i $SRC/resource.c.patch
    patch --merge -p0 -i $SRC/default-include-path.patch
    patch --merge -p0 -i $SRC/docs.patch
    # patch --merge -p0 -i $SRC/version.patch
@@ -86,26 +91,30 @@ build(){
    patch --merge -p0 -i $SRC/pic30.c.patch
    # patch --merge -p0 -i $SRC/disable-fixinc.patch
 
+   # got the below from c30-linux patches
+   # patch --merge -p0 -i $SRC/pic30.c.diff
+   # patch --merge -p0 -i $SRC/pic30-protos.h.diff
+
    sed -i \
       -e 's,pic30_license_valid = 0;,pic30_license_valid = 1;,g' \
       -e '/if (pid == -1) pfatal_pexecute (err_msg, exec);/,+5d' \
       -e 's/PIC30_BUILTIN_WRITEPWMSFR,/PIC30_BUILTIN_WRITEPWMSFR/g' \
                gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.h
 
-   # sed -i \
-   #    -e '/pic30_conversion_status conv_flags;/ d' \
-   #    -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
-   #    -e '/free(exec);/ i pic30_license_valid = 1;' \
-   #             gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
-   sed -i -e '/free(exec);/ i pic30_license_valid = 1;' \
-          gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   sed -i \
+      -e '/pic30_conversion_status conv_flags;/ d' \
+      -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
+      -e '/free(exec);/ i pic30_license_valid = 1;' \
+               gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   # sed -i -e '/free(exec);/ i pic30_license_valid = 1;' \
+   #        gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
 
 
    find . -name *.y -type f -exec touch '{}' ';'
    find . -name *.l -type f -exec touch '{}' ';'
    mkdir gcc-build-coff
    cd gcc-build-coff
-   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" "  \
+   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v${version}-crux -DPIC30PATH=\"$pic30path\" "  \
       ../gcc-4.0.2/gcc-4.0.2/configure \
          --prefix=/usr/ --target=pic30-coff --enable-languages=c \
          --enable-target-optspace --without-headers \
@@ -118,7 +127,7 @@ build(){
    find .. -name *.l -type f -exec touch '{}' ';'
    mkdir ../gcc-build-elf
    cd ../gcc-build-elf
-   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v3.31-crux -DPIC30PATH=\"$pic30path\" " \
+   CFLAGS=" -g ${CFLAGS} -DC30_SMARTIO_RULES=$c30_smartio_rules -DMCHP_VERSION=v{version}-crux -DPIC30PATH=\"$pic30path\" " \
       ../gcc-4.0.2/gcc-4.0.2/configure \
          --prefix=/usr/ --target=pic30-elf --enable-languages=c \
          --enable-target-optspace --without-headers \
