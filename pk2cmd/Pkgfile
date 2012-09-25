@@ -1,0 +1,19 @@
+# Description: Official Microchip Pickit2 programmer software
+# URL:         http://www.microchip.com/stellent/idcplg?IdcService=SS_GET_PAGE&nodeId=1406&dDocName=en023805
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  libusb
+
+name=pk2cmd
+version=1.20
+release=1
+# got this idea from
+#  http://aur.archlinux.org/packages.php?ID=19204&detail=1
+source=(http://ww1.microchip.com/downloads/en/DeviceDoc/pk2cmdv1.20LinuxMacSource.tar.gz)
+
+build(){
+  cd ${name}v${version}LinuxMacSource
+  make linux
+  install -Dm755 ${name} ${PKG}/usr/bin/pk2cmd
+  mkdir -p ${PKG}/usr/share/pk2/PK2DeviceFile.dat
+  install -Dm755 PK2DeviceFile.dat ${PKG}/usr/share/pk2/PK2DeviceFile.dat
+}

@@ -1,0 +1,7 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/pk2cmd
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/pk2/
+drwxr-xr-x	root/root	usr/share/pk2/PK2DeviceFile.dat/
+-rwxr-xr-x	root/root	usr/share/pk2/PK2DeviceFile.dat/PK2DeviceFile.dat

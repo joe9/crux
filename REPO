@@ -12,6 +12,7 @@ d:m4-examples
 d:eigen2
 d:openjdk
 d:gcc.gold
+d:pk2cmd
 d:pic30
 d:p5-term-extendedcolor
 d:coin
@@ -91,7 +92,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:26a7348a478ba5683ae66cf55cc3f027:zsh_history.joe
+f:a66d1f51c66e3c75585135c225d6ce3c:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -151,6 +152,11 @@ f:a5ddadce390d870210d617e99daf5d01:gcc.gold/Pkgfile
 f:3af5b35ed94597b10ed92b293c51c224:gcc.gold/.md5sum
 f:bdeba23e8ca118f812a47d11eaf8df65:gcc.gold/.footprint
 f:a617c4d3fa11e0c9410ac213eb061677:gcc.gold/gcc-nocheck-fixincludes.patch
+f:5da49970a0b5c22aea16722fa5f52ea5:pk2cmd/pk2cmd.PKGBUILD
+f:92bb06b8b7f554a6c5edf4ec93dc71fc:pk2cmd/Pkgfile
+f:dea699d78bb1954e7ec3972e26795816:pk2cmd/.md5sum
+f:84e11a1d93dfeee7e53f8393ce0a0620:pk2cmd/.footprint
+f:a89245058732b01796d0ce1e2279fb00:pk2cmd/.nostrip
 f:63286aae769642dbc8a338355c453ffc:pic30/Pkgfile
 f:a650593463a01fb57ae7ec6d83fe7598:pic30/pic30-v1.00.tar.gz
 f:724da9ade8398643e3c9ea1d0b7b5067:pic30/microchip-mplabxc16-bin.PKGBUILD
