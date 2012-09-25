@@ -1,0 +1,26 @@
+# Description: PICkit 2 CLI software with updated DeviceFile and udev rules
+# URL:         http://www.microchip.com/pickit2
+# Maintainer:  Joe M, joe9mail at gmail dot com
+# Depends on:  libusb
+
+name=pk2cmd-plus
+version=1.21rc1_1.62.14
+release=1
+# got this idea from
+#  https://aur.archlinux.org/packages.php?ID=61152
+source=(http://ww1.microchip.com/downloads/en/DeviceDoc/PICkit2_PK2CMD_WIN32_SourceV1-21_RC1.zip
+        http://ww1.microchip.com/downloads/en/DeviceDoc/PK2DFUpdate-1-62-14.zip
+        pk2_devicefile_osfile_paths.patch
+        60-pickit2.rules)
+
+build() {
+  cd pk2cmd/pk2cmd
+  patch -Np1 -i $SRC/pk2_devicefile_osfile_paths.patch
+  make linux
+
+  install -Dm 755 $SRC/pk2cmd/pk2cmd/pk2cmd $PKG/usr/bin/pk2cmd
+  install -Dm 644 $SRC/PK2DeviceFile.dat $PKG/usr/share/pk2/PK2DeviceFile.dat
+  install -Dm 644 $SRC/pk2cmd/release/PK2V023200.hex $PKG/usr/share/pk2/PK2V023200.hex
+  install -Dm 644 $SRC/60-pickit2.rules $PKG/etc/udev/rules.d/60-pickit2.rules
+  # install -Dm 644 $SRC/LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

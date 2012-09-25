@@ -69,6 +69,7 @@ d:fakechroot-git
 d:pyorbit
 d:pcb2gcode-git
 d:soqt
+d:pk2cmd-plus
 d:opencsg
 d:pygtkglext-git
 d:syslinux
@@ -92,7 +93,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:a66d1f51c66e3c75585135c225d6ce3c:zsh_history.joe
+f:006a0a447d63dd4006675c1b260b5c83:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -403,6 +404,17 @@ f:7f8ed39aac3e2eaeb367db9c096c1931:pcb2gcode-git/.footprint
 f:cb0c2085873b5582c7fa53dcdb989a7c:soqt/Pkgfile
 f:144d1670e97361ee8581776a9181c190:soqt/.md5sum
 f:41b8cb654adca1b8e1226b93b7b40510:soqt/.footprint
+f:6d53baa09ac4ac3907d503992349b17a:pk2cmd-plus/LICENSE
+f:c3fc6e38a3b70aa31fa37075b2a1f865:pk2cmd-plus/post-install
+f:c3972d96ac997eb35ae76a861eb4ae0c:pk2cmd-plus/pk2_devicefile_osfile_paths.patch
+f:3d553dc6b2ca63e53422f676ae61ffdd:pk2cmd-plus/pk2cmd-plus.install
+f:64c6ee49f607d08c47e7e9393ff6ea4d:pk2cmd-plus/Pkgfile
+f:a8a0080e8cd53f70d1da8b03225b3684:pk2cmd-plus/post-remove
+f:47e823dc0c9f9779673bbb3ad83cfc01:pk2cmd-plus/.md5sum
+f:a5cf4ffff54af41c4d1cf8c97d007dcf:pk2cmd-plus/60-pickit2.rules
+f:786305ec3ef944736a29b4ff1c2e5d5d:pk2cmd-plus/.footprint
+f:aec1d1eef1c918fe23e65c12ee6d1b59:pk2cmd-plus/pk2cmd-plus.PKGBUILD
+f:a89245058732b01796d0ce1e2279fb00:pk2cmd-plus/.nostrip
 f:1e015e9bab4ed594469278cb4d68e3d3:opencsg/Pkgfile
 f:7034f5a4adaed96b11df48d29753a91b:opencsg/.md5sum
 f:80dd96de2cef779e8a1c866d99e84a93:opencsg/.footprint

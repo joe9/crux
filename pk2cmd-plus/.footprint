@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/udev/
+drwxr-xr-x	root/root	etc/udev/rules.d/
+-rw-r--r--	root/root	etc/udev/rules.d/60-pickit2.rules
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/pk2cmd
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/pk2/
+-rw-r--r--	root/root	usr/share/pk2/PK2DeviceFile.dat
+-rw-r--r--	root/root	usr/share/pk2/PK2V023200.hex

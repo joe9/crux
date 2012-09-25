@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo udevadm control --reload-rules &> /dev/null
+
+echo "---------------------------------------------------------
+PICkit2 OS Firmware Version >= 2.32.00 is needed, if your
+PICkit2 don't have it just type:
+$ pk2cmd -DPK2V023200.hex
+
+For help type:
+$ pk2cmd
+---------------------------------------------------------"
