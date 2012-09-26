@@ -93,7 +93,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:33b1800a3ab14e1ce1ab51a6e245b9ae:zsh_history.joe
+f:d9fc9e6dd42e2fc6ecc5cc8a1159b4a3:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -408,7 +408,7 @@ f:6d53baa09ac4ac3907d503992349b17a:pk2cmd-plus/LICENSE
 f:c3fc6e38a3b70aa31fa37075b2a1f865:pk2cmd-plus/post-install
 f:c86d82cf4444474803e2b6175b1c569e:pk2cmd-plus/pk2_devicefile_osfile_paths.patch
 f:3d553dc6b2ca63e53422f676ae61ffdd:pk2cmd-plus/pk2cmd-plus.install
-f:3ebcad5f5655de6921813e30c103f22d:pk2cmd-plus/Pkgfile
+f:8ba9b4588cd70605b6a2641f72eb46b4:pk2cmd-plus/Pkgfile
 f:a8a0080e8cd53f70d1da8b03225b3684:pk2cmd-plus/post-remove
 f:986e7ce733274f38dde2b570b15c4951:pk2cmd-plus/FirmwareV2-32-00.zip
 f:f7f0cc81396a00db92c4e6bff8c2278e:pk2cmd-plus/.md5sum

@@ -21,8 +21,8 @@ build() {
   find . -type f -exec dos2unix {} \;
 
   patch -Np1 -i $SRC/pk2_devicefile_osfile_paths.patch
-  patch --merge -p0 -i $SRC/verbose.patch
-  patch --merge -p0 -i $SRC/usb_debug.patch
+  # patch --merge -p0 -i $SRC/verbose.patch
+  # patch --merge -p0 -i $SRC/usb_debug.patch
 
   make linux
 
