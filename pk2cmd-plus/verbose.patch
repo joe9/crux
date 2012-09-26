@@ -1,0 +1,19 @@
+*** Makefile.orig	2012-09-26 11:26:27.581933297 -0400
+--- Makefile	2012-09-26 11:26:41.183933144 -0400
+***************
+*** 44,50 ****
+  #LIBUSB=/sw
+  
+  ifeq ($(TARGET),linux)
+! CFLAGS=$(OPTS) -I$(LIBUSB)/include -DLINUX -DUSE_DETACH -DCLAIM_USB
+  endif
+  ifeq ($(TARGET),linux-old)
+  CFLAGS=$(OPTS) -I$(LIBUSB)/include -DLINUX
+--- 44,50 ----
+  #LIBUSB=/sw
+  
+  ifeq ($(TARGET),linux)
+! CFLAGS=$(OPTS) -I$(LIBUSB)/include -DLINUX -DUSE_DETACH -DCLAIM_USB -DVERBOSE -DHAVE_LIBUSB_INTERRUPT_MODE
+  endif
+  ifeq ($(TARGET),linux-old)
+  CFLAGS=$(OPTS) -I$(LIBUSB)/include -DLINUX

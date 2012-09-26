@@ -1,4 +1,6 @@
 a5cf4ffff54af41c4d1cf8c97d007dcf  60-pickit2.rules
 6f93ede97be484ab7859626a9156a5d6  PICkit2_PK2CMD_WIN32_SourceV1-21_RC1.zip
 58d5997952fd8f4057fe94659ac7c2bf  PK2DFUpdate-1-62-14.zip
-c3972d96ac997eb35ae76a861eb4ae0c  pk2_devicefile_osfile_paths.patch
+c86d82cf4444474803e2b6175b1c569e  pk2_devicefile_osfile_paths.patch
+2c5baa1ad1ff5b95e2c5e9a445b6e1e5  usb_debug.patch
+e74478aadc85ea1eb3f8e22c2ee71d85  verbose.patch

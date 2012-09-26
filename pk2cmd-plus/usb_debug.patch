@@ -1,0 +1,23 @@
+*** pk2usb.h.original	2012-09-26 11:31:22.148929987 -0400
+--- pk2usb.h	2012-09-26 11:31:53.585929649 -0400
+***************
+*** 41,49 ****
+  
+  // Examples:
+  //#define	USB_DEBUG_FLAGS	(USB_DEBUG_XMIT | USB_DEBUG_RECV)
+! //#define	USB_DEBUG_FLAGS	USB_DEBUG_FULL
+  
+! #define	USB_DEBUG_FLAGS	0		// No USB debugging by default
+  
+  #ifndef __APPLE__
+  #include	<usb.h>	// Linux
+--- 41,49 ----
+  
+  // Examples:
+  //#define	USB_DEBUG_FLAGS	(USB_DEBUG_XMIT | USB_DEBUG_RECV)
+! #define	USB_DEBUG_FLAGS	USB_DEBUG_FULL
+  
+! //#define	USB_DEBUG_FLAGS	0		// No USB debugging by default
+  
+  #ifndef __APPLE__
+  #include	<usb.h>	// Linux

@@ -1,7 +1,7 @@
 # Description: PICkit 2 CLI software with updated DeviceFile and udev rules
 # URL:         http://www.microchip.com/pickit2
 # Maintainer:  Joe M, joe9mail at gmail dot com
-# Depends on:  libusb
+# Depends on:  libusb-compat, dos2unix
 
 name=pk2cmd-plus
 version=1.21rc1_1.62.14
@@ -11,11 +11,19 @@ release=1
 source=(http://ww1.microchip.com/downloads/en/DeviceDoc/PICkit2_PK2CMD_WIN32_SourceV1-21_RC1.zip
         http://ww1.microchip.com/downloads/en/DeviceDoc/PK2DFUpdate-1-62-14.zip
         pk2_devicefile_osfile_paths.patch
+        verbose.patch
+        usb_debug.patch
         60-pickit2.rules)
 
 build() {
   cd pk2cmd/pk2cmd
+
+  find . -type f -exec dos2unix {} \;
+
   patch -Np1 -i $SRC/pk2_devicefile_osfile_paths.patch
+  patch --merge -p0 -i $SRC/verbose.patch
+  patch --merge -p0 -i $SRC/usb_debug.patch
+
   make linux
 
   install -Dm 755 $SRC/pk2cmd/pk2cmd/pk2cmd $PKG/usr/bin/pk2cmd
