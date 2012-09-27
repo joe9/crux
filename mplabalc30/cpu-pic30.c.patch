@@ -1,5 +1,5 @@
---- acme/bfd/cpu-pic30.c.orig	2012-04-02 08:16:21.000000000 +0200
-+++ acme/bfd/cpu-pic30.c	2012-04-02 14:02:15.000000000 +0200
+--- acme/bfd/cpu-pic30.c.orig	2012-09-27 11:03:10.173862524 -0400
++++ acme/bfd/cpu-pic30.c	2012-09-27 11:03:37.515864365 -0400
 @@ -21,6 +21,7 @@
   * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
   */
@@ -16,10 +16,11 @@
  
  #ifndef DIR_SEPARATOR
  #define DIR_SEPARATOR '/'
-@@ -193,104 +195,6 @@
+@@ -192,105 +194,6 @@
+   return 0;
  }
  
- 
+-
 -/* stupid prototype */ static void get_resource_path(const char *resource);
 -static void get_resource_path(const char *resource) {
 -
@@ -121,7 +122,7 @@
  void pic30_update_resource(const char *resource) {
    /* The tool_version is defined in the string MCHP_VERSION */
    char *Microchip;
-@@ -318,7 +222,6 @@
+@@ -318,7 +221,6 @@
        version_part2 = Microchip+1;
      }
    }
@@ -129,36 +130,54 @@
    process_resource_file(ARCH_TABLE, 0, 0);
  }
  
-@@ -329,9 +232,18 @@
+@@ -329,9 +231,19 @@
    struct resource_data d;
    static int err_return = 0;
    int version;
-+  int i;
++   int i;
  
    if (err_return) return;
  
 +  for (i = 0; pic30_resource_files[i]; i++) {
-+	  if (access(pic30_resource_files[i], R_OK) == 0) {
-+		  pic30_resource_file = pic30_resource_files[i];
-+		  break;
-+	  }
++    if (access(pic30_resource_files[i], R_OK) == 0) {
++       pic30_resource_file = pic30_resource_files[i];
++       break;
++    }
 +  }
 +  if (pic30_resource_file == 0)
-+	  pic30_resource_file = pic30_resource_files[0];
++    pic30_resource_file = pic30_resource_files[0];
++
    if (pic30_resource_file == 0) {
      fprintf(stderr,"Provide a resource file");
      err_return = 1;
-@@ -341,8 +253,11 @@
+@@ -341,7 +253,15 @@
                          (global_PROCESSOR) ? global_PROCESSOR->printable_name :
                                               0);
    if (rib == 0) {
 -    fprintf(stderr,"Could not open resource file: %s\n", pic30_resource_file);
--    err_return = 1;
-+    /* fake missing resource file */
-+    pic30_resource_version = xmalloc(strlen(version_part1) + 
-+                                     strlen(version_part2) + 40);
-+    sprintf(pic30_resource_version,"%s %s", version_part1, version_part2);
-+    close_rib();
++    // Don't complain about c30_resource.info file..Annoying
++    //fprintf(stderr,"Could not open resource file: %s\n", pic30_resource_file);
++
++    // Add this so tool version is sane, instead of "Microchip (null)"
++    if (!pic30_resource_version) {
++      pic30_resource_version = xmalloc(strlen(version_part1) +
++                                       strlen(version_part2) + 40);
++      sprintf(pic30_resource_version,"%s %s", version_part1, version_part2);
++    }
+     err_return = 1;
      return;
    }
-   if (strcmp(rib->tool_chain,"C30")) {
+@@ -357,8 +277,11 @@
+                                      strlen(version_part2) + 40);
+     version = rib->version.major * 100 + rib->version.minor;
+     if (version != pic30_tool_version) {
+-      fprintf(stderr,"Warning: resource version (%d.%.2d) does not match!\n",
+-              rib->version.major, rib->version.minor);
++      /* removing this irritating warning. The resource version is
++          from 1.10 bundle and the tool is 3.31 in this situation.
++          Hence, this warning pops up all the time. */
++      /*fprintf(stderr,"Warning: resource version (%d.%.2d) does not match!\n",
++              rib->version.major, rib->version.minor); */
+       sprintf(pic30_resource_version,"%s, resource version %d.%02d (%c), %s",
+               version_part1, rib->version.major, rib->version.minor, 
+               rib->resource_version_increment,version_part2);

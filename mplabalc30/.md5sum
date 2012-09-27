@@ -1,7 +1,7 @@
 6e16c11602f50d14f9858a93c2a421f8  allow-empty-device-info-file.diff
 73cdba337f4557a46039f5011098786d  binutils-makefile_in.diff
 8073a17de2a7fac9db7495fa89fc3984  c30_resource-paths.patch
-3da710c23aec9d4340d22838862c54ed  cpu-pic30.c.patch
+3252b4ada033e8f907209854b3977331  cpu-pic30.c.patch
 a09c0040b7292cb43ee31333107b31b7  morediffs.patch
 bb1b66307133ffa7fdf06fa603bd4e6d  mplabalc30v3_31.tar.gz
 e49d0239631536789825d04020118f98  relocation-fix.patch
