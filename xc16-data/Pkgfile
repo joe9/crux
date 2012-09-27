@@ -43,7 +43,7 @@ unpack_source() {
 build(){
    cd $SRC
 
-   if [[ "$(uname -m)" -eq "x86_64" ]] ; then
+   if [ "$(uname -m)" == "x86_64" ] ; then
       echo "This port does not work on x86_64 machines"
       exit 1;
    fi
@@ -70,6 +70,7 @@ build(){
    mv $PKG/opt/microchip/xc16/v1.10/bin/device_files     $PKG/usr/share/pic30/bin/
    mv $PKG/opt/microchip/xc16/v1.10/bin/c30_device.info  $PKG/usr/share/pic30/bin/
    mv $PKG/opt/microchip/xc16/v1.10/support              $PKG/usr/share/pic30/
+   # mv $PKG/opt/microchip/xc16/v1.10/include              $PKG/usr/share/pic30/
 
    rm -r $PKG/opt
 }

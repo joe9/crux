@@ -43,7 +43,7 @@ unpack_source() {
 build(){
    cd $SRC
 
-   if [[ "$(uname -m)" -eq "x86_64" ]] ; then
+   if [ "$(uname -m)" == "x86_64" ] ; then
       echo "This port does not work on x86_64 machines"
       exit 1;
    fi

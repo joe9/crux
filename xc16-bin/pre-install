@@ -2,7 +2,7 @@
 
 # this port does not work on x86_64 machines
 
-if [[ "$(uname -m)" -ne "x86_64" ]] ; then
+if [ "$(uname -m)" !=e "x86_64" ] ; then
    if [ -d "/opt/microchip" ]; then
       # Control will enter here if $DIRECTORY exists.
       sudo mv /opt/microchip /opt/microchip.temporarily_renamed_for_xc16_install
