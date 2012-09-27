@@ -1,0 +1,17 @@
+--- gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c.original	2012-09-27 09:48:43.291562643 -0400
++++ gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c	2012-09-27 10:05:39.048630836 -0400
+@@ -10305,12 +10309,12 @@
+ /*
+ ** Calculate the offset between two frame registers.
+ */
+-void pic30_initial_elimination_offset(int from, int to, int *poffset) {
++void pic30_initial_elimination_offset(int from, int to, HOST_WIDE_INT *poffset) {
+   int fLeaf;
+   int fInterrupt;
+   int nLastReg;
+   int regno;
+-  int nOffset;
++  HOST_WIDE_INT nOffset;
+ 
+   fLeaf = current_function_is_leaf;
+   fInterrupt = pic30_interrupt_function_p(current_function_decl);

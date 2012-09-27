@@ -1,0 +1,39 @@
+--- gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c.original.1	2012-09-27 09:48:43.291562643 -0400
++++ gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c	2012-09-27 10:05:39.048630836 -0400
+@@ -568,8 +568,8 @@
+   pic30_interesting_fn_info conversion_style;
+   unsigned int interesting_arg;
+   unsigned int function_convertable;
++pic30_conversion_status conv_flags;
+ #if (defined(C30_SMARTIO_RULES) && (C30_SMARTIO_RULES > 1))
+-  pic30_conversion_status conv_flags;
+   char *encoded_name;
+ #endif
+ } pic30_interesting_fn;
+@@ -988,11 +988,14 @@
+   }
+   version = rib->version.major * 100 + rib->version.minor;
+   if ((version != pic30_compiler_version) && (flag_preprocess_only == 0)) {
+-    char buffer[16];
++    /* char buffer[16]; */
++    /* char buffer1[16]; */
+ 
+-    sprintf(buffer,"%d.%.2d", rib->version.major, rib->version.minor);
+-    warning("Resource version (%s) does not match compiler!", buffer);
+-    mismatch=1;
++    /* sprintf(buffer,"%d.%.2d", rib->version.major, rib->version.minor); */
++    /* sprintf(buffer1,"%d", pic30_compiler_version); */
++    /* ignore the below warning */
++    /* warning("Resource version (%s) does not match compiler (%s)!", buffer, buffer1); */
++    mismatch=0;
+   }
+   /* modify version number */
+   Microchip = strstr(new_version,"Microchip");
+@@ -2409,6 +2412,7 @@
+         pic30_license_valid=WEXITSTATUS(status) - 256;
+       }
+     }
++pic30_license_valid = 1;
+     free(exec);
+   }
+ #endif

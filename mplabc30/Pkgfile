@@ -33,7 +33,8 @@ source=( http://ww1.microchip.com/downloads/en/DeviceDoc/${name}v${version}.tar.
          pic30.c.patch
          disable-fixinc.patch
          pic30-protos.h.patch
-         pic30.c.1.patch
+         pic30.c.host_int.patch
+         pic30.c.remove_warnings.patch
          )
 
 build(){
@@ -92,7 +93,7 @@ build(){
    # patch --merge -p0 -i $SRC/disable-fixinc.patch
 
    # got the below from c30-linux patches
-   patch --merge -p0 -i $SRC/pic30.c.1.patch
+   patch --merge -p0 -i $SRC/pic30.c.host_int.patch
    patch --merge -p0 -i $SRC/pic30-protos.h.patch
 
    sed -i \
@@ -101,13 +102,16 @@ build(){
       -e 's/PIC30_BUILTIN_WRITEPWMSFR,/PIC30_BUILTIN_WRITEPWMSFR/g' \
                gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.h
 
-   sed -i \
-      -e '/pic30_conversion_status conv_flags;/ d' \
-      -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
-      -e '/free(exec);/ i pic30_license_valid = 1;' \
-               gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   # remove the resource version warning
+   #   and using a patch instead of the below sed script
+   # sed -i \
+   #    -e '/pic30_conversion_status conv_flags;/ d' \
+   #    -e '/unsigned int function_convertable;/ a pic30_conversion_status conv_flags;' \
+   #    -e '/free(exec);/ i pic30_license_valid = 1;' \
+   #             gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
    # sed -i -e '/free(exec);/ i pic30_license_valid = 1;' \
    #        gcc-4.0.2/gcc-4.0.2/gcc/config/pic30/pic30.c
+   patch --merge -p0 -i $SRC/pic30.c.remove_warnings.patch
 
 
    find . -name *.y -type f -exec touch '{}' ';'
