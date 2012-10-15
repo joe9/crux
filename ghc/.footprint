@@ -2843,7 +2843,7 @@ drwxr-xr-x	root/root	usr/lib/ghc-7.6.1/package.conf.d/
 -rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/deepseq-1.3.0.1-1ccff719c6664ff57ada7fc9b3033da2.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/directory-1.2.0.0-8edf300597b0da609c8eccc9aa6d0cc3.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/filepath-1.3.0.1-2c4d917e81bff7e614bd53f8f5b93fee.conf
--rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/ghc-7.6.1-b8c607286ae517db13d71f00f630b71d.conf
+-rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/ghc-7.6.1-6e2c57496606b2b126a7a58f5565b4e5.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/ghc-prim-0.3.0.0-4fae45041dab03fbd317982185b6da0d.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/haskell2010-1.1.1.0-ead4217723e87ff758caa25ce29d2cc3.conf
 -rw-r--r--	root/root	usr/lib/ghc-7.6.1/package.conf.d/haskell98-2.0.0.2-7864e60315aceb3715f2e109ae40aa08.conf
