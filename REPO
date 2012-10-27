@@ -64,7 +64,6 @@ d:oce
 d:geda-git
 d:xclip
 d:pivy-mercurial
-d:libpng
 d:fakechroot-git
 d:pyorbit
 d:pcb2gcode-git
@@ -93,7 +92,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:451592dce6d3276a9c942b55c3b95ded:zsh_history.joe
+f:a288de63e8f50f0c3a89f7caaf1cba5c:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -390,9 +389,6 @@ f:8e31d325ecb4bc0c1fcf7889e3054fad:xclip/.httpup-repo.current
 f:edaf8ebd9ec0ff2c5c06c975993929fe:pivy-mercurial/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:pivy-mercurial/.md5sum
 f:342388211966f0abaaa82fa1f8e94074:pivy-mercurial/.footprint
-f:8585a3f08dc11c5d178b28a5de0bbd2f:libpng/Pkgfile
-f:0fd87ced7e3e74c6bf0dcbef235b7d55:libpng/.md5sum
-f:0553f38c3edbd078ec3277d44fbac70a:libpng/.footprint
 f:2ba6fcfa8704dbbf80baf6e512e8d608:fakechroot-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:fakechroot-git/.md5sum
 f:25bc90185ba23a64c04aeb60fd6f1608:fakechroot-git/.footprint
