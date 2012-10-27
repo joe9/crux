@@ -44,9 +44,9 @@ lrwxrwxrwx	root/root	usr/lib/libdrm_nouveau.so -> libdrm_nouveau.so.2.0.0
 lrwxrwxrwx	root/root	usr/lib/libdrm_nouveau.so.2 -> libdrm_nouveau.so.2.0.0
 -rwxr-xr-x	root/root	usr/lib/libdrm_nouveau.so.2.0.0
 -rwxr-xr-x	root/root	usr/lib/libdrm_radeon.la
-lrwxrwxrwx	root/root	usr/lib/libdrm_radeon.so -> libdrm_radeon.so.1.0.0
-lrwxrwxrwx	root/root	usr/lib/libdrm_radeon.so.1 -> libdrm_radeon.so.1.0.0
--rwxr-xr-x	root/root	usr/lib/libdrm_radeon.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libdrm_radeon.so -> libdrm_radeon.so.1.0.1
+lrwxrwxrwx	root/root	usr/lib/libdrm_radeon.so.1 -> libdrm_radeon.so.1.0.1
+-rwxr-xr-x	root/root	usr/lib/libdrm_radeon.so.1.0.1
 -rwxr-xr-x	root/root	usr/lib/libkms.la
 lrwxrwxrwx	root/root	usr/lib/libkms.so -> libkms.so.1.0.0
 lrwxrwxrwx	root/root	usr/lib/libkms.so.1 -> libkms.so.1.0.0

@@ -76,9 +76,9 @@ d:syslinux
 d:python-gtkglext
 d:vim-mercurial
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
-f:39d554309df2cf527f74e1b97126d4c7:libdrm/Pkgfile
-f:31d12d29c957825d9e65d485ba38dab7:libdrm/.md5sum
-f:df8c7c4b5f74ae58901a3b01800fb02a:libdrm/.footprint
+f:49dd60e61b208ccf68a2f9ea0fa3367f:libdrm/Pkgfile
+f:2c33af350c0af6e689d316276853617e:libdrm/.md5sum
+f:90524e3273466605510f35cad1726c11:libdrm/.footprint
 f:62d70f99efd9f82a833259a9bb1ff810:heekscad-git/Pkgfile
 f:d0323cf50f9eb1283c0c906c4c9abf5e:heekscad-git/0001-changed-PI-to-M_PI-to-correct-the-compile-errors-abo.patch
 f:38a2432d2b493cff6864f23d76a50298:heekscad-git/.md5sum
@@ -93,7 +93,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:30c8dacf5a64ebc9ad7b3e580e1d835d:zsh_history.joe
+f:451592dce6d3276a9c942b55c3b95ded:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -435,4 +435,4 @@ f:1656397b36acc77a301195838b7a3025:vim-mercurial/Pkgfile
 f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
 f:d41d8cd98f00b204e9800998ecf8427e:vim-mercurial/.md5sum
 f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
-f:68c2d7531a36602316c6e766a8dfcc0a:vim-mercurial/.footprint
+f:ae3d941f5edca192710522ed91c2f748:vim-mercurial/.footprint

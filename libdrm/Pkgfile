@@ -4,7 +4,7 @@
 # Depends on: libpthread-stubs
 
 name=libdrm
-version=2.4.37
+version=2.4.39
 release=1
 source=(http://dri.freedesktop.org/libdrm/libdrm-$version.tar.bz2)
 
