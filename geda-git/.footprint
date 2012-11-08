@@ -7,6 +7,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/gnetlist
 -rwxr-xr-x	root/root	usr/bin/grenum
 -rwxr-xr-x	root/root	usr/bin/gsch2pcb
+-rwxr-xr-x	root/root	usr/bin/gsch2pdf
 -rwxr-xr-x	root/root	usr/bin/gschem
 -rwxr-xr-x	root/root	usr/bin/gschlas
 -rwxr-xr-x	root/root	usr/bin/gsymcheck
@@ -1735,6 +1736,7 @@ drwxr-xr-x	root/root	usr/share/gEDA/sym/xilinx/
 -rw-r--r--	root/root	usr/share/gEDA/system-gafrc
 -rw-r--r--	root/root	usr/share/gEDA/system-gattribrc
 -rw-r--r--	root/root	usr/share/gEDA/system-gnetlistrc
+-rw-r--r--	root/root	usr/share/gEDA/system-gsch2pdfrc
 -rw-r--r--	root/root	usr/share/gEDA/system-gschemrc
 -rw-r--r--	root/root	usr/share/gEDA/system-gschlasrc
 -rw-r--r--	root/root	usr/share/gEDA/system-gsymcheckrc

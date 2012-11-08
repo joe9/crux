@@ -92,7 +92,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:397e8176ff45de9c2842f3e4ef24c727:zsh_history.joe
+f:c68bc0bd3fd5b0e6d915ade387e9e3e8:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -380,7 +380,7 @@ f:a89245058732b01796d0ce1e2279fb00:oce/.nostrip
 f:3605647507684ebf800c0cb8d7494f26:geda-git/Pkgfile
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
 f:d41d8cd98f00b204e9800998ecf8427e:geda-git/.md5sum
-f:693eb979b07f0a68cbf73f3a59498c07:geda-git/.footprint
+f:b4ae68007a9c32ab15dc43c3289aac83:geda-git/.footprint
 f:40908ae4d823cffd56e3855185f74c3b:xclip/Pkgfile
 f:2e2ad80b55e9dd07bca9ac0f3c39fc0f:xclip/.md5sum
 f:da4cb731a7dd0a5c1d440a85efdc6874:xclip/.httpup-urlinfo
