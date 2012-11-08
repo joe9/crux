@@ -92,7 +92,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:1633ad36eaa2dba168b2f3478313b04d:zsh_history.joe
+f:397e8176ff45de9c2842f3e4ef24c727:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -317,10 +317,10 @@ f:e3763a2b02261cb0b2d8086417849d8a:java3d/Pkgfile
 f:5f28c1f1b3431f5206289a522234a39a:java3d/README
 f:fea3427c9f101c58dffc567a67483c31:java3d/.md5sum
 f:8af20de1b4ac015e957c3adfbf6b16e9:java3d/.footprint
-f:0b00388213480167330a25d0411d649a:autojump-git/zsh_history.joe
+f:6ce3713b17864844ac73a73e7fb32e00:autojump-git/zsh_history.joe
 f:433e3a3e80e6eea04632d47d22493b6a:autojump-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:autojump-git/.md5sum
-f:fb5e5281de48818f18bd91ffa8ebd477:autojump-git/.footprint
+f:26773dd9b1ca9b004ad7dab44079e597:autojump-git/.footprint
 f:df360bd56f46c6eed96919909a93888c:stow/Pkgfile
 f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
 f:35674eba1bc0d1716976a7347062a0bf:stow/.footprint

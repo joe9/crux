@@ -1,5 +1,6 @@
 drwxr-xr-x	root/root	bin/
 -rwxr-xr-x	root/root	bin/autojump
+-rw-r--r--	root/root	bin/autojump_argparse.py
 -rwxr-xr-x	root/root	bin/jumpapplet
 drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/profile.d/
@@ -15,4 +16,4 @@ drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/zsh/
 drwxr-xr-x	root/root	usr/share/zsh/site-functions/
--rw-r--r--	root/root	usr/share/zsh/site-functions/_j
+-rwxr-xr-x	root/root	usr/share/zsh/site-functions/_j
