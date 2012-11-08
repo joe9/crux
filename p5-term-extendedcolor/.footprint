@@ -7,9 +7,9 @@ drwxr-xr-x	root/root	usr/bin/
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/perl5/
 drwxr-xr-x	root/root	usr/lib/perl5/site_perl/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.12/
-drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.12/Term/
--r--r--r--	root/root	usr/lib/perl5/site_perl/5.12/Term/ExtendedColor.pm
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.16/
+drwxr-xr-x	root/root	usr/lib/perl5/site_perl/5.16/Term/
+-r--r--r--	root/root	usr/lib/perl5/site_perl/5.16/Term/ExtendedColor.pm
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 -r--r--r--	root/root	usr/man/man3/Term::ExtendedColor.3pm.gz

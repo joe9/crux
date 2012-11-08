@@ -92,7 +92,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:a288de63e8f50f0c3a89f7caaf1cba5c:zsh_history.joe
+f:1633ad36eaa2dba168b2f3478313b04d:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -168,7 +168,7 @@ f:5bdf717c1b9c95024ac6a3a15cf7d59a:pic30/pic30-v1.10.tar.gz
 f:967562ee69e372e3b09d21052c0e6b1d:p5-term-extendedcolor/Pkgfile
 f:395fd4d7838e8ffbdbd328437beec403:p5-term-extendedcolor/.md5sum
 f:4b8d3410049565fde65cc06d3ad1ae6d:p5-term-extendedcolor/Pkgfile.old
-f:64f34959d4e9e00781bff915546b524e:p5-term-extendedcolor/.footprint
+f:848829056abce3503d868213f9856f78:p5-term-extendedcolor/.footprint
 f:92566b873365c2b3a7bf85bfa622f6ea:joe9.httpup
 f:f4a46dfab83429e975c4b0b57f5f7246:coin/Pkgfile
 f:cc548c649a6700f507bf03d2d66ab59f:coin/.md5sum
