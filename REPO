@@ -24,6 +24,7 @@ d:binutils.gold
 d:pcb-git
 d:xc16-data
 d:libarea-svn
+d:p5-timedate
 d:ghc
 d:pycam-git
 d:libarea-git
@@ -92,7 +93,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:c68bc0bd3fd5b0e6d915ade387e9e3e8:zsh_history.joe
+f:6ee8ac9028241e7fb945fffd879db0d0:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -226,6 +227,10 @@ f:88045798f70b1a362b4b1a22d9020a7d:libarea-svn/Pkgfile
 f:82a182f0d0fb5dca87c77c7a9146fa08:libarea-svn/.md5sum
 f:2782309ccfd0e8c032392d337824583a:libarea-svn/.footprint
 f:004e49f34b7bc7e81c01a66c9c877cfc:libarea-svn/CMakeLists.txt
+f:5f150eb452ec41d4e9c5932faad6b8e5:p5-timedate/Pkgfile
+f:d58c6146dfdd03dc2c15d7f07a604f04:p5-timedate/.md5sum
+f:4b8d3410049565fde65cc06d3ad1ae6d:p5-timedate/Pkgfile.old
+f:1fd430fdec6358da633ba7843c1e23aa:p5-timedate/.footprint
 f:4adb7ee62069bf43f672f740f2143a82:ghc/build.mk
 f:64aead078acb4816b49960c68f05f852:ghc/Pkgfile
 f:285fade376dc9f63aaf813f2ef693f68:ghc/README

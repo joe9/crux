@@ -1,0 +1,21 @@
+# Description: Like Term::ANSIColor, but for the extended colorset
+# URL: http://search.cpan.org/dist/Term-ExtendedColor
+# Maintainer: Tilman Sauerbeck, tilman at crux dot nu
+# Depends on: xorg-libxft, xorg-libxpm, perl
+
+name=perl-term-extendedcolor
+#version=9.12
+version=0.224
+release=1
+source=(http://search.cpan.org/CPAN/authors/id/W/WO/WOLDRICH/Term-ExtendedColor-${version}.tar.gz)
+
+build() {
+   cd "Term-ExtendedColor-${version}"
+
+   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+   make
+   make test
+
+   make DESTDIR="$PKG" install
+   find $PKG -name perllocal.pod -exec rm {} \;
+}
