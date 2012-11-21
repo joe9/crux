@@ -93,7 +93,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:6ee8ac9028241e7fb945fffd879db0d0:zsh_history.joe
+f:12a910e0c9a169eddaee5a9fb7c8f116:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -436,4 +436,4 @@ f:1656397b36acc77a301195838b7a3025:vim-mercurial/Pkgfile
 f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
 f:d41d8cd98f00b204e9800998ecf8427e:vim-mercurial/.md5sum
 f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
-f:ae3d941f5edca192710522ed91c2f748:vim-mercurial/.footprint
+f:f75b71a196374235aecca54d1964b9fd:vim-mercurial/.footprint

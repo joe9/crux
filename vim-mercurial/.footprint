@@ -1076,6 +1076,7 @@ drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/sql.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sqlanywhere.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sqlforms.vim
+-rw-r--r--	root/root	usr/share/vim/syntax/sqlhana.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sqlinformix.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sqlj.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/sqloracle.vim
