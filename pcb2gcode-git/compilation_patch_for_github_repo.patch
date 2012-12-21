@@ -1,0 +1,15 @@
+diff --git a/Makefile.am b/Makefile.am
+index 7fcec2b..0ae335f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -8,6 +8,10 @@ pcb2gcode_SOURCES = \
+ 	board.hpp \
+ 	board.cpp \
+ 	coord.hpp \
++	basegeo.cpp \
++	basegeo.h \
++	geometry.cpp \
++	geometry.h \
+ 	drill.hpp \
+ 	drill.cpp \
+ 	exporter.hpp \

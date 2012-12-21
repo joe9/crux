@@ -7,17 +7,24 @@
 name=pcb2gcode-git
 version=git
 release=1
-source=()
+source=(compilation_patch_for_github_repo.patch)
 
 build() {
    cd $PKGMK_SOURCE_DIR
 
    if cd pcb2gcode ; then
-       git pull
+      git pull
+      # git pull --rebase github_repo master
    else
       git clone git://pcb2gcode.git.sourceforge.net/gitroot/pcb2gcode/pcb2gcode
       cd pcb2gcode
+      # git config user.email "you@example.com"
+      # git config user.name "Your Name"
+      # git remote add github_repo git://github.com/bkubicek/pcb2gcode.git
+      # git pull --rebase github_repo master
    fi
+
+   # patch  -p1 -i $SRC/compilation_patch_for_github_repo.patch
 
    # ./git-build.sh
    libtoolize
