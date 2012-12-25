@@ -1,0 +1,34 @@
+From 1264b9c495b4f29a4fffbf25fbfa3ab28607da7b Mon Sep 17 00:00:00 2001
+From: root <root@main>
+Date: Tue, 25 Dec 2012 00:08:54 -0500
+Subject: [PATCH] added G01 before each X and Y traversal after a G01
+
+---
+ ngc_exporter.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ngc_exporter.cpp b/ngc_exporter.cpp
+index 643ccba..5b06efd 100644
+--- a/ngc_exporter.cpp
++++ b/ngc_exporter.cpp
+@@ -148,7 +148,7 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 							)
+ 							/* no need to check for "they are on one axis but iter is outside of last and peek" becaus that's impossible from how they are generated */
+ 					  ) {
+-						of << "X" << iter->first << " Y" << iter->second << endl;
++						of << "G01 X" << iter->first << " Y" << iter->second << endl;
+ 						
+ 						//SVG EXPORTER
+ 						if (bDoSVG) {
+@@ -185,7 +185,7 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 						)
+ 						/* no need to check for "they are on one axis but iter is outside of last and peek" becaus that's impossible from how they are generated */
+ 				  ) {
+-					of << "X" << iter->first << " Y" << iter->second << endl;
++					of << "G01 X" << iter->first << " Y" << iter->second << endl;
+ 					
+ 					//SVG EXPORTER
+ 					if (bDoSVG) if (bSvgOnce) svgexpo->line_to(iter->first, iter->second);
+-- 
+1.8.0.2
+

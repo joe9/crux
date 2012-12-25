@@ -73,6 +73,7 @@ d:pk2cmd-plus
 d:opencsg
 d:pygtkglext-git
 d:syslinux
+d:java3d-x86_64
 d:python-gtkglext
 d:vim-mercurial
 f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
@@ -93,7 +94,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:12a910e0c9a169eddaee5a9fb7c8f116:zsh_history.joe
+f:3b30a9ead65f7b3a4e7d829f84a0a833:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -385,7 +386,7 @@ f:a89245058732b01796d0ce1e2279fb00:oce/.nostrip
 f:3605647507684ebf800c0cb8d7494f26:geda-git/Pkgfile
 f:8838c329dca1796e15d8505ceb37a2cf:geda-git/README
 f:d41d8cd98f00b204e9800998ecf8427e:geda-git/.md5sum
-f:b4ae68007a9c32ab15dc43c3289aac83:geda-git/.footprint
+f:6d8195b6405c2ea52819fa266700bca4:geda-git/.footprint
 f:40908ae4d823cffd56e3855185f74c3b:xclip/Pkgfile
 f:2e2ad80b55e9dd07bca9ac0f3c39fc0f:xclip/.md5sum
 f:da4cb731a7dd0a5c1d440a85efdc6874:xclip/.httpup-urlinfo
@@ -400,9 +401,11 @@ f:25bc90185ba23a64c04aeb60fd6f1608:fakechroot-git/.footprint
 f:f148b435dd2e74ebab66f794b058dcff:pyorbit/Pkgfile
 f:50d0a07b0b34864a97173bb4f10ae5a5:pyorbit/.md5sum
 f:a15ccfde3dfa9814128d5b64d1ca8e1a:pyorbit/.footprint
-f:daec76134e49748998af9c20e12346ef:pcb2gcode-git/Pkgfile
-f:d41d8cd98f00b204e9800998ecf8427e:pcb2gcode-git/.md5sum
+f:6eeb6160b77b935f449090a7eda35317:pcb2gcode-git/compilation_patch_for_github_repo.patch
+f:cf57652286303ed1a0fe7f74170c6ac6:pcb2gcode-git/Pkgfile
+f:711290474aec6510310178bf2bdd9bf3:pcb2gcode-git/.md5sum
 f:7f8ed39aac3e2eaeb367db9c096c1931:pcb2gcode-git/.footprint
+f:a94370d73a773324414ef5796b67daea:pcb2gcode-git/0001-added-G01-before-each-X-and-Y-traversal-after-a-G01.patch
 f:cb0c2085873b5582c7fa53dcdb989a7c:soqt/Pkgfile
 f:144d1670e97361ee8581776a9181c190:soqt/.md5sum
 f:41b8cb654adca1b8e1226b93b7b40510:soqt/.footprint
@@ -429,11 +432,15 @@ f:06a29228c5f87ac35d2a146258f98fb1:pygtkglext-git/.footprint
 f:fb41b4fa75781e2323b0cd228d6ab2cd:syslinux/Pkgfile
 f:ef7a3728229eea112916590e97cb1859:syslinux/.md5sum
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
+f:c1391d87ba384df109f2caf44280e46e:java3d-x86_64/Pkgfile
+f:9a731ab4b5897794c9b7aa8cddadf4b2:java3d-x86_64/README
+f:37845b13cc1332c177e46b67aee4cfcb:java3d-x86_64/.md5sum
+f:9a65e172d9b16888a5960c8dc087a4f0:java3d-x86_64/.footprint
 f:aa79f850f594850f122ac1fe9629e782:python-gtkglext/Pkgfile
 f:fbe44c30207a4cd8b31fd15e348e1c4e:python-gtkglext/.md5sum
 f:06a29228c5f87ac35d2a146258f98fb1:python-gtkglext/.footprint
-f:1656397b36acc77a301195838b7a3025:vim-mercurial/Pkgfile
+f:205c7739bc91a54c5c70b277d6afd769:vim-mercurial/Pkgfile
 f:412708ec38b6b7a1f26b56d54ddfdeaf:vim-mercurial/if_lua_5.2_table.diff
 f:d41d8cd98f00b204e9800998ecf8427e:vim-mercurial/.md5sum
 f:e5debcf48530e22224d1d50df0210b59:vim-mercurial/Pkgfile.stable
-f:f75b71a196374235aecca54d1964b9fd:vim-mercurial/.footprint
+f:cbff39356622c8cee0c113b40befd29d:vim-mercurial/.footprint
