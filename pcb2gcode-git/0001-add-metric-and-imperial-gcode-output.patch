@@ -1,0 +1,123 @@
+From 4a2903a207906afcad6d9b3f3d5b39d3e35bd8da Mon Sep 17 00:00:00 2001
+From: joe9 <joe9mail@gmail.com>
+Date: Tue, 25 Dec 2012 17:14:30 -0500
+Subject: [PATCH] add metric and imperial gcode output
+
+---
+ main.cpp         |  3 ++-
+ ngc_exporter.cpp | 31 +++++++++++++++++++++----------
+ 2 files changed, 23 insertions(+), 11 deletions(-)
+
+diff --git a/main.cpp b/main.cpp
+index 824539d..4a3bd28 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -70,7 +70,7 @@ int main( int argc, char* argv[] )
+ 
+ 	double unit=1;
+ 	if( vm.count("metric") ) {
+-		unit=1./25.4;
++    	unit=1.0/25.4;
+ 	}
+ 	options::check_parameters();
+ 
+@@ -201,6 +201,7 @@ int main( int argc, char* argv[] )
+ 	try {
+ 		board->createLayers();   // throws std::logic_error
+ 		cout << "Calculated board dimensions: " << board->get_width() << "in x " << board->get_height() << "in" << endl;
++		cout << "Calculated board dimensions: " << board->get_width()*25.4 << "mm x " << board->get_height()*25.4 << "mm" << endl;
+ 
+ 		
+ 		//SVG EXPORTER
+diff --git a/ngc_exporter.cpp b/ngc_exporter.cpp
+index 643ccba..1f5cba1 100644
+--- a/ngc_exporter.cpp
++++ b/ngc_exporter.cpp
+@@ -88,14 +88,17 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 	of << setw(7);
+ 
+ 	// preamble
+-	of << "G94     ( Inches per minute feed rate. )\n"
+-	   << "G20     ( Units == INCHES.             )\n"
++	of << "G94     ( Units per minute feed rate. )\n"
++	   << "imperial: G20     ( Units == INCHES.             )\n"
++	   << "metric: G21     ( Units == MM.                 )\n"
+ 	   << "G90     ( Absolute coordinates.        )\n"
+ 	   << "S" << left << mill->speed << "  ( RPM spindle speed.           )\n"
+ 	   << "M3      ( Spindle on clockwise.        )\n"
+ 	   << endl;
+ 
+-	of << "G64 P" << get_tolerance() << " ( set maximum deviation from commanded toolpath )\n"
++	of << "imperial: G64 P" << get_tolerance() << " ( set maximum deviation from commanded toolpath )\n"
++	   << endl;
++	of << "metric: G64 P" << get_tolerance()*25.4 << " ( set maximum deviation from commanded toolpath )\n"
+ 	   << endl;
+ 
+ 	
+@@ -111,8 +114,11 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+         {
+ 		// retract, move to the starting point of the next contour
+ 		of << "G04 P0 ( dwell for no time -- G64 should not smooth over this point )\n";
+-		of << "G00 Z" << mill->zsafe << " ( retract )\n" << endl;
+-                of << "G00 X" << path->begin()->first << " Y" << path->begin()->second << " ( rapid move to begin. )\n";
++		of << "imperial: G00 Z" << mill->zsafe << " ( retract )\n" << endl;
++		of << "metric: G00 Z" << mill->zsafe*25.4 << " ( retract )\n" << endl;
++
++    of << "imperial: G00 X" << path->begin()->first << " Y" << path->begin()->second << " ( rapid move to begin. )\n";
++    of << "metric: G00 X" << (path->begin()->first*25.4) << " Y" << (path->begin()->second*25.4) << " ( rapid move to begin. )\n";
+ 		
+ 			
+ 		//SVG EXPORTER
+@@ -131,7 +137,8 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 			double z = mill->zwork + z_step * abs( int( mill->zwork / z_step ) );
+ 
+ 			while( z >= mill->zwork ) {
+-				of << "G01 Z" << z << " F" << mill->feed << " ( plunge. )\n";
++				of << "imperial: G01 Z" << z << " F" << mill->feed << " ( plunge. )\n";
++				of << "metric: G01 Z" << z*25.4 << " F" << mill->feed*25.4 << " ( plunge. )\n";
+ 				of << "G04 P0 ( dwell for no time -- G64 should not smooth over this point )\n";
+ 
+ 				icoords::iterator iter = path->begin();
+@@ -148,7 +155,8 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 							)
+ 							/* no need to check for "they are on one axis but iter is outside of last and peek" becaus that's impossible from how they are generated */
+ 					  ) {
+-						of << "X" << iter->first << " Y" << iter->second << endl;
++						of << "imperial: G01 X" << iter->first << " Y" << iter->second << endl;
++						of << "metric: G01 X" << iter->first*25.4 << " Y" << iter->second*25.4 << endl;
+ 						
+ 						//SVG EXPORTER
+ 						if (bDoSVG) {
+@@ -168,7 +176,8 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 			}
+ 		} else {
+ 			// isolating
+-			of << "G01 Z" << mill->zwork << " F" << mill->feed << " ( plunge. )\n";
++			of << "imperial: G01 Z" << mill->zwork << " F" << mill->feed << " ( plunge. )\n";
++			of << "metric: G01 Z" << mill->zwork*25.4 << " F" << mill->feed*25.4 << " ( plunge. )\n";
+ 			of << "G04 P0 ( dwell for no time -- G64 should not smooth over this point )\n";
+ 
+ 			icoords::iterator iter = path->begin();
+@@ -185,7 +194,8 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 						)
+ 						/* no need to check for "they are on one axis but iter is outside of last and peek" becaus that's impossible from how they are generated */
+ 				  ) {
+-					of << "X" << iter->first << " Y" << iter->second << endl;
++					of << "imperial: G01 X" << iter->first << " Y" << iter->second << endl;
++					of << "metric: G01 X" << iter->first*25.4 << " Y" << iter->second*25.4 << endl;
+ 					
+ 					//SVG EXPORTER
+ 					if (bDoSVG) if (bSvgOnce) svgexpo->line_to(iter->first, iter->second);
+@@ -210,7 +220,8 @@ NGC_Exporter::export_layer( shared_ptr<Layer> layer, string of_name )
+ 
+ 	// retract, end
+ 	of << "G04 P0 ( dwell for no time -- G64 should not smooth over this point )\n";
+-	of << "G00 Z" << mill->zchange << " ( retract )\n" << endl;
++	of << "imperial: G00 Z" << mill->zchange << " ( retract )\n" << endl;
++	of << "metric: G00 Z" << mill->zchange*25.4 << " ( retract )\n" << endl;
+ 
+ 	of << "M9 ( Coolant off. )\n";
+ 	of << "M2 ( Program end. )\n\n";
+-- 
+1.8.0.2
+

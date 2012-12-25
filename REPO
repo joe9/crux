@@ -94,7 +94,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:3b30a9ead65f7b3a4e7d829f84a0a833:zsh_history.joe
+f:e3bc332cea38df565ca7964f681df293:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -402,7 +402,8 @@ f:f148b435dd2e74ebab66f794b058dcff:pyorbit/Pkgfile
 f:50d0a07b0b34864a97173bb4f10ae5a5:pyorbit/.md5sum
 f:a15ccfde3dfa9814128d5b64d1ca8e1a:pyorbit/.footprint
 f:6eeb6160b77b935f449090a7eda35317:pcb2gcode-git/compilation_patch_for_github_repo.patch
-f:cf57652286303ed1a0fe7f74170c6ac6:pcb2gcode-git/Pkgfile
+f:8579c14a930e6539014b82f00150fb72:pcb2gcode-git/Pkgfile
+f:688413c66562211826b8da294a0da171:pcb2gcode-git/0001-add-metric-and-imperial-gcode-output.patch
 f:711290474aec6510310178bf2bdd9bf3:pcb2gcode-git/.md5sum
 f:7f8ed39aac3e2eaeb367db9c096c1931:pcb2gcode-git/.footprint
 f:a94370d73a773324414ef5796b67daea:pcb2gcode-git/0001-added-G01-before-each-X-and-Y-traversal-after-a-G01.patch
