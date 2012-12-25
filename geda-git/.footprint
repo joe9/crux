@@ -37,13 +37,22 @@ drwxr-xr-x	root/root	usr/include/libgeda/
 -rw-r--r--	root/root	usr/include/libgeda/papersizes.h
 -rw-r--r--	root/root	usr/include/libgeda/prototype.h
 -rw-r--r--	root/root	usr/include/libgeda/struct.h
+drwxr-xr-x	root/root	usr/include/libgedacairo/
+-rw-r--r--	root/root	usr/include/libgedacairo/edacairo.h
+-rw-r--r--	root/root	usr/include/libgedacairo/edarenderer.h
+-rw-r--r--	root/root	usr/include/libgedacairo/libgedacairo.h
 drwxr-xr-x	root/root	usr/lib/
 -rwxr-xr-x	root/root	usr/lib/libgeda.la
 lrwxrwxrwx	root/root	usr/lib/libgeda.so -> libgeda.so.41.0.0
 lrwxrwxrwx	root/root	usr/lib/libgeda.so.41 -> libgeda.so.41.0.0
 -rwxr-xr-x	root/root	usr/lib/libgeda.so.41.0.0
+-rwxr-xr-x	root/root	usr/lib/libgedacairo.la
+lrwxrwxrwx	root/root	usr/lib/libgedacairo.so -> libgedacairo.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libgedacairo.so.1 -> libgedacairo.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib/libgedacairo.so.1.0.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libgeda.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libgedacairo.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/convert_sym.1.gz
