@@ -1,0 +1,18 @@
+# Description: Java 3D API enables the creation of three-dimensional graphics applications and Internet-based 3D applets
+# URL: http://java.sun.com
+# Maintainer: Jose V Beneyto, sepen at crux dot nu
+# Packager: Simone Rota, sip at crux dot nu
+# Depends on: jdk
+
+name=java3d-x86_64
+version=1_5_1
+release=1
+source=(file:///java3d-$version-linux-amd64.bin)
+
+build(){
+   sh $SRC/java3d-$version-linux-amd64.bin
+
+   install -d $PKG/usr/lib/jdk1.7.0_10/jre/lib
+   mv $SRC/lib/* $PKG/usr/lib/jdk1.7.0_10/jre/lib
+
+}
