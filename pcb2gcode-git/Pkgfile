@@ -9,7 +9,9 @@ version=git
 release=1
 source=(compilation_patch_for_github_repo.patch \
          0001-added-G01-before-each-X-and-Y-traversal-after-a-G01.patch \
+         0001-show-metric-board-dimensions.patch \
          0001-add-metric-and-imperial-gcode-output.patch)
+
 
 build() {
    cd $PKGMK_SOURCE_DIR
@@ -27,8 +29,9 @@ build() {
    fi
 
    # patch  -p1 -i $SRC/compilation_patch_for_github_repo.patch
-   patch  -p1 --forward -i $SRC/0001-added-G01-before-each-X-and-Y-traversal-after-a-G01.patch || echo "patch already applied"
+   # patch  -p1 --forward -i $SRC/0001-added-G01-before-each-X-and-Y-traversal-after-a-G01.patch || echo "patch already applied"
    # patch  -p1 --forward -i $SRC/0001-add-metric-and-imperial-gcode-output.patch || echo "patch already applied"
+   patch  -p1 --forward -i $SRC/0001-show-metric-board-dimensions.patch || echo "patch already applied"
 
    # ./git-build.sh
    libtoolize
@@ -36,6 +39,6 @@ build() {
    automake --add-missing
    autoreconf
    ./configure --prefix=/usr --mandir=$PKG/usr/man
-   make
+   make CFLAGS="$CFLAGS -g -ggdb" CXXFLAGS="$CXXFLAGS -g -ggdb"
    make prefix=$PKG/usr install
 }

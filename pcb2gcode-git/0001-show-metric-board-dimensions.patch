@@ -1,0 +1,33 @@
+From 29ddac3666d8246531537faf99ca848f24f91a0d Mon Sep 17 00:00:00 2001
+From: joe9 <joe9mail@gmail.com>
+Date: Wed, 26 Dec 2012 00:25:05 -0500
+Subject: [PATCH] show metric board dimensions
+
+---
+ main.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/main.cpp b/main.cpp
+index 824539d..59cdad9 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -70,7 +70,7 @@ int main( int argc, char* argv[] )
+ 
+ 	double unit=1;
+ 	if( vm.count("metric") ) {
+-		unit=1./25.4;
++		unit=1.0/25.4;
+ 	}
+ 	options::check_parameters();
+ 
+@@ -201,6 +201,7 @@ int main( int argc, char* argv[] )
+ 	try {
+ 		board->createLayers();   // throws std::logic_error
+ 		cout << "Calculated board dimensions: " << board->get_width() << "in x " << board->get_height() << "in" << endl;
++		cout << "Calculated board dimensions: " << board->get_width()*25.4 << "mm x " << board->get_height()*25.4 << "mm" << endl;
+ 
+ 		
+ 		//SVG EXPORTER
+-- 
+1.8.0.2
+
