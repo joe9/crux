@@ -11,6 +11,7 @@ d:mplabc30
 d:m4-examples
 d:eigen2
 d:openjdk
+d:dugroup
 d:gcc.gold
 d:pk2cmd
 d:pic30
@@ -29,6 +30,7 @@ d:ghc
 d:pycam-git
 d:libarea-git
 d:frtplot-svn
+d:tdu
 d:oce-git
 d:soxt
 d:cgal
@@ -95,7 +97,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:ceb6542e74744060c78c1f8f1cc2318d:zsh_history.joe
+f:89fe98540f2c3e87319680ad2b0b47ad:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -152,6 +154,9 @@ f:feb6f6180cb68d1afbf654dad270399f:eigen2/.footprint
 f:3cc273a04861e913468b3b08e07f1975:openjdk/Pkgfile
 f:31fbda4911f10899471dedd01703bc3a:openjdk/.sha256sum
 f:9e105e27976382b30cf2c5c13acdafcb:openjdk/.md5sum
+f:99ffdbf62a9eed09ae7d7841a36c304f:dugroup/Pkgfile
+f:31346fc41748c535dce2736d7f7acdba:dugroup/.md5sum
+f:ddfe6a25797fdec11602bedc188fd92a:dugroup/.footprint
 f:a5ddadce390d870210d617e99daf5d01:gcc.gold/Pkgfile
 f:3af5b35ed94597b10ed92b293c51c224:gcc.gold/.md5sum
 f:bdeba23e8ca118f812a47d11eaf8df65:gcc.gold/.footprint
@@ -247,6 +252,9 @@ f:2782309ccfd0e8c032392d337824583a:libarea-git/.footprint
 f:e5228b8c77f6d02f221c9598c2bb1267:frtplot-svn/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:frtplot-svn/.md5sum
 f:34ce3ddac1fbcfca787501b0ddfc3d1c:frtplot-svn/.footprint
+f:78365b93d38a6bfb781d270e30e9bafb:tdu/Pkgfile
+f:900a53f9966f920b4ad143ecfd8535b9:tdu/.md5sum
+f:0363b82b6f058a8be499fe8d01cf467a:tdu/.footprint
 f:8c1230597f6491d1f4c19ebe502fe409:oce-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:oce-git/.md5sum
 f:bb1fc367877fdcb3acd88d16615a9613:oce-git/.footprint

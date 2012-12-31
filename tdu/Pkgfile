@@ -1,0 +1,15 @@
+# Description: a text-mode disk usage utility
+# URL:         http://webonastick.com/tdu/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  gcc make ncurses glib
+
+name=tdu
+version=2008-05-07
+release=1
+source=(http://webonastick.com/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name
+  make
+  make install prefix=$PKG/usr
+}

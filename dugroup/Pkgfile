@@ -1,0 +1,15 @@
+# Description: du output filter for grouping files together
+# URL:         http://webonastick.com/tdu/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  gcc make ncurses glib perl
+
+name=dugroup
+version=2008-05-07
+release=1
+source=(http://webonastick.com/tdu/$name-$version.tar.gz)
+
+build() {
+  cd $name
+  make
+  make install prefix=$PKG/usr
+}
