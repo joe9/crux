@@ -1,0 +1,26 @@
+# Description: NCurses Disk Usage
+# URL:         http://dev.yorhel.nl/ncdu/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Maintainer:  Bartlomiej Palmowski, rotwang at crux dot org dot pl
+# Depends on:  automake autoconf git
+
+name=ncdu-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd ncdu ; then
+      git pull
+   else
+      git clone git://g.blicky.net/ncdu.git
+      cd ncdu
+   fi
+
+   autoreconf -i
+   ./configure --prefix=/usr --mandir=/usr/man
+   make
+   make DESTDIR=$PKG install
+}

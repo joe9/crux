@@ -51,6 +51,7 @@ d:stow
 d:libactp-git
 d:xc16-bin
 d:grub2
+d:ncdu-git
 d:grub-bzr
 d:openscad
 d:freecad
@@ -94,7 +95,7 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:5868b35c884c690addc82ee6b9fd6601:zsh_history.joe
+f:ceb6542e74744060c78c1f8f1cc2318d:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -345,6 +346,9 @@ f:8427ebe64d957aeeffee59d7faf41ac9:grub2/zsh_history.joe
 f:70281ed382aec61a54cdc225a4c3e53f:grub2/Pkgfile
 f:b3aad8530853a90eac55f4156cf599f6:grub2/.md5sum
 f:8421313d54c2332bfea862362fd917df:grub2/.footprint
+f:a1bee2919aaf7040d75d54c03395178b:ncdu-git/Pkgfile
+f:d41d8cd98f00b204e9800998ecf8427e:ncdu-git/.md5sum
+f:37cd8a96cf67c7cda51e4cd310132ede:ncdu-git/.footprint
 f:a6999ac957778aea91eddaa469908a58:grub-bzr/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:grub-bzr/.md5sum
 f:84a4ff9a858643e987c6389bbff1dbda:grub-bzr/.footprint
