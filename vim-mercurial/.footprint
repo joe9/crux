@@ -559,6 +559,7 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/xsd.vim
 -rw-r--r--	root/root	usr/share/vim/indent/xslt.vim
 -rw-r--r--	root/root	usr/share/vim/indent/yacc.vim
+-rw-r--r--	root/root	usr/share/vim/indent/yaml.vim
 -rw-r--r--	root/root	usr/share/vim/indent/zimbu.vim
 -rw-r--r--	root/root	usr/share/vim/indent/zsh.vim
 -rw-r--r--	root/root	usr/share/vim/indoff.vim
