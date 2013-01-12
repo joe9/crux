@@ -3,6 +3,7 @@ d:heekscad-git
 d:gl2ps
 d:opencamlib-git
 d:eigen
+d:libutempter
 d:expect
 d:autogen
 d:freecad-git
@@ -56,11 +57,14 @@ d:xc16-bin
 d:grub2
 d:ncdu-git
 d:grub-bzr
+d:protobuf
 d:openscad
 d:freecad
 d:gobject-introspection
 d:grub2-1.98
 d:mpfi
+d:p5-io-tty
+d:mosh
 d:gts
 d:links
 d:swig-1.3.40
@@ -98,7 +102,10 @@ f:bfd4ad8f2e13d07fbf89bd405da0c5e2:opencamlib-git/.footprint
 f:dd2f1482e2cdb7b880d20ead50c4cf77:eigen/Pkgfile
 f:a3b61fc4f89e08dbcbef7c0dfb853e0f:eigen/.md5sum
 f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
-f:64fe0ad8cdb51ad3b655a62a2f937fbd:zsh_history.joe
+f:ef6838d9368b84ba4867738391d9882b:libutempter/Pkgfile
+f:0ceed6139358f4eab9ba0cd8424cd892:libutempter/.md5sum
+f:d2261035f5f7c8198c92bc403c85e733:libutempter/.footprint
+f:c1e699a2495709827f5db5129f1212f7:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -340,7 +347,7 @@ f:26773dd9b1ca9b004ad7dab44079e597:autojump-git/.footprint
 f:df360bd56f46c6eed96919909a93888c:stow/Pkgfile
 f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
 f:35674eba1bc0d1716976a7347062a0bf:stow/.footprint
-f:28c02b68a26b0f0d5e4fa287cd9c8eda:fetchmail/Pkgfile
+f:9d35041f80f7f646dd5edf6fba936e9b:fetchmail/Pkgfile
 f:d4ee4144b2acf09691e469ce6a1aad35:fetchmail/.md5sum
 f:40a2ef7e65e16a818b7fe0be8a841a7a:fetchmail/.footprint
 f:0131b3a56c85f19dd5a364c4ee591b34:libactp-git/Pkgfile
@@ -364,6 +371,10 @@ f:37cd8a96cf67c7cda51e4cd310132ede:ncdu-git/.footprint
 f:a6999ac957778aea91eddaa469908a58:grub-bzr/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:grub-bzr/.md5sum
 f:84a4ff9a858643e987c6389bbff1dbda:grub-bzr/.footprint
+f:703fa2bf079ce29565a2f1dd26222f2d:protobuf/Pkgfile
+f:5d9931e42abb3ba88949b09684617950:protobuf/.sha256sum
+f:0046eea9a7e60351b84a4d6183ea2e6c:protobuf/.md5sum
+f:368a5427879aa161a06f7e81cd591f2d:protobuf/.footprint
 f:a0c7383c120e424d6cedd3f1a4ea3a0b:openscad/Pkgfile
 f:d31999acf77f92b6f2e68a06fde285cf:openscad/.md5sum
 f:0e48efb1b064c3194054dd5670b674f5:openscad/.footprint
@@ -383,6 +394,12 @@ f:8421313d54c2332bfea862362fd917df:grub2-1.98/.footprint
 f:010cb67863fba928ee2ca8274b6cfd51:mpfi/Pkgfile
 f:0de8612cbfad22c1fc6616dd01f4ec33:mpfi/.md5sum
 f:ac9ac1359555f6770ed4aeda88e6c2a9:mpfi/.footprint
+f:a1d591ae50c3efc678c21f2ffb55814e:p5-io-tty/Pkgfile
+f:5165f55a91f7a994017f753740d56fa6:p5-io-tty/.md5sum
+f:63e331d99438f616d282bf70efcecc5b:p5-io-tty/.footprint
+f:338bff61a78c1c34f409bc5021390038:mosh/Pkgfile
+f:1359107e5a4760d16f957d9b5d32229b:mosh/.md5sum
+f:0cc780dba6ecb200f396ab3ebe4b1470:mosh/.footprint
 f:a2748d67001abdcc4b73c73390584068:gts/Pkgfile
 f:ae192da7a770fabd2246fd3c4fa0d7b3:gts/.md5sum
 f:51e76762a09c581b4482de3b7eb67687:gts/.footprint

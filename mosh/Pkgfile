@@ -1,0 +1,24 @@
+# Description: Mobile shell, surviving disconnects with local echo and line editing
+# URL:         http://mosh.mit.edu/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  protobuf ncurses zlib openssh perl perl-io-tty libutempter
+
+name=mosh
+version=1.2.3
+release=1
+source=(https://github.com/downloads/keithw/$name/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+
+  install -Dm644 conf/bash_completion.d/$name \
+    $PKG/usr/share/bash-completion/completions/$name
+
+  # install -Dm644 conf/ufw/applications.d/$name \
+  #   $PKG/etc/ufw/applications.d/ufw-$name
+  rm conf/ufw/applications.d/$name
+}
