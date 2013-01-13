@@ -57,7 +57,6 @@ d:xc16-bin
 d:grub2
 d:ncdu-git
 d:grub-bzr
-d:protobuf
 d:openscad
 d:freecad
 d:gobject-introspection
@@ -74,6 +73,7 @@ d:geda-git
 d:xclip
 d:pivy-mercurial
 d:fakechroot-git
+d:surfraw
 d:pyorbit
 d:pcb2gcode-git
 d:soqt
@@ -105,7 +105,7 @@ f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
 f:ef6838d9368b84ba4867738391d9882b:libutempter/Pkgfile
 f:0ceed6139358f4eab9ba0cd8424cd892:libutempter/.md5sum
 f:d2261035f5f7c8198c92bc403c85e733:libutempter/.footprint
-f:c1e699a2495709827f5db5129f1212f7:zsh_history.joe
+f:e46bcbddc19f9001c6bd8f461237a755:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -371,10 +371,6 @@ f:37cd8a96cf67c7cda51e4cd310132ede:ncdu-git/.footprint
 f:a6999ac957778aea91eddaa469908a58:grub-bzr/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:grub-bzr/.md5sum
 f:84a4ff9a858643e987c6389bbff1dbda:grub-bzr/.footprint
-f:703fa2bf079ce29565a2f1dd26222f2d:protobuf/Pkgfile
-f:5d9931e42abb3ba88949b09684617950:protobuf/.sha256sum
-f:0046eea9a7e60351b84a4d6183ea2e6c:protobuf/.md5sum
-f:368a5427879aa161a06f7e81cd591f2d:protobuf/.footprint
 f:a0c7383c120e424d6cedd3f1a4ea3a0b:openscad/Pkgfile
 f:d31999acf77f92b6f2e68a06fde285cf:openscad/.md5sum
 f:0e48efb1b064c3194054dd5670b674f5:openscad/.footprint
@@ -431,6 +427,9 @@ f:342388211966f0abaaa82fa1f8e94074:pivy-mercurial/.footprint
 f:2ba6fcfa8704dbbf80baf6e512e8d608:fakechroot-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:fakechroot-git/.md5sum
 f:25bc90185ba23a64c04aeb60fd6f1608:fakechroot-git/.footprint
+f:32c1a76b768843b85e0d71006e26f111:surfraw/Pkgfile
+f:698e6905be9dbf7c88f664074d2fe1e7:surfraw/.md5sum
+f:a337ad1a4f54baa320ffa6ac0c470b7f:surfraw/.footprint
 f:f148b435dd2e74ebab66f794b058dcff:pyorbit/Pkgfile
 f:50d0a07b0b34864a97173bb4f10ae5a5:pyorbit/.md5sum
 f:a15ccfde3dfa9814128d5b64d1ca8e1a:pyorbit/.footprint
