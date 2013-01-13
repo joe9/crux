@@ -1,0 +1,18 @@
+# Description: Shell Users' Revolutionary Front Rage Against the Web
+# URL: http://surfraw.alioth.debian.org/
+# Packager: Joe M, joe9mail at gmail dot com
+# Depends on:
+
+name=surfraw
+version=2.2.8
+release=1
+source=(http://surfraw.alioth.debian.org/dist/$name-$version.tar.gz)
+
+build ()
+{
+    cd $name-$version
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+}
+
