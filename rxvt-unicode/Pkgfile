@@ -5,7 +5,7 @@
 
 name=rxvt-unicode
 #version=9.12
-version=9.15
+version=9.16
 release=1
 source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.bz2
          clear.patch

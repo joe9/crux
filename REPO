@@ -105,7 +105,7 @@ f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
 f:ef6838d9368b84ba4867738391d9882b:libutempter/Pkgfile
 f:0ceed6139358f4eab9ba0cd8424cd892:libutempter/.md5sum
 f:d2261035f5f7c8198c92bc403c85e733:libutempter/.footprint
-f:34fe4e8fae0fd80a8336e9d6503696bc:zsh_history.joe
+f:8f101d1bc563a1a4bcfc93195b23ab65:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -283,11 +283,11 @@ f:85ba1fe793fae38a0563af4f06845199:libqglviewer/.footprint
 f:329d745cde2d4d712e93635c2bfd3c31:bwidget/Pkgfile
 f:4985d1aaad98c43eb445b591e6ced5b5:bwidget/.md5sum
 f:48c63c9d807e71650f3d8ba10bbbb792:bwidget/.footprint
-f:8aa9b5893f2339f8a7b5e19f99a56b75:rxvt-unicode/Pkgfile
+f:18f476febf1821eb9fe3ecee472a0137:rxvt-unicode/Pkgfile
 f:206641074a39cefb844fbb6f0c9e7d24:rxvt-unicode/font-fix.patch.txt
 f:788b7a273c80271f10e02fd3150e0c6e:rxvt-unicode/font-fix.patch.README
-f:6030015d16394e7a5ebe33723ca888cc:rxvt-unicode/.md5sum
-f:34504fb17a0c717fe567b06feac03836:rxvt-unicode/.footprint
+f:45490be1b601a8378955b1af1a05ba8a:rxvt-unicode/.md5sum
+f:a05cedab7aa8c27c3367b28380ffcb53:rxvt-unicode/.footprint
 f:061b851e89e53a71d1afad6947c51ca7:rxvt-unicode/clear.patch
 f:1c870e0b662490b42ee6803e015342e6:heekspython-git/0001-added-DESTDIR-consistently-to-install-and-uninstall-.patch
 f:16b44061c83838aa4c1d3c4e92f14234:heekspython-git/Pkgfile
