@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# klogd:  Kernel log daemon.
+#
+
+if [ -x /usr/sbin/klogd ]; then
+   sv up syslogd || exit 1;
+   # -n to avoid auto-backgrounding
+   exec /usr/sbin/klogd -n -c 4 -d
+fi

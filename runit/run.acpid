@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec 2>&1
+exec /usr/sbin/acpid --foreground --debug --logevents --eventfile /etc/sv/acpid/acpi_event_power

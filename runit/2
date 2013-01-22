@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# changed the above from /bin/sh to /bin/bash as per /etc/rc.multi
+
+PATH=/command:/bin:/sbin:/usr/bin:/usr/sbin
+
+# Do not start services besides tty's if we're running single-user.
+if [ -z "`grep single /proc/cmdline`" ]; then
+   # taken the below from /etc/rc.multi
+   runsvchdir multi
+   /etc/rc.multi
+else
+   runsvchdir single
+fi
+
+exec env - PATH=$PATH \
+runsvdir -P /etc/runit/runsvdir/current
+
+# runsvdir -P /etc/runit/runsvdir/current 'log: ...........................................................................................................................................................................................................................................................................................................................................................................................................'

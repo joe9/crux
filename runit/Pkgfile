@@ -1,0 +1,159 @@
+# Description: A replacement for sysvinit, and other init schemes, with service supervision
+# URL: http://smarden.org/runit/
+# Maintainer: Joe M, joe9mail at gmail dot com
+# Depends on: bash util-linux rc sysvinit sysklogd
+
+name=runit
+version=2.1.1
+release=1
+source=(http://smarden.org/$name/$name-$version.tar.gz
+         1 2 3
+         run.syslogd
+         run.klogd
+         run.atd
+         run.crond
+         run.acpid
+         log.run
+         log.config
+         acpi_event_power
+         )
+
+install_service() {
+   # $1 == install to multi?
+   # $2 == service name
+   # $3 == run file name
+   # $4 == finish file name, optional parameter
+   if [ -n "$2" -a -n "$3" ]
+   then
+      TO_MULTI="$1"
+      SERVICE="$2"
+      RUN_FILE_NAME="$3"
+      FINISH_FILE_NAME="$4"
+
+      echo "installing service: $SERVICE"
+
+      install -d -m0755 $PKG/etc/sv/$SERVICE
+      # ln -s /etc/sv/$SERVICE $PKG/etc/runit/runsvdir/multi/
+      # ln -s /etc/sv/$SERVICE $PKG/etc/runit/runsvdir/single/
+
+      install -d -m0755 $PKG/var/run/sv/$SERVICE/supervise
+      ln -s /var/run/sv/$SERVICE/supervise $PKG/etc/sv/$SERVICE/supervise
+      touch  $PKG/var/run/sv/$SERVICE/supervise/{status,stat,pid,lock}
+      mkfifo $PKG/var/run/sv/$SERVICE/supervise/{ok,control}
+
+      mv $SRC/$RUN_FILE_NAME $PKG/etc/sv/$SERVICE/run
+      chmod 0755 $PKG/etc/sv/$SERVICE/run
+
+      if [ -n "$FINISH_FILE_NAME" ]
+      then
+         mv $SRC/$FINISH_FILE_NAME $PKG/etc/sv/$SERVICE/finish
+         chmod 0755 $PKG/etc/sv/$SERVICE/finish
+      fi
+
+      if [ -n "$TO_MULTI" ]
+      then
+         ln -s /etc/sv/$SERVICE $PKG/etc/runit/runsvdir/multi/
+         if [ "$TO_MULTI" == "both" ]
+         then
+            ln -s /etc/sv/$SERVICE $PKG/etc/runit/runsvdir/single/
+         fi
+      fi
+
+      # install log for the service
+      install -d -m0755 $PKG/etc/sv/$SERVICE/log
+      install -d -m0755 $PKG/var/run/sv/$SERVICE/log/supervise
+      ln -s /var/run/sv/$SERVICE/log/supervise $PKG/etc/sv/$SERVICE/log/supervise
+      touch  $PKG/var/run/sv/$SERVICE/log/supervise/{status,stat,pid,lock}
+      mkfifo $PKG/var/run/sv/$SERVICE/log/supervise/{ok,control}
+
+      sed -e "s/servicename/$SERVICE/" $SRC/log.run >$PKG/etc/sv/$SERVICE/log/run
+      chmod 0755 $PKG/etc/sv/$SERVICE/log/run
+      sed -e "s/servicename/$SERVICE/" $SRC/log.config >$PKG/etc/sv/$SERVICE/log/config
+      chmod 0755 $PKG/etc/sv/$SERVICE/log/config
+   fi
+}
+
+build() {
+   cd admin/$name-$version/src
+
+   # configure
+   # we build nothing static
+   sed -i -e 's:-static: :' Makefile
+   # apply custom CFLAGS and LDFLAGS
+   echo "${CC:-gcc} $CFLAGS" > conf-cc
+   echo "${LD:-gcc -s} $LDFLAGS" > conf-ld
+   # set default service path to /var/service
+   sed -i -e 's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' sv.c
+
+   # compile
+   make
+   make check
+
+   # default services
+   install -d -m0755 $PKG/etc/runit/runsvdir/single
+   install -d -m0755 $PKG/etc/runit/runsvdir/multi
+   install -d -m0755 $PKG/var
+
+   # set up runit-init
+   install -m0755 $SRC/[123] $PKG/etc/runit
+   install -d -m0755 $PKG/sbin
+   install -m0755 $SRC/admin/$name-$version/etc/debian/ctrlaltdel $PKG/etc/runit
+
+   ln -s multi $PKG/etc/runit/runsvdir/current
+   ln -s /etc/runit/runsvdir/current $PKG/var/service
+
+   # install binaries
+   install -d -m0755 $PKG/sbin
+   for i in `cat $SRC/admin/$name-$version/package/commands`
+   do
+    install -s -m0755 $SRC/admin/$name-$version/src/$i $PKG/sbin
+   done
+
+   # read only etc filesystem
+   install -d -m0755 $PKG/var/run/runit
+   # touch $PKG/var/run/runit/current
+   # touch $PKG/var/run/runit/previous
+
+   touch $PKG/var/run/runit/stopit
+   chmod 0 $PKG/var/run/runit/stopit
+   ln -s /var/run/runit/stopit     $PKG/etc/runit/stopit
+   # ln -s /var/run/runit/runsvdir/current    $PKG/etc/runit/runsvdir/current
+   # ln -s /var/run/runit/runsvdir/previous   $PKG/etc/runit/runsvdir/previous
+
+   # man-pages
+   install -d -m0755 $PKG/usr/man/man8
+   install -m0644 $SRC/admin/$name-$version/man/* $PKG/usr/man/man8
+
+   # doc
+   # install -d -m0755 $PKG/usr/share/doc/runit
+   # install -m0644 $SRC/admin/$name-$version/doc/*.html $PKG/usr/share/doc/runit 
+
+   # add gettys for 1-6 terminals
+   cd $SRC/admin/$name-$version/etc/debian/getty-tty5/
+   for i in {1..6}
+   do
+      install -d -m0755 $PKG/etc/sv/tty$i
+      ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
+      ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/single/
+
+      install -d -m0755 $PKG/var/run/sv/tty$i/supervise
+      ln -s /var/run/sv/tty$i/supervise $PKG/etc/sv/tty$i/supervise
+      touch  $PKG/var/run/sv/tty$i/supervise/{status,stat,pid,lock}
+      mkfifo $PKG/var/run/sv/tty$i/supervise/{ok,control}
+      for f in *
+      do
+         echo "f:" $f
+         sed "s/tty5/tty$i/g;s/getty/agetty/g" <"$f" >"$PKG/etc/sv/tty$i/$f"
+         chmod 0755 "$PKG/etc/sv/tty$i/$f"
+      done
+   done
+
+   # install services
+   install_service both  syslogd run.syslogd
+   install_service both  klogd   run.klogd
+   install_service multi atd     run.atd
+   install_service multi crond   run.crond
+   install_service multi acpid   run.acpid
+
+   # install -D $SRC/admin/$name-$version/package/COPYING $PKG/usr/share/licenses/runit/COPYING
+}

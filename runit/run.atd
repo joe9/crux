@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# got the below from http://smarden.org/runit/runscripts.html
+exec 2>&1
+exec /usr/sbin/atd -f -d

@@ -1,0 +1,12 @@
+ec6a170dcebdc117f90be1c14ca3e0e8  1
+6fc5138acbd153f07f21c9c365ded3e4  2
+472a2bf6c2eb1a2143e7e525df8dc39e  3
+6d0aec433edd01b149b44c7edd37a1ad  acpi_event_power
+fa3ab73321d0b5531fef723779c99895  log.config
+9f6c7ae3e68dac0ba56dfe8e0c14b387  log.run
+29209457495d10f70f8bfc79f3c86b80  run.acpid
+7d3e1572cc29a8073785ebb6f3c05977  run.atd
+a75603c1f953b3d3b8b0b1d7573692b5  run.crond
+2b68b7380cf9983db9514d1c6fe3307a  run.klogd
+fe468d4f73fc8f0ab63c10f13cfee4cb  run.syslogd
+8fa53ea8f71d88da9503f62793336bc3  runit-2.1.1.tar.gz

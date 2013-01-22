@@ -1,0 +1,246 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/runit/
+-rwxr-xr-x	root/root	etc/runit/1
+-rwxr-xr-x	root/root	etc/runit/2
+-rwxr-xr-x	root/root	etc/runit/3
+-rwxr-xr-x	root/root	etc/runit/ctrlaltdel
+drwxr-xr-x	root/root	etc/runit/runsvdir/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/current -> multi
+drwxr-xr-x	root/root	etc/runit/runsvdir/multi/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/acpid -> /etc/sv/acpid
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/atd -> /etc/sv/atd
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/crond -> /etc/sv/crond
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/klogd -> /etc/sv/klogd
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/syslogd -> /etc/sv/syslogd
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty1 -> /etc/sv/tty1
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty2 -> /etc/sv/tty2
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty3 -> /etc/sv/tty3
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty4 -> /etc/sv/tty4
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty5 -> /etc/sv/tty5
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty6 -> /etc/sv/tty6
+drwxr-xr-x	root/root	etc/runit/runsvdir/single/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/klogd -> /etc/sv/klogd
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/syslogd -> /etc/sv/syslogd
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty1 -> /etc/sv/tty1
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty2 -> /etc/sv/tty2
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty3 -> /etc/sv/tty3
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty4 -> /etc/sv/tty4
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty5 -> /etc/sv/tty5
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty6 -> /etc/sv/tty6
+lrwxrwxrwx	root/root	etc/runit/stopit -> /var/run/runit/stopit
+drwxr-xr-x	root/root	etc/sv/
+drwxr-xr-x	root/root	etc/sv/acpid/
+drwxr-xr-x	root/root	etc/sv/acpid/log/
+-rwxr-xr-x	root/root	etc/sv/acpid/log/config
+-rwxr-xr-x	root/root	etc/sv/acpid/log/run
+lrwxrwxrwx	root/root	etc/sv/acpid/log/supervise -> /var/run/sv/acpid/log/supervise
+-rwxr-xr-x	root/root	etc/sv/acpid/run
+lrwxrwxrwx	root/root	etc/sv/acpid/supervise -> /var/run/sv/acpid/supervise
+drwxr-xr-x	root/root	etc/sv/atd/
+drwxr-xr-x	root/root	etc/sv/atd/log/
+-rwxr-xr-x	root/root	etc/sv/atd/log/config
+-rwxr-xr-x	root/root	etc/sv/atd/log/run
+lrwxrwxrwx	root/root	etc/sv/atd/log/supervise -> /var/run/sv/atd/log/supervise
+-rwxr-xr-x	root/root	etc/sv/atd/run
+lrwxrwxrwx	root/root	etc/sv/atd/supervise -> /var/run/sv/atd/supervise
+drwxr-xr-x	root/root	etc/sv/crond/
+drwxr-xr-x	root/root	etc/sv/crond/log/
+-rwxr-xr-x	root/root	etc/sv/crond/log/config
+-rwxr-xr-x	root/root	etc/sv/crond/log/run
+lrwxrwxrwx	root/root	etc/sv/crond/log/supervise -> /var/run/sv/crond/log/supervise
+-rwxr-xr-x	root/root	etc/sv/crond/run
+lrwxrwxrwx	root/root	etc/sv/crond/supervise -> /var/run/sv/crond/supervise
+drwxr-xr-x	root/root	etc/sv/klogd/
+drwxr-xr-x	root/root	etc/sv/klogd/log/
+-rwxr-xr-x	root/root	etc/sv/klogd/log/config
+-rwxr-xr-x	root/root	etc/sv/klogd/log/run
+lrwxrwxrwx	root/root	etc/sv/klogd/log/supervise -> /var/run/sv/klogd/log/supervise
+-rwxr-xr-x	root/root	etc/sv/klogd/run
+lrwxrwxrwx	root/root	etc/sv/klogd/supervise -> /var/run/sv/klogd/supervise
+drwxr-xr-x	root/root	etc/sv/syslogd/
+drwxr-xr-x	root/root	etc/sv/syslogd/log/
+-rwxr-xr-x	root/root	etc/sv/syslogd/log/config
+-rwxr-xr-x	root/root	etc/sv/syslogd/log/run
+lrwxrwxrwx	root/root	etc/sv/syslogd/log/supervise -> /var/run/sv/syslogd/log/supervise
+-rwxr-xr-x	root/root	etc/sv/syslogd/run
+lrwxrwxrwx	root/root	etc/sv/syslogd/supervise -> /var/run/sv/syslogd/supervise
+drwxr-xr-x	root/root	etc/sv/tty1/
+-rwxr-xr-x	root/root	etc/sv/tty1/finish
+-rwxr-xr-x	root/root	etc/sv/tty1/run
+lrwxrwxrwx	root/root	etc/sv/tty1/supervise -> /var/run/sv/tty1/supervise
+drwxr-xr-x	root/root	etc/sv/tty2/
+-rwxr-xr-x	root/root	etc/sv/tty2/finish
+-rwxr-xr-x	root/root	etc/sv/tty2/run
+lrwxrwxrwx	root/root	etc/sv/tty2/supervise -> /var/run/sv/tty2/supervise
+drwxr-xr-x	root/root	etc/sv/tty3/
+-rwxr-xr-x	root/root	etc/sv/tty3/finish
+-rwxr-xr-x	root/root	etc/sv/tty3/run
+lrwxrwxrwx	root/root	etc/sv/tty3/supervise -> /var/run/sv/tty3/supervise
+drwxr-xr-x	root/root	etc/sv/tty4/
+-rwxr-xr-x	root/root	etc/sv/tty4/finish
+-rwxr-xr-x	root/root	etc/sv/tty4/run
+lrwxrwxrwx	root/root	etc/sv/tty4/supervise -> /var/run/sv/tty4/supervise
+drwxr-xr-x	root/root	etc/sv/tty5/
+-rwxr-xr-x	root/root	etc/sv/tty5/finish
+-rwxr-xr-x	root/root	etc/sv/tty5/run
+lrwxrwxrwx	root/root	etc/sv/tty5/supervise -> /var/run/sv/tty5/supervise
+drwxr-xr-x	root/root	etc/sv/tty6/
+-rwxr-xr-x	root/root	etc/sv/tty6/finish
+-rwxr-xr-x	root/root	etc/sv/tty6/run
+lrwxrwxrwx	root/root	etc/sv/tty6/supervise -> /var/run/sv/tty6/supervise
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/chpst
+-rwxr-xr-x	root/root	sbin/runit
+-rwxr-xr-x	root/root	sbin/runit-init
+-rwxr-xr-x	root/root	sbin/runsv
+-rwxr-xr-x	root/root	sbin/runsvchdir
+-rwxr-xr-x	root/root	sbin/runsvdir
+-rwxr-xr-x	root/root	sbin/sv
+-rwxr-xr-x	root/root	sbin/svlogd
+-rwxr-xr-x	root/root	sbin/utmpset
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/chpst.8.gz
+-rw-r--r--	root/root	usr/man/man8/runit-init.8.gz
+-rw-r--r--	root/root	usr/man/man8/runit.8.gz
+-rw-r--r--	root/root	usr/man/man8/runsv.8.gz
+-rw-r--r--	root/root	usr/man/man8/runsvchdir.8.gz
+-rw-r--r--	root/root	usr/man/man8/runsvdir.8.gz
+-rw-r--r--	root/root	usr/man/man8/sv.8.gz
+-rw-r--r--	root/root	usr/man/man8/svlogd.8.gz
+-rw-r--r--	root/root	usr/man/man8/utmpset.8.gz
+drwxr-xr-x	root/root	var/
+drwxr-xr-x	root/root	var/run/
+drwxr-xr-x	root/root	var/run/runit/
+----------	root/root	var/run/runit/stopit (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/
+drwxr-xr-x	root/root	var/run/sv/acpid/
+drwxr-xr-x	root/root	var/run/sv/acpid/log/
+drwxr-xr-x	root/root	var/run/sv/acpid/log/supervise/
+prw-r--r--	root/root	var/run/sv/acpid/log/supervise/control
+-rw-r--r--	root/root	var/run/sv/acpid/log/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/acpid/log/supervise/ok
+-rw-r--r--	root/root	var/run/sv/acpid/log/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/acpid/log/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/acpid/log/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/acpid/supervise/
+prw-r--r--	root/root	var/run/sv/acpid/supervise/control
+-rw-r--r--	root/root	var/run/sv/acpid/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/acpid/supervise/ok
+-rw-r--r--	root/root	var/run/sv/acpid/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/acpid/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/acpid/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/atd/
+drwxr-xr-x	root/root	var/run/sv/atd/log/
+drwxr-xr-x	root/root	var/run/sv/atd/log/supervise/
+prw-r--r--	root/root	var/run/sv/atd/log/supervise/control
+-rw-r--r--	root/root	var/run/sv/atd/log/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/atd/log/supervise/ok
+-rw-r--r--	root/root	var/run/sv/atd/log/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/atd/log/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/atd/log/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/atd/supervise/
+prw-r--r--	root/root	var/run/sv/atd/supervise/control
+-rw-r--r--	root/root	var/run/sv/atd/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/atd/supervise/ok
+-rw-r--r--	root/root	var/run/sv/atd/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/atd/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/atd/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/crond/
+drwxr-xr-x	root/root	var/run/sv/crond/log/
+drwxr-xr-x	root/root	var/run/sv/crond/log/supervise/
+prw-r--r--	root/root	var/run/sv/crond/log/supervise/control
+-rw-r--r--	root/root	var/run/sv/crond/log/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/crond/log/supervise/ok
+-rw-r--r--	root/root	var/run/sv/crond/log/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/crond/log/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/crond/log/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/crond/supervise/
+prw-r--r--	root/root	var/run/sv/crond/supervise/control
+-rw-r--r--	root/root	var/run/sv/crond/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/crond/supervise/ok
+-rw-r--r--	root/root	var/run/sv/crond/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/crond/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/crond/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/klogd/
+drwxr-xr-x	root/root	var/run/sv/klogd/log/
+drwxr-xr-x	root/root	var/run/sv/klogd/log/supervise/
+prw-r--r--	root/root	var/run/sv/klogd/log/supervise/control
+-rw-r--r--	root/root	var/run/sv/klogd/log/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/klogd/log/supervise/ok
+-rw-r--r--	root/root	var/run/sv/klogd/log/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/klogd/log/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/klogd/log/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/klogd/supervise/
+prw-r--r--	root/root	var/run/sv/klogd/supervise/control
+-rw-r--r--	root/root	var/run/sv/klogd/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/klogd/supervise/ok
+-rw-r--r--	root/root	var/run/sv/klogd/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/klogd/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/klogd/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/syslogd/
+drwxr-xr-x	root/root	var/run/sv/syslogd/log/
+drwxr-xr-x	root/root	var/run/sv/syslogd/log/supervise/
+prw-r--r--	root/root	var/run/sv/syslogd/log/supervise/control
+-rw-r--r--	root/root	var/run/sv/syslogd/log/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/syslogd/log/supervise/ok
+-rw-r--r--	root/root	var/run/sv/syslogd/log/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/syslogd/log/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/syslogd/log/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/syslogd/supervise/
+prw-r--r--	root/root	var/run/sv/syslogd/supervise/control
+-rw-r--r--	root/root	var/run/sv/syslogd/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/syslogd/supervise/ok
+-rw-r--r--	root/root	var/run/sv/syslogd/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/syslogd/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/syslogd/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty1/
+drwxr-xr-x	root/root	var/run/sv/tty1/supervise/
+prw-r--r--	root/root	var/run/sv/tty1/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty1/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty1/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty1/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty1/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty1/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty2/
+drwxr-xr-x	root/root	var/run/sv/tty2/supervise/
+prw-r--r--	root/root	var/run/sv/tty2/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty2/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty2/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty2/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty2/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty2/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty3/
+drwxr-xr-x	root/root	var/run/sv/tty3/supervise/
+prw-r--r--	root/root	var/run/sv/tty3/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty3/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty3/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty3/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty3/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty3/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty4/
+drwxr-xr-x	root/root	var/run/sv/tty4/supervise/
+prw-r--r--	root/root	var/run/sv/tty4/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty4/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty4/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty4/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty4/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty4/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty5/
+drwxr-xr-x	root/root	var/run/sv/tty5/supervise/
+prw-r--r--	root/root	var/run/sv/tty5/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty5/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty5/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty5/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty5/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty5/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty6/
+drwxr-xr-x	root/root	var/run/sv/tty6/supervise/
+prw-r--r--	root/root	var/run/sv/tty6/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty6/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/status (EMPTY)
+lrwxrwxrwx	root/root	var/service -> /etc/runit/runsvdir/current
