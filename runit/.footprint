@@ -17,6 +17,7 @@ lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty2 -> /etc/sv/tty2
 lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty3 -> /etc/sv/tty3
 lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty4 -> /etc/sv/tty4
 lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty5 -> /etc/sv/tty5
+lrwxrwxrwx	root/root	etc/runit/runsvdir/multi/tty6 -> /etc/sv/tty6
 lrwxrwxrwx	root/root	etc/runit/runsvdir/previous -> single
 drwxr-xr-x	root/root	etc/runit/runsvdir/single/
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/klogd -> /etc/sv/klogd
@@ -26,6 +27,7 @@ lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty2 -> /etc/sv/tty2
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty3 -> /etc/sv/tty3
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty4 -> /etc/sv/tty4
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty5 -> /etc/sv/tty5
+lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty6 -> /etc/sv/tty6
 lrwxrwxrwx	root/root	etc/runit/stopit -> /var/run/runit/stopit
 drwxr-xr-x	root/root	etc/sv/
 drwxr-xr-x	root/root	etc/sv/acpid/
@@ -83,6 +85,10 @@ drwxr-xr-x	root/root	etc/sv/tty5/
 -rwxr-xr-x	root/root	etc/sv/tty5/finish
 -rwxr-xr-x	root/root	etc/sv/tty5/run
 lrwxrwxrwx	root/root	etc/sv/tty5/supervise -> /var/run/sv/tty5/supervise
+drwxr-xr-x	root/root	etc/sv/tty6/
+-rwxr-xr-x	root/root	etc/sv/tty6/finish
+-rwxr-xr-x	root/root	etc/sv/tty6/run
+lrwxrwxrwx	root/root	etc/sv/tty6/supervise -> /var/run/sv/tty6/supervise
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/chpst
 -rwxr-xr-x	root/root	sbin/runit
@@ -230,4 +236,12 @@ prw-r--r--	root/root	var/run/sv/tty5/supervise/ok
 -rw-r--r--	root/root	var/run/sv/tty5/supervise/pid (EMPTY)
 -rw-r--r--	root/root	var/run/sv/tty5/supervise/stat (EMPTY)
 -rw-r--r--	root/root	var/run/sv/tty5/supervise/status (EMPTY)
+drwxr-xr-x	root/root	var/run/sv/tty6/
+drwxr-xr-x	root/root	var/run/sv/tty6/supervise/
+prw-r--r--	root/root	var/run/sv/tty6/supervise/control
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/lock (EMPTY)
+prw-r--r--	root/root	var/run/sv/tty6/supervise/ok
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/pid (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/stat (EMPTY)
+-rw-r--r--	root/root	var/run/sv/tty6/supervise/status (EMPTY)
 lrwxrwxrwx	root/root	var/service -> /etc/runit/runsvdir/current

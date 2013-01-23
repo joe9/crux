@@ -16,6 +16,8 @@ source=(http://smarden.org/$name/$name-$version.tar.gz
          log.run
          log.config
          acpi_event_power
+         run.ttyX
+         finish.ttyX
          )
 
 install_service() {
@@ -127,11 +129,11 @@ build() {
 
    # doc
    # install -d -m0755 $PKG/usr/share/doc/runit
-   # install -m0644 $SRC/admin/$name-$version/doc/*.html $PKG/usr/share/doc/runit 
+   # install -m0644 $SRC/admin/$name-$version/doc/*.html $PKG/usr/share/doc/runit
 
    # add gettys for 1-6 terminals
    cd $SRC/admin/$name-$version/etc/debian/getty-tty5/
-   for i in {1..5}
+   for i in {1..6}
    do
       install -d -m0755 $PKG/etc/sv/tty$i
       ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
@@ -141,12 +143,12 @@ build() {
       ln -s /var/run/sv/tty$i/supervise $PKG/etc/sv/tty$i/supervise
       touch  $PKG/var/run/sv/tty$i/supervise/{status,stat,pid,lock}
       mkfifo $PKG/var/run/sv/tty$i/supervise/{ok,control}
-      for f in *
-      do
-         echo "f:" $f
-         sed "s/tty5/tty$i/g;s/getty/agetty/g" <"$f" >"$PKG/etc/sv/tty$i/$f"
-         chmod 0755 "$PKG/etc/sv/tty$i/$f"
-      done
+
+      sed -e "s/ttyX/tty$i/g" <$SRC/run.ttyX >"$PKG/etc/sv/tty$i/run"
+      chmod 0755 "$PKG/etc/sv/tty$i/run"
+
+      sed -e "s/ttyX/tty$i/g" <$SRC/finish.ttyX >"$PKG/etc/sv/tty$i/finish"
+      chmod 0755 "$PKG/etc/sv/tty$i/finish"
    done
 
    # install services
