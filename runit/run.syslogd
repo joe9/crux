@@ -5,5 +5,5 @@
 
 if [ -x /usr/sbin/syslogd ]; then
    # -n to avoid auto-backgrounding
-   exec /usr/sbin/syslogd -n -d
+   exec /usr/sbin/syslogd -n
 fi

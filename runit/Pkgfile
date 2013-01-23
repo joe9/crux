@@ -99,7 +99,8 @@ build() {
    install -d -m0755 $PKG/sbin
    install -m0755 $SRC/admin/$name-$version/etc/debian/ctrlaltdel $PKG/etc/runit
 
-   ln -s multi $PKG/etc/runit/runsvdir/current
+   ln -s multi  $PKG/etc/runit/runsvdir/current
+   ln -s single $PKG/etc/runit/runsvdir/previous
    ln -s /etc/runit/runsvdir/current $PKG/var/service
 
    # install binaries
@@ -130,7 +131,7 @@ build() {
 
    # add gettys for 1-6 terminals
    cd $SRC/admin/$name-$version/etc/debian/getty-tty5/
-   for i in {1..6}
+   for i in {1..5}
    do
       install -d -m0755 $PKG/etc/sv/tty$i
       ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
