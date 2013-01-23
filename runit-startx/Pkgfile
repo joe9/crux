@@ -1,0 +1,27 @@
+# Description: start startx from agetty automatically
+# URL: http://smarden.org/runit/
+# Maintainer: Joe M, joe9mail at gmail dot com
+# Depends on: runit
+
+name=runit-startx
+version=1
+release=1
+source=(run finish)
+
+build() {
+   # default services
+   install -d -m0755 $PKG/etc/runit/runsvdir/multi
+   install -d -m0755 $PKG/var
+
+   # add this getty to terminal 8
+   i=6
+   install -d -m0755 $PKG/etc/sv/tty$i
+   ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
+
+   install -d -m0755 $PKG/var/run/sv/tty$i/supervise
+   ln -s /var/run/sv/tty$i/supervise $PKG/etc/sv/tty$i/supervise
+   touch  $PKG/var/run/sv/tty$i/supervise/{status,stat,pid,lock}
+   mkfifo $PKG/var/run/sv/tty$i/supervise/{ok,control}
+   cp $SRC/{run,finish} $PKG/etc/sv/tty$i/
+   chmod 0755 "$PKG/etc/sv/tty$i/$f"
+}

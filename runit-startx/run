@@ -1,0 +1,136 @@
+#!/bin/sh
+
+# 20120221, siva changed to below, instead of using init to launch
+#  startx, check the #crux conversation below
+# also added "--8bits --keep-baud" to the below
+# exec /sbin/agetty --autologin joe --8bits --keep-baud 38400 tty1 linux
+# the TERM=startx is used by the zprofile script to start startx
+# exec /sbin/agetty --autologin joe --8bits --keep-baud 38400 tty6 startx
+
+# below lines added by siva 20110919
+#1:2345:respawn:/bin/login -f joe tty1 </dev/tty1 >/dev/tty1 2>&1
+# from https://wiki.archlinux.org/index.php/Start_X_at_Boot
+# The - option invokes a "login shell" by prepending a dash (-) to
+#  its name. Because a command is specified with the -c option, the
+#  shell is also run in "non-interactive mode". Bash does not do the
+#  normal login process in non-interactive login mode unless it is
+#  forced with the -l option. The -- option ensures that the -l and
+#  -c options are passed to the shell rather than used by su itself.
+#  These workarounds are needed for the combination of Gnu su and
+#  Bash;
+#x:5:once:/bin/su - -- joe -l -c '/usr/bin/startx </dev/null >/dev/null 2>&1'
+# su seems to use the /bin/sh, hence >> and not >>| (for zsh)
+#  >>, append and if file does not exist, create it -- bash
+# x:2:once:/usr/bin/su - -- joe -l -c /usr/bin/startx >>/var/log/startx.log 2>&1
+
+# su does not count as a login, hence the .zprofile
+#  of the login shell is not used. hence, sourcing it explicitly
+# to test out su
+#su --login joe \
+#   --shell /bin/zsh \
+#   --command='source ~/.zprofile && echo "$PATH" && echo $USER && exit'
+#su --login joe --shell /bin/zsh --command='source ~/.zprofile && /usr/bin/startx' >>/var/log/startx.log 2>&1
+# moving the source .zprofile to .xinitrc
+# 20120221, changed the below command to use agetty instead of the below
+# x:2:once:/usr/bin/su --login joe --shell /bin/zsh --command='/usr/bin/startx -- -nolisten tcp' >>/var/log/startx.log 2>&1
+# per this conversation in #crux
+# 11:57 < joe9> my crux system was working fine, till the latest prt-get update and I now have this message in my startx.log: su: Cannot drop the controlling terminal
+# 11:57 < joe9> x:2:once:/usr/bin/su --login joe --shell /bin/zsh --command='/usr/bin/startx -- -nolisten tcp' >>/var/log/startx.log 2>&1
+# 11:57 < joe9> is what I always had in /etc/inittab
+# 11:57 < joe9> I am not sure what would have changed for su to error out with that message.
+# 11:58 < joe9> just wanted to check if anyone is noticing the same.
+# 11:58 -!- Irssi: Join to #crux was synced in 172 secs
+# 12:02 <@jaeger> It's probably due to the changes to su itself, I'd guess
+# 12:02 <@jaeger> I don't know the details but someone was talking about it a couple days ago
+# 12:03 < joe9> oh, really.
+# 12:04 < niklaswe> jaeger: do you mean this.. http://anonscm.debian.org/viewvc/pkg-shadow?view=revision&revision=3709
+# 12:04 < niklaswe> ?
+# 12:05 <@jaeger> nope
+# 12:05 <@jaeger> was related to shadow/su
+# 12:06 < niklaswe> oh then i paste wrong link.. looking in my logs :P
+# 12:06 < joe9> jaeger: or, should I just change my inittab to do this: http://linuxgazette.net/issue72/chung.html
+# 12:07 <@jaeger> that would be an option, I guess... though it seems overcomplicated to me
+# 12:07 < joe9> or, should I just install autologin?
+# 12:07 <@jaeger> one of the gettys has an autologin feature that you could use, I do something like it for my XBMC machine
+# 12:07 < joe9> oh, really. can you please give me more details on how I can do that?
+# 12:07 <@jaeger> looks like the default agetty has autologin
+# 12:07 <@jaeger> check the agetty manpage, it's the -a option
+# 12:08 <@jaeger> so you could tell agetty to login your user automatically on tty1, for example
+# 12:08 < niklaswe> mingetty has autologin function
+# 12:08 <@jaeger> then in your user's bash dot files, you do something like "If I'm on the console, start X"
+# 12:08 < joe9> the /etc/inittab seems to use agetty.
+# 12:08 < joe9> I have agetty in mine.
+# 12:08 < joe9> jaeger: ok, thanks.
+# 12:08 <@jaeger> yeah, that's why I said "the default", it's the crux default in this case
+# 12:09 <@jaeger> running the "tty" command will tell you what tty you're on
+# 12:09 <@jaeger> if you're logged in locally it'll probably be /dev/tty1 or the like
+# 12:09 <@jaeger> if you're sshed in it'll be something like /dev/pts/5
+# 12:09 <@jaeger> same for X
+# 12:09 <@jaeger> so in .bashrc or .bash_profile or whatever, you could do something like:
+# 12:10 <@jaeger> [ "`tty`" = "/dev/tty1" ] && startx
+# 12:12 < joe9> oh, ok, then everything in X will be a child of agetty, instead of init.
+# 12:12 <@jaeger> not sure on that... I've only used that setup on my XBMC box, which is off most of the time
+# 12:12 < joe9> c1:2:respawn:/sbin/agetty 38400 tty1 linux
+# 12:12 < joe9> is what I have in my inittab.
+# 12:12 < joe9> does it help to increase the baudrate oslt?
+# 12:13 <@jaeger> doesn't make a lot of difference on the console
+
+
+#----------------------------------------------------------------
+# notes on process management
+
+# very interesting article
+#   http://mywiki.wooledge.org/ProcessManagement
+
+# from http://partmaps.org/era/unix/award.html#kill
+# Useless Use of Kill -9 form letter
+#    No no no.  Don't use kill -9.
+#    It doesn't give the process a chance to cleanly:
+#    1) shut down socket connections
+#    2) clean up temp files
+#    3) inform its children that it is going away
+#    4) reset its terminal characteristics
+#         and so on and so on and so on.
+#    Generally, send 15, and wait a second or two, and if that doesn't
+#    work, send 2, and if that doesn't work, send 1.  If that doesn't,
+#    REMOVE THE BINARY because the program is badly behaved!
+#    Don't use kill -9.  Don't bring out the combine harvester just to tidy
+#    up the flower pot.
+# #!/usr/bin/env bash
+# set -eu
+#
+# killtree() {
+#     local pid
+#     for pid; do
+#         kill -stop $pid
+#         local cpid
+#         for cpid in $(pgrep -P $pid); do
+#             killtree $cpid
+#         done
+#         kill $pid                   # NOTE. SIGTERM doesn't kill stopped process
+#         kill -cont $pid             # So I added sending SIGCONT
+#     done
+# }
+#
+# (trap exit TERM; sleep 100) 2>/dev/null &
+#     # handling SIGTERM, so that bash wouldn't complain about child being killed
+#     # redirecting stderr to prevent seeing child's complains about sleep being killed
+# self=$$
+# children=$(pgrep -P $self)
+# children=$(echo $children $(pgrep -P $children))
+# killtree $(pgrep -P $self)
+# pgrep -P $$ || true
+# ps -p ${children/ /,} -o pid= || true
+
+# exec /sbin/agetty --autologin joe --8bits --keep-baud 38400 tty6 startx
+# the above line is causing these errors in /var/log/auth
+# Jan 21 19:11:08 master agetty[269]: /dev/tty6: cannot get controlling tty:
+#  Operation not permitted
+# Jan 21 19:11:09 master agetty[269]: /dev/tty6: cannot get controlling tty:
+#  Operation not permitted
+# Jan 21 19:11:09 master agetty[269]: /dev/tty6: cannot set process group:
+#  Inappropriate ioctl for device
+# got this idea from:
+# http://lists.uclibc.org/pipermail/busybox/2010-June/072730.html
+# http://osdir.com/ml/sysutils.supervision.general/2003-07/msg00033.html
+exec /usr/bin/setsid /bin/sh -c 'exec /sbin/agetty --autologin joe --8bits --keep-baud 38400 tty6 startx'

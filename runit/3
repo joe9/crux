@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh -xv
 exec 2>&1
 
-PATH=/command:/sbin:/bin:/usr/sbin:/usr/bin
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 sync && sync && sync
 
@@ -12,15 +12,15 @@ else
  export RUNLEVEL=0
 fi
 
-# echo 'Waiting for services to stop...'
-# sv -w196 force-stop /etc/runit/runsvdir/current/*
-# sv exit /etc/runit/runsvdir/current/*
-# shopt -s extglob
-# sv -w196 force-stop /etc/runit/runsvdir/current/!(tty1)
-# sv exit /etc/runit/runsvdir/current/!(tty1)
+echo 'Waiting for services to stop...'
+sv -w196 shutdown /var/run/runit/runsvdir/current/*
+# sleep to show me any service that is not dying and correct it
+#  to respond to a TERM or CONT
+sleep 10
+sv force-shutdown /var/run/runit/runsvdir/current/*
 
-echo 'Switching to single...'
-runsvchdir single
+# echo 'Switching to single...'
+# runsvchdir single
 
 echo 'Shutdown...'
 PREVLEVEL=2 /etc/rc.shutdown

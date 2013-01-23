@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/sh -xv
 # system one time tasks
 
-PATH=/command:/sbin:/bin:/usr/sbin:/usr/bin
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 # from the crux handbook
 #  /etc/rc  System boot script

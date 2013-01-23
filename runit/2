@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -xv
 
 # changed the above from /bin/sh to /bin/bash as per /etc/rc.multi
 
-PATH=/command:/bin:/sbin:/usr/bin:/usr/sbin
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
 # Do not start services besides tty's if we're running single-user.
 if [ -z "`grep single /proc/cmdline`" ]; then

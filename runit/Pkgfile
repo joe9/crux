@@ -114,7 +114,9 @@ build() {
    install -d -m0755 $PKG/sbin
    install -m0755 $SRC/admin/$name-$version/etc/debian/ctrlaltdel $PKG/etc/runit
    sed -i -e 's,/etc/runit/stopit,/var/run/runit/stopit,g' \
-          -e 's,/etc/runit/reboot,/var/run/runit/reboot,g' $PKG/etc/runit/ctrlaltdel
+          -e 's,/etc/runit/reboot,/var/run/runit/reboot,g' \
+          -e '/chmod/a touch /var/run/runit/reboot; chmod 100 /var/run/runit/reboot;' \
+            $PKG/etc/runit/ctrlaltdel
 
    # ln -s multi  $PKG/etc/runit/runsvdir/current
    # ln -s single $PKG/etc/runit/runsvdir/previous
