@@ -1,6 +1,6 @@
 #!/bin/sh
-# /sbin/agetty 38400 tty5 linux  && /sbin/utmpset -w tty5
-# exec /sbin/agetty 38400 tty5 linux
+# /sbin/agetty 38400 tty5 linux  && /sbin/utmpset -w ttyX
+# exec /sbin/agetty 38400 ttyX linux
 
 # below command avoids these warnings in /var/log/auth
 # Jan 21 19:11:08 master agetty[269]: /dev/tty6: cannot get controlling tty:

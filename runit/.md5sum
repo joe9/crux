@@ -1,8 +1,8 @@
 ec6a170dcebdc117f90be1c14ca3e0e8  1
-dfad171025fb428715ee5bd62cc43f70  2
-e6bcde8da4e035a6a32d35d9942d7a1d  3
+1800395301524b4fd66a41d5cfd103e1  2
+4e5b80ed6201b7a33ec2a3a660073f7b  3
 6d0aec433edd01b149b44c7edd37a1ad  acpi_event_power
-27b2daff965a23cfef2bd46acdeab34e  finish.ttyX
+c9849fc649ce838aa76661e9d8df15ca  finish.ttyX
 fa3ab73321d0b5531fef723779c99895  log.config
 9f6c7ae3e68dac0ba56dfe8e0c14b387  log.run
 29209457495d10f70f8bfc79f3c86b80  run.acpid
@@ -10,5 +10,6 @@ fa3ab73321d0b5531fef723779c99895  log.config
 a75603c1f953b3d3b8b0b1d7573692b5  run.crond
 bcc2992112d87667e481e608f3b84997  run.klogd
 573465f9326042a913aefc9ec2ce2452  run.syslogd
-f8fd2b5ad85345b5606128a778fdf871  run.ttyX
+22820995b7a6eba6d1b0418007577713  run.ttyX
 8fa53ea8f71d88da9503f62793336bc3  runit-2.1.1.tar.gz
+5b48e207e83523f9aa763a3e6860c406  use_var_run_directory_for_current_and_previous.patch

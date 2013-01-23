@@ -1,0 +1,69 @@
+--- runsvchdir.c.original	2013-01-23 13:07:57.604100085 -0500
++++ runsvchdir.c	2013-01-23 13:45:45.519901608 -0500
+@@ -9,6 +9,11 @@
+ #define USAGE " dir"
+ #define SVDIR "/etc/runit/runsvdir"
+ 
++#define SVRUNDIR   "/var/run/runit/runsvdir/"
++#define CURRENT    "/var/run/runit/runsvdir/current"
++#define PREVIOUS   "/var/run/runit/runsvdir/previous"
++#define CURRENTNEW "/var/run/runit/runsvdir/current.new"
++
+ #define VERSION "$Id: 9bf17f77e33c6b961e060aacffa3c8abd38fc64a $"
+ 
+ char *progname;
+@@ -38,6 +43,15 @@
+   if (new[0] == '.') fatalx(new, ": must not start with a dot.");
+   if (chdir(SVDIR) == -1) fatal("unable to chdir: ", SVDIR);
+ 
++  if (stat(SVRUNDIR, &s) == -1) {
++    mkdir(SVRUNDIR, 0750);
++    if (stat(SVRUNDIR, &s) == -1) {
++      if (errno == error_noent) fatal(SVRUNDIR, 0);
++      fatal("unable to stat: ", SVRUNDIR);
++    }
++  }
++  if (! S_ISDIR(s.st_mode)) fatalx(SVRUNDIR, "not a directory.");
++
+   if (stat(new, &s) == -1) {
+     if (errno == error_noent) fatal(new, 0);
+     fatal("unable to stat: ", new);
+@@ -45,7 +59,7 @@
+   if (! S_ISDIR(s.st_mode)) fatalx(new, "not a directory.");
+   ino =s.st_ino;
+   dev =s.st_dev;
+-  if (stat("current", &s) == -1) fatal("unable to stat: ", "current");
++  if (stat(CURRENT, &s) == -1) fatal("unable to stat: ", CURRENT);
+   if ((s.st_ino == ino) && (s.st_dev == dev)) {
+     buffer_puts(buffer_1, "runsvchdir: ");
+     buffer_puts(buffer_1, new);
+@@ -54,18 +68,18 @@
+     _exit(0);
+   }
+ 
+-  if (unlink("current.new") == -1)
+-    if (errno != error_noent) fatal("unable to unlink: ", "current.new");
+-  if (symlink(new, "current.new") == -1)
++  if (unlink(CURRENTNEW) == -1)
++    if (errno != error_noent) fatal("unable to unlink: ", CURRENTNEW);
++  if (symlink(new, CURRENTNEW) == -1)
+     fatal("unable to create: current.new -> ", new);
+-  if (unlink("previous") == -1)
+-    if (errno != error_noent) fatal("unable to unlink: ", "previous");
+-  if (rename("current", "previous") == -1)
+-    fatal("unable to copy: current to ", "previous");
+-  if (rename("current.new", "current") == -1) {
+-    warn("unable to move: current.new to ", "current");
+-    if (rename("previous", "current") == -1)
+-      fatal("unable to move previous back to ", "current");
++  if (unlink(PREVIOUS) == -1)
++    if (errno != error_noent) fatal("unable to unlink: ", PREVIOUS);
++  if (rename(CURRENT, PREVIOUS) == -1)
++    fatal("unable to copy: current to ", PREVIOUS);
++  if (rename(CURRENTNEW, CURRENT) == -1) {
++    warn("unable to move: current.new to ", CURRENT);
++    if (rename(PREVIOUS, CURRENT) == -1)
++      fatal("unable to move previous back to ", CURRENT);
+     _exit(111);
+   }
+   buffer_puts(buffer_1, "runsvchdir: ");

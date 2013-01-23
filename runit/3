@@ -5,7 +5,7 @@ PATH=/command:/sbin:/bin:/usr/sbin:/usr/bin
 
 sync && sync && sync
 
-if [ -x /etc/runit/reboot ]
+if [ -x /var/run/runit/reboot ]
 then
  export RUNLEVEL=6
 else

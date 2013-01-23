@@ -18,6 +18,7 @@ source=(http://smarden.org/$name/$name-$version.tar.gz
          acpi_event_power
          run.ttyX
          finish.ttyX
+         use_var_run_directory_for_current_and_previous.patch
          )
 
 install_service() {
@@ -86,6 +87,18 @@ build() {
    echo "${LD:-gcc -s} $LDFLAGS" > conf-ld
    # set default service path to /var/service
    sed -i -e 's:^char \*varservice ="/service/";$:char \*varservice ="/var/service/";:' sv.c
+   sed -i \
+      -e 's,^#define STOPIT "/etc/runit/stopit"$,#define STOPIT "/var/run/runit/stopit",' \
+      -e 's,^#define REBOOT "/etc/runit/reboot"$,#define REBOOT "/var/run/runit/reboot",' runit.h
+   sed -i -e 's,/etc/runit/runsvdir,/var/run/runit/runsvdir,g' runsvchdir.c
+   # patch -i $SRC/use_var_run_directory_for_current_and_previous.patch
+   sed -i \
+      -e 's,/etc/runit/stopit,/var/run/runit/stopit,g' \
+      -e 's,/etc/runit/reboot,/var/run/runit/reboot,g' \
+      -e 's,/etc/runit/runsvdir/previous,/var/run/runit/runsvdir/previous,g' \
+      -e 's,/etc/runit/runsvdir/current,/var/run/runit/runsvdir/current,g' \
+      -e 's,/etc/runit/runsvdir/current.new,/var/run/runit/runsvdir/current.new,g' \
+         $SRC/admin/$name-$version/man/*
 
    # compile
    make
@@ -94,16 +107,24 @@ build() {
    # default services
    install -d -m0755 $PKG/etc/runit/runsvdir/single
    install -d -m0755 $PKG/etc/runit/runsvdir/multi
-   install -d -m0755 $PKG/var
+   install -d -m0755 $PKG/var/run/runit/runsvdir
 
    # set up runit-init
    install -m0755 $SRC/[123] $PKG/etc/runit
    install -d -m0755 $PKG/sbin
    install -m0755 $SRC/admin/$name-$version/etc/debian/ctrlaltdel $PKG/etc/runit
+   sed -i -e 's,/etc/runit/stopit,/var/run/runit/stopit,g' \
+          -e 's,/etc/runit/reboot,/var/run/runit/reboot,g' $PKG/etc/runit/ctrlaltdel
 
-   ln -s multi  $PKG/etc/runit/runsvdir/current
-   ln -s single $PKG/etc/runit/runsvdir/previous
-   ln -s /etc/runit/runsvdir/current $PKG/var/service
+   # ln -s multi  $PKG/etc/runit/runsvdir/current
+   # ln -s single $PKG/etc/runit/runsvdir/previous
+   # ln -s /etc/runit/runsvdir/current $PKG/var/service
+
+   ln -s /etc/runit/runsvdir/multi  $PKG/var/run/runit/runsvdir/multi
+   ln -s /etc/runit/runsvdir/single $PKG/var/run/runit/runsvdir/single
+   ln -s multi  $PKG/var/run/runit/runsvdir/current
+   ln -s single $PKG/var/run/runit/runsvdir/previous
+   ln -s /var/run/runit/runsvdir/current $PKG/var/service
 
    # install binaries
    install -d -m0755 $PKG/sbin
@@ -117,9 +138,9 @@ build() {
    # touch $PKG/var/run/runit/current
    # touch $PKG/var/run/runit/previous
 
-   touch $PKG/var/run/runit/stopit
-   chmod 0 $PKG/var/run/runit/stopit
-   ln -s /var/run/runit/stopit     $PKG/etc/runit/stopit
+   touch $PKG/var/run/runit/{stopit,reboot}
+   chmod 0 $PKG/var/run/runit/{stopit,reboot}
+   # ln -s /var/run/runit/stopit     $PKG/etc/runit/stopit
    # ln -s /var/run/runit/runsvdir/current    $PKG/etc/runit/runsvdir/current
    # ln -s /var/run/runit/runsvdir/previous   $PKG/etc/runit/runsvdir/previous
 
@@ -133,7 +154,7 @@ build() {
 
    # add gettys for 1-6 terminals
    cd $SRC/admin/$name-$version/etc/debian/getty-tty5/
-   for i in {1..6}
+   for i in {1..5}
    do
       install -d -m0755 $PKG/etc/sv/tty$i
       ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
