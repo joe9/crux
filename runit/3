@@ -17,7 +17,9 @@ sv -w196 shutdown /var/run/runit/runsvdir/current/*
 # sleep to show me any service that is not dying and correct it
 #  to respond to a TERM or CONT
 sleep 10
-sv force-shutdown /var/run/runit/runsvdir/current/*
+# do not send a kill here, /etc/rc.shutdown sends a TERM
+#  to all processes and then sends a KILL to all processes
+# sv force-shutdown /var/run/runit/runsvdir/current/*
 
 # echo 'Switching to single...'
 # runsvchdir single
