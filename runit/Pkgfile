@@ -105,9 +105,10 @@ build() {
    make check
 
    # default services
+   install -d -m0755 $PKG/var/run/runit/runsvdir
    install -d -m0755 $PKG/etc/runit/runsvdir/single
    install -d -m0755 $PKG/etc/runit/runsvdir/multi
-   install -d -m0755 $PKG/var/run/runit/runsvdir
+   install -d -m0755 $PKG/etc/runit/runsvdir/ttys
 
    # set up runit-init
    install -m0755 $SRC/[123] $PKG/etc/runit
@@ -124,6 +125,7 @@ build() {
 
    ln -s /etc/runit/runsvdir/multi  $PKG/var/run/runit/runsvdir/multi
    ln -s /etc/runit/runsvdir/single $PKG/var/run/runit/runsvdir/single
+   ln -s /etc/runit/runsvdir/ttys   $PKG/var/run/runit/runsvdir/ttys
    ln -s multi  $PKG/var/run/runit/runsvdir/current
    ln -s single $PKG/var/run/runit/runsvdir/previous
    ln -s /var/run/runit/runsvdir/current $PKG/var/service
@@ -161,6 +163,7 @@ build() {
       install -d -m0755 $PKG/etc/sv/tty$i
       ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
       ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/single/
+      ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/ttys/
 
       install -d -m0755 $PKG/var/run/sv/tty$i/supervise
       ln -s /var/run/sv/tty$i/supervise $PKG/etc/sv/tty$i/supervise

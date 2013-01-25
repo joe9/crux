@@ -24,6 +24,12 @@ lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty2 -> /etc/sv/tty2
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty3 -> /etc/sv/tty3
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty4 -> /etc/sv/tty4
 lrwxrwxrwx	root/root	etc/runit/runsvdir/single/tty5 -> /etc/sv/tty5
+drwxr-xr-x	root/root	etc/runit/runsvdir/ttys/
+lrwxrwxrwx	root/root	etc/runit/runsvdir/ttys/tty1 -> /etc/sv/tty1
+lrwxrwxrwx	root/root	etc/runit/runsvdir/ttys/tty2 -> /etc/sv/tty2
+lrwxrwxrwx	root/root	etc/runit/runsvdir/ttys/tty3 -> /etc/sv/tty3
+lrwxrwxrwx	root/root	etc/runit/runsvdir/ttys/tty4 -> /etc/sv/tty4
+lrwxrwxrwx	root/root	etc/runit/runsvdir/ttys/tty5 -> /etc/sv/tty5
 drwxr-xr-x	root/root	etc/sv/
 drwxr-xr-x	root/root	etc/sv/acpid/
 drwxr-xr-x	root/root	etc/sv/acpid/log/
@@ -111,6 +117,7 @@ lrwxrwxrwx	root/root	var/run/runit/runsvdir/current -> multi
 lrwxrwxrwx	root/root	var/run/runit/runsvdir/multi -> /etc/runit/runsvdir/multi
 lrwxrwxrwx	root/root	var/run/runit/runsvdir/previous -> single
 lrwxrwxrwx	root/root	var/run/runit/runsvdir/single -> /etc/runit/runsvdir/single
+lrwxrwxrwx	root/root	var/run/runit/runsvdir/ttys -> /etc/runit/runsvdir/ttys
 ----------	root/root	var/run/runit/stopit (EMPTY)
 drwxr-xr-x	root/root	var/run/sv/
 drwxr-xr-x	root/root	var/run/sv/acpid/
