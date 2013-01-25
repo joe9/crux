@@ -140,4 +140,4 @@
 #  using sv
 # got the below idea from
 #  http://en.usenet.digipedia.org/thread/16584/1691/
-exec /usr/bin/setsid /bin/sh -c '/sbin/agetty --autologin joe --8bits --keep-baud 38400 tty7 startx & x=$!; trap "kill -s TERM $x; kill -s CONT $x" TERM; trap "kill -s HUP $x" HUP; wait $x; trap - HUP TERM ; pause'
+exec /usr/bin/setsid /bin/sh -c '/sbin/agetty --autologin joe --8bits --keep-baud 38400 tty6 startx & x=$!; trap "kill -s TERM $x; kill -s CONT $x" TERM; trap "kill -s HUP $x" HUP; wait $x; trap - HUP TERM ; pause'

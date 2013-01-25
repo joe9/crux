@@ -1,2 +1,2 @@
 #!/bin/sh -xveu
-exec utmpset -w tty7
+exec utmpset -w tty6
