@@ -156,7 +156,7 @@ build() {
 
    # add gettys for 1-6 terminals
    cd $SRC/admin/$name-$version/etc/debian/getty-tty5/
-   for i in {1..5}
+   for i in {1..6}
    do
       install -d -m0755 $PKG/etc/sv/tty$i
       ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/

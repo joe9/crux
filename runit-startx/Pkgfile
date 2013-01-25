@@ -14,7 +14,7 @@ build() {
    install -d -m0755 $PKG/var
 
    # add this getty to terminal 8
-   i=6
+   i=7
    install -d -m0755 $PKG/etc/sv/tty$i
    ln -s /etc/sv/tty$i $PKG/etc/runit/runsvdir/multi/
 
