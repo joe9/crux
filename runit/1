@@ -7,5 +7,5 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 #  /etc/rc  System boot script
 /etc/rc
 
-touch /var/run/runit/stopit
-chmod 0 /var/run/runit/stopit
+touch /var/run/runit/{stopit,reboot}
+chmod 0 /var/run/runit/{stopit,reboot}
