@@ -185,4 +185,12 @@ build() {
    install_service multi acpid   run.acpid
 
    # install -D $SRC/admin/$name-$version/package/COPYING $PKG/usr/share/licenses/runit/COPYING
+   echo "When you are ready to use runit, do the below: ";
+   echo "   1. In file /etc/rc.conf: "
+   echo "      comment out the below line "
+   echo "      SYSLOG=sysklogd"
+   echo "   2. Check the instructions at: "
+   echo "      http://smarden.org/runit/replaceinit.html"
+   echo "      and follow Steps 4,5,6 and 7 manually"
+   echo
 }
