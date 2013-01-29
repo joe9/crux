@@ -129,7 +129,7 @@ f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
 f:ef6838d9368b84ba4867738391d9882b:libutempter/Pkgfile
 f:0ceed6139358f4eab9ba0cd8424cd892:libutempter/.md5sum
 f:d2261035f5f7c8198c92bc403c85e733:libutempter/.footprint
-f:ad8eccaeba92fbacc322725086733357:zsh_history.joe
+f:a1a80d748e8d23ac3bdcc4c1a7293e64:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -437,10 +437,10 @@ f:e3763a2b02261cb0b2d8086417849d8a:java3d/Pkgfile
 f:5f28c1f1b3431f5206289a522234a39a:java3d/README
 f:fea3427c9f101c58dffc567a67483c31:java3d/.md5sum
 f:8af20de1b4ac015e957c3adfbf6b16e9:java3d/.footprint
-f:c74f64fe158f0cf6bc7a7d468b384de9:autojump-git/zsh_history.joe
-f:94279af32725994f4f6d6bb2fe68a37f:autojump-git/Pkgfile
+f:5d60d0cf1c2892fb58accef21a5ef424:autojump-git/zsh_history.joe
+f:cfa5a751e8c1367efbc6596efbf83128:autojump-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:autojump-git/.md5sum
-f:26773dd9b1ca9b004ad7dab44079e597:autojump-git/.footprint
+f:ac8cf6809a540a9c3a6b7c7807b7fcf2:autojump-git/.footprint
 f:df360bd56f46c6eed96919909a93888c:stow/Pkgfile
 f:9697d54dea924d732886b483954dd6cf:stow/.md5sum
 f:35674eba1bc0d1716976a7347062a0bf:stow/.footprint

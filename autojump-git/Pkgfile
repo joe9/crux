@@ -20,8 +20,5 @@ build() {
 
    cd $PKGMK_SOURCE_DIR/autojump
 
-   ./install.sh --zsh --local --prefix $PKG/
-   mkdir --parents $PKG/usr/share/zsh/site-functions/
-   mv $PKG/functions/_j $PKG/usr/share/zsh/site-functions/
-   rm -rf $PKG/functions
+   ./install.sh --prefix usr/ --destdir $PKG/ --zshshare /usr/share/zsh/site-functions
 }
