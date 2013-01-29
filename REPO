@@ -109,7 +109,6 @@ d:syslinux
 d:java3d-x86_64
 d:python-gtkglext
 d:vim-mercurial
-f:da7a1f0d31ea3f57c81ee3811df43a85:index.html
 f:49dd60e61b208ccf68a2f9ea0fa3367f:libdrm/Pkgfile
 f:2c33af350c0af6e689d316276853617e:libdrm/.md5sum
 f:90524e3273466605510f35cad1726c11:libdrm/.footprint
@@ -130,7 +129,7 @@ f:e0fafdeeb786faa807f1beeb04b0ec54:eigen/.footprint
 f:ef6838d9368b84ba4867738391d9882b:libutempter/Pkgfile
 f:0ceed6139358f4eab9ba0cd8424cd892:libutempter/.md5sum
 f:d2261035f5f7c8198c92bc403c85e733:libutempter/.footprint
-f:f4b8e695fa52b7cf04a86e9ee0eb075f:zsh_history.joe
+f:ad8eccaeba92fbacc322725086733357:zsh_history.joe
 f:427d8f32a8f2f3c14822c9bbe56b16a0:expect/Pkgfile
 f:be5fdcfd37df7b47668d3e874c26342d:expect/.md5sum
 f:8914b9d213f75553298ac96ebf6525da:expect/.footprint
@@ -334,6 +333,7 @@ f:014cbbdc37ca419dfb216ba25a1f7322:xc16-data/.md5sum
 f:72ec1845ff8f992d0e998a310a458d50:xc16-data/.footprint
 f:6a72e87a1379d71f85ccd218195a62bc:xc16-data/strace_activation.txt
 f:a89245058732b01796d0ce1e2279fb00:xc16-data/.nostrip
+f:89c9a6e0e6ebd5265a4506680f85ac61:ck4up.dbm
 f:88045798f70b1a362b4b1a22d9020a7d:libarea-svn/Pkgfile
 f:82a182f0d0fb5dca87c77c7a9146fa08:libarea-svn/.md5sum
 f:2782309ccfd0e8c032392d337824583a:libarea-svn/.footprint
@@ -404,6 +404,7 @@ f:fa260383c5e9906ca9d86d0abf7e6699:ls++-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:ls++-git/.md5sum
 f:bc387e2b770c073abedd305bd25faaa3:ls++-git/Pkgfile.old
 f:bfa614bcde7f24dd7d9bf06479e2e2ff:ls++-git/.footprint
+f:ff19b97d1446c2673968fc05a1af4236:ck4up.conf
 f:a09c0040b7292cb43ee31333107b31b7:mplabalc30/morediffs.patch
 f:bb1b66307133ffa7fdf06fa603bd4e6d:mplabalc30/mplabalc30v3_31.tar.gz
 f:8073a17de2a7fac9db7495fa89fc3984:mplabalc30/c30_resource-paths.patch
@@ -436,8 +437,8 @@ f:e3763a2b02261cb0b2d8086417849d8a:java3d/Pkgfile
 f:5f28c1f1b3431f5206289a522234a39a:java3d/README
 f:fea3427c9f101c58dffc567a67483c31:java3d/.md5sum
 f:8af20de1b4ac015e957c3adfbf6b16e9:java3d/.footprint
-f:6ce3713b17864844ac73a73e7fb32e00:autojump-git/zsh_history.joe
-f:433e3a3e80e6eea04632d47d22493b6a:autojump-git/Pkgfile
+f:c74f64fe158f0cf6bc7a7d468b384de9:autojump-git/zsh_history.joe
+f:94279af32725994f4f6d6bb2fe68a37f:autojump-git/Pkgfile
 f:d41d8cd98f00b204e9800998ecf8427e:autojump-git/.md5sum
 f:26773dd9b1ca9b004ad7dab44079e597:autojump-git/.footprint
 f:df360bd56f46c6eed96919909a93888c:stow/Pkgfile
@@ -568,6 +569,7 @@ f:06a29228c5f87ac35d2a146258f98fb1:pygtkglext-git/.footprint
 f:fb41b4fa75781e2323b0cd228d6ab2cd:syslinux/Pkgfile
 f:ef7a3728229eea112916590e97cb1859:syslinux/.md5sum
 f:757dc274ca42b018b819ce2c8fa90277:syslinux/.footprint
+f:3505a0cd254651304deb627291a7e6be:jue.ck4up.conf
 f:c1391d87ba384df109f2caf44280e46e:java3d-x86_64/Pkgfile
 f:9a731ab4b5897794c9b7aa8cddadf4b2:java3d-x86_64/README
 f:37845b13cc1332c177e46b67aee4cfcb:java3d-x86_64/.md5sum
