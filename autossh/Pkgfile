@@ -1,0 +1,20 @@
+# Description: Automatically restart SSH sessions and tunnels
+# URL: http://www.harding.motd.ca/autossh/
+# Maintainer: Jose V Beneyto, sepen at crux dot nu
+# Packager: Jose V Beneyto, sepen at crux dot nu
+# Depends on: python
+
+name=autossh
+version=1.4c
+release=1
+source=(http://www.harding.motd.ca/$name/$name-$version.tgz)
+
+build() {
+   cd $name-$version
+
+   ./configure --prefix=$PKG/usr \
+                --mandir=$PKG/usr/man
+   make
+   make DESTDIR=$PKG install
+   rm -rf $PKG/usr/share/doc
+}
