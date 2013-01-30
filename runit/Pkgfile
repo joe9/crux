@@ -176,6 +176,7 @@ build() {
       sed -e "s/ttyX/tty$i/g" <$SRC/finish.ttyX >"$PKG/etc/sv/tty$i/finish"
       chmod 0755 "$PKG/etc/sv/tty$i/finish"
    done
+   sed -i -e "s,/sbin/agetty,/sbin/agetty --noclear,g" $PKG/etc/sv/tty1/run
 
    # install services
    install_service both  syslogd run.syslogd
