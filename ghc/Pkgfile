@@ -5,7 +5,7 @@
 # Depends on: libgmp readline libedit libffi
 
 name=ghc
-version=7.6.1
+version=7.6.2
 release=1
 source=(http://www.haskell.org/ghc/dist/$version/$name-$version-src.tar.bz2
         build.mk)
