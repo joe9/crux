@@ -1,0 +1,10 @@
+#!/bin/bash -xv
+
+# update the fontconfig font cache
+fc-cache -vfs
+
+# With older applications that do not support fontconfig
+#    (e.g. GTK+ 1.x applications, and xfontsel) the index
+#    will need to be created in the font directory
+mkfontscale /usr/share/fonts/TTF /usr/share/fonts/misc
+mkfontdir   /usr/share/fonts/TTF /usr/share/fonts/misc

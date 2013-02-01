@@ -1,0 +1,20 @@
+# Description: GNU Unifont Glyphs
+# URL:         http://unifoundry.com/unifont.html
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+name=ttf-unifont
+version=5.1.20080907
+release=1
+source=(http://unifoundry.com/unifont-${version}.ttf.gz)
+
+build() {
+   cd $SRC
+   gunzip $SRC/unifont-${version}.ttf.gz
+
+   # Prepare destination directory
+   install -d -m 755 "${PKG}/usr/share/fonts/TTF"
+
+   # Install fonts and license
+   install -m 644 *.ttf "${PKG}/usr/share/fonts/TTF"
+}

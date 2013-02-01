@@ -1,0 +1,47 @@
+# Description: The proggy fonts are a set of fixed-width screen fonts that are designed for code listings.
+# URL:         http://www.proggyfonts.com
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+# copied this port from
+#  https://aur.archlinux.org/packages/pr/proggyfonts/PKGBUILD
+#  https://aur.archlinux.org/packages/proggyfonts/
+name=proggyfonts
+version=0.1
+release=5
+source=(http://www.proggyfonts.com/download/ProggyClean.pcf.zip
+   http://www.proggyfonts.com/download/ProggyClean.ttf.zip     \
+   http://www.proggyfonts.com/download/ProggySquare.pcf.zip \
+   http://www.proggyfonts.com/download/ProggySquare.ttf.zip \
+   http://www.proggyfonts.com/download/ProggySmall.pcf.zip     \
+   http://www.proggyfonts.com/download/ProggySmall.ttf.zip     \
+   http://www.proggyfonts.com/download/ProggyTiny.pcf.zip      \
+   http://www.proggyfonts.com/download/ProggyTiny.ttf.zip      \
+   http://www.proggyfonts.com/download/ProggyCleanSZ.pcf.zip   \
+   http://www.proggyfonts.com/download/ProggyCleanSZ.ttf.zip   \
+   http://www.proggyfonts.com/download/ProggySquareSZ.pcf.zip  \
+   http://www.proggyfonts.com/download/ProggySquareSZ.ttf.zip  \
+   http://www.proggyfonts.com/download/ProggyTinySZ.pcf.zip \
+   http://www.proggyfonts.com/download/ProggyTinySZ.ttf.zip \
+   http://www.proggyfonts.com/download/ProggyCleanSZBP.pcf.zip \
+   http://www.proggyfonts.com/download/ProggyCleanSZBP.ttf.zip \
+   http://www.proggyfonts.com/download/ProggyCleanCP.pcf.zip   \
+   http://www.proggyfonts.com/download/Progsole.bdf.zip     \
+   http://www.proggyfonts.com/download/CodingFontTobi.zip      \
+   http://www.proggyfonts.com/download/CodingFontTobi.pcf.zip  \
+   http://www.proggyfonts.com/download/SpeedyPCF.zip     \
+   http://www.proggyfonts.com/download/Crisp.ttf.zip     \
+   http://www.proggyfonts.com/download/PixelCarnageMono.ttf.zip   \
+   http://www.proggyfonts.com/download/PixelCarnageMono.pcf.gz \
+   http://www.proggyfonts.com/download/WebbySmall.pcf.zip      \
+   http://www.proggyfonts.com/download/WebbyCaps.pcf.zip    \
+   http://www.proggyfonts.com/download/Opti.pcf.gz       \
+   http://www.proggyfonts.com/download/OptiSmall.pcf.gz )
+
+build() {
+   cd $SRC
+   mkdir -p $PKG/usr/share/fonts/{misc,TTF}
+   install -m644 *.pcf.gz     $PKG/usr/share/fonts/misc || exit 1
+   install -m644 *.bdf        $PKG/usr/share/fonts/misc || exit 1
+   install -m644 *.ttf        $PKG/usr/share/fonts/TTF  || exit 1
+}

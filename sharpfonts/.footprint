@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/fonts/
+drwxr-xr-x	root/root	etc/fonts/conf.avail/
+drwxr-xr-x	root/root	etc/fonts/conf.avail/sharpfonts/
+-rw-r--r--	root/root	etc/fonts/conf.avail/sharpfonts/99-alias.conf
+-rw-r--r--	root/root	etc/fonts/conf.avail/sharpfonts/99-local.conf
+-rw-r--r--	root/root	etc/fonts/conf.avail/sharpfonts/99-misc.conf
+-rw-r--r--	root/root	etc/fonts/conf.avail/sharpfonts/99-msfonts-rules.conf
+drwxr-xr-x	root/root	etc/fonts/conf.d/
+lrwxrwxrwx	root/root	etc/fonts/conf.d/99-alias.conf -> ../conf.avail/sharpfonts/99-alias.conf
+lrwxrwxrwx	root/root	etc/fonts/conf.d/99-local.conf -> ../conf.avail/sharpfonts/99-local.conf
+lrwxrwxrwx	root/root	etc/fonts/conf.d/99-misc.conf -> ../conf.avail/sharpfonts/99-misc.conf
+lrwxrwxrwx	root/root	etc/fonts/conf.d/99-msfonts-rules.conf -> ../conf.avail/sharpfonts/99-msfonts-rules.conf

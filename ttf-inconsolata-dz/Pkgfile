@@ -1,0 +1,15 @@
+# Description: Monospace font for pretty code listings and for the terminal (modified to have straight single and double quotes
+# URL:         http://nodnod.net/2009/feb/12/adding-straight-single-and-double-quotes-inconsola/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+# copied this port from
+#  https://aur.archlinux.org/packages/tt/ttf-inconsolata-dz/PKGBUILD
+name=ttf-inconsolata-dz
+version=20091202
+release=2
+source=('http://media.nodnod.net/Inconsolata-dz.otf.zip')
+
+build() {
+   install -Dm644 $SRC/Inconsolata-dz.otf $PKG/usr/share/fonts/TTF/ttf-inconsolata-dz.otf
+}

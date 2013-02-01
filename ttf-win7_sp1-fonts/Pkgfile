@@ -1,0 +1,41 @@
+# Description: Microsoft Windows 7 TrueType Fonts
+# URL:         http://www.microsoft.com
+# Maintainer: Martin Schmölzer <mschmoelzer@gmail.com>
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig cabextract fontforge
+
+# copied this port from
+#   https://aur.archlinux.org/packages/tt/ttf-win7-fonts/PKGBUILD
+#   https://aur.archlinux.org/packages/ttf-win7-fonts/
+name=ttf-win7_sp1-fonts
+version=7.1
+release=3
+source=(http://download.microsoft.com/download/0/A/F/0AFB5316-3062-494A-AB78-7FB0D4461357/windows6.1-KB976932-X64.exe)
+
+# Windows 7 SP1 has newer versions of the following fonts:
+#  - Arial
+#  - Cambria
+#  - Gabriola
+#  - Mangal
+#  - Times New Roman
+#  - Verdana
+
+build() {
+   cd $SRC
+   mkdir -p sp1_fonts
+   cabextract --filter '*.tt[fc]' --directory sp1_fonts $SRC/windows6.1-KB976932-X64.exe
+   mkdir -p win7_sp1-fonts
+   find sp1_fonts -name "*.tt[fc]" -exec cp '{}' ./win7_sp1-fonts/ \;
+
+   cd win7_sp1-fonts
+   # cambria.ttc is a TrueType Collection (TTC) which causes problems with
+   # LibreOffice (Cambria Reguar cannot be selected) so we need to convert
+   # the TTC into a TrueType Font (TTF).
+   FONTFORGE_LANGUAGE=ff fontforge -c 'Open("cambria.ttc(Cambria)"); Generate("cambria.ttf")'
+
+   # Prepare destination directory
+   install -d -m 755 "${PKG}/usr/share/fonts/TTF"
+
+   # Install fonts and license
+   install -m 644 *.ttf "${PKG}/usr/share/fonts/TTF"
+}

@@ -1,0 +1,20 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/fonts/
+drwxr-xr-x	root/root	usr/share/fonts/TTF/
+-rw-r--r--	root/root	usr/share/fonts/TTF/Apple Braille Outline 6 Dot.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Apple Braille Outline 8 Dot.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Apple Braille Pinpoint 6 Dot.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Apple Braille Pinpoint 8 Dot.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Apple Braille.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Geeza Pro Bold.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Geeza Pro.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/HelveticaNeueDeskUI.ttc
+-rw-r--r--	root/root	usr/share/fonts/TTF/Keyboard.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/LucidaGrande.ttc
+-rw-r--r--	root/root	usr/share/fonts/TTF/MarkerFelt.ttc
+-rw-r--r--	root/root	usr/share/fonts/TTF/Menlo.ttc
+-rw-r--r--	root/root	usr/share/fonts/TTF/Symbol.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Thonburi.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/ThonburiBold.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/ZapfDingbats.ttf

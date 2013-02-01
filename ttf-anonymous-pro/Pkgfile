@@ -1,0 +1,18 @@
+# Description: family of four fixed-width fonts designed especially with coding in mind
+# URL:         http://www.ms-studio.com/FontSales/anonymouspro.html
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+name=ttf-anonymous-pro
+version=1.002
+release=001
+source=(http://www.ms-studio.com/FontSales/AnonymousPro-1.002.zip)
+
+build() {
+   cd AnonymousPro-1.002.001
+   # Prepare destination directory
+   install -d -m 755 "${PKG}/usr/share/fonts/TTF"
+
+   # Install fonts and license
+   install -m 644 *.ttf "${PKG}/usr/share/fonts/TTF"
+}

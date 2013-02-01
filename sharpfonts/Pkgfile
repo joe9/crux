@@ -1,0 +1,20 @@
+# Description: Display sharp and clear fonts on Linux and Unix like on Microsoft Windows XP / 7
+# URL:         http://www.sharpfonts.co.cc
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig freetype2
+
+# copied this port from
+#  https://aur.archlinux.org/packages/sh/sharpfonts/PKGBUILD
+#  https://aur.archlinux.org/packages/sharpfonts/
+name=sharpfonts
+version=1
+release=6
+source=(http://support.mcsnet.ca/${name}/${name}.tar)
+
+build() {
+   mkdir -p $PKG/etc/fonts/conf.avail/sharpfonts
+   mkdir -p $PKG/etc/fonts/conf.d
+   tar xvf ${name}.tar -C $PKG/etc/fonts/conf.avail/sharpfonts/
+   cd $PKG/etc/fonts/conf.d
+   ln -s ../conf.avail/sharpfonts/* .
+}

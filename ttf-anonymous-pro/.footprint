@@ -1,0 +1,8 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/fonts/
+drwxr-xr-x	root/root	usr/share/fonts/TTF/
+-rw-r--r--	root/root	usr/share/fonts/TTF/Anonymous Pro B.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Anonymous Pro BI.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Anonymous Pro I.ttf
+-rw-r--r--	root/root	usr/share/fonts/TTF/Anonymous Pro.ttf

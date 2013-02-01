@@ -1,0 +1,18 @@
+# Description: Mensch -- A coding font
+# URL:         http://robey.lag.net/2010/06/21/mensch-font.html
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+name=ttf-mensch
+version=1
+release=1
+source=(http://robey.lag.net/downloads/mensch.ttf)
+
+build() {
+   cd $SRC
+   # Prepare destination directory
+   install -d -m 755 "${PKG}/usr/share/fonts/TTF"
+
+   # Install fonts and license
+   install -m 644 mensch.ttf "${PKG}/usr/share/fonts/TTF"
+}

@@ -1,0 +1,19 @@
+# Description: Mac OS X TrueType fonts. Please consult https://github.com/GutenYe/aur/tree/master/ttf-mac
+# URL:         http://www.apple.com/osx/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+name=ttf-mac
+version=1
+release=1
+source=(http://invisible-files.googlecode.com/files/ttf-mac-fonts.tar.gz)
+
+build() {
+   cd ttf-mac-fonts
+   # Prepare destination directory
+   install -d -m 755 "${PKG}/usr/share/fonts/TTF"
+
+   # Install fonts and license
+   install -m 644 *.ttc "${PKG}/usr/share/fonts/TTF"
+   install -m 644 *.ttf "${PKG}/usr/share/fonts/TTF"
+}

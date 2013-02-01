@@ -1,0 +1,25 @@
+# Description: Inconsolata-dz-Powerline for vim Powerline
+# URL:         https://github.com/Ateoto/ttf-inconsolata-dz-powerline
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig git
+
+# copied this port from
+#  https://aur.archlinux.org/packages/ttf-inconsolata-dz-powerline/
+name=ttf-inconsolata-dz-powerline-git
+version=git
+release=1
+source=()
+
+build() {
+   cd $PKGMK_SOURCE_DIR
+
+   if cd ttf-inconsolata-dz-powerline ; then
+       git pull
+   else
+       git clone git://github.com/mattwillsh/fonts.git ttf-inconsolata-dz-powerline
+   fi
+
+   cd $PKGMK_SOURCE_DIR/ttf-inconsolata-dz-powerline
+   mkdir -p $PKG/usr/share/fonts/TTF
+   cp Inconsolata-dz-Powerline.otf $PKG/usr/share/fonts/TTF
+}

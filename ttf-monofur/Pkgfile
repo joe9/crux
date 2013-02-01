@@ -1,0 +1,18 @@
+# Description: monospaced geometric rounded sans serif font based on the eurofurence typeface family.
+# URL:         http://www.dafont.com/monofur.font
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+name=ttf-monofur
+version=1
+release=1
+source=(http://eurofurence.net/monof_tt.zip)
+
+build() {
+   cd $SRC
+   # Prepare destination directory
+   install -d -m 755 "${PKG}/usr/share/fonts/TTF"
+
+   # Install fonts and license
+   install -m 644 *.ttf "${PKG}/usr/share/fonts/TTF"
+}

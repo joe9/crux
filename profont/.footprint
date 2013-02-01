@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/fonts/
+drwxr-xr-x	root/root	usr/share/fonts/misc/
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-10.pcf
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-11.pcf
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-12.pcf
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-15.pcf
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-17.pcf
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-22.pcf
+-rw-r--r--	root/root	usr/share/fonts/misc/ProFont_r400-29.pcf

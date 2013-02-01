@@ -1,0 +1,21 @@
+# Description: A small bitmap font which is absolutely great for programming
+# URL:         http://www.tobias-jung.de/seekingprofont/
+# Packager:    Joe M, joe9mail at gmail dot com
+# Depends on:  fontconfig
+
+# got this from
+#   https://www.archlinux.org/packages/community/any/profont/
+name=profont
+version=1
+release=2
+source=(http://www.tobiasjung.net/dl/${name}-x11.tar.gz)
+
+build() {
+   cd ${name}-x11
+
+   # Prepare destination directory
+   install -d ${PKG}/usr/share/fonts/misc
+
+   # Install fonts
+   install -m 644 * ${PKG}/usr/share/fonts/misc/
+}
